@@ -1612,6 +1612,73 @@ footer{
     }
 
 }
+
+/* ===== LOYAL CURSOR FX ===== */
+
+.loyal-cursor-glow{
+    position:fixed;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:radial-gradient(
+        circle,
+        rgba(255,106,0,.12) 0%,
+        rgba(255,106,0,.045) 35%,
+        transparent 70%
+    );
+    pointer-events:none;
+    z-index:9998;
+    transform:translate(-50%,-50%);
+    opacity:0;
+    transition:opacity .25s ease;
+    filter:blur(2px);
+}
+
+.loyal-cursor-dot{
+    position:fixed;
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#ff6a00;
+    box-shadow:
+        0 0 10px rgba(255,106,0,.75),
+        0 0 24px rgba(255,106,0,.25);
+    pointer-events:none;
+    z-index:10000;
+    transform:translate(-50%,-50%);
+    opacity:0;
+}
+
+.loyal-click-ripple{
+    position:fixed;
+    width:14px;
+    height:14px;
+    border:2px solid rgba(255,106,0,.8);
+    border-radius:50%;
+    pointer-events:none;
+    z-index:9999;
+    transform:translate(-50%,-50%) scale(1);
+    animation:loyalRipple .65s ease-out forwards;
+}
+
+@keyframes loyalRipple{
+    0%{
+        opacity:1;
+        transform:translate(-50%,-50%) scale(1);
+    }
+    100%{
+        opacity:0;
+        transform:translate(-50%,-50%) scale(5);
+    }
+}
+
+@media (hover:none), (pointer:coarse){
+    .loyal-cursor-glow,
+    .loyal-cursor-dot{
+        display:none;
+    }
+}
+
 </style>
 </head>
 
