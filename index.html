@@ -1680,11 +1680,35 @@ footer{
     }
 }
 
+/* ===== SCROLL PROGRESS ===== */
+
+#scrollProgress{
+    position:fixed;
+    top:0;
+    left:0;
+    width:0%;
+    height:3px;
+    background:linear-gradient(
+        90deg,
+        #ff5a00,
+        #ff9b4a
+    );
+    box-shadow:
+        0 0 8px rgba(255,106,0,.55),
+        0 0 18px rgba(255,106,0,.18);
+    z-index:99999;
+    pointer-events:none;
+    transition:width .08s linear;
+}
+
+
 </style>
 </head>
 
 <body>
-
+    
+<div id="scrollProgress"></div>
+    
 <header>
 <div class="container nav">
 
@@ -2707,8 +2731,38 @@ document
         btn.disabled = false;
 
         btn.textContent = "ثبت درخواست";
+/* =========================
+   SCROLL PROGRESS
+========================= */
 
-    });
+const scrollProgress =
+    document.getElementById("scrollProgress");
+
+function updateScrollProgress(){
+
+    const scrollTop = window.scrollY;
+
+    const documentHeight =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+
+    const progress =
+        documentHeight > 0
+        ? (scrollTop / documentHeight) * 100
+        : 0;
+
+    scrollProgress.style.width =
+        progress + "%";
+}
+
+window.addEventListener(
+    "scroll",
+    updateScrollProgress,
+    {passive:true}
+);
+
+updateScrollProgress();
+
 </script>
 
 <style>
