@@ -1,0 +1,2809 @@
+```html
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/persian-datepicker@1.2.0/dist/css/persian-datepicker.min.css">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Loyal Graphic — استودیوی طراحی گرافیک Taha Loyal Guy برای Minecraft، Gaming و تولیدکنندگان محتوا.">
+<meta name="theme-color" content="#080808">
+
+<meta property="og:title" content="Loyal Graphic — Taha Loyal Guy">
+<meta property="og:description" content="استودیوی طراحی گرافیک مدرن برای Minecraft، Gaming و تولیدکنندگان محتوا.">
+
+<title>Loyal Graphic — Taha Loyal Guy</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg:#070707;
+    --surface:#101010;
+    --surface2:#151515;
+    --text:#f5f5f5;
+    --muted:#999;
+    --line:#252525;
+    --accent:#ff6a00;
+    --accent2:#ff9b4a;
+    --max:1180px;
+    --radius:22px;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:
+        radial-gradient(circle at 80% 0%,rgba(255,106,0,.09),transparent 27%),
+        radial-gradient(circle at 10% 55%,rgba(255,106,0,.035),transparent 25%),
+        var(--bg);
+    color:var(--text);
+    font-family:"Vazirmatn",Arial,sans-serif;
+    line-height:1.8;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.2;
+    background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    background-size:60px 60px;
+    mask-image:linear-gradient(to bottom,#000,transparent 78%);
+    z-index:-2;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    background:rgba(255,106,0,.045);
+    filter:blur(130px);
+    pointer-events:none;
+    top:20%;
+    left:-250px;
+    z-index:-3;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button,
+input,
+textarea,
+select{
+    font:inherit;
+}
+
+button{
+    border:0;
+}
+
+img{
+    max-width:100%;
+}
+
+.container{
+    width:min(var(--max),calc(100% - 40px));
+    margin:auto;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:1000;
+    padding:15px 0;
+    background:rgba(7,7,7,.68);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.055);
+}
+
+.nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    font-family:"Space Grotesk",sans-serif;
+    font-weight:700;
+    direction:ltr;
+}
+
+.logo{
+    width:40px;
+    height:40px;
+    border:1px solid rgba(255,106,0,.55);
+    border-radius:12px;
+    display:grid;
+    place-items:center;
+    background:#101010;
+    overflow:hidden;
+    box-shadow:0 0 20px rgba(255,106,0,.1);
+    transition:.35s ease;
+}
+
+.logo img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    display:block;
+}
+
+.brand:hover .logo{
+    transform:rotate(-4deg) scale(1.06);
+    border-color:var(--accent);
+    box-shadow:0 0 30px rgba(255,106,0,.22);
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+    color:#aaa;
+    font-size:14px;
+}
+
+.nav-links a{
+    position:relative;
+    transition:.25s;
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    right:0;
+    bottom:-7px;
+    width:0;
+    height:2px;
+    background:var(--accent);
+    transition:.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+    color:#fff;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after{
+    width:100%;
+}
+
+.nav-cta,
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:11px 18px;
+    border-radius:13px;
+    border:1px solid var(--line);
+    transition:.3s ease;
+    cursor:pointer;
+}
+
+.nav-cta,
+.btn.primary{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:#090909;
+    font-weight:800;
+}
+
+.btn.secondary{
+    background:#111;
+    color:#eee;
+}
+
+.btn:hover,
+.nav-cta:hover{
+    transform:translateY(-3px);
+    box-shadow:0 13px 32px rgba(255,106,0,.16);
+}
+
+.btn.primary:hover{
+    background:#ff7a1a;
+}
+
+.menu-btn{
+    display:none;
+    background:#111;
+    border:1px solid var(--line);
+    color:#fff;
+    border-radius:10px;
+    padding:8px 11px;
+    cursor:pointer;
+}
+
+/* =========================
+   GENERAL
+========================= */
+
+section{
+    padding:105px 0;
+    position:relative;
+}
+
+.eyebrow{
+    display:inline-flex;
+    gap:8px;
+    align-items:center;
+    padding:6px 12px;
+    border:1px solid #292929;
+    background:#0d0d0d;
+    border-radius:999px;
+    color:#bbb;
+    font-size:13px;
+    margin-bottom:18px;
+}
+
+.eyebrow i{
+    width:7px;
+    height:7px;
+    background:var(--accent);
+    border-radius:50%;
+    box-shadow:0 0 12px var(--accent);
+    animation:dotPulse 2s infinite;
+}
+
+.section-head{
+    display:flex;
+    align-items:end;
+    justify-content:space-between;
+    gap:25px;
+    margin-bottom:35px;
+}
+
+.section-head .tag{
+    color:var(--accent);
+    font:600 12px "Space Grotesk";
+    direction:ltr;
+}
+
+.section-head h2{
+    font-size:clamp(28px,4vw,44px);
+    line-height:1.2;
+}
+
+.section-head p{
+    max-width:480px;
+    color:var(--muted);
+    font-size:14px;
+}
+
+.grid{
+    display:grid;
+    gap:16px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:780px;
+    display:grid;
+    place-items:center;
+    text-align:center;
+    padding-top:140px;
+    overflow:hidden;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:700px;
+    height:700px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(255,106,0,.11),transparent 65%);
+    top:-180px;
+    left:50%;
+    transform:translateX(-50%);
+    pointer-events:none;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    width:900px;
+    height:1px;
+    background:linear-gradient(90deg,transparent,rgba(255,106,0,.3),transparent);
+    bottom:80px;
+    left:50%;
+    transform:translateX(-50%);
+    filter:blur(1px);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:900px;
+}
+
+.hero-logo{
+    width:78px;
+    height:78px;
+    border-radius:23px;
+    margin:0 auto 22px;
+    border:1px solid rgba(255,106,0,.65);
+    background:#101010;
+    overflow:hidden;
+    box-shadow:
+        0 0 35px rgba(255,106,0,.13),
+        inset 0 0 20px rgba(255,106,0,.04);
+    animation:heroFloat 4s ease-in-out infinite;
+}
+
+.hero-logo img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    display:block;
+}
+
+.hero h1{
+    font:700 clamp(43px,6.4vw,72px)/1.04 "Space Grotesk",sans-serif;
+    direction:ltr;
+    letter-spacing:-2px;
+    margin-bottom:18px;
+}
+
+.hero h1 span{
+    color:var(--accent);
+    text-shadow:0 0 35px rgba(255,106,0,.2);
+}
+
+.hero h2{
+    font-size:clamp(22px,3vw,38px);
+    font-weight:700;
+    margin:0 auto 10px;
+    max-width:820px;
+}
+
+.hero p{
+    color:var(--muted);
+    max-width:680px;
+    margin:auto;
+    font-size:16px;
+}
+
+.actions{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-top:28px;
+    flex-wrap:wrap;
+}
+
+.hero-stats{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:34px;
+}
+
+.hero-stat{
+    padding:8px 14px;
+    border:1px solid #242424;
+    border-radius:999px;
+    background:rgba(12,12,12,.7);
+    color:#aaa;
+    font-size:12px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.services{
+    grid-template-columns:repeat(4,1fr);
+}
+
+.card{
+    background:linear-gradient(145deg,#121212,#0c0c0c);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:25px;
+    transition:.35s ease;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    border-color:#3d3d3d;
+    box-shadow:0 22px 55px rgba(0,0,0,.32);
+}
+
+.icon{
+    width:44px;
+    height:44px;
+    border-radius:13px;
+    background:#181818;
+    border:1px solid #2b2b2b;
+    display:grid;
+    place-items:center;
+    color:var(--accent);
+    margin-bottom:18px;
+    font-weight:800;
+    transition:.3s;
+}
+
+.card:hover .icon{
+    background:rgba(255,106,0,.08);
+    border-color:rgba(255,106,0,.4);
+    transform:scale(1.06);
+}
+
+.card h3{
+    font-size:17px;
+    margin-bottom:8px;
+}
+
+.card p{
+    font-size:13px;
+    color:var(--muted);
+}
+
+/* =========================
+   PORTFOLIO
+========================= */
+
+.portfolio{
+    grid-template-columns:repeat(3,1fr);
+}
+
+.work{
+    height:285px;
+    padding:0;
+    overflow:hidden;
+    cursor:pointer;
+    position:relative;
+    isolation:isolate;
+}
+
+.work::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        125deg,
+        transparent 20%,
+        rgba(255,255,255,.09) 45%,
+        transparent 70%
+    );
+    transform:translateX(-120%);
+    transition:.8s ease;
+    z-index:2;
+    pointer-events:none;
+}
+
+.work:hover::before{
+    transform:translateX(120%);
+}
+
+.work img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:.6s cubic-bezier(.2,.7,.2,1);
+}
+
+.work:hover img{
+    transform:scale(1.07);
+}
+
+.work .placeholder{
+    width:100%;
+    height:100%;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(135deg,#1b1b1b,#090909);
+    font-family:"Space Grotesk";
+    font-size:24px;
+    color:#555;
+    direction:ltr;
+}
+
+.work .overlay{
+    position:absolute;
+    inset:auto 12px 12px;
+    padding:14px;
+    border-radius:15px;
+    background:rgba(0,0,0,.72);
+    backdrop-filter:blur(9px);
+    transform:translateY(10px);
+    opacity:.82;
+    transition:.35s;
+    z-index:3;
+}
+
+.work:hover .overlay{
+    transform:translateY(0);
+    opacity:1;
+}
+
+.filters{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
+}
+
+.filter{
+    border:1px solid var(--line);
+    background:#101010;
+    color:#aaa;
+    padding:8px 13px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.filter.active,
+.filter:hover{
+    background:var(--accent);
+    color:#090909;
+    border-color:var(--accent);
+}
+
+/* =========================
+   PROCESS
+========================= */
+
+.steps{
+    grid-template-columns:repeat(4,1fr);
+}
+
+.step{
+    position:relative;
+    padding:10px 0;
+}
+
+.num{
+    font:700 38px "Space Grotesk";
+    color:var(--accent);
+    direction:ltr;
+}
+
+.step h3{
+    font-size:17px;
+    margin:7px 0;
+}
+
+.step p{
+    color:var(--muted);
+    font-size:13px;
+}
+
+/* =========================
+   BENEFITS
+========================= */
+
+.benefits{
+    grid-template-columns:repeat(3,1fr);
+}
+
+.benefit{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+}
+
+.benefit .icon{
+    flex:none;
+    margin:0;
+}
+
+/* =========================
+   ORDER
+========================= */
+
+.order-wrap{
+    display:grid;
+    grid-template-columns:.8fr 1.2fr;
+    gap:18px;
+}
+
+.info-box{
+    background:linear-gradient(150deg,#151515,#0b0b0b);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:32px;
+}
+
+.info-box h3{
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.info-box p{
+    color:var(--muted);
+}
+
+.contacts{
+    margin-top:28px;
+    display:grid;
+    gap:10px;
+}
+
+.contacts a{
+    padding:11px 13px;
+    border:1px solid var(--line);
+    border-radius:12px;
+    color:#ccc;
+    direction:ltr;
+    text-align:left;
+    transition:.25s;
+}
+
+.contacts a:hover{
+    border-color:var(--accent);
+    color:#fff;
+    transform:translateX(-3px);
+}
+
+form{
+    background:#0f0f0f;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:28px;
+    display:grid;
+    gap:14px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+label{
+    font-size:12px;
+    color:#aaa;
+    display:grid;
+    gap:7px;
+}
+
+input,
+textarea,
+select{
+    width:100%;
+    background:#080808;
+    color:#fff;
+    border:1px solid #292929;
+    border-radius:11px;
+    padding:12px;
+    outline:none;
+    transition:.25s;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+    border-color:var(--accent);
+    box-shadow:0 0 0 3px rgba(255,106,0,.1);
+}
+
+textarea{
+    min-height:130px;
+    resize:vertical;
+}
+
+.full{
+    grid-column:1/-1;
+}
+
+.form-msg{
+    display:none;
+    padding:11px;
+    border-radius:10px;
+    font-size:13px;
+}
+
+.form-msg.show{
+    display:block;
+    background:#132015;
+    color:#8be29b;
+}
+
+/* =========================
+   RIG CTA
+========================= */
+
+.rig-cta{
+    background:
+        radial-gradient(circle at 90% 50%,rgba(255,106,0,.1),transparent 35%),
+        linear-gradient(100deg,#16110d,#101010);
+    border:1px solid #382316;
+    border-radius:var(--radius);
+    padding:30px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:25px;
+    overflow:hidden;
+    position:relative;
+}
+
+.rig-cta::after{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:rgba(255,106,0,.08);
+    filter:blur(50px);
+    right:-40px;
+    top:-50px;
+    pointer-events:none;
+}
+
+.rig-cta h3{
+    font-size:25px;
+}
+
+.rig-cta p{
+    color:#aaa;
+    max-width:720px;
+    margin-top:6px;
+}
+
+/* =========================
+   FINAL CTA
+========================= */
+
+.final{
+    text-align:center;
+}
+
+.final h2{
+    font-size:clamp(30px,5vw,55px);
+    margin-bottom:12px;
+}
+
+.final p{
+    color:var(--muted);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    border-top:1px solid var(--line);
+    padding:30px 0;
+    color:#777;
+    font-size:12px;
+}
+
+.footer{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.footer strong{
+    font-family:"Space Grotesk";
+    color:#eee;
+    direction:ltr;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.82);
+    backdrop-filter:blur(13px);
+    z-index:2000;
+    display:none;
+    place-items:center;
+    padding:20px;
+}
+
+.modal.open{
+    display:grid;
+    animation:modalIn .25s ease;
+}
+
+.modal-box{
+    max-width:900px;
+    width:100%;
+    max-height:90vh;
+    overflow:auto;
+    background:#101010;
+    border:1px solid #333;
+    border-radius:20px;
+    padding:20px;
+    position:relative;
+    box-shadow:0 30px 100px rgba(0,0,0,.6);
+}
+
+.modal-art{
+    min-height:420px;
+    max-height:65vh;
+    background:#090909;
+    display:grid;
+    place-items:center;
+    color:#555;
+    font:40px "Space Grotesk";
+    border-radius:14px;
+    overflow:hidden;
+}
+
+.modal-art img{
+    width:100%;
+    height:100%;
+    max-height:65vh;
+    object-fit:contain;
+    display:block;
+}
+
+.close{
+    position:absolute;
+    top:12px;
+    left:12px;
+    z-index:5;
+    border:1px solid #333;
+    background:#111;
+    color:#fff;
+    border-radius:9px;
+    padding:5px 11px;
+    cursor:pointer;
+    font-size:20px;
+    transition:.25s;
+}
+
+.close:hover{
+    background:var(--accent);
+    color:#090909;
+    border-color:var(--accent);
+}
+
+/* =========================
+   REVEAL ANIMATIONS
+========================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:
+        opacity .7s ease,
+        transform .7s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:none;
+}
+
+.hero-content > *{
+    opacity:0;
+    transform:translateY(22px);
+    animation:heroReveal .75s cubic-bezier(.2,.7,.2,1) forwards;
+}
+
+.hero-content .hero-logo{animation-delay:.08s}
+.hero-content .eyebrow{animation-delay:.16s}
+.hero-content h1{animation-delay:.24s}
+.hero-content h2{animation-delay:.32s}
+.hero-content p{animation-delay:.40s}
+.hero-content .actions{animation-delay:.48s}
+.hero-content .hero-stats{animation-delay:.56s}
+
+/* =========================
+   KEYFRAMES
+========================= */
+
+@keyframes heroReveal{
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+@keyframes heroFloat{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-7px);
+    }
+}
+
+@keyframes dotPulse{
+    0%,100%{
+        box-shadow:0 0 8px var(--accent);
+    }
+    50%{
+        box-shadow:0 0 18px var(--accent);
+    }
+}
+
+@keyframes modalIn{
+    from{
+        opacity:0;
+        transform:scale(.97);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+    .services{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .portfolio{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .steps{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .benefits{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .order-wrap{
+        grid-template-columns:1fr;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .nav-cta{
+        display:none;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .nav-links.mobile{
+        display:flex;
+        position:absolute;
+        top:73px;
+        left:20px;
+        right:20px;
+        background:#0d0d0d;
+        border:1px solid var(--line);
+        padding:18px;
+        border-radius:15px;
+        flex-direction:column;
+        box-shadow:0 20px 50px rgba(0,0,0,.45);
+        animation:menuIn .25s ease;
+    }
+}
+
+@keyframes menuIn{
+    from{
+        opacity:0;
+        transform:translateY(-8px);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+@media(max-width:600px){
+
+    /* =========================
+       MOBILE POLISH
+    ========================= */
+
+    .container{
+        width:calc(100% - 28px);
+        max-width:520px;
+    }
+
+    section{
+        padding:70px 0;
+    }
+
+
+    /* HEADER */
+
+    header{
+        padding:11px 0;
+    }
+
+    .nav{
+        gap:10px;
+    }
+
+    .brand{
+        font-size:14px;
+        gap:8px;
+    }
+
+    .logo{
+        width:36px;
+        height:36px;
+        border-radius:10px;
+    }
+
+    .menu-btn{
+        padding:8px 12px;
+        font-size:18px;
+    }
+
+    .nav-links.mobile{
+        top:65px;
+        left:14px;
+        right:14px;
+        padding:12px;
+        gap:4px;
+        border-radius:16px;
+        box-shadow:0 18px 45px rgba(0,0,0,.45);
+    }
+
+    .nav-links.mobile a{
+        padding:11px 12px;
+        border-radius:10px;
+    }
+
+    .nav-links.mobile a:hover,
+    .nav-links.mobile a.active{
+        background:#181818;
+    }
+
+
+    /* HERO */
+
+    .hero{
+        min-height:720px;
+        padding-top:115px;
+        padding-bottom:70px;
+    }
+
+    .hero-glow{
+        width:300px;
+        height:300px;
+        filter:blur(75px);
+        top:120px;
+    }
+
+    .hero-logo{
+        width:68px;
+        height:68px;
+        border-radius:19px;
+        margin-bottom:18px;
+    }
+
+    .eyebrow{
+        font-size:11px;
+        padding:5px 10px;
+        margin-bottom:15px;
+    }
+
+    .hero h1{
+        font-size:40px;
+        line-height:1.05;
+        letter-spacing:-1px;
+        max-width:100%;
+    }
+
+    .hero h2{
+        font-size:24px;
+        line-height:1.55;
+        margin:17px auto 10px;
+        max-width:390px;
+    }
+
+    .hero p{
+        font-size:13px;
+        line-height:1.9;
+        max-width:370px;
+    }
+
+    .actions{
+        width:100%;
+        gap:9px;
+        margin-top:23px;
+    }
+
+    .actions .btn{
+        min-height:46px;
+        padding:10px 16px;
+        flex:1;
+        min-width:135px;
+    }
+
+
+    /* SECTION HEADINGS */
+
+    .section-head{
+        display:block;
+        margin-bottom:25px;
+    }
+
+    .section-head h2{
+        font-size:30px;
+        line-height:1.3;
+    }
+
+    .section-head p{
+        margin-top:9px;
+        font-size:13px;
+        line-height:1.9;
+    }
+
+
+    /* CARDS */
+
+    .services,
+    .portfolio,
+    .steps,
+    .benefits{
+        grid-template-columns:1fr;
+        gap:12px;
+    }
+
+    .card{
+        padding:20px;
+        border-radius:18px;
+    }
+
+    .card h3{
+        font-size:16px;
+    }
+
+    .card p{
+        font-size:12px;
+        line-height:1.9;
+    }
+
+
+    /* PORTFOLIO */
+
+    .filters{
+        gap:7px;
+        margin-bottom:16px;
+        overflow-x:auto;
+        flex-wrap:nowrap;
+        padding-bottom:4px;
+        scrollbar-width:none;
+    }
+
+    .filters::-webkit-scrollbar{
+        display:none;
+    }
+
+    .filter{
+        flex:none;
+        white-space:nowrap;
+        padding:8px 12px;
+        font-size:12px;
+    }
+
+    .work{
+        height:235px;
+        border-radius:17px;
+    }
+
+    .work .overlay{
+        left:9px;
+        right:9px;
+        bottom:9px;
+        padding:11px;
+        border-radius:12px;
+    }
+
+
+    /* STEPS */
+
+    .step{
+        padding:17px;
+        border:1px solid var(--line);
+        border-radius:17px;
+        background:#0e0e0e;
+    }
+
+    .num{
+        font-size:32px;
+    }
+
+
+    /* BENEFITS */
+
+    .benefit{
+        padding:15px;
+        border:1px solid var(--line);
+        border-radius:16px;
+        background:#0e0e0e;
+    }
+
+
+    /* ORDER */
+
+    .order-wrap{
+        grid-template-columns:1fr;
+        gap:12px;
+    }
+
+    .info-box,
+    form{
+        padding:20px;
+        border-radius:18px;
+    }
+
+    .info-box h3{
+        font-size:24px;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+        gap:12px;
+    }
+
+    .full{
+        grid-column:auto;
+    }
+
+    label{
+        font-size:12px;
+    }
+
+    input,
+    textarea,
+    select{
+        min-height:46px;
+        padding:11px;
+        font-size:14px;
+    }
+
+    textarea{
+        min-height:125px;
+    }
+
+    #submitBtn{
+        width:100%;
+        min-height:48px;
+    }
+
+
+    /* CONTACTS */
+
+    .contacts a{
+        min-height:44px;
+        display:flex;
+        align-items:center;
+    }
+
+
+    /* RIG CTA */
+
+    .rig-cta{
+        display:block;
+        padding:22px;
+        border-radius:18px;
+    }
+
+    .rig-cta h3{
+        font-size:21px;
+        line-height:1.5;
+    }
+
+    .rig-cta p{
+        font-size:13px;
+        line-height:1.9;
+    }
+
+    .rig-cta .btn{
+        width:100%;
+        margin-top:16px;
+    }
+
+
+    /* FINAL CTA */
+
+    .final h2{
+        font-size:31px;
+        line-height:1.4;
+    }
+
+    .final p{
+        font-size:13px;
+    }
+
+    .final .actions .btn{
+        flex:none;
+        width:100%;
+    }
+
+
+    /* MODAL */
+
+    .modal{
+        padding:12px;
+    }
+
+    .modal-box{
+        padding:12px;
+        border-radius:17px;
+    }
+
+    .modal-art{
+        height:270px;
+        min-height:0;
+        border-radius:12px;
+        font-size:24px;
+    }
+
+
+    /* JALALI CALENDAR */
+
+    #jalaliCalendar{
+        width:min(300px,calc(100vw - 24px));
+        padding:12px;
+        border-radius:14px;
+    }
+
+    #jalaliCalendar button{
+        min-height:36px;
+    }
+
+    #jcPrev,
+    #jcNext{
+        width:42px !important;
+        min-width:42px !important;
+        height:38px;
+        font-size:24px;
+    }
+
+    .jc-days,
+    .jc-weekdays{
+        gap:4px;
+    }
+
+
+    /* FOOTER */
+
+    footer{
+        padding:25px 0;
+    }
+
+    .footer{
+        display:grid;
+        gap:10px;
+        text-align:center;
+        justify-content:center;
+    }
+
+}
+
+
+@media(prefers-reduced-motion:reduce){
+
+    * ,
+    *::before,
+    *::after{
+        scroll-behavior:auto!important;
+        animation:none!important;
+        transition:none!important;
+    }
+
+    .reveal{
+        opacity:1;
+        transform:none;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container nav">
+
+<a class="brand" href="#home" aria-label="Loyal Graphic">
+    <!-- لوگو را اینجا قرار بده: images/logo.png -->
+    <div class="logo">
+        <img src="images/logo.png" alt="Loyal Graphic Logo">
+    </div>
+    <span>LOYAL GRAPHIC</span>
+</a>
+
+<nav class="nav-links" id="navLinks">
+    <a href="#home" class="active">خانه</a>
+    <a href="#services">خدمات</a>
+    <a href="#portfolio">نمونه‌کارها</a>
+    <a href="#process">روند کار</a>
+    <a href="#about">درباره</a>
+    <a href="#order">سفارش</a>
+    <a href="#contact">تماس</a>
+</nav>
+
+<a class="nav-cta" href="#order">شروع پروژه ↗</a>
+
+<button class="menu-btn" id="menuBtn" aria-label="باز کردن منو">☰</button>
+
+</div>
+</header>
+
+
+<main>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+<div class="container hero-content">
+
+    <!-- لوگوی اصلی: images/logo.png -->
+    <div class="hero-logo">
+        <img src="images/logo.png" alt="Loyal Graphic">
+    </div>
+
+    <div class="eyebrow">
+        <i></i>
+        LOYAL GRAPHIC STUDIO
+    </div>
+
+    <h1>
+        LOYAL <span>GRAPHIC</span>
+    </h1>
+
+    <h2>
+        ایده‌ات را به یک تصویر ماندگار تبدیل کن.
+    </h2>
+
+    <p>
+        طراحی گرافیک حرفه‌ای برای Minecraft، Gaming و تولیدکنندگان محتوا؛
+        با تمرکز روی جزئیات، هویت بصری و نتیجه‌ای که دیده شود.
+    </p>
+
+    <div class="actions">
+        <a class="btn primary" href="#portfolio">
+            مشاهده نمونه‌کارها ↗
+        </a>
+
+        <a class="btn secondary" href="#order">
+            شروع پروژه
+        </a>
+    </div>
+
+    <div class="hero-stats">
+        <span class="hero-stat">Minecraft</span>
+        <span class="hero-stat">Gaming</span>
+        <span class="hero-stat">Content Creators</span>
+        <span class="hero-stat">Creative Design</span>
+    </div>
+
+</div>
+</section>
+
+
+<!-- ================= SERVICES ================= -->
+
+<section id="services">
+<div class="container">
+
+<div class="section-head reveal">
+<div>
+<span class="tag">01 / SERVICES</span>
+<h2>چیزی که می‌تونم برات بسازم</h2>
+</div>
+
+<p>
+از یک تامنیل ساده تا یک هویت بصری کامل؛
+هر پروژه با توجه به سبک و هدف خودش طراحی می‌شود.
+</p>
+</div>
+
+<div class="grid services">
+
+<article class="card reveal">
+<div class="icon">01</div>
+<h3>Minecraft Thumbnail</h3>
+<p>تامنیل‌های حرفه‌ای و چشم‌گیر برای ویدیوهای Minecraft.</p>
+</article>
+
+<article class="card reveal">
+<div class="icon">02</div>
+<h3>Minecraft Profile</h3>
+<p>پروفایل‌های اختصاصی با استایل Gaming و Minecraft.</p>
+</article>
+
+<article class="card reveal">
+<div class="icon">03</div>
+<h3>Banner & Cover</h3>
+<p>بنر و کاور حرفه‌ای برای صفحه‌ها و کانال‌های شما.</p>
+</article>
+
+<article class="card reveal">
+<div class="icon">04</div>
+<h3>Channel Art</h3>
+<p>طراحی Channel Art برای YouTube، Aparat و پلتفرم‌های دیگر.</p>
+</article>
+
+<article class="card reveal">
+<div class="icon">05</div>
+<h3>Gaming Graphic</h3>
+<p>گرافیک‌های مخصوص Gaming، ویدیو و محتوای گیمینگ.</p>
+</article>
+
+<article class="card reveal">
+<div class="icon">06</div>
+<h3>Social Media</h3>
+<p>طراحی پست، استوری و محتوای بصری برای شبکه‌های اجتماعی.</p>
+</article>
+
+<article class="card reveal">
+<div class="icon">07</div>
+<h3>Poster</h3>
+<p>پوسترهای تبلیغاتی و خلاقانه با ترکیب‌بندی حرفه‌ای.</p>
+</article>
+
+<article class="card reveal">
+<div class="icon">08</div>
+<h3>3D / Render</h3>
+<p>رندرها و تصاویر سه‌بعدی برای پروژه‌های خلاقانه.</p>
+</article>
+
+</div>
+</div>
+</section>
+
+
+<!-- ================= PORTFOLIO ================= -->
+
+<section id="portfolio">
+<div class="container">
+
+<div class="section-head reveal">
+<div>
+<span class="tag">02 / SELECTED WORK</span>
+<h2>نمونه‌کارها</h2>
+</div>
+
+<p>
+بخشی از کارهایی که در سبک‌های Minecraft، Gaming،
+Social Media و 3D انجام شده‌اند.
+</p>
+</div>
+
+<div class="filters reveal">
+
+<button class="filter active" data-filter="all">همه</button>
+<button class="filter" data-filter="minecraft">Minecraft</button>
+<button class="filter" data-filter="gaming">Gaming</button>
+<button class="filter" data-filter="social">Social Media</button>
+<button class="filter" data-filter="3d">3D</button>
+
+</div>
+
+<div class="grid portfolio" id="portfolioGrid"></div>
+
+</div>
+</section>
+
+
+<!-- ================= PROCESS ================= -->
+
+<section id="process">
+<div class="container">
+
+<div class="section-head reveal">
+<div>
+<span class="tag">03 / PROCESS</span>
+<h2>روند انجام پروژه</h2>
+</div>
+
+<p>
+از ایده اولیه تا تحویل نهایی، مراحل پروژه مشخص و منظم پیش می‌رود.
+</p>
+</div>
+
+<div class="grid steps">
+
+<article class="step reveal">
+<div class="num">01</div>
+<h3>Project Brief</h3>
+<p>دریافت اطلاعات، نیازها، سبک و جزئیات پروژه.</p>
+</article>
+
+<article class="step reveal">
+<div class="num">02</div>
+<h3>Discussion & Planning</h3>
+<p>بررسی ایده، انتخاب سبک و برنامه‌ریزی اجرای پروژه.</p>
+</article>
+
+<article class="step reveal">
+<div class="num">03</div>
+<h3>Design & Revisions</h3>
+<p>طراحی اولیه، بررسی و اعمال اصلاحات موردنیاز.</p>
+</article>
+
+<article class="step reveal">
+<div class="num">04</div>
+<h3>Final Delivery</h3>
+<p>تحویل فایل نهایی آماده استفاده.</p>
+</article>
+
+</div>
+</div>
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about">
+<div class="container">
+
+<div class="section-head reveal">
+<div>
+<span class="tag">04 / WHY LOYAL</span>
+<h2>چرا Loyal Graphic؟</h2>
+</div>
+
+<p>
+هدف فقط ساخت یک تصویر نیست؛ هدف ساخت چیزی است که
+در نگاه اول توجه مخاطب را جلب کند.
+</p>
+</div>
+
+<div class="grid benefits">
+
+<article class="benefit reveal">
+<div class="icon">✦</div>
+<div>
+<h3>طراحی اختصاصی</h3>
+<p>هر پروژه بر اساس ایده و نیاز خودت ساخته می‌شود.</p>
+</div>
+</article>
+
+<article class="benefit reveal">
+<div class="icon">◆</div>
+<div>
+<h3>توجه به جزئیات</h3>
+<p>جزئیات کوچک می‌توانند تفاوت بزرگی در نتیجه ایجاد کنند.</p>
+</div>
+</article>
+
+<article class="benefit reveal">
+<div class="icon">◈</div>
+<div>
+<h3>استایل مدرن</h3>
+<p>تمرکز روی طراحی تمیز، حرفه‌ای و مناسب فضای Gaming.</p>
+</div>
+</article>
+
+<article class="benefit reveal">
+<div class="icon">↗</div>
+<div>
+<h3>ارتباط مستقیم</h3>
+<p>برای صحبت درباره پروژه مستقیماً با طراح در ارتباط هستی.</p>
+</div>
+</article>
+
+<article class="benefit reveal">
+<div class="icon">✓</div>
+<div>
+<h3>تحویل منظم</h3>
+<p>مراحل پروژه مشخص است و خروجی نهایی مرتب تحویل داده می‌شود.</p>
+</div>
+</article>
+
+<article class="benefit reveal">
+<div class="icon">∞</div>
+<div>
+<h3>تمرکز روی نتیجه</h3>
+<p>طراحی باید فقط زیبا نباشد؛ باید برای محتوا کاربرد داشته باشد.</p>
+</div>
+</article>
+
+</div>
+</div>
+</section>
+
+
+<!-- ================= RIG CTA ================= -->
+
+<section>
+<div class="container">
+
+<div class="rig-cta reveal">
+
+<div>
+<span class="tag">MINECRAFT RIGS & MODELS</span>
+
+<h3>
+مدل و ریگ برای ساخت تامنیل
+</h3>
+
+<p>
+اگه خودت تامنیل می‌زنی و نمی‌دونی مدل و ریگ‌هات رو از کجا پیدا کنی،
+این چنل خوراک خودته.
+</p>
+</div>
+
+<a
+class="btn primary"
+href="https://t.me/Rig_Sky"
+target="_blank"
+rel="noopener noreferrer"
+>
+مشاهده کانال ↗
+</a>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- ================= ORDER ================= -->
+
+<section id="order">
+<div class="container">
+
+<div class="section-head reveal">
+<div>
+<span class="tag">05 / START A PROJECT</span>
+<h2>سفارش پروژه</h2>
+</div>
+
+<p>
+اطلاعات پروژه را وارد کن تا بتوانیم درباره جزئیات آن صحبت کنیم.
+</p>
+</div>
+
+<div class="order-wrap">
+
+<div class="info-box reveal">
+
+<h3>Let's create.</h3>
+
+<p>
+ایده‌ات را بگو، سبک موردنظرت را توضیح بده
+و اجازه بده با هم به یک خروجی حرفه‌ای برسیم.
+</p>
+
+<div class="contacts">
+
+<a href="https://rubika.ir/taha_loyal_guy3"
+target="_blank"
+rel="noopener noreferrer">
+Rubika — @taha_loyal_guy3
+</a>
+
+<a href="https://t.me/taha_loyal_guy2"
+target="_blank"
+rel="noopener noreferrer">
+Telegram — @taha_loyal_guy2
+</a>
+
+<a href="https://ble.ir/taha_loyal_guy"
+target="_blank"
+rel="noopener noreferrer">
+Bale — @taha_loyal_guy
+</a>
+
+<a href="https://t.me/loyal_edits"
+target="_blank"
+rel="noopener noreferrer">
+Telegram Channel — @loyal_edits
+</a>
+
+</div>
+
+</div>
+
+
+<form id="orderForm"
+      class="reveal"
+      action="https://formspree.io/f/xaenvjbk"
+      method="POST">
+
+<input
+    type="hidden"
+    name="subject"
+    value="🟠 New Order — Loyal Graphic | {{ type }}"
+>
+
+<div class="form-grid">
+
+<label>
+نام
+<input required name="name" placeholder="نام شما">
+</label>
+
+<label>
+روش ارتباطی
+
+<select required name="contact_method">
+
+    <option value="">انتخاب کنید</option>
+
+    <option>Telegram</option>
+    <option>Rubika</option>
+    <option>Bale</option>
+    <option>Soroush</option>
+    <option>شماره تلفن</option>
+    <option>سایر</option>
+
+</select>
+
+</label>
+
+<label>
+آیدی / شماره تماس
+
+<input
+    required
+    name="contact"
+    placeholder="@username یا شماره تماس"
+>
+
+</label>
+
+<label>
+نوع پروژه
+
+<select required name="type">
+
+<option value="">انتخاب کنید</option>
+<option>تامنیل Minecraft</option>
+<option>پروفایل ماینکرفتی</option>
+<option>Channel Art</option>
+
+</select>
+</label>
+
+<label>
+بودجه تقریبی
+
+<select required name="budget">
+
+    <option value="">انتخاب بودجه</option>
+
+    <option>زیر ۵۰۰ هزار تومان</option>
+    <option>۵۰۰ هزار تا ۱ میلیون تومان</option>
+    <option>۱ تا ۲ میلیون تومان</option>
+    <option>۲ تا ۳ میلیون تومان</option>
+    <option>۳ تا ۵ میلیون تومان</option>
+    <option>بیشتر از ۵ میلیون تومان</option>
+    <option>توافقی</option>
+
+</select>
+
+</label>
+
+<label>
+Deadline
+<input
+    name="deadline"
+    type="text"
+    id="deadline"
+    placeholder="مثلاً ۱۴۰۵/۰۷/۱۵"
+    inputmode="numeric"
+    autocomplete="off">
+</label>
+<label class="full">
+توضیحات پروژه
+
+<textarea
+required
+name="description"
+placeholder="ایده، سبک، تعداد خروجی و هر چیزی که لازمه بدونم..."
+></textarea>
+
+</label>
+
+</div>
+
+<div id="formMsg" class="form-msg"></div>
+
+<button class="btn primary" id="submitBtn" type="submit">
+ثبت درخواست
+</button>
+
+</form>
+
+</div>
+</div>
+</section>
+
+
+<!-- ================= FINAL CTA ================= -->
+
+<section class="final" id="contact">
+
+<div class="container reveal">
+
+<div class="eyebrow">
+<i></i>
+LET'S CREATE
+</div>
+
+<h2>
+پروژه بعدیت رو با Loyal Graphic شروع کن.
+</h2>
+
+<p>
+برای شروع، از طریق فرم یا شبکه‌های اجتماعی ارتباط بگیر.
+</p>
+
+<div class="actions">
+
+<a class="btn primary" href="#order">
+شروع پروژه ↗
+</a>
+
+<a
+class="btn secondary"
+href="https://t.me/taha_loyal_guy2"
+target="_blank"
+rel="noopener noreferrer"
+>
+Telegram
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div class="container footer">
+
+<div>
+<strong>LOYAL GRAPHIC</strong>
+— Taha Loyal Guy
+</div>
+
+<div>
+© <span id="year"></span> Loyal Graphic. All rights reserved.
+</div>
+
+</div>
+
+</footer>
+
+
+<!-- ================= MODAL ================= -->
+
+<div
+class="modal"
+id="modal"
+role="dialog"
+aria-modal="true"
+aria-label="Portfolio Preview"
+>
+
+<div class="modal-box">
+
+<button
+class="close"
+id="closeModal"
+aria-label="بستن"
+>
+×
+</button>
+
+<div
+class="modal-art"
+id="modalArt"
+>
+PROJECT PREVIEW
+</div>
+
+<div style="padding:15px 5px 0">
+
+<h3 id="modalTitle"></h3>
+
+<p
+id="modalDesc"
+style="color:#999;font-size:13px"
+></p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* ============================================================
+   PORTFOLIO
+   ------------------------------------------------------------
+   برای اضافه کردن نمونه‌کار فقط یک Object جدید اضافه کن.
+
+   image:
+   مسیر تصویر
+
+   title:
+   عنوان پروژه
+
+   category:
+   minecraft / gaming / social / 3d
+
+   description:
+   توضیح پروژه
+
+   type:
+   نوع پروژه
+============================================================ */
+
+const portfolioItems = [
+
+    {
+        image:"images/portfolio-01.jpg",
+        title:"Minecraft Thumbnail 01",
+        category:"minecraft",
+        description:"Professional Minecraft thumbnail design.",
+        type:"Minecraft Thumbnail"
+    },
+
+    {
+        image:"images/portfolio-02.jpg",
+        title:"Minecraft Thumbnail 02",
+        category:"minecraft",
+        description:"Professional Minecraft thumbnail design.",
+        type:"Minecraft Thumbnail"
+    },
+
+    {
+        image:"images/portfolio-03.jpg",
+        title:"Minecraft Thumbnail 03",
+        category:"minecraft",
+        description:"Professional Minecraft thumbnail design.",
+        type:"Minecraft Thumbnail"
+    },
+
+    {
+        image:"images/portfolio-04.jpg",
+        title:"Minecraft Thumbnail 04",
+        category:"minecraft",
+        description:"Professional Minecraft thumbnail design.",
+        type:"Minecraft Thumbnail"
+    },
+
+    {
+        image:"images/portfolio-05.jpg",
+        title:"Minecraft Thumbnail 05",
+        category:"minecraft",
+        description:"Professional Minecraft thumbnail design.",
+        type:"Minecraft Thumbnail"
+    },
+
+    {
+        image:"images/portfolio-06.jpg",
+        title:"Minecraft Thumbnail 06",
+        category:"minecraft",
+        description:"Professional Minecraft thumbnail design.",
+        type:"Minecraft Thumbnail"
+    },
+
+    {
+        image:"images/portfolio-07.jpg",
+        title:"Minecraft Profile",
+        category:"minecraft",
+        description:"Custom Minecraft profile artwork.",
+        type:"Minecraft Profile"
+    },
+
+    {
+        image:"images/portfolio-08.jpg",
+        title:"Channel Art",
+        category:"minecraft",
+        description:"Professional channel art and banner design.",
+        type:"Channel Art"
+    }
+
+];
+
+
+/* =========================
+   PORTFOLIO RENDER
+========================= */
+
+const grid = document.getElementById("portfolioGrid");
+
+function renderPortfolio(filter="all"){
+
+    grid.innerHTML="";
+
+    const filtered = portfolioItems.filter(item =>
+        filter==="all" || item.category===filter
+    );
+
+    filtered.forEach(item => {
+
+        const el = document.createElement("article");
+
+        el.className="card work";
+
+        el.innerHTML=`
+
+            <img
+                src="${item.image}"
+                alt="${item.title}"
+                loading="lazy"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"
+            >
+
+            <div
+                class="placeholder"
+                style="display:none"
+            >
+                ${item.type}
+            </div>
+
+            <div class="overlay">
+
+                <strong>${item.title}</strong>
+
+                <br>
+
+                <small style="color:#aaa">
+                    ${item.category}
+                </small>
+
+            </div>
+        `;
+
+        el.addEventListener("click",()=>{
+
+            document.getElementById("modal").classList.add("open");
+
+            document.getElementById("modalTitle").textContent =
+                item.title;
+
+            document.getElementById("modalDesc").textContent =
+                item.description;
+
+            document.getElementById("modalArt").innerHTML=`
+
+                <img
+                    src="${item.image}"
+                    alt="${item.title}"
+                    onerror="
+                    this.outerHTML='<span>${item.type} — Preview</span>'
+                    "
+                >
+
+            `;
+
+        });
+
+        grid.appendChild(el);
+
+    });
+
+}
+
+renderPortfolio();
+
+
+/* =========================
+   FILTERS
+========================= */
+
+document.querySelectorAll(".filter").forEach(btn=>{
+
+    btn.addEventListener("click",()=>{
+
+        document
+            .querySelectorAll(".filter")
+            .forEach(x=>x.classList.remove("active"));
+
+        btn.classList.add("active");
+
+        renderPortfolio(btn.dataset.filter);
+
+    });
+
+});
+
+
+/* =========================
+   MODAL
+========================= */
+
+const modal = document.getElementById("modal");
+
+document.getElementById("closeModal").onclick=()=>{
+    modal.classList.remove("open");
+};
+
+modal.addEventListener("click",e=>{
+
+    if(e.target===modal){
+        modal.classList.remove("open");
+    }
+
+});
+
+document.addEventListener("keydown",e=>{
+
+    if(e.key==="Escape"){
+        modal.classList.remove("open");
+    }
+
+});
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+const menuBtn =
+    document.getElementById("menuBtn");
+
+const navLinks =
+    document.getElementById("navLinks");
+
+menuBtn.onclick=()=>{
+
+    navLinks.classList.toggle("mobile");
+
+};
+
+
+navLinks.querySelectorAll("a").forEach(a=>{
+
+    a.addEventListener("click",()=>{
+        navLinks.classList.remove("mobile");
+    });
+
+});
+
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+const observer =
+    new IntersectionObserver(
+
+        entries=>{
+
+            entries.forEach(entry=>{
+
+                if(entry.isIntersecting){
+
+                    entry.target.classList.add("visible");
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold:.12
+        }
+
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(el=>observer.observe(el));
+
+
+/* =========================
+   ACTIVE NAV
+========================= */
+
+const sections =
+    [...document.querySelectorAll("main section[id]")];
+
+const navAnchors =
+    [...document.querySelectorAll(".nav-links a")];
+
+window.addEventListener("scroll",()=>{
+
+    let current="home";
+
+    sections.forEach(section=>{
+
+        if(scrollY >= section.offsetTop-180){
+
+            current=section.id;
+
+        }
+
+    });
+
+    navAnchors.forEach(anchor=>{
+
+        anchor.classList.toggle(
+            "active",
+            anchor.getAttribute("href")==="#"+current
+        );
+
+    });
+
+},{passive:true});
+
+
+/* =========================
+   YEAR
+========================= */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+/* =========================
+   ORDER FORM
+========================= */
+
+document
+    .getElementById("orderForm")
+    .addEventListener("submit", async e => {
+
+        e.preventDefault();
+
+        const form = e.currentTarget;
+
+        const msg =
+            document.getElementById("formMsg");
+
+        const btn =
+            document.getElementById("submitBtn");
+
+
+        if (!form.checkValidity()) {
+
+            form.reportValidity();
+
+            return;
+
+        }
+
+
+        btn.disabled = true;
+
+        btn.textContent = "در حال ارسال...";
+
+
+        try {
+
+            const response = await fetch(
+                form.action,
+                {
+                    method: "POST",
+                    body: new FormData(form),
+                    headers: {
+                        "Accept": "application/json"
+                    }
+                }
+            );
+
+
+            if (response.ok) {
+
+                msg.textContent =
+                    "درخواستت با موفقیت ارسال شد! به‌زودی باهات تماس می‌گیرم.";
+
+                msg.classList.add("show");
+
+                form.reset();
+
+            } else {
+
+                throw new Error("Send failed");
+
+            }
+
+
+        } catch (error) {
+
+            msg.textContent =
+                "ارسال درخواست انجام نشد. لطفاً دوباره تلاش کن یا از طریق شبکه‌های اجتماعی پیام بده.";
+
+            msg.classList.add("show");
+
+        }
+
+
+        btn.disabled = false;
+
+        btn.textContent = "ثبت درخواست";
+
+    });
+</script>
+
+<style>
+#jalaliCalendar{
+    display:none;
+    position:absolute;
+    z-index:9999;
+    width:300px;
+    max-width:calc(100vw - 24px);
+    box-sizing:border-box;
+    overflow:hidden;
+    background:#111;
+    border:1px solid #333;
+    border-radius:14px;
+    padding:15px;
+    box-shadow:0 20px 50px rgba(0,0,0,.5);
+    color:#fff;
+    direction:rtl;
+}
+
+#jalaliCalendar button{
+    background:#181818;
+    color:#fff;
+    border:1px solid #333;
+    border-radius:8px;
+    padding:7px 0;
+    cursor:pointer;
+    box-sizing:border-box;
+}
+
+#jcPrev,
+#jcNext{
+    width:42px !important;
+    min-width:42px !important;
+    height:38px;
+    padding:0 !important;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+    font-weight:700;
+    line-height:1;
+    flex-shrink:0;
+}
+#jalaliCalendar button:hover{
+    background:#ff6a00;
+    color:#000;
+}
+
+.jc-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
+}
+
+.jc-title{
+    font-weight:700;
+    text-align:center;
+}
+
+.jc-weekdays{
+    display:grid;
+    grid-template-columns:repeat(7,minmax(0,1fr));
+    gap:5px;
+    margin-bottom:6px;
+    text-align:center;
+    color:#888;
+    font-size:11px;
+    width:100%;
+}
+
+.jc-weekdays span{
+    min-width:0;
+    padding:4px 0;
+}
+
+.jc-days{
+    display:grid;
+    grid-template-columns:repeat(7,minmax(0,1fr));
+    gap:5px;
+    width:100%;
+}
+
+.jc-days button{
+    width:100%;
+    min-width:0;
+    max-width:100%;
+    padding:7px 0;
+    font-size:13px;
+}
+</style>
+
+<div id="jalaliCalendar">
+
+    <div class="jc-head">
+        <button type="button" id="jcPrev">‹</button>
+
+        <div class="jc-title" id="jcTitle"></div>
+
+        <button type="button" id="jcNext">›</button>
+    </div>
+
+    <div class="jc-weekdays">
+        <span>ش</span>
+        <span>ی</span>
+        <span>د</span>
+        <span>س</span>
+        <span>چ</span>
+        <span>پ</span>
+        <span>ج</span>
+    </div>
+
+    <div class="jc-days" id="jcDays"></div>
+
+</div>
+
+<script>
+const deadlineInput = document.getElementById("deadline");
+const calendar = document.getElementById("jalaliCalendar");
+const jcTitle = document.getElementById("jcTitle");
+const jcDays = document.getElementById("jcDays");
+const jcPrev = document.getElementById("jcPrev");
+const jcNext = document.getElementById("jcNext");
+
+const jalaliMonths = [
+    "فروردین",
+    "اردیبهشت",
+    "خرداد",
+    "تیر",
+    "مرداد",
+    "شهریور",
+    "مهر",
+    "آبان",
+    "آذر",
+    "دی",
+    "بهمن",
+    "اسفند"
+];
+
+let currentDate = new Date();
+
+let currentYear = currentDate.getFullYear() - 621;
+let currentMonth = currentDate.getMonth() + 1;
+
+function getDaysInMonth(month) {
+
+    if (month <= 6) {
+        return 31;
+    }
+
+    if (month <= 11) {
+        return 30;
+    }
+
+    return 29;
+}
+
+function renderJalaliCalendar() {
+
+    jcTitle.textContent =
+        jalaliMonths[currentMonth - 1] + " " + currentYear;
+
+    jcDays.innerHTML = "";
+
+    const totalDays =
+        getDaysInMonth(currentMonth);
+
+    for (let day = 1; day <= totalDays; day++) {
+
+        const button =
+            document.createElement("button");
+
+        button.type = "button";
+        button.textContent = day;
+
+        button.addEventListener("click", function () {
+
+            const month =
+                String(currentMonth).padStart(2, "0");
+
+            const selectedDay =
+                String(day).padStart(2, "0");
+
+            deadlineInput.value =
+                currentYear + "/" +
+                month + "/" +
+                selectedDay;
+
+            calendar.style.display = "none";
+        });
+
+        jcDays.appendChild(button);
+    }
+}
+
+deadlineInput.addEventListener("click", function (event) {
+
+    event.stopPropagation();
+
+    const rect =
+        deadlineInput.getBoundingClientRect();
+
+    calendar.style.display = "block";
+
+    calendar.style.top =
+        (window.scrollY + rect.bottom + 8) + "px";
+
+    calendar.style.left =
+        (window.scrollX + rect.left) + "px";
+
+    renderJalaliCalendar();
+});
+
+jcPrev.addEventListener("click", function (event) {
+
+    event.stopPropagation();
+
+    currentMonth--;
+
+    if (currentMonth < 1) {
+        currentMonth = 12;
+        currentYear--;
+    }
+
+    renderJalaliCalendar();
+});
+
+jcNext.addEventListener("click", function (event) {
+
+    event.stopPropagation();
+
+    currentMonth++;
+
+    if (currentMonth > 12) {
+        currentMonth = 1;
+        currentYear++;
+    }
+
+    renderJalaliCalendar();
+});
+
+calendar.addEventListener("click", function (event) {
+    event.stopPropagation();
+});
+
+document.addEventListener("click", function (event) {
+
+    if (
+        event.target !== deadlineInput &&
+        !calendar.contains(event.target)
+    ) {
+        calendar.style.display = "none";
+    }
+
+});
+</script>
+
+</body>
+</html>
+        button.addEventListener("click", function () {
+
+            const month =
+                String(currentMonth).padStart(2, "0");
+
+            const selectedDay =
+                String(day).padStart(2, "0");
+
+            deadlineInput.value =
+                currentYear + "/" +
+                month + "/" +
+                selectedDay;
+
+            calendar.style.display = "none";
+        });
+
+        jcDays.appendChild(button);
+    }
+}
+
+deadlineInput.addEventListener("click", function (event) {
+
+    event.stopPropagation();
+
+    const rect =
+        deadlineInput.getBoundingClientRect();
+
+    calendar.style.display = "block";
+
+    calendar.style.top =
+        (window.scrollY + rect.bottom + 8) + "px";
+
+    calendar.style.left =
+        (window.scrollX + rect.left) + "px";
+
+    renderJalaliCalendar();
+});
+
+jcPrev.addEventListener("click", function (event) {
+
+    event.stopPropagation();
+
+    currentMonth--;
+
+    if (currentMonth < 1) {
+        currentMonth = 12;
+        currentYear--;
+    }
+
+    renderJalaliCalendar();
+});
+
+jcNext.addEventListener("click", function (event) {
+
+    event.stopPropagation();
+
+    currentMonth++;
+
+    if (currentMonth > 12) {
+        currentMonth = 1;
+        currentYear++;
+    }
+
+    renderJalaliCalendar();
+});
+
+calendar.addEventListener("click", function (event) {
+    event.stopPropagation();
+});
+
+document.addEventListener("click", function (event) {
+
+    if (
+        event.target !== deadlineInput &&
+        !calendar.contains(event.target)
+    ) {
+        calendar.style.display = "none";
+    }
+
+});
+</script>
+
+</body>
+</html>
