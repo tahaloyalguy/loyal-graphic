@@ -2807,6 +2807,7 @@ updateScrollProgress();
     line-height:1;
     flex-shrink:0;
 }
+
 #jalaliCalendar button:hover{
     background:#ff6a00;
     color:#000;
@@ -2881,12 +2882,23 @@ updateScrollProgress();
 </div>
 
 <script>
-const deadlineInput = document.getElementById("deadline");
-const calendar = document.getElementById("jalaliCalendar");
-const jcTitle = document.getElementById("jcTitle");
-const jcDays = document.getElementById("jcDays");
-const jcPrev = document.getElementById("jcPrev");
-const jcNext = document.getElementById("jcNext");
+const deadlineInput =
+    document.getElementById("deadline");
+
+const calendar =
+    document.getElementById("jalaliCalendar");
+
+const jcTitle =
+    document.getElementById("jcTitle");
+
+const jcDays =
+    document.getElementById("jcDays");
+
+const jcPrev =
+    document.getElementById("jcPrev");
+
+const jcNext =
+    document.getElementById("jcNext");
 
 const jalaliMonths = [
     "فروردین",
@@ -2905,8 +2917,12 @@ const jalaliMonths = [
 
 let currentDate = new Date();
 
-let currentYear = currentDate.getFullYear() - 621;
-let currentMonth = currentDate.getMonth() + 1;
+let currentYear =
+    currentDate.getFullYear() - 621;
+
+let currentMonth =
+    currentDate.getMonth() + 1;
+
 
 function getDaysInMonth(month) {
 
@@ -2921,184 +2937,154 @@ function getDaysInMonth(month) {
     return 29;
 }
 
+
 function renderJalaliCalendar() {
 
     jcTitle.textContent =
-        jalaliMonths[currentMonth - 1] + " " + currentYear;
+        jalaliMonths[currentMonth - 1] +
+        " " +
+        currentYear;
 
     jcDays.innerHTML = "";
 
     const totalDays =
         getDaysInMonth(currentMonth);
 
-    for (let day = 1; day <= totalDays; day++) {
+    for (
+        let day = 1;
+        day <= totalDays;
+        day++
+    ) {
 
         const button =
             document.createElement("button");
 
         button.type = "button";
+
         button.textContent = day;
 
-        button.addEventListener("click", function () {
+        button.addEventListener(
+            "click",
+            function () {
 
-            const month =
-                String(currentMonth).padStart(2, "0");
+                const month =
+                    String(currentMonth)
+                        .padStart(2, "0");
 
-            const selectedDay =
-                String(day).padStart(2, "0");
+                const selectedDay =
+                    String(day)
+                        .padStart(2, "0");
 
-            deadlineInput.value =
-                currentYear + "/" +
-                month + "/" +
-                selectedDay;
+                deadlineInput.value =
+                    currentYear +
+                    "/" +
+                    month +
+                    "/" +
+                    selectedDay;
 
-            calendar.style.display = "none";
-        });
-
-        jcDays.appendChild(button);
-    }
-}
-
-deadlineInput.addEventListener("click", function (event) {
-
-    event.stopPropagation();
-
-    const rect =
-        deadlineInput.getBoundingClientRect();
-
-    calendar.style.display = "block";
-
-    calendar.style.top =
-        (window.scrollY + rect.bottom + 8) + "px";
-
-    calendar.style.left =
-        (window.scrollX + rect.left) + "px";
-
-    renderJalaliCalendar();
-});
-
-jcPrev.addEventListener("click", function (event) {
-
-    event.stopPropagation();
-
-    currentMonth--;
-
-    if (currentMonth < 1) {
-        currentMonth = 12;
-        currentYear--;
-    }
-
-    renderJalaliCalendar();
-});
-
-jcNext.addEventListener("click", function (event) {
-
-    event.stopPropagation();
-
-    currentMonth++;
-
-    if (currentMonth > 12) {
-        currentMonth = 1;
-        currentYear++;
-    }
-
-    renderJalaliCalendar();
-});
-
-calendar.addEventListener("click", function (event) {
-    event.stopPropagation();
-});
-
-document.addEventListener("click", function (event) {
-
-    if (
-        event.target !== deadlineInput &&
-        !calendar.contains(event.target)
-    ) {
-        calendar.style.display = "none";
-    }
-
-});
-        button.addEventListener("click", function () {
-
-            const month =
-                String(currentMonth).padStart(2, "0");
-
-            const selectedDay =
-                String(day).padStart(2, "0");
-
-            deadlineInput.value =
-                currentYear + "/" +
-                month + "/" +
-                selectedDay;
-
-            calendar.style.display = "none";
-        });
+                calendar.style.display =
+                    "none";
+            }
+        );
 
         jcDays.appendChild(button);
     }
 }
 
-deadlineInput.addEventListener("click", function (event) {
 
-    event.stopPropagation();
+deadlineInput.addEventListener(
+    "click",
+    function (event) {
 
-    const rect =
-        deadlineInput.getBoundingClientRect();
+        event.stopPropagation();
 
-    calendar.style.display = "block";
+        const rect =
+            deadlineInput.getBoundingClientRect();
 
-    calendar.style.top =
-        (window.scrollY + rect.bottom + 8) + "px";
+        calendar.style.display =
+            "block";
 
-    calendar.style.left =
-        (window.scrollX + rect.left) + "px";
+        calendar.style.top =
+            (
+                window.scrollY +
+                rect.bottom +
+                8
+            ) + "px";
 
-    renderJalaliCalendar();
-});
+        calendar.style.left =
+            (
+                window.scrollX +
+                rect.left
+            ) + "px";
 
-jcPrev.addEventListener("click", function (event) {
-
-    event.stopPropagation();
-
-    currentMonth--;
-
-    if (currentMonth < 1) {
-        currentMonth = 12;
-        currentYear--;
+        renderJalaliCalendar();
     }
+);
 
-    renderJalaliCalendar();
-});
 
-jcNext.addEventListener("click", function (event) {
+jcPrev.addEventListener(
+    "click",
+    function (event) {
 
-    event.stopPropagation();
+        event.stopPropagation();
 
-    currentMonth++;
+        currentMonth--;
 
-    if (currentMonth > 12) {
-        currentMonth = 1;
-        currentYear++;
+        if (currentMonth < 1) {
+
+            currentMonth = 12;
+
+            currentYear--;
+        }
+
+        renderJalaliCalendar();
     }
+);
 
-    renderJalaliCalendar();
-});
 
-calendar.addEventListener("click", function (event) {
-    event.stopPropagation();
-});
+jcNext.addEventListener(
+    "click",
+    function (event) {
 
-document.addEventListener("click", function (event) {
+        event.stopPropagation();
 
-    if (
-        event.target !== deadlineInput &&
-        !calendar.contains(event.target)
-    ) {
-        calendar.style.display = "none";
+        currentMonth++;
+
+        if (currentMonth > 12) {
+
+            currentMonth = 1;
+
+            currentYear++;
+        }
+
+        renderJalaliCalendar();
     }
+);
 
-});
+
+calendar.addEventListener(
+    "click",
+    function (event) {
+
+        event.stopPropagation();
+    }
+);
+
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+        if (
+            event.target !== deadlineInput &&
+            !calendar.contains(event.target)
+        ) {
+
+            calendar.style.display =
+                "none";
+        }
+    }
+);
 </script>
 
 </body>
