@@ -502,6 +502,7 @@ section{
         box-shadow .45s ease;
 }
 
+/* Dark cinematic overlay */
 .work::after{
     content:"";
     position:absolute;
@@ -519,6 +520,7 @@ section{
     pointer-events:none;
 }
 
+/* Orange light sweep */
 .work::before{
     content:"";
     position:absolute;
@@ -535,6 +537,7 @@ section{
     pointer-events:none;
 }
 
+/* Card hover */
 .work:hover{
     transform:translateY(-9px) scale(1.012);
     border-color:rgba(255,106,0,.55);
@@ -551,6 +554,7 @@ section{
     opacity:.9;
 }
 
+/* Image */
 .work img{
     width:100%;
     height:100%;
@@ -566,6 +570,7 @@ section{
     filter:saturate(1.08) brightness(1.04);
 }
 
+/* Placeholder */
 .work .placeholder{
     width:100%;
     height:100%;
@@ -578,6 +583,7 @@ section{
     direction:ltr;
 }
 
+/* Glass overlay */
 .work .overlay{
     position:absolute;
     left:12px;
@@ -602,6 +608,19 @@ section{
     transform:translateY(0);
     opacity:1;
     border-color:rgba(255,106,0,.25);
+}
+
+.work .overlay strong{
+    display:block;
+    font-size:14px;
+    line-height:1.5;
+}
+
+.work .overlay small{
+    display:inline-block;
+    margin-top:2px;
+    font-size:11px;
+    color:#aaa;
 }
 
 .work .overlay strong{
