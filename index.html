@@ -2922,98 +2922,6 @@ const portfolioItems = [
 
 ];
 
-/* ===== CLOSE ===== */
-
-function closePortfolioLightbox(){
-
-    portfolioLightbox.classList.remove("open");
-
-    document.body.style.overflow = "";
-
-}
-
-
-/* ===== NEXT ===== */
-
-if (lightboxNext){
-
-    lightboxNext.addEventListener(
-        "click",
-        event => {
-
-            event.stopPropagation();
-
-            showLightboxItem(
-                currentLightboxIndex + 1
-            );
-
-        }
-    );
-
-}
-
-
-/* ===== PREVIOUS ===== */
-
-if (lightboxPrev){
-
-    lightboxPrev.addEventListener(
-        "click",
-        event => {
-
-            event.stopPropagation();
-
-            showLightboxItem(
-                currentLightboxIndex - 1
-            );
-
-        }
-    );
-
-}
-
-
-/* ===== CLOSE BUTTON ===== */
-
-if (lightboxClose){
-
-    lightboxClose.addEventListener(
-        "click",
-        event => {
-
-            event.stopPropagation();
-
-            closePortfolioLightbox();
-
-        }
-    );
-
-}
-
-
-/* ===== BACKDROP ===== */
-
-if (portfolioLightbox){
-
-    portfolioLightbox.addEventListener(
-        "click",
-        event => {
-
-            if (
-                event.target ===
-                portfolioLightbox
-            ){
-
-                closePortfolioLightbox();
-
-            }
-
-        }
-    );
-
-}
-
-
 /* ===== KEYBOARD ===== */
 
 document.addEventListener(
@@ -3097,10 +3005,25 @@ function renderPortfolio(filter="all"){
 
 el.addEventListener("click", () => {
 
-    const index =
-        portfolioItems.indexOf(item);
+    document.getElementById("modal").classList.add("open");
 
-    showLightboxItem(index);
+    document.getElementById("modalTitle").textContent =
+        item.title;
+
+    document.getElementById("modalDesc").textContent =
+        item.description;
+
+    document.getElementById("modalArt").innerHTML = `
+
+        <img
+            src="${item.image}"
+            alt="${item.title}"
+            onerror="
+                this.outerHTML='<span>${item.type} — Preview</span>'
+            "
+        >
+
+    `;
 
 });
 
