@@ -4088,37 +4088,6 @@ if (backToTop) {
 
 }
 
-/* =========================
-   ORDER STATUS
-========================= */
-
-const orderStatus = document.querySelector(".order-status");
-
-if (orderStatus) {
-
-    const isOrderOpen = true;
-
-    if (isOrderOpen) {
-
-        orderStatus.classList.remove("closed");
-
-        orderStatus.innerHTML = `
-            <span></span>
-            پذیرش سفارش: آنلاین
-        `;
-
-    } else {
-
-        orderStatus.classList.add("closed");
-
-        orderStatus.innerHTML = `
-            <span></span>
-            پذیرش سفارش: بسته
-        `;
-
-    }
-}
-
 /* ===== TOAST ===== */
 
 const loyalToast =
@@ -4721,7 +4690,7 @@ function updatePublicStatus(isOpen) {
     if (isOpen) {
 
         orderStatusText.textContent =
-            "فرم سفارش فعال است";
+            "پذیرش سفارش: آنلاین";
 
         orderStatusDot.style.background =
             "#35d07f";
@@ -4732,7 +4701,7 @@ function updatePublicStatus(isOpen) {
     } else {
 
         orderStatusText.textContent =
-            "پذیرش سفارش‌ها بسته است";
+            "پذیرش سفارش: آفلاین";
 
         orderStatusDot.style.background =
             "#ff4d4d";
