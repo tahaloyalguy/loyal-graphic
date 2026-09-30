@@ -1677,8 +1677,214 @@ footer{
     }
 }
 
+/* =========================
+   NEW LOYAL FEATURES
+========================= */
+
+/* ===== BACK TO TOP ===== */
+#backToTop{
+    position:fixed;
+    left:18px;
+    bottom:18px;
+    width:44px;
+    height:44px;
+    border-radius:14px;
+    border:1px solid rgba(255,106,0,.35);
+    background:rgba(15,15,15,.88);
+    color:#ff6a00;
+    display:grid;
+    place-items:center;
+    font-size:20px;
+    cursor:pointer;
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(12px);
+    transition:.3s ease;
+    z-index:1500;
+    backdrop-filter:blur(10px);
+}
+
+#backToTop.show{
+    opacity:1;
+    visibility:visible;
+    transform:none;
+}
+
+#backToTop:hover{
+    background:#ff6a00;
+    color:#090909;
+    border-color:#ff6a00;
+    transform:translateY(-3px);
+    box-shadow:0 12px 30px rgba(255,106,0,.18);
+}
+
+
+/* ===== TOAST ===== */
+#loyalToast{
+    position:fixed;
+    left:50%;
+    bottom:24px;
+    transform:translate(-50%,20px);
+    background:#151515;
+    color:#fff;
+    border:1px solid rgba(255,106,0,.35);
+    border-radius:12px;
+    padding:11px 16px;
+    font-size:13px;
+    opacity:0;
+    visibility:hidden;
+    transition:.3s ease;
+    z-index:3000;
+    box-shadow:0 15px 40px rgba(0,0,0,.4);
+    pointer-events:none;
+}
+
+#loyalToast.show{
+    opacity:1;
+    visibility:visible;
+    transform:translate(-50%,0);
+}
+
+
+/* ===== DESCRIPTION COUNTER ===== */
+.char-counter{
+    margin-top:6px;
+    text-align:left;
+    direction:ltr;
+    color:#666;
+    font-size:11px;
+    transition:.2s ease;
+}
+
+.char-counter.warn{
+    color:#ff9b4a;
+}
+
+
+/* ===== ORDER STATUS ===== */
+.order-status{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top:18px;
+    padding:8px 12px;
+    border:1px solid rgba(255,106,0,.2);
+    background:rgba(255,106,0,.05);
+    border-radius:999px;
+    color:#bbb;
+    font-size:12px;
+}
+
+.order-status span{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#39d353;
+    box-shadow:0 0 10px rgba(57,211,83,.65);
+    animation:orderStatusPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes orderStatusPulse{
+    0%,100%{
+        opacity:1;
+        transform:scale(1);
+    }
+
+    50%{
+        opacity:.45;
+        transform:scale(.75);
+    }
+}
+
+
+/* ===== BUTTON RIPPLE ===== */
+.btn,
+.nav-cta,
+.filter,
+.menu-btn{
+    overflow:hidden;
+    position:relative;
+}
+
+.loyal-ripple{
+    position:absolute;
+    width:14px;
+    height:14px;
+    border-radius:50%;
+    background:rgba(255,255,255,.35);
+    transform:translate(-50%,-50%) scale(0);
+    pointer-events:none;
+    animation:loyalButtonRipple .55s ease-out forwards;
+}
+
+@keyframes loyalButtonRipple{
+    to{
+        transform:translate(-50%,-50%) scale(12);
+        opacity:0;
+    }
+}
+
+
+/* ===== SERVICE CARD GLOW ===== */
+.services .card{
+    position:relative;
+    overflow:hidden;
+}
+
+.services .card::before{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    top:-90px;
+    right:-90px;
+    border-radius:50%;
+    background:rgba(255,106,0,.08);
+    filter:blur(40px);
+    opacity:0;
+    transition:.4s ease;
+    pointer-events:none;
+}
+
+.services .card:hover::before{
+    opacity:1;
+}
+
+
+/* ===== CONTACT HOVER ===== */
+.contacts a{
+    position:relative;
+    overflow:hidden;
+}
+
+.contacts a::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        110deg,
+        transparent,
+        rgba(255,106,0,.08),
+        transparent
+    );
+    transform:translateX(-110%);
+    transition:.6s ease;
+    pointer-events:none;
+}
+
+.contacts a:hover::before{
+    transform:translateX(110%);
+}
+
 </style>
 </head>
+
+<!-- NEW: LOYAL UI -->
+<button id="backToTop" type="button" aria-label="بازگشت به بالا">
+    ↑
+</button>
+
+<div id="loyalToast" role="status" aria-live="polite"></div>
 
 <body>
 
@@ -2049,6 +2255,11 @@ rel="noopener noreferrer"
 و اجازه بده با هم به یک خروجی حرفه‌ای برسیم.
 </p>
 
+<div class="order-status">
+    <span></span>
+    فرم سفارش فعال است
+</div>
+
 <div class="contacts">
 
 <a href="https://rubika.ir/taha_loyal_guy3"
@@ -2059,19 +2270,22 @@ Rubika — @taha_loyal_guy3
 
 <a href="https://t.me/taha_loyal_guy2"
 target="_blank"
-rel="noopener noreferrer">
+rel="noopener noreferrer"
+data-copy="@taha_loyal_guy2">
 Telegram — @taha_loyal_guy2
 </a>
 
 <a href="https://ble.ir/taha_loyal_guy"
 target="_blank"
 rel="noopener noreferrer">
+data-copy="@taha_loyal_guy"
 Bale — @taha_loyal_guy
 </a>
 
 <a href="https://t.me/loyal_edits"
 target="_blank"
 rel="noopener noreferrer">
+data-copy="@loyal_edits"
 Telegram Channel — @loyal_edits
 </a>
 
@@ -2175,11 +2389,15 @@ Deadline
 <textarea
 required
 name="description"
+maxlength="800"
 placeholder="ایده، سبک، تعداد خروجی و هر چیزی که لازمه بدونم..."
 ></textarea>
 
-</label>
+<div class="char-counter">
+    <span id="descriptionCount">0</span> / 800
+</div>
 
+</label>
 </div>
 
 <div id="formMsg" class="form-msg"></div>
@@ -2515,11 +2733,10 @@ modal.addEventListener("click",e=>{
 });
 
 document.addEventListener("keydown",e=>{
-
     if(e.key==="Escape"){
         modal.classList.remove("open");
+        navLinks.classList.remove("mobile");
     }
-
 });
 
 
@@ -2706,6 +2923,202 @@ document
         btn.textContent = "ثبت درخواست";
 
     });
+
+
+/* =========================
+   NEW LOYAL FEATURES
+========================= */
+
+
+/* ===== BACK TO TOP ===== */
+
+const backToTop =
+    document.getElementById("backToTop");
+
+if (backToTop) {
+
+    window.addEventListener("scroll", () => {
+
+        backToTop.classList.toggle(
+            "show",
+            window.scrollY > 500
+        );
+
+    }, {
+        passive: true
+    });
+
+
+    backToTop.addEventListener("click", () => {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
+
+}
+
+
+/* ===== TOAST ===== */
+
+const loyalToast =
+    document.getElementById("loyalToast");
+
+let loyalToastTimer;
+
+
+function showLoyalToast(message) {
+
+    if (!loyalToast) return;
+
+    clearTimeout(loyalToastTimer);
+
+    loyalToast.textContent = message;
+
+    loyalToast.classList.add("show");
+
+
+    loyalToastTimer = setTimeout(() => {
+
+        loyalToast.classList.remove("show");
+
+    }, 2200);
+
+}
+
+
+/* ===== COPY CONTACT ===== */
+
+document
+    .querySelectorAll("[data-copy]")
+    .forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            const value =
+                link.dataset.copy;
+
+
+            navigator.clipboard
+                .writeText(value)
+
+                .then(() => {
+
+                    showLoyalToast(
+                        `${value} کپی شد`
+                    );
+
+                })
+
+                .catch(() => {
+
+                    showLoyalToast(
+                        "کپی انجام نشد"
+                    );
+
+                });
+
+        });
+
+    });
+
+
+/* ===== DESCRIPTION COUNTER ===== */
+
+const descriptionInput =
+    document.querySelector(
+        'textarea[name="description"]'
+    );
+
+const descriptionCount =
+    document.getElementById(
+        "descriptionCount"
+    );
+
+
+if (
+    descriptionInput &&
+    descriptionCount
+) {
+
+    const updateDescriptionCount = () => {
+
+        const length =
+            descriptionInput.value.length;
+
+
+        descriptionCount.textContent =
+            length;
+
+
+        descriptionCount.parentElement.classList.toggle(
+            "warn",
+            length >= 700
+        );
+
+    };
+
+
+    descriptionInput.addEventListener(
+        "input",
+        updateDescriptionCount
+    );
+
+
+    updateDescriptionCount();
+
+}
+
+
+/* ===== BUTTON RIPPLE ===== */
+
+document.addEventListener(
+    "click",
+    event => {
+
+        const target =
+            event.target.closest(
+                ".btn,.nav-cta,.filter,.menu-btn"
+            );
+
+
+        if (!target) return;
+
+
+        const rect =
+            target.getBoundingClientRect();
+
+
+        const ripple =
+            document.createElement("span");
+
+
+        ripple.className =
+            "loyal-ripple";
+
+
+        ripple.style.left =
+            `${event.clientX - rect.left}px`;
+
+
+        ripple.style.top =
+            `${event.clientY - rect.top}px`;
+
+
+        target.appendChild(ripple);
+
+
+        setTimeout(() => {
+
+            ripple.remove();
+
+        }, 600);
+
+    }
+);
+
 </script>
 
 <style>
@@ -2964,7 +3377,7 @@ document.addEventListener("click", function (event) {
 });
 </script>
 
-
+</body>
 </html>
 
 document.addEventListener("click", function (event) {
