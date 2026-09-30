@@ -1700,7 +1700,6 @@ footer{
     cursor:pointer;
     opacity:0;
     visibility:hidden;
-    transform:translateY(12px);
     transition:.3s ease;
     z-index:1500;
     backdrop-filter:blur(10px);
@@ -1720,7 +1719,12 @@ footer{
     box-shadow:0 12px 30px rgba(255,106,0,.18);
 }
 
-
+/* ===== BACK TO TOP - DESKTOP FIX ===== */
+@media (min-width:769px){
+    #backToTop{
+        top:90px;
+    }
+}
 /* ===== TOAST ===== */
 #loyalToast{
     position:fixed;
