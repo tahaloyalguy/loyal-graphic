@@ -4464,5 +4464,25 @@ const supabaseClient =
         SUPABASE_KEY
     );
 </script>
+<script>
+async function testSupabase() {
+
+    const { data, error } =
+        await supabaseClient
+            .from("order_status")
+            .select("is_open")
+            .limit(1);
+
+    if (error) {
+        console.error("Supabase error:", error);
+        return;
+    }
+
+    console.log("Supabase connected:", data);
+}
+
+testSupabase();
+
+</script>
 </body>
 </html>
