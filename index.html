@@ -1946,69 +1946,6 @@ footer{
         translateX(3px);
 }
 
-/* ===== FORCE LIGHTBOX NAV BUTTONS ===== */
-
-#lightboxPrev,
-#lightboxNext{
-    position:fixed !important;
-
-    top:50% !important;
-
-    width:52px !important;
-    height:52px !important;
-
-    display:grid !important;
-    place-items:center !important;
-
-    padding:0 !important;
-    margin:0 !important;
-
-    border:1px solid rgba(255,255,255,.18) !important;
-    border-radius:50% !important;
-
-    background:rgba(15,15,15,.72) !important;
-    color:#ffffff !important;
-
-    font-size:34px !important;
-    line-height:1 !important;
-
-    opacity:1 !important;
-    visibility:visible !important;
-
-    z-index:99999 !important;
-
-    cursor:pointer !important;
-
-    transform:translateY(-50%) !important;
-
-    backdrop-filter:blur(14px) !important;
-    -webkit-backdrop-filter:blur(14px) !important;
-
-    box-shadow:0 10px 35px rgba(0,0,0,.45) !important;
-}
-
-#lightboxPrev{
-    left:25px !important;
-    right:auto !important;
-}
-
-#lightboxNext{
-    right:25px !important;
-    left:auto !important;
-}
-
-#lightboxPrev:hover,
-#lightboxNext:hover{
-    background:rgba(255,106,0,.18) !important;
-    border-color:rgba(255,106,0,.55) !important;
-    color:#ff9b4a !important;
-}
-
-
-/* MOBILE */
-
-@media (max-width:768px){
-
     #lightboxPrev,
     #lightboxNext{
         width:44px !important;
@@ -3220,28 +3157,14 @@ function renderPortfolio(filter="all"){
             </div>
         `;
 
-        el.addEventListener("click",()=>{
+el.addEventListener("click", () => {
 
     const index =
         portfolioItems.indexOf(item);
 
-    currentLightboxIndex = index;
+    showLightboxItem(index);
 
-    lightboxImage.src =
-        item.image;
-
-    lightboxImage.alt =
-        item.title;
-
-    lightboxTitle.textContent =
-        item.title;
-
-    lightboxCategory.textContent =
-        item.type;
-
-    portfolioLightbox.classList.add("open");
-
-    document.body.style.overflow = "hidden";
+});
 
 });
 
@@ -3523,164 +3446,163 @@ if (backToTop) {
 
 /* ===== PORTFOLIO LIGHTBOX ===== */
 
+const portfolioLightbox =
+    document.getElementById("portfolioLightbox");
+
+const lightboxImage =
+    document.getElementById("lightboxImage");
+
+const lightboxTitle =
+    document.getElementById("lightboxTitle");
+
+const lightboxCategory =
+    document.getElementById("lightboxCategory");
+
+const lightboxClose =
+    document.getElementById("lightboxClose");
+
+const lightboxPrev =
+    document.getElementById("lightboxPrev");
+
+const lightboxNext =
+    document.getElementById("lightboxNext");
+
+let currentLightboxIndex = 0;
 
 
-function getPortfolioImage(card){
-
-    const image =
-        card.querySelector("img");
-
-    return image ? image.src : null;
-}
-
-function getPortfolioTitle(card){
-
-    const title =
-        card.querySelector(
-            "h3, h4, .portfolio-title"
-        );
-
-    return title
-        ? title.textContent.trim()
-        : "نمونه‌کار Loyal Graphic";
-}
-
-function getPortfolioCategory(card){
-
-    const category =
-        card.dataset.category ||
-        card.querySelector(
-            ".portfolio-category, .tag, .category"
-        );
-
-    return typeof category === "string"
-        ? category
-        : category
-            ? category.textContent.trim()
-            : "";
-}
-
-function openLightbox(index){
+function showLightboxItem(index){
 
     if (
         !portfolioLightbox ||
-        !portfolioCards.length
+        !lightboxImage ||
+        !lightboxTitle ||
+        !lightboxCategory
     ) return;
 
-    const card =
-        portfolioCards[index];
+    if (
+        typeof portfolioItems === "undefined" ||
+        !portfolioItems.length
+    ) return;
 
-    const image =
-        getPortfolioImage(card);
 
-    if (!image) return;
+    currentLightboxIndex =
+        (index + portfolioItems.length)
+        % portfolioItems.length;
 
-    currentLightboxIndex = index;
 
-    lightboxImage.src = image;
+    const item =
+        portfolioItems[currentLightboxIndex];
+
+
+    lightboxImage.src =
+        item.image;
 
     lightboxImage.alt =
-        getPortfolioTitle(card);
+        item.title;
 
     lightboxTitle.textContent =
-        getPortfolioTitle(card);
+        item.title;
 
     lightboxCategory.textContent =
-        getPortfolioCategory(card);
+        item.type;
+
 
     portfolioLightbox.classList.add("open");
 
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow =
+        "hidden";
 }
+
 
 function closeLightbox(){
 
     if (!portfolioLightbox) return;
 
-    portfolioLightbox.classList.remove("open");
 
-    document.body.style.overflow = "";
+    portfolioLightbox.classList.remove(
+        "open"
+    );
+
+    document.body.style.overflow =
+        "";
 }
+
 
 function showNextPortfolio(){
 
-    if (!portfolioCards.length) return;
+    if (
+        typeof portfolioItems === "undefined" ||
+        !portfolioItems.length
+    ) return;
 
-    currentLightboxIndex =
-        (currentLightboxIndex + 1)
-        % portfolioCards.length;
 
-    openLightbox(currentLightboxIndex);
+    showLightboxItem(
+        currentLightboxIndex + 1
+    );
 }
+
 
 function showPreviousPortfolio(){
 
-    if (!portfolioCards.length) return;
+    if (
+        typeof portfolioItems === "undefined" ||
+        !portfolioItems.length
+    ) return;
 
-    currentLightboxIndex =
-        (
-            currentLightboxIndex -
-            1 +
-            portfolioCards.length
-        )
-        % portfolioCards.length;
 
-    openLightbox(currentLightboxIndex);
-}
-
-portfolioCards.forEach(
-    (card, index) => {
-
-        card.addEventListener(
-            "click",
-            event => {
-
-                if (
-                    event.target.closest(
-                        "a, button"
-                    )
-                ) return;
-
-                if (
-                    getPortfolioImage(card)
-                ){
-
-                    openLightbox(index);
-
-                }
-
-            }
-        );
-
-    }
-);
-
-if (lightboxClose){
-
-    lightboxClose.addEventListener(
-        "click",
-        closeLightbox
+    showLightboxItem(
+        currentLightboxIndex - 1
     );
-
 }
+
 
 if (lightboxNext){
 
     lightboxNext.addEventListener(
         "click",
-        showNextPortfolio
+        event => {
+
+            event.stopPropagation();
+
+            showNextPortfolio();
+
+        }
     );
 
 }
+
 
 if (lightboxPrev){
 
     lightboxPrev.addEventListener(
         "click",
-        showPreviousPortfolio
+        event => {
+
+            event.stopPropagation();
+
+            showPreviousPortfolio();
+
+        }
     );
 
 }
+
+
+if (lightboxClose){
+
+    lightboxClose.addEventListener(
+        "click",
+        event => {
+
+            event.stopPropagation();
+
+            closeLightbox();
+
+        }
+    );
+
+}
+
 
 if (portfolioLightbox){
 
@@ -3702,6 +3624,7 @@ if (portfolioLightbox){
 
 }
 
+
 document.addEventListener(
     "keydown",
     event => {
@@ -3713,17 +3636,20 @@ document.addEventListener(
             )
         ) return;
 
+
         if (event.key === "Escape"){
 
             closeLightbox();
 
         }
 
+
         if (event.key === "ArrowRight"){
 
             showNextPortfolio();
 
         }
+
 
         if (event.key === "ArrowLeft"){
 
@@ -3734,6 +3660,43 @@ document.addEventListener(
     }
 );
 
+
+/* ===== TOAST ===== */
+
+const loyalToast =
+    document.getElementById("loyalToast");
+
+let loyalToastTimer;
+
+
+function showLoyalToast(message) {
+
+    if (!loyalToast) return;
+
+    clearTimeout(
+        loyalToastTimer
+    );
+
+
+    loyalToast.textContent =
+        message;
+
+
+    loyalToast.classList.add(
+        "show"
+    );
+
+
+    loyalToastTimer =
+        setTimeout(() => {
+
+            loyalToast.classList.remove(
+                "show"
+            );
+
+        }, 2200);
+
+}
 
 /* ===== TOAST ===== */
 
