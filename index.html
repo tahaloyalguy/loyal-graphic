@@ -4766,6 +4766,9 @@ function openAdminPanel() {
     adminPanel.classList.add("open");
 }
 
+if (window.location.hash === "#admin") {
+    openAdminPanel();
+}
 
 if (adminClose) {
 
