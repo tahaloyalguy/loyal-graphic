@@ -1756,6 +1756,22 @@ footer{
         inset 0 1px 0 rgba(255,255,255,.06);
 }
 
+/* ===== PORTFOLIO LIGHTBOX ===== */
+
+.portfolio-lightbox{
+    ...
+}
+
+/* بقیه CSS لایت‌باکس */
+
+
+/* ===== LIGHTBOX MOBILE ===== */
+
+@media (max-width:768px){
+    ...
+}
+
+
 /* ===== MOBILE ===== */
 
 @media (max-width:768px){
@@ -3019,6 +3035,245 @@ if (backToTop) {
 
 }
 
+/* ===== PORTFOLIO LIGHTBOX ===== */
+
+const portfolioLightbox =
+    document.getElementById("portfolioLightbox");
+
+const lightboxImage =
+    document.getElementById("lightboxImage");
+
+const lightboxTitle =
+    document.getElementById("lightboxTitle");
+
+const lightboxCategory =
+    document.getElementById("lightboxCategory");
+
+const lightboxClose =
+    document.getElementById("lightboxClose");
+
+const lightboxPrev =
+    document.getElementById("lightboxPrev");
+
+const lightboxNext =
+    document.getElementById("lightboxNext");
+
+let currentLightboxIndex = 0;
+
+const portfolioCards =
+    document.querySelectorAll(
+        ".portfolio-item, .portfolio-card, .portfolio-grid > *"
+    );
+
+function getPortfolioImage(card){
+
+    const image =
+        card.querySelector("img");
+
+    return image ? image.src : null;
+}
+
+function getPortfolioTitle(card){
+
+    const title =
+        card.querySelector(
+            "h3, h4, .portfolio-title"
+        );
+
+    return title
+        ? title.textContent.trim()
+        : "نمونه‌کار Loyal Graphic";
+}
+
+function getPortfolioCategory(card){
+
+    const category =
+        card.dataset.category ||
+        card.querySelector(
+            ".portfolio-category, .tag, .category"
+        );
+
+    return typeof category === "string"
+        ? category
+        : category
+            ? category.textContent.trim()
+            : "";
+}
+
+function openLightbox(index){
+
+    if (
+        !portfolioLightbox ||
+        !portfolioCards.length
+    ) return;
+
+    const card =
+        portfolioCards[index];
+
+    const image =
+        getPortfolioImage(card);
+
+    if (!image) return;
+
+    currentLightboxIndex = index;
+
+    lightboxImage.src = image;
+
+    lightboxImage.alt =
+        getPortfolioTitle(card);
+
+    lightboxTitle.textContent =
+        getPortfolioTitle(card);
+
+    lightboxCategory.textContent =
+        getPortfolioCategory(card);
+
+    portfolioLightbox.classList.add("open");
+
+    document.body.style.overflow = "hidden";
+}
+
+function closeLightbox(){
+
+    if (!portfolioLightbox) return;
+
+    portfolioLightbox.classList.remove("open");
+
+    document.body.style.overflow = "";
+}
+
+function showNextPortfolio(){
+
+    if (!portfolioCards.length) return;
+
+    currentLightboxIndex =
+        (currentLightboxIndex + 1)
+        % portfolioCards.length;
+
+    openLightbox(currentLightboxIndex);
+}
+
+function showPreviousPortfolio(){
+
+    if (!portfolioCards.length) return;
+
+    currentLightboxIndex =
+        (
+            currentLightboxIndex -
+            1 +
+            portfolioCards.length
+        )
+        % portfolioCards.length;
+
+    openLightbox(currentLightboxIndex);
+}
+
+portfolioCards.forEach(
+    (card, index) => {
+
+        card.addEventListener(
+            "click",
+            event => {
+
+                if (
+                    event.target.closest(
+                        "a, button"
+                    )
+                ) return;
+
+                if (
+                    getPortfolioImage(card)
+                ){
+
+                    openLightbox(index);
+
+                }
+
+            }
+        );
+
+    }
+);
+
+if (lightboxClose){
+
+    lightboxClose.addEventListener(
+        "click",
+        closeLightbox
+    );
+
+}
+
+if (lightboxNext){
+
+    lightboxNext.addEventListener(
+        "click",
+        showNextPortfolio
+    );
+
+}
+
+if (lightboxPrev){
+
+    lightboxPrev.addEventListener(
+        "click",
+        showPreviousPortfolio
+    );
+
+}
+
+if (portfolioLightbox){
+
+    portfolioLightbox.addEventListener(
+        "click",
+        event => {
+
+            if (
+                event.target ===
+                portfolioLightbox
+            ){
+
+                closeLightbox();
+
+            }
+
+        }
+    );
+
+}
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            !portfolioLightbox ||
+            !portfolioLightbox.classList.contains(
+                "open"
+            )
+        ) return;
+
+        if (event.key === "Escape"){
+
+            closeLightbox();
+
+        }
+
+        if (event.key === "ArrowRight"){
+
+            showNextPortfolio();
+
+        }
+
+        if (event.key === "ArrowLeft"){
+
+            showPreviousPortfolio();
+
+        }
+
+    }
+);
+
 
 /* ===== TOAST ===== */
 
@@ -3435,6 +3690,54 @@ document.addEventListener("click", function (event) {
 
 });
 </script>
+
+<!-- ===== PORTFOLIO LIGHTBOX ===== -->
+
+<div id="portfolioLightbox" class="portfolio-lightbox">
+
+    <button
+        id="lightboxClose"
+        class="lightbox-close"
+        type="button"
+        aria-label="بستن"
+    >
+        ×
+    </button>
+
+    <button
+        id="lightboxPrev"
+        class="lightbox-nav lightbox-prev"
+        type="button"
+        aria-label="قبلی"
+    >
+        ‹
+    </button>
+
+    <div class="lightbox-content">
+
+        <img
+            id="lightboxImage"
+            src=""
+            alt=""
+        >
+
+        <div class="lightbox-info">
+            <strong id="lightboxTitle"></strong>
+            <span id="lightboxCategory"></span>
+        </div>
+
+    </div>
+
+    <button
+        id="lightboxNext"
+        class="lightbox-nav lightbox-next"
+        type="button"
+        aria-label="بعدی"
+    >
+        ›
+    </button>
+
+</div>
 
 </body>
 </html>
