@@ -1684,39 +1684,88 @@ footer{
 /* ===== BACK TO TOP ===== */
 #backToTop{
     position:fixed;
-    top:18px;
+    top:82px;
     left:50%;
     bottom:auto;
-    transform:translateX(-50%) translateY(12px);
-    width:44px;
-    height:44px;
-    border-radius:14px;
-    border:1px solid rgba(255,106,0,.35);
-    background:rgba(15,15,15,.88);
-    color:#ff6a00;
+
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,255,255,.10);
+
+    background:rgba(10,10,10,.38);
+    color:rgba(255,255,255,.72);
+
     display:grid;
     place-items:center;
-    font-size:20px;
+
+    font-size:18px;
+    line-height:1;
+
     cursor:pointer;
+
     opacity:0;
     visibility:hidden;
-    transition:.3s ease;
+
+    transform:translateX(-50%) translateY(-8px) scale(.92);
+
+    transition:
+        opacity .35s ease,
+        visibility .35s ease,
+        transform .35s ease,
+        background .3s ease,
+        border-color .3s ease,
+        color .3s ease;
+
     z-index:1500;
-    backdrop-filter:blur(10px);
+
+    backdrop-filter:blur(14px) saturate(1.2);
+    -webkit-backdrop-filter:blur(14px) saturate(1.2);
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.22),
+        inset 0 1px 0 rgba(255,255,255,.05);
 }
 
 #backToTop.show{
     opacity:1;
     visibility:visible;
-    transform:translateX(-50%) translateY(0);
+
+    transform:
+        translateX(-50%)
+        translateY(0)
+        scale(1);
 }
 
 #backToTop:hover{
-    background:#ff6a00;
-    color:#090909;
-    border-color:#ff6a00;
-    transform:translateX(-50%) translateY(3px);
-    box-shadow:0 12px 30px rgba(255,106,0,.18);
+    background:rgba(255,106,0,.12);
+
+    border-color:rgba(255,106,0,.45);
+
+    color:#ff9b4a;
+
+    transform:
+        translateX(-50%)
+        translateY(-2px)
+        scale(1.04);
+
+    box-shadow:
+        0 10px 35px rgba(255,106,0,.12),
+        inset 0 1px 0 rgba(255,255,255,.06);
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width:768px){
+
+    #backToTop{
+        top:18px;
+        width:44px;
+        height:44px;
+    }
+
 }
 
 /* ===== BACK TO TOP - DESKTOP FIX ===== */
