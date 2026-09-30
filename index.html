@@ -3,7 +3,6 @@
 <html lang="fa" dir="rtl">
 <head>
 
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/persian-datepicker@1.2.0/dist/css/persian-datepicker.min.css">
@@ -2965,77 +2964,8 @@ document.addEventListener("click", function (event) {
 });
 </script>
 
-</body>
+
 </html>
-        button.addEventListener("click", function () {
-
-            const month =
-                String(currentMonth).padStart(2, "0");
-
-            const selectedDay =
-                String(day).padStart(2, "0");
-
-            deadlineInput.value =
-                currentYear + "/" +
-                month + "/" +
-                selectedDay;
-
-            calendar.style.display = "none";
-        });
-
-        jcDays.appendChild(button);
-    }
-}
-
-deadlineInput.addEventListener("click", function (event) {
-
-    event.stopPropagation();
-
-    const rect =
-        deadlineInput.getBoundingClientRect();
-
-    calendar.style.display = "block";
-
-    calendar.style.top =
-        (window.scrollY + rect.bottom + 8) + "px";
-
-    calendar.style.left =
-        (window.scrollX + rect.left) + "px";
-
-    renderJalaliCalendar();
-});
-
-jcPrev.addEventListener("click", function (event) {
-
-    event.stopPropagation();
-
-    currentMonth--;
-
-    if (currentMonth < 1) {
-        currentMonth = 12;
-        currentYear--;
-    }
-
-    renderJalaliCalendar();
-});
-
-jcNext.addEventListener("click", function (event) {
-
-    event.stopPropagation();
-
-    currentMonth++;
-
-    if (currentMonth > 12) {
-        currentMonth = 1;
-        currentYear++;
-    }
-
-    renderJalaliCalendar();
-});
-
-calendar.addEventListener("click", function (event) {
-    event.stopPropagation();
-});
 
 document.addEventListener("click", function (event) {
 
