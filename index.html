@@ -3120,9 +3120,9 @@ rel="noopener noreferrer"
 و اجازه بده با هم به یک خروجی حرفه‌ای برسیم.
 </p>
 
-<div class="order-status online">
-    <span></span>
-    پذیرش سفارش: آنلاین
+<div class="order-status" id="orderStatus">
+    <span id="orderStatusDot"></span>
+    <span id="orderStatusText">در حال بررسی وضعیت...</span>
 </div>
 
 <div class="contacts">
@@ -4484,5 +4484,81 @@ async function testSupabase() {
 testSupabase();
 
 </script>
+
+<!-- ================= ADMIN PANEL ================= -->
+
+<div id="adminPanel" class="admin-panel">
+
+    <div class="admin-box">
+
+        <button id="adminClose" class="admin-close" type="button">
+            ×
+        </button>
+
+        <div id="adminLogin">
+
+            <span class="tag">ADMIN ACCESS</span>
+
+            <h2>مدیریت سفارش‌ها</h2>
+
+            <p>
+                برای مدیریت وضعیت پذیرش سفارش وارد شوید.
+            </p>
+
+            <input
+                id="adminEmail"
+                type="email"
+                placeholder="ایمیل"
+                autocomplete="email"
+            >
+
+            <input
+                id="adminPassword"
+                type="password"
+                placeholder="رمز عبور"
+                autocomplete="current-password"
+            >
+
+            <button id="adminLoginBtn" type="button">
+                ورود به پنل
+            </button>
+
+            <div id="adminLoginMessage"></div>
+
+        </div>
+
+
+        <div id="adminDashboard" style="display:none;">
+
+            <span class="tag">ORDER CONTROL</span>
+
+            <h2>وضعیت سفارش‌ها</h2>
+
+            <p id="adminCurrentStatus">
+                در حال دریافت وضعیت...
+            </p>
+
+            <button
+                id="adminToggleStatus"
+                type="button"
+            >
+                تغییر وضعیت
+            </button>
+
+            <button
+                id="adminLogoutBtn"
+                type="button"
+            >
+                خروج
+            </button>
+
+            <div id="adminMessage"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
 </body>
 </html>
