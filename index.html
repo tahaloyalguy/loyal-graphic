@@ -4000,6 +4000,37 @@ if (backToTop) {
 
 }
 
+/* =========================
+   ORDER STATUS
+========================= */
+
+const orderStatus = document.querySelector(".order-status");
+
+if (orderStatus) {
+
+    const isOrderOpen = true;
+
+    if (isOrderOpen) {
+
+        orderStatus.classList.remove("closed");
+
+        orderStatus.innerHTML = `
+            <span></span>
+            پذیرش سفارش: آنلاین
+        `;
+
+    } else {
+
+        orderStatus.classList.add("closed");
+
+        orderStatus.innerHTML = `
+            <span></span>
+            پذیرش سفارش: بسته
+        `;
+
+    }
+}
+
 /* ===== TOAST ===== */
 
 const loyalToast =
