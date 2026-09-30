@@ -2922,68 +2922,6 @@ const portfolioItems = [
 
 ];
 
-
-/* =========================
-   PORTFOLIO RENDER
-========================= */
-
-/* ===== PORTFOLIO LIGHTBOX CONTROLS ===== */
-
-const portfolioLightbox =
-    document.getElementById("portfolioLightbox");
-
-const lightboxImage =
-    document.getElementById("lightboxImage");
-
-const lightboxTitle =
-    document.getElementById("lightboxTitle");
-
-const lightboxCategory =
-    document.getElementById("lightboxCategory");
-
-const lightboxClose =
-    document.getElementById("lightboxClose");
-
-const lightboxPrev =
-    document.getElementById("lightboxPrev");
-
-const lightboxNext =
-    document.getElementById("lightboxNext");
-
-let currentLightboxIndex = 0;
-
-
-/* ===== SHOW PORTFOLIO ITEM ===== */
-
-function showLightboxItem(index){
-
-    if (
-        !portfolioItems ||
-        !portfolioItems.length
-    ) return;
-
-    currentLightboxIndex =
-        (index + portfolioItems.length)
-        % portfolioItems.length;
-
-    const item =
-        portfolioItems[currentLightboxIndex];
-
-    lightboxImage.src =
-        item.image;
-
-    lightboxImage.alt =
-        item.title;
-
-    lightboxTitle.textContent =
-        item.title;
-
-    lightboxCategory.textContent =
-        item.type;
-
-}
-
-
 /* ===== CLOSE ===== */
 
 function closePortfolioLightbox(){
