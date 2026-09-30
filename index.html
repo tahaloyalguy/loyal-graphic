@@ -3162,13 +3162,15 @@ document.addEventListener(
    FILTERS
 ========================= */
 
-document.querySelectorAll(".filter").forEach(btn=>{
+document.querySelectorAll(".filter").forEach(btn => {
 
-    btn.addEventListener("click",()=>{
+    btn.addEventListener("click", () => {
+
+        console.log("FILTER CLICK:", btn.dataset.filter);
 
         document
             .querySelectorAll(".filter")
-            .forEach(x=>x.classList.remove("active"));
+            .forEach(x => x.classList.remove("active"));
 
         btn.classList.add("active");
 
