@@ -2911,6 +2911,191 @@ const portfolioItems = [
    PORTFOLIO RENDER
 ========================= */
 
+/* ===== PORTFOLIO LIGHTBOX CONTROLS ===== */
+
+const portfolioLightbox =
+    document.getElementById("portfolioLightbox");
+
+const lightboxImage =
+    document.getElementById("lightboxImage");
+
+const lightboxTitle =
+    document.getElementById("lightboxTitle");
+
+const lightboxCategory =
+    document.getElementById("lightboxCategory");
+
+const lightboxClose =
+    document.getElementById("lightboxClose");
+
+const lightboxPrev =
+    document.getElementById("lightboxPrev");
+
+const lightboxNext =
+    document.getElementById("lightboxNext");
+
+let currentLightboxIndex = 0;
+
+
+/* ===== SHOW PORTFOLIO ITEM ===== */
+
+function showLightboxItem(index){
+
+    if (
+        !portfolioItems ||
+        !portfolioItems.length
+    ) return;
+
+    currentLightboxIndex =
+        (index + portfolioItems.length)
+        % portfolioItems.length;
+
+    const item =
+        portfolioItems[currentLightboxIndex];
+
+    lightboxImage.src =
+        item.image;
+
+    lightboxImage.alt =
+        item.title;
+
+    lightboxTitle.textContent =
+        item.title;
+
+    lightboxCategory.textContent =
+        item.type;
+
+}
+
+
+/* ===== CLOSE ===== */
+
+function closePortfolioLightbox(){
+
+    portfolioLightbox.classList.remove("open");
+
+    document.body.style.overflow = "";
+
+}
+
+
+/* ===== NEXT ===== */
+
+if (lightboxNext){
+
+    lightboxNext.addEventListener(
+        "click",
+        event => {
+
+            event.stopPropagation();
+
+            showLightboxItem(
+                currentLightboxIndex + 1
+            );
+
+        }
+    );
+
+}
+
+
+/* ===== PREVIOUS ===== */
+
+if (lightboxPrev){
+
+    lightboxPrev.addEventListener(
+        "click",
+        event => {
+
+            event.stopPropagation();
+
+            showLightboxItem(
+                currentLightboxIndex - 1
+            );
+
+        }
+    );
+
+}
+
+
+/* ===== CLOSE BUTTON ===== */
+
+if (lightboxClose){
+
+    lightboxClose.addEventListener(
+        "click",
+        event => {
+
+            event.stopPropagation();
+
+            closePortfolioLightbox();
+
+        }
+    );
+
+}
+
+
+/* ===== BACKDROP ===== */
+
+if (portfolioLightbox){
+
+    portfolioLightbox.addEventListener(
+        "click",
+        event => {
+
+            if (
+                event.target ===
+                portfolioLightbox
+            ){
+
+                closePortfolioLightbox();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* ===== KEYBOARD ===== */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            !portfolioLightbox ||
+            !portfolioLightbox.classList.contains("open")
+        ) return;
+
+        if (event.key === "Escape"){
+
+            closePortfolioLightbox();
+
+        }
+
+        if (event.key === "ArrowRight"){
+
+            showLightboxItem(
+                currentLightboxIndex + 1
+            );
+
+        }
+
+        if (event.key === "ArrowLeft"){
+
+            showLightboxItem(
+                currentLightboxIndex - 1
+            );
+
+        }
+
+    }
+);
+
 const grid = document.getElementById("portfolioGrid");
 
 function renderPortfolio(filter="all"){
@@ -2958,27 +3143,28 @@ function renderPortfolio(filter="all"){
 
         el.addEventListener("click",()=>{
 
-            document.getElementById("modal").classList.add("open");
+    const index =
+        portfolioItems.indexOf(item);
 
-            document.getElementById("modalTitle").textContent =
-                item.title;
+    currentLightboxIndex = index;
 
-            document.getElementById("modalDesc").textContent =
-                item.description;
+    lightboxImage.src =
+        item.image;
 
-            document.getElementById("modalArt").innerHTML=`
+    lightboxImage.alt =
+        item.title;
 
-                <img
-                    src="${item.image}"
-                    alt="${item.title}"
-                    onerror="
-                    this.outerHTML='<span>${item.type} — Preview</span>'
-                    "
-                >
+    lightboxTitle.textContent =
+        item.title;
 
-            `;
+    lightboxCategory.textContent =
+        item.type;
 
-        });
+    portfolioLightbox.classList.add("open");
+
+    document.body.style.overflow = "hidden";
+
+});
 
         grid.appendChild(el);
 
@@ -3258,33 +3444,7 @@ if (backToTop) {
 
 /* ===== PORTFOLIO LIGHTBOX ===== */
 
-const portfolioLightbox =
-    document.getElementById("portfolioLightbox");
 
-const lightboxImage =
-    document.getElementById("lightboxImage");
-
-const lightboxTitle =
-    document.getElementById("lightboxTitle");
-
-const lightboxCategory =
-    document.getElementById("lightboxCategory");
-
-const lightboxClose =
-    document.getElementById("lightboxClose");
-
-const lightboxPrev =
-    document.getElementById("lightboxPrev");
-
-const lightboxNext =
-    document.getElementById("lightboxNext");
-
-let currentLightboxIndex = 0;
-
-const portfolioCards =
-    document.querySelectorAll(
-        ".portfolio-item, .portfolio-card, .portfolio-grid > *"
-    );
 
 function getPortfolioImage(card){
 
