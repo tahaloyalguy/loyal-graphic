@@ -588,6 +588,10 @@ section{
     object-fit:cover;
     display:block;
 
+    user-select:none;
+    -webkit-user-drag:none;
+
+
     transform:scale(1);
     transition:
         transform .7s cubic-bezier(.2,.7,.2,1),
@@ -3109,6 +3113,12 @@ grid.appendChild(el);
 }
 
 renderPortfolio();
+
+document.addEventListener("contextmenu", e => {
+    if (e.target.tagName === "IMG") {
+        e.preventDefault();
+    }
+});
 
 /* ===== PORTFOLIO LIGHTBOX CONTROLS ===== */
 
