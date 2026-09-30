@@ -3604,7 +3604,6 @@ const loyalToast =
 
 let loyalToastTimer;
 
-
 function showLoyalToast(message) {
 
     if (!loyalToast) return;
@@ -3613,15 +3612,12 @@ function showLoyalToast(message) {
         loyalToastTimer
     );
 
-
     loyalToast.textContent =
         message;
-
 
     loyalToast.classList.add(
         "show"
     );
-
 
     loyalToastTimer =
         setTimeout(() => {
@@ -3633,34 +3629,6 @@ function showLoyalToast(message) {
         }, 2200);
 
 }
-
-/* ===== TOAST ===== */
-
-const loyalToast =
-    document.getElementById("loyalToast");
-
-let loyalToastTimer;
-
-
-function showLoyalToast(message) {
-
-    if (!loyalToast) return;
-
-    clearTimeout(loyalToastTimer);
-
-    loyalToast.textContent = message;
-
-    loyalToast.classList.add("show");
-
-
-    loyalToastTimer = setTimeout(() => {
-
-        loyalToast.classList.remove("show");
-
-    }, 2200);
-
-}
-
 
 /* ===== COPY CONTACT ===== */
 
