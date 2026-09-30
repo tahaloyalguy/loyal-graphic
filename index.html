@@ -2922,42 +2922,6 @@ const portfolioItems = [
 
 ];
 
-/* ===== KEYBOARD ===== */
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if (
-            !portfolioLightbox ||
-            !portfolioLightbox.classList.contains("open")
-        ) return;
-
-        if (event.key === "Escape"){
-
-            closePortfolioLightbox();
-
-        }
-
-        if (event.key === "ArrowRight"){
-
-            showLightboxItem(
-                currentLightboxIndex + 1
-            );
-
-        }
-
-        if (event.key === "ArrowLeft"){
-
-            showLightboxItem(
-                currentLightboxIndex - 1
-            );
-
-        }
-
-    }
-);
-
 const grid = document.getElementById("portfolioGrid");
 
 function renderPortfolio(filter="all"){
