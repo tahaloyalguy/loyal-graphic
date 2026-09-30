@@ -4685,5 +4685,316 @@ testSupabase();
 
 </div>
 
+<script>
+/* ================= ADMIN PANEL LOGIC ================= */
+
+const adminPanel =
+    document.getElementById("adminPanel");
+
+const adminClose =
+    document.getElementById("adminClose");
+
+const adminLogin =
+    document.getElementById("adminLogin");
+
+const adminDashboard =
+    document.getElementById("adminDashboard");
+
+const adminEmail =
+    document.getElementById("adminEmail");
+
+const adminPassword =
+    document.getElementById("adminPassword");
+
+const adminLoginBtn =
+    document.getElementById("adminLoginBtn");
+
+const adminLogoutBtn =
+    document.getElementById("adminLogoutBtn");
+
+const adminToggleStatus =
+    document.getElementById("adminToggleStatus");
+
+const adminLoginMessage =
+    document.getElementById("adminLoginMessage");
+
+const adminMessage =
+    document.getElementById("adminMessage");
+
+const adminCurrentStatus =
+    document.getElementById("adminCurrentStatus");
+
+const orderStatusText =
+    document.getElementById("orderStatusText");
+
+const orderStatusDot =
+    document.getElementById("orderStatusDot");
+
+
+async function loadOrderStatus() {
+
+    const { data, error } =
+        await supabaseClient
+            .from("order_status")
+            .select("id, is_open")
+            .limit(1)
+            .single();
+
+    if (error) {
+        console.error("Status error:", error);
+        return;
+    }
+
+    updatePublicStatus(data.is_open);
+}
+
+
+function updatePublicStatus(isOpen) {
+
+    if (!orderStatusText || !orderStatusDot) {
+        return;
+    }
+
+    if (isOpen) {
+
+        orderStatusText.textContent =
+            "فرم سفارش فعال است";
+
+        orderStatusDot.style.background =
+            "#35d07f";
+
+        orderStatusDot.style.boxShadow =
+            "0 0 12px rgba(53,208,127,.7)";
+
+    } else {
+
+        orderStatusText.textContent =
+            "پذیرش سفارش‌ها بسته است";
+
+        orderStatusDot.style.background =
+            "#ff4d4d";
+
+        orderStatusDot.style.boxShadow =
+            "0 0 12px rgba(255,77,77,.7)";
+    }
+}
+
+
+function openAdminPanel() {
+    adminPanel.classList.add("open");
+}
+
+
+if (adminClose) {
+
+    adminClose.addEventListener("click", function () {
+        adminPanel.classList.remove("open");
+    });
+
+}
+
+
+if (adminLoginBtn) {
+
+    adminLoginBtn.addEventListener("click", async function () {
+
+        const email =
+            adminEmail.value.trim();
+
+        const password =
+            adminPassword.value;
+
+        if (!email || !password) {
+
+            adminLoginMessage.textContent =
+                "ایمیل و رمز عبور را وارد کنید.";
+
+            return;
+        }
+
+        adminLoginMessage.textContent =
+            "در حال ورود...";
+
+        const { error } =
+            await supabaseClient.auth.signInWithPassword({
+                email: email,
+                password: password
+            });
+
+        if (error) {
+
+            console.error(error);
+
+            adminLoginMessage.textContent =
+                "ایمیل یا رمز عبور اشتباه است.";
+
+            return;
+        }
+
+        adminLogin.style.display =
+            "none";
+
+        adminDashboard.style.display =
+            "block";
+
+        adminLoginMessage.textContent =
+            "";
+
+        await loadAdminStatus();
+
+    });
+
+}
+
+
+async function loadAdminStatus() {
+
+    const { data, error } =
+        await supabaseClient
+            .from("order_status")
+            .select("id, is_open")
+            .limit(1)
+            .single();
+
+    if (error) {
+
+        adminCurrentStatus.textContent =
+            "خطا در دریافت وضعیت.";
+
+        console.error(error);
+
+        return;
+    }
+
+    const isOpen =
+        data.is_open;
+
+    adminCurrentStatus.textContent =
+        isOpen
+            ? "🟢 پذیرش سفارش‌ها فعال است"
+            : "🔴 پذیرش سفارش‌ها بسته است";
+
+    adminToggleStatus.textContent =
+        isOpen
+            ? "بستن پذیرش سفارش‌ها"
+            : "باز کردن پذیرش سفارش‌ها";
+}
+
+
+if (adminToggleStatus) {
+
+    adminToggleStatus.addEventListener(
+        "click",
+        async function () {
+
+            adminMessage.textContent =
+                "در حال ذخیره...";
+
+            const { data: current, error: readError } =
+                await supabaseClient
+                    .from("order_status")
+                    .select("id, is_open")
+                    .limit(1)
+                    .single();
+
+            if (readError) {
+
+                adminMessage.textContent =
+                    "خطا در دریافت وضعیت.";
+
+                console.error(readError);
+
+                return;
+            }
+
+            const newStatus =
+                !current.is_open;
+
+            const { error: updateError } =
+                await supabaseClient
+                    .from("order_status")
+                    .update({
+                        is_open: newStatus,
+                        updated_at: new Date().toISOString()
+                    })
+                    .eq("id", current.id);
+
+            if (updateError) {
+
+                adminMessage.textContent =
+                    "تغییر وضعیت انجام نشد.";
+
+                console.error(updateError);
+
+                return;
+            }
+
+            adminMessage.textContent =
+                "وضعیت با موفقیت ذخیره شد.";
+
+            updatePublicStatus(newStatus);
+
+            await loadAdminStatus();
+
+        }
+    );
+
+}
+
+
+if (adminLogoutBtn) {
+
+    adminLogoutBtn.addEventListener(
+        "click",
+        async function () {
+
+            await supabaseClient.auth.signOut();
+
+            adminDashboard.style.display =
+                "none";
+
+            adminLogin.style.display =
+                "block";
+
+            adminEmail.value =
+                "";
+
+            adminPassword.value =
+                "";
+
+            adminLoginMessage.textContent =
+                "";
+
+            adminMessage.textContent =
+                "";
+
+        }
+    );
+
+}
+
+
+loadOrderStatus();
+
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.ctrlKey &&
+            event.shiftKey &&
+            event.key.toLowerCase() === "a"
+        ) {
+
+            openAdminPanel();
+
+        }
+
+    }
+);
+
+</script>
+
 </body>
 </html>
