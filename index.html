@@ -3938,40 +3938,54 @@ document
     .forEach(el=>observer.observe(el));
 
 
+
 /* =========================
-   ACTIVE NAV
+   ACTIVE NAV - FIXED
 ========================= */
 
-const sections =
-    [...document.querySelectorAll("main section[id]")];
+const sections = [
+    ...document.querySelectorAll("main section[id]")
+];
 
-const navAnchors =
-    [...document.querySelectorAll(".nav-links a")];
+const navAnchors = [
+    ...document.querySelectorAll(".nav-links a")
+];
 
-window.addEventListener("scroll",()=>{
-
-    let current="home";
-
-    sections.forEach(section=>{
-
-        if(scrollY >= section.offsetTop-180){
-
-            current=section.id;
-
-        }
-
-    });
-
-    navAnchors.forEach(anchor=>{
-
+function setActiveNav(id) {
+    navAnchors.forEach(anchor => {
         anchor.classList.toggle(
             "active",
-            anchor.getAttribute("href")==="#"+current
+            anchor.getAttribute("href") === "#" + id
         );
+    });
+}
 
+function updateActiveNav() {
+    let current = "home";
+
+    sections.forEach(section => {
+        if (window.scrollY >= section.offsetTop - 100) {
+            current = section.id;
+        }
     });
 
-},{passive:true});
+    setActiveNav(current);
+}
+
+window.addEventListener(
+    "scroll",
+    updateActiveNav,
+    { passive: true }
+);
+
+navAnchors.forEach(anchor => {
+    anchor.addEventListener("click", () => {
+        const id = anchor.getAttribute("href").slice(1);
+        setActiveNav(id);
+    });
+});
+
+updateActiveNav();
 
 
 /* =========================
