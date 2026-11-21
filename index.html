@@ -3503,7 +3503,9 @@ h1,h2,h3,.section-head h2,.hero-copy h2,.tag,.eyebrow{font-family:"Estedad","Vaz
 
 <a class="nav-cta" href="#order">شروع پروژه ↗</a>
 
-<button class="menu-btn" id="menuBtn" aria-label="باز کردن منو">☰</button>
+<button class="menu-btn" id="menuBtn" type="button" aria-label="باز کردن منو" aria-controls="navLinks" aria-expanded="false">
+  <span class="menu-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+</button>
 
 </div>
 </header>
@@ -4689,7 +4691,6 @@ modal.addEventListener("click",e=>{
 document.addEventListener("keydown",e=>{
     if(e.key==="Escape"){
         modal.classList.remove("open");
-        navLinks.classList.remove("mobile");
     }
 });
 
@@ -4698,25 +4699,45 @@ document.addEventListener("keydown",e=>{
    MOBILE MENU
 ========================= */
 
-const menuBtn =
-    document.getElementById("menuBtn");
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+const siteHeaderForMenu = document.querySelector("header");
 
-const navLinks =
-    document.getElementById("navLinks");
+function setMobileMenu(open) {
+    if (!menuBtn || !navLinks) return;
+    const shouldOpen = Boolean(open);
+    navLinks.classList.toggle("mobile", shouldOpen);
+    menuBtn.classList.toggle("is-open", shouldOpen);
+    menuBtn.setAttribute("aria-expanded", String(shouldOpen));
+    menuBtn.setAttribute("aria-label", shouldOpen ? "بستن منو" : "باز کردن منو");
+}
 
-menuBtn.onclick=()=>{
+menuBtn?.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setMobileMenu(!navLinks.classList.contains("mobile"));
+});
 
-    navLinks.classList.toggle("mobile");
+navLinks?.querySelectorAll("a").forEach((anchor) => {
+    anchor.addEventListener("click", () => setMobileMenu(false));
+});
 
-};
+document.addEventListener("click", (event) => {
+    if (navLinks?.classList.contains("mobile") &&
+        siteHeaderForMenu && !siteHeaderForMenu.contains(event.target)) {
+        setMobileMenu(false);
+    }
+});
 
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && navLinks?.classList.contains("mobile")) {
+        setMobileMenu(false);
+        menuBtn?.focus();
+    }
+});
 
-navLinks.querySelectorAll("a").forEach(a=>{
-
-    a.addEventListener("click",()=>{
-        navLinks.classList.remove("mobile");
-    });
-
+window.addEventListener("resize", () => {
+    if (window.innerWidth > 900) setMobileMenu(false);
 });
 
 
@@ -6327,4 +6348,46 @@ testSupabase();
 #about .benefit:hover h3 {color:var(--accent2)}
 @media(max-width:768px){#about .benefits{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}#about .benefit{min-height:145px;padding:15px 13px;gap:11px}#about .benefit .icon{flex-basis:39px;width:39px;height:39px;border-radius:12px;font-size:18px}#about .benefit h3{font-size:12px}#about .benefit p{font-size:11px}}
 @media(max-width:390px){#about .benefits{grid-template-columns:1fr}#about .benefit{min-height:0}}
+
+/* V9 — refined responsive header and dependable navigation */
+header { isolation:isolate; }
+main section[id] { scroll-margin-top: 94px; }
+.menu-btn {
+  width:44px; height:44px; padding:0 !important; display:none;
+  align-items:center; justify-content:center; border-radius:13px;
+  background:linear-gradient(145deg,#19191d,#0c0c0f);
+  border:1px solid rgba(var(--accent-rgb),.30);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 5px 18px rgba(0,0,0,.22);
+  color:var(--accent2); transition:border-color .22s ease,box-shadow .22s ease,transform .22s ease;
+  touch-action:manipulation;
+}
+.menu-btn:hover,.menu-btn:focus-visible { border-color:var(--accent); box-shadow:0 0 0 3px rgba(var(--accent-rgb),.10),0 8px 24px rgba(var(--accent-rgb),.12); outline:none; }
+.menu-btn:active { transform:scale(.94); }
+.menu-icon { width:19px;height:16px;display:flex;flex-direction:column;justify-content:space-between;pointer-events:none; }
+.menu-icon i { display:block;width:100%;height:2px;border-radius:4px;background:currentColor;transition:transform .24s ease,opacity .2s ease,width .2s ease; }
+.menu-icon i:nth-child(2) { width:72%;margin-left:auto; }
+.menu-btn.is-open .menu-icon i:first-child { transform:translateY(7px) rotate(45deg); }
+.menu-btn.is-open .menu-icon i:nth-child(2) { opacity:0;width:0; }
+.menu-btn.is-open .menu-icon i:last-child { transform:translateY(-7px) rotate(-45deg); }
+.nav-links a:focus-visible { outline:2px solid var(--accent2);outline-offset:5px;border-radius:4px; }
+@media(max-width:900px) {
+  .menu-btn { display:inline-flex; }
+  .nav-links.mobile {
+    top:calc(100% + 9px); left:0; right:0; z-index:1002;
+    padding:12px; gap:5px; border-radius:18px;
+    background:linear-gradient(155deg,rgba(20,20,23,.985),rgba(8,8,10,.985));
+    border:1px solid rgba(var(--accent-rgb),.25);
+    box-shadow:0 22px 60px rgba(0,0,0,.62),0 0 32px rgba(var(--accent-rgb),.07);
+    backdrop-filter:blur(22px); -webkit-backdrop-filter:blur(22px);
+  }
+  .nav-links.mobile a { display:flex;align-items:center;min-height:45px;padding:11px 14px;border-radius:12px;font-size:13px;transition:background .2s ease,color .2s ease,padding .2s ease; }
+  .nav-links.mobile a::after { display:none; }
+  .nav-links.mobile a.active { color:var(--accent2);background:rgba(var(--accent-rgb),.10);padding-right:18px; }
+  .nav-links.mobile a.active::before { content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent);margin-left:9px; }
+}
+@media(max-width:600px) {
+  main section[id] { scroll-margin-top:78px; }
+  .nav-links.mobile { top:calc(100% + 7px);left:0;right:0;max-height:min(72vh,560px);overflow-y:auto; }
+}
+@media(prefers-reduced-motion:reduce) { .menu-icon i,.menu-btn,.nav-links.mobile a { transition:none !important; } }
 </style>
