@@ -2959,10 +2959,127 @@ footer{
 
 }
 
+
+
+/* =========================================================
+   LOYAL GRAPHIC — THEME SYSTEM & PREMIUM INTERACTIONS
+========================================================= */
+:root{
+  --accent:#ff6a00;
+  --accent2:#ff9b4a;
+  --accent-rgb:255,106,0;
+  --theme-glow:rgba(255,106,0,.16);
+}
+body{position:relative;}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse at 12% 12%,var(--theme-glow),transparent 42%);
+  opacity:.55;transition:background .55s ease,opacity .55s ease;
+}
+body[data-theme="purple"]{
+  --accent:#a66bff;--accent2:#d2aaff;--accent-rgb:166,107,255;
+  --theme-glow:rgba(135,65,255,.20);
+}
+body[data-theme="blue"]{
+  --accent:#49a7ff;--accent2:#9cdbff;--accent-rgb:73,167,255;
+  --theme-glow:rgba(35,125,255,.19);
+}
+body[data-theme="purple"] .btn.primary,
+body[data-theme="blue"] .btn.primary,
+body[data-theme="purple"] .nav-cta,
+body[data-theme="blue"] .nav-cta,
+body[data-theme="purple"] .filter.active,
+body[data-theme="blue"] .filter.active{
+  background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 62%,#171020));
+  border-color:var(--accent);box-shadow:0 8px 24px rgba(var(--accent-rgb),.20);
+}
+body[data-theme="purple"] .tag,body[data-theme="blue"] .tag,
+body[data-theme="purple"] .eyebrow i,body[data-theme="blue"] .eyebrow i,
+body[data-theme="purple"] .hero h1 span,body[data-theme="blue"] .hero h1 span,
+body[data-theme="purple"] .section-head .tag,body[data-theme="blue"] .section-head .tag{
+  color:var(--accent2);
+}
+body[data-theme="purple"] .card:hover,body[data-theme="blue"] .card:hover,
+body[data-theme="purple"] .contacts a:hover,body[data-theme="blue"] .contacts a:hover{
+  border-color:rgba(var(--accent-rgb),.55);box-shadow:0 16px 48px rgba(var(--accent-rgb),.10);
+}
+body[data-theme="purple"] #backToTop:hover,body[data-theme="blue"] #backToTop:hover{
+  color:var(--accent2);border-color:var(--accent);background:rgba(var(--accent-rgb),.14);
+}
+body[data-theme="purple"] #loyalToast,body[data-theme="blue"] #loyalToast{
+  border-color:rgba(var(--accent-rgb),.55);
+}
+body[data-theme="purple"] .portfolio-lightbox,body[data-theme="blue"] .portfolio-lightbox{
+  background:radial-gradient(circle at 50% 45%,rgba(var(--accent-rgb),.12),transparent 40%),rgba(3,3,3,.91);
+}
+body[data-theme="purple"] .loyal-cursor-glow,body[data-theme="blue"] .loyal-cursor-glow{background:radial-gradient(circle,rgba(var(--accent-rgb),.15) 0%,rgba(var(--accent-rgb),.05) 38%,transparent 70%)}
+body[data-theme="purple"] .loyal-cursor-dot,body[data-theme="blue"] .loyal-cursor-dot{background:var(--accent2);box-shadow:0 0 10px rgba(var(--accent-rgb),.8),0 0 24px rgba(var(--accent-rgb),.3)}
+body[data-theme="purple"] .loyal-click-ripple,body[data-theme="blue"] .loyal-click-ripple{border-color:rgba(var(--accent-rgb),.9)}
+.contacts a[data-copy]::after{content:"  ⧉";color:var(--accent2);font-size:12px;opacity:.75}
+
+
+/* Theme launcher + picker */
+#themeLauncher{position:fixed;left:22px;bottom:24px;z-index:4200;width:48px;height:48px;border-radius:16px;border:1px solid rgba(var(--accent-rgb),.5);background:rgba(15,15,18,.86);color:var(--accent2);font-size:21px;cursor:pointer;backdrop-filter:blur(14px);box-shadow:0 8px 28px rgba(0,0,0,.32),0 0 24px rgba(var(--accent-rgb),.12);transition:.25s ease}
+#themeLauncher:hover{transform:translateY(-4px) rotate(-8deg);box-shadow:0 12px 34px rgba(var(--accent-rgb),.22)}
+#themePanel{position:fixed;left:22px;bottom:82px;z-index:4201;width:min(300px,calc(100vw - 32px));padding:16px;border:1px solid rgba(var(--accent-rgb),.38);border-radius:20px;background:rgba(12,11,17,.96);backdrop-filter:blur(22px);box-shadow:0 24px 80px rgba(0,0,0,.55);opacity:0;visibility:hidden;transform:translateY(12px) scale(.97);transform-origin:bottom left;transition:.25s ease}
+#themePanel.open{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
+.theme-panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;color:#fff;font-weight:800}
+#themePanelClose{border:0;background:transparent;color:#aaa;font-size:22px;cursor:pointer}
+.theme-option{width:100%;display:flex;align-items:center;gap:12px;padding:11px;margin-top:8px;border:1px solid #34303c;border-radius:13px;background:#17141e;color:#eee;text-align:right;cursor:pointer;transition:.2s ease;font:inherit}
+.theme-option:hover{transform:translateX(-3px);border-color:var(--swatch)}
+.theme-option[aria-pressed="true"]{border-color:var(--swatch);background:color-mix(in srgb,var(--swatch) 15%,#17141e);box-shadow:inset 0 0 0 1px var(--swatch)}
+.theme-swatch{width:30px;height:30px;border-radius:10px;flex:none;background:linear-gradient(135deg,var(--swatch),color-mix(in srgb,var(--swatch) 25%,#111));box-shadow:0 0 18px color-mix(in srgb,var(--swatch) 45%,transparent)}
+.theme-option small{display:block;color:#aaa;font-size:11px;margin-top:2px}
+
+/* Compact real site counters */
+.loyal-live-stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.loyal-stat{min-width:118px;padding:12px 15px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.025);backdrop-filter:blur(8px)}
+.loyal-stat strong{display:block;color:var(--accent2);font:800 22px/1.2 'Space Grotesk',sans-serif}
+.loyal-stat span{display:block;color:var(--muted);font-size:11px;margin-top:4px}
+
+/* Portfolio 3D hover — pointer devices only */
+@media (hover:hover) and (pointer:fine){
+ .portfolio-card{transform-style:preserve-3d;will-change:transform;transition:transform .18s ease-out,box-shadow .25s ease,border-color .25s ease}
+ .portfolio-card.tilt-active{transform:perspective(850px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) translateY(-5px)}
+ .portfolio-card .overlay{transform:translateZ(18px)}
+}
+
+/* Lightbox zoom */
+.lightbox-zoom-btn{position:absolute;top:12px;right:12px;z-index:4;width:42px;height:42px;border:1px solid rgba(255,255,255,.2);border-radius:12px;background:rgba(10,10,10,.72);color:#fff;font-size:20px;cursor:pointer;backdrop-filter:blur(10px)}
+#lightboxImage.zoomed{transform:scale(1.65);cursor:zoom-out;max-width:none;max-height:none;box-shadow:0 30px 100px rgba(0,0,0,.8)}
+.lightbox-content.image-zoomed{overflow:auto;justify-content:flex-start;align-items:flex-start;max-height:88vh;padding:45px 20px 20px}
+
+/* Scroll progress ring around back-to-top */
+#backToTop{--scroll-progress:0deg;border:2px solid transparent;background:linear-gradient(rgba(10,10,10,.82),rgba(10,10,10,.82)) padding-box,conic-gradient(var(--accent) var(--scroll-progress),rgba(255,255,255,.14) 0) border-box;}
+#backToTop::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:1px solid rgba(var(--accent-rgb),.12);pointer-events:none}
+
+/* Loading screen */
+#loyalPreloader{position:fixed;inset:0;z-index:100000;background:#08070b;display:grid;place-items:center;transition:opacity .5s ease,visibility .5s ease}
+#loyalPreloader.done{opacity:0;visibility:hidden;pointer-events:none}
+.preloader-inner{text-align:center;color:#fff}
+.preloader-mark{width:66px;height:66px;margin:0 auto 16px;border-radius:20px;border:1px solid rgba(var(--accent-rgb),.55);display:grid;place-items:center;color:var(--accent2);font:800 24px 'Space Grotesk',sans-serif;box-shadow:0 0 45px rgba(var(--accent-rgb),.18);animation:preloaderPulse 1.25s ease-in-out infinite}
+.preloader-name{font:800 13px 'Space Grotesk',sans-serif;letter-spacing:3px}
+.preloader-line{height:3px;width:150px;margin:14px auto 0;border-radius:9px;background:linear-gradient(90deg,transparent,var(--accent),transparent);background-size:200% 100%;animation:preloaderLine 1s linear infinite}
+@keyframes preloaderPulse{50%{transform:scale(1.07);box-shadow:0 0 65px rgba(var(--accent-rgb),.3)}}
+@keyframes preloaderLine{to{background-position:-200% 0}}
+@media(max-width:600px){#themeLauncher{left:14px;bottom:16px;width:44px;height:44px}.loyal-live-stats{gap:7px}.loyal-stat{min-width:calc(50% - 5px);padding:10px}.loyal-stat strong{font-size:19px}}
+@media(prefers-reduced-motion:reduce){#loyalPreloader,.theme-option,.portfolio-card{transition:none!important;animation:none!important}}
+
 </style>
 </head>
 
 <body>
+
+<div id="loyalPreloader" aria-hidden="true"><div class="preloader-inner"><div class="preloader-mark">LG</div><div class="preloader-name">LOYAL GRAPHIC</div><div class="preloader-line"></div></div></div>
+<div class="loyal-cursor-glow" aria-hidden="true"></div><div class="loyal-cursor-dot" aria-hidden="true"></div>
+<button id="themeLauncher" type="button" aria-label="انتخاب تم سایت" aria-expanded="false" title="تغییر تم">✦</button>
+<div id="themePanel" role="dialog" aria-label="انتخاب تم" aria-hidden="true">
+  <div class="theme-panel-head"><span>ظاهر سایت</span><button id="themePanelClose" type="button" aria-label="بستن">×</button></div>
+  <button class="theme-option" type="button" data-theme-choice="orange" style="--swatch:#ff6a00" aria-pressed="true"><span class="theme-swatch"></span><span><b>نارنجی کلاسیک</b><small>تم اصلی LOYAL GRAPHIC</small></span></button>
+  <button class="theme-option" type="button" data-theme-choice="purple" style="--swatch:#a66bff" aria-pressed="false"><span class="theme-swatch"></span><span><b>بنفش نئونی</b><small>فضای تاریک و درخشان</small></span></button>
+  <button class="theme-option" type="button" data-theme-choice="blue" style="--swatch:#49a7ff" aria-pressed="false"><span class="theme-swatch"></span><span><b>آبی یخی</b><small>سرمه‌ای و نور سرد</small></span></button>
+</div>
+
 
 <!-- NEW: LOYAL UI -->
 <button id="backToTop" type="button" aria-label="بازگشت به بالا">
@@ -3038,6 +3155,11 @@ footer{
             <span class="hero-stat">Gaming</span>
             <span class="hero-stat">Content Creators</span>
             <span class="hero-stat">Creative Design</span>
+        </div>
+        <div class="loyal-live-stats" id="loyalLiveStats" aria-label="آمار سایت">
+            <div class="loyal-stat"><strong data-stat="works">—</strong><span>نمونه‌کار ثبت‌شده</span></div>
+            <div class="loyal-stat"><strong data-stat="services">—</strong><span>زمینه خدمات</span></div>
+            <div class="loyal-stat"><strong data-stat="categories">—</strong><span>دسته نمونه‌کار</span></div>
         </div>
     </div>
 
@@ -3195,6 +3317,7 @@ footer{
     </button>
 
     <div class="lightbox-content">
+        <button class="lightbox-zoom-btn" id="lightboxZoom" type="button" aria-label="بزرگ‌نمایی تصویر" title="بزرگ‌نمایی">⌕</button>
 
         <img
             id="lightboxImage"
@@ -5171,6 +5294,159 @@ document.addEventListener(
     }
 );
 
+</script>
+
+
+<script>
+/* ===== LOYAL GRAPHIC PREMIUM ADD-ONS ===== */
+(() => {
+  const body = document.body;
+  const themeLauncher = document.getElementById('themeLauncher');
+  const themePanel = document.getElementById('themePanel');
+  const themeClose = document.getElementById('themePanelClose');
+  const themeOptions = [...document.querySelectorAll('[data-theme-choice]')];
+  const validThemes = ['orange','purple','blue'];
+
+  function setTheme(theme, announce = true) {
+    if (!validThemes.includes(theme)) theme = 'orange';
+    if (theme === 'orange') body.removeAttribute('data-theme');
+    else body.dataset.theme = theme;
+    try { localStorage.setItem('loyalGraphicTheme', theme); } catch (_) {}
+    themeOptions.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.themeChoice === theme)));
+    if (announce && typeof showLoyalToast === 'function') {
+      const labels = {orange:'نارنجی کلاسیک',purple:'بنفش نئونی',blue:'آبی یخی'};
+      showLoyalToast(`تم ${labels[theme]} فعال شد`);
+    }
+  }
+  try { setTheme(localStorage.getItem('loyalGraphicTheme') || 'orange', false); } catch (_) { setTheme('orange', false); }
+  function toggleThemePanel(force) {
+    const open = typeof force === 'boolean' ? force : !themePanel.classList.contains('open');
+    themePanel.classList.toggle('open', open);
+    themePanel.setAttribute('aria-hidden', String(!open));
+    themeLauncher.setAttribute('aria-expanded', String(open));
+  }
+  themeLauncher?.addEventListener('click', () => toggleThemePanel());
+  themeClose?.addEventListener('click', () => toggleThemePanel(false));
+  themeOptions.forEach(button => button.addEventListener('click', () => setTheme(button.dataset.themeChoice)));
+  document.addEventListener('click', event => {
+    if (themePanel?.classList.contains('open') && !themePanel.contains(event.target) && event.target !== themeLauncher) toggleThemePanel(false);
+  });
+
+  // Fast, non-blocking branded loader. Never waits indefinitely for external images.
+  const preloader = document.getElementById('loyalPreloader');
+  const hidePreloader = () => { if (preloader) { preloader.classList.add('done'); setTimeout(() => preloader.remove(), 650); } };
+  if (document.readyState === 'complete') setTimeout(hidePreloader, 180);
+  else window.addEventListener('load', () => setTimeout(hidePreloader, 180), {once:true});
+  setTimeout(hidePreloader, 1800);
+
+  // Real counts only: derived from the actual portfolio data and visible service cards.
+  function updateLiveStats() {
+    const works = Array.isArray(window.portfolioItems) ? window.portfolioItems.filter(item => item && item.image).length : 0;
+    const serviceSection = document.querySelector('#services');
+    const services = serviceSection ? serviceSection.querySelectorAll('.card').length : 0;
+    const categories = Array.isArray(window.portfolioItems) ? new Set(window.portfolioItems.filter(item => item && item.image).map(item => item.category).filter(Boolean)).size : 0;
+    const values = {works, services, categories};
+    document.querySelectorAll('[data-stat]').forEach(el => {
+      const value = values[el.dataset.stat] ?? 0;
+      el.textContent = String(value).padStart(2, '0');
+    });
+  }
+  // The original portfolio array is declared with const in the main script; defer until it exists.
+  setTimeout(() => {
+    try {
+      const works = [...document.querySelectorAll('#portfolioGrid .portfolio-card:not(.work-coming-soon)')].length;
+      const categories = new Set([...document.querySelectorAll('#portfolioGrid .portfolio-card')].map(card => card.querySelector('.overlay small')?.textContent).filter(Boolean)).size;
+      const services = document.querySelectorAll('#services .card').length;
+      const vals = {works, categories, services};
+      document.querySelectorAll('[data-stat]').forEach(el => el.textContent = String(vals[el.dataset.stat] ?? 0).padStart(2,'0'));
+    } catch (_) { updateLiveStats(); }
+  }, 120);
+
+  // Subtle 3D tilt on desktop only; disabled for touch and reduced-motion users.
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduceMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+    document.querySelectorAll('#portfolioGrid .portfolio-card').forEach(card => {
+      card.addEventListener('pointermove', event => {
+        const rect = card.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - .5;
+        const y = (event.clientY - rect.top) / rect.height - .5;
+        card.style.setProperty('--tilt-x', `${(-y * 5).toFixed(2)}deg`);
+        card.style.setProperty('--tilt-y', `${(x * 6).toFixed(2)}deg`);
+        card.classList.add('tilt-active');
+      });
+      card.addEventListener('pointerleave', () => {
+        card.classList.remove('tilt-active');
+        card.style.setProperty('--tilt-x','0deg');
+        card.style.setProperty('--tilt-y','0deg');
+      });
+    });
+  }
+
+  // Scroll progress is drawn in the back-to-top button's border.
+  const topButton = document.getElementById('backToTop');
+  let scrollTicking = false;
+  function updateScrollProgress() {
+    const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    const percent = Math.min(100, Math.max(0, window.scrollY / max * 100));
+    topButton?.style.setProperty('--scroll-progress', `${percent * 3.6}deg`);
+    scrollTicking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!scrollTicking) { requestAnimationFrame(updateScrollProgress); scrollTicking = true; }
+  }, {passive:true});
+  updateScrollProgress();
+
+  // Theme-aware custom cursor and lightweight click ripple (desktop only).
+  const cursorGlow = document.querySelector('.loyal-cursor-glow');
+  const cursorDot = document.querySelector('.loyal-cursor-dot');
+  if (!reduceMotion && cursorGlow && cursorDot && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+    let cursorFrame = 0;
+    window.addEventListener('pointermove', event => {
+      if (cursorFrame) cancelAnimationFrame(cursorFrame);
+      cursorFrame = requestAnimationFrame(() => {
+        cursorGlow.style.left = cursorDot.style.left = `${event.clientX}px`;
+        cursorGlow.style.top = cursorDot.style.top = `${event.clientY}px`;
+        cursorGlow.style.opacity = cursorDot.style.opacity = '1';
+      });
+    }, {passive:true});
+    document.addEventListener('pointerdown', event => {
+      if (event.pointerType === 'touch') return;
+      const ripple = document.createElement('span');
+      ripple.className = 'loyal-click-ripple';
+      ripple.style.left = `${event.clientX}px`;
+      ripple.style.top = `${event.clientY}px`;
+      document.body.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 700);
+    }, {passive:true});
+    document.addEventListener('pointerleave', () => { cursorGlow.style.opacity = cursorDot.style.opacity = '0'; });
+  }
+
+  // Zoom toggle for the existing portfolio lightbox.
+  const zoomButton = document.getElementById('lightboxZoom');
+  const lightbox = document.getElementById('portfolioLightbox');
+  const lightboxContent = lightbox?.querySelector('.lightbox-content');
+  const lightboxImg = document.getElementById('lightboxImage');
+  function resetZoom() {
+    lightboxImg?.classList.remove('zoomed');
+    lightboxContent?.classList.remove('image-zoomed');
+    if (zoomButton) { zoomButton.textContent = '⌕'; zoomButton.setAttribute('aria-label','بزرگ‌نمایی تصویر'); }
+  }
+  function toggleZoom() {
+    if (!lightboxImg) return;
+    const zoomed = lightboxImg.classList.toggle('zoomed');
+    lightboxContent?.classList.toggle('image-zoomed', zoomed);
+    if (zoomButton) { zoomButton.textContent = zoomed ? '−' : '⌕'; zoomButton.setAttribute('aria-label', zoomed ? 'بازگشت به اندازه اصلی' : 'بزرگ‌نمایی تصویر'); }
+  }
+  zoomButton?.addEventListener('click', toggleZoom);
+  lightboxImg?.addEventListener('dblclick', toggleZoom);
+  document.getElementById('lightboxClose')?.addEventListener('click', resetZoom);
+  document.getElementById('lightboxNext')?.addEventListener('click', resetZoom);
+  document.getElementById('lightboxPrev')?.addEventListener('click', resetZoom);
+  lightbox?.addEventListener('click', event => { if (event.target === lightbox) resetZoom(); });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') { toggleThemePanel(false); resetZoom(); }
+  });
+})();
 </script>
 
 </body>
