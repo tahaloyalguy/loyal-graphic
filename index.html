@@ -1855,21 +1855,21 @@ footer{
 @media (hover:hover) and (pointer:fine){
   html,html *,body,body *{cursor:none!important}
   .loyal-cursor-glow{position:fixed;left:0;top:0;width:115px;height:115px;border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:0;background:radial-gradient(circle,rgba(var(--accent-rgb),.20) 0%,rgba(var(--accent-rgb),.08) 35%,transparent 72%);filter:blur(5px);transition:opacity .2s ease;will-change:left,top}
-  /* Minecraft-inspired pixel diamond sword cursor */
-  .loyal-cursor-dot{position:fixed;left:0;top:0;width:30px;height:34px;pointer-events:none;z-index:10000;opacity:0;transform:translate(-5px,-4px) rotate(-7deg);transition:opacity .16s ease,transform .2s cubic-bezier(.2,.8,.2,1),filter .2s ease;filter:drop-shadow(0 0 3px rgba(85,220,255,.9)) drop-shadow(0 0 8px rgba(45,175,255,.45));will-change:left,top,transform;image-rendering:pixelated}
-  .loyal-cursor-dot::before{content:"";position:absolute;left:2px;top:0;width:25px;height:25px;background:linear-gradient(135deg,#e9ffff 0 18%,#9ff4ff 18% 38%,#42c9e8 38% 68%,#1689bd 68% 100%);clip-path:polygon(0 0,34% 10%,100% 76%,76% 100%,10% 34%);filter:drop-shadow(1px 1px 0 #07577d)}
-  .loyal-cursor-dot::after{content:"";position:absolute;left:14px;top:19px;width:15px;height:15px;background:linear-gradient(135deg,#f5d49a 0 24%,#a96b35 24% 58%,#633719 58% 100%);clip-path:polygon(0 0,35% 0,100% 65%,65% 100%);box-shadow:0 0 0 2px #44250f}
-  .loyal-cursor-dot.is-hovering{transform:translate(-5px,-4px) rotate(5deg) scale(1.2);filter:drop-shadow(0 0 5px #bff8ff) drop-shadow(0 0 12px rgba(45,190,255,.95))}
-  .loyal-cursor-dot.is-pressed{transform:translate(-5px,-4px) rotate(-20deg) scale(.82)}
+  .loyal-cursor-dot{position:fixed;left:0;top:0;width:23px;height:31px;pointer-events:none;z-index:10000;opacity:0;transform:translate(-3px,-2px) rotate(-8deg);transition:opacity .16s ease,transform .2s cubic-bezier(.2,.8,.2,1),filter .2s ease;filter:drop-shadow(0 0 3px rgba(var(--accent-rgb),.95)) drop-shadow(0 0 9px rgba(var(--accent-rgb),.5));will-change:left,top,transform}
+  .loyal-cursor-dot::before{content:"";position:absolute;inset:0;background:linear-gradient(145deg,#fff 0%,var(--accent2) 25%,var(--accent) 68%,color-mix(in srgb,var(--accent) 55%,#111 45%) 100%);clip-path:polygon(0 0,100% 67%,60% 70%,78% 100%,63% 100%,43% 76%,20% 98%)}
+  .loyal-cursor-dot::after{content:"";position:absolute;left:4px;top:5px;width:7px;height:13px;background:linear-gradient(180deg,#fff,rgba(255,255,255,.25));clip-path:polygon(0 0,100% 68%,40% 100%);opacity:.95}
+  .loyal-cursor-dot.is-hovering{transform:translate(-3px,-2px) rotate(2deg) scale(1.18);filter:drop-shadow(0 0 5px #fff) drop-shadow(0 0 10px rgba(var(--accent-rgb),.9)) drop-shadow(0 0 20px rgba(var(--accent-rgb),.55))}
+  .loyal-cursor-dot.is-pressed{transform:translate(-3px,-2px) rotate(-14deg) scale(.78)}
   .loyal-click-ripple{position:fixed;left:0;top:0;width:18px;height:18px;border:1.5px solid var(--accent2);border-radius:50%;background:rgba(var(--accent-rgb),.10);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);box-shadow:0 0 8px rgba(var(--accent-rgb),.8),0 0 22px rgba(var(--accent-rgb),.35);animation:loyalClickRing .65s cubic-bezier(.16,1,.3,1) forwards}
   .loyal-click-ripple::before{content:"";position:absolute;inset:-5px;border:1px solid var(--accent);border-radius:5px;transform:rotate(45deg);animation:loyalClickDiamond .65s ease-out forwards}
-  .loyal-click-ripple::after{content:"✧";position:absolute;inset:-8px;display:grid;place-items:center;color:var(--accent2);font-size:13px;text-shadow:0 0 10px var(--accent);animation:loyalClickStar .55s ease-out forwards}
+  .loyal-click-ripple::after{content:"✦";position:absolute;inset:-8px;display:grid;place-items:center;color:var(--accent2);font-size:13px;text-shadow:0 0 10px var(--accent);animation:loyalClickStar .55s ease-out forwards}
   @keyframes loyalClickRing{0%{opacity:1;transform:translate(-50%,-50%) scale(.35)}100%{opacity:0;transform:translate(-50%,-50%) scale(3.8)}}
   @keyframes loyalClickDiamond{0%{opacity:1;transform:rotate(45deg) scale(.5)}100%{opacity:0;transform:rotate(135deg) scale(2.5)}}
   @keyframes loyalClickStar{0%{opacity:1;transform:scale(.4) rotate(0)}100%{opacity:0;transform:scale(2.4) rotate(100deg)}}
 }
 @media (hover:none),(pointer:coarse){.loyal-cursor-glow,.loyal-cursor-dot,.loyal-click-ripple{display:none!important}}
 @media(prefers-reduced-motion:reduce){.loyal-cursor-dot,.loyal-cursor-glow{transition:none!important}}
+
 
 /* =========================
    NEW LOYAL FEATURES
@@ -2970,12 +2970,12 @@ body[data-theme="purple"] .portfolio-lightbox,body[data-theme="blue"] .portfolio
 
 
 /* Theme launcher + picker */
-#themeLauncher{position:fixed;left:22px;bottom:24px;z-index:4200;min-width:148px;height:48px;padding:0 15px;display:flex;align-items:center;justify-content:center;gap:9px;border-radius:16px;border:1px solid rgba(var(--accent-rgb),.5);background:rgba(15,15,18,.9);color:#fff;font:700 13px inherit;cursor:pointer;backdrop-filter:blur(14px);box-shadow:0 8px 28px rgba(0,0,0,.32),0 0 24px rgba(var(--accent-rgb),.12);transition:.25s ease}
-#themeLauncher .theme-launcher-icon{font-size:21px;line-height:1;color:var(--accent2);filter:drop-shadow(0 0 7px rgba(var(--accent-rgb),.55))}
+#themeLauncher{position:fixed;left:22px;bottom:24px;z-index:50000;min-width:164px;height:52px;padding:0 18px;display:flex;align-items:center;justify-content:center;gap:9px;border-radius:16px;border:1px solid rgba(var(--accent-rgb),.5);background:rgba(15,15,18,.9);color:#fff;font:700 13px inherit;cursor:pointer;backdrop-filter:blur(14px);box-shadow:0 8px 28px rgba(0,0,0,.32),0 0 24px rgba(var(--accent-rgb),.12);transition:.25s ease}
+#themeLauncher .theme-launcher-icon{display:inline-flex;align-items:center;justify-content:center;min-width:28px;min-height:28px;font-size:22px;line-height:1;color:var(--accent2);filter:drop-shadow(0 0 7px rgba(var(--accent-rgb),.55))}
 #themeLauncher .theme-launcher-label{white-space:nowrap;letter-spacing:-.2px}
 #themeLauncher:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 12px 34px rgba(var(--accent-rgb),.22)}
-#themePanel{position:fixed;left:22px;bottom:82px;z-index:4201;width:min(300px,calc(100vw - 32px));padding:16px;border:1px solid rgba(var(--accent-rgb),.38);border-radius:20px;background:rgba(12,11,17,.96);backdrop-filter:blur(22px);box-shadow:0 24px 80px rgba(0,0,0,.55);opacity:0;visibility:hidden;transform:translateY(12px) scale(.97);transform-origin:bottom left;transition:.25s ease}
-#themePanel.open{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
+#themePanel{position:fixed;left:22px;bottom:88px;z-index:50001;pointer-events:none;width:min(300px,calc(100vw - 32px));padding:16px;border:1px solid rgba(var(--accent-rgb),.38);border-radius:20px;background:rgba(12,11,17,.96);backdrop-filter:blur(22px);box-shadow:0 24px 80px rgba(0,0,0,.55);opacity:0;visibility:hidden;transform:translateY(12px) scale(.97);transform-origin:bottom left;transition:.25s ease}
+#themePanel.open{opacity:1;visibility:visible;transform:translateY(0) scale(1);pointer-events:auto}
 .theme-panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;color:#fff;font-weight:800}
 #themePanelClose{border:0;background:transparent;color:#aaa;font-size:22px;cursor:pointer}
 .theme-option{width:100%;display:flex;align-items:center;gap:12px;padding:11px;margin-top:8px;border:1px solid #34303c;border-radius:13px;background:#17141e;color:#eee;text-align:right;cursor:pointer;transition:.2s ease;font:inherit}
@@ -3015,7 +3015,7 @@ body[data-theme="purple"] .portfolio-lightbox,body[data-theme="blue"] .portfolio
 .preloader-line{height:3px;width:150px;margin:14px auto 0;border-radius:9px;background:linear-gradient(90deg,transparent,var(--accent),transparent);background-size:200% 100%;animation:preloaderLine 1s linear infinite}
 @keyframes preloaderPulse{50%{transform:scale(1.07);box-shadow:0 0 65px rgba(var(--accent-rgb),.3)}}
 @keyframes preloaderLine{to{background-position:-200% 0}}
-@media(max-width:600px){#themeLauncher{left:14px;bottom:16px;min-width:132px;height:44px;padding:0 12px}.loyal-live-stats{gap:7px}.loyal-stat{min-width:calc(50% - 5px);padding:10px}.loyal-stat strong{font-size:19px}}
+@media(max-width:600px){#themeLauncher{left:14px;bottom:16px;min-width:148px;height:48px;padding:0 14px}.loyal-live-stats{gap:7px}.loyal-stat{min-width:calc(50% - 5px);padding:10px}.loyal-stat strong{font-size:19px}}
 @media(prefers-reduced-motion:reduce){#loyalPreloader,.theme-option,.portfolio-card{transition:none!important;animation:none!important}}
 
 </style>
@@ -3025,7 +3025,7 @@ body[data-theme="purple"] .portfolio-lightbox,body[data-theme="blue"] .portfolio
 
 <div id="loyalPreloader" aria-hidden="true"><div class="preloader-inner"><div class="preloader-mark">LG</div><div class="preloader-name">LOYAL GRAPHIC</div><div class="preloader-line"></div></div></div>
 <div class="loyal-cursor-glow" aria-hidden="true"></div><div class="loyal-cursor-dot" aria-hidden="true"></div>
-<button id="themeLauncher" type="button" aria-label="تغییر تم سایت" aria-expanded="false" title="تغییر تم"><span class="theme-launcher-icon" aria-hidden="true">🎨</span><span class="theme-launcher-label">تغییر تم</span></button>
+<button id="themeLauncher" type="button" aria-label="تغییر تم سایت" aria-expanded="false" aria-controls="themePanel" title="تغییر تم"><span class="theme-launcher-icon" aria-hidden="true">🎨</span><span class="theme-launcher-label">تغییر تم</span></button>
 <div id="themePanel" role="dialog" aria-label="انتخاب تم" aria-hidden="true">
   <div class="theme-panel-head"><span>ظاهر سایت</span><button id="themePanelClose" type="button" aria-label="بستن">×</button></div>
   <button class="theme-option" type="button" data-theme-choice="orange" style="--swatch:#ff6a00" aria-pressed="true"><span class="theme-swatch"></span><span><b>نارنجی کلاسیک</b><small>تم اصلی LOYAL GRAPHIC</small></span></button>
@@ -5282,7 +5282,9 @@ document.addEventListener(
   themeClose?.addEventListener('click', () => toggleThemePanel(false));
   themeOptions.forEach(button => button.addEventListener('click', () => setTheme(button.dataset.themeChoice)));
   document.addEventListener('click', event => {
-    if (themePanel?.classList.contains('open') && !themePanel.contains(event.target) && event.target !== themeLauncher) toggleThemePanel(false);
+    const clickedLauncher = event.target instanceof Element && event.target.closest('#themeLauncher');
+    const clickedInsidePanel = event.target instanceof Node && themePanel?.contains(event.target);
+    if (themePanel?.classList.contains('open') && !clickedInsidePanel && !clickedLauncher) toggleThemePanel(false);
   });
 
   // Fast, non-blocking branded loader. Never waits indefinitely for external images.
@@ -5349,6 +5351,8 @@ document.addEventListener(
   }, {passive:true});
   updateScrollProgress();
 
+  // Use the browser/OS native pointer for accurate hit-testing.
+
   // Premium theme-aware custom cursor and click effects (desktop only).
   const cursorGlow = document.querySelector('.loyal-cursor-glow');
   const cursorDot = document.querySelector('.loyal-cursor-dot');
@@ -5392,6 +5396,7 @@ document.addEventListener(
       cursorGlow.style.opacity = cursorDot.style.opacity = '1';
     });
   }
+
 
   // Zoom toggle for the existing portfolio lightbox.
   const zoomButton = document.getElementById('lightboxZoom');
