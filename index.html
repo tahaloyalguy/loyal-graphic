@@ -3701,7 +3701,7 @@ h1,h2,h3,.section-head h2,.hero-copy h2,.tag,.eyebrow{font-family:"Estedad","Vaz
         type="button"
         aria-label="قبلی"
     >
-        ›
+        <svg class="lightbox-arrow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4.5 6.5 12l8 7.5"/></svg>
     </button>
 
     <div class="lightbox-content">
@@ -3729,7 +3729,7 @@ h1,h2,h3,.section-head h2,.hero-copy h2,.tag,.eyebrow{font-family:"Estedad","Vaz
         type="button"
         aria-label="بعدی"
     >
-        ‹
+        <svg class="lightbox-arrow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 4.5 8 7.5-8 7.5"/></svg>
     </button>
 
 </div>
@@ -4610,7 +4610,26 @@ if (lightboxPrev){
 }
 
 
+// Keep navigation controls reliably clickable above the lightbox image.
+if (lightboxPrev) {
+    lightboxPrev.setAttribute('aria-label', 'نمایش نمونه‌کار قبلی');
+    lightboxPrev.title = 'نمونه‌کار قبلی';
+}
+if (lightboxNext) {
+    lightboxNext.setAttribute('aria-label', 'نمایش نمونه‌کار بعدی');
+    lightboxNext.title = 'نمونه‌کار بعدی';
+}
+
 if (portfolioLightbox){
+
+    portfolioLightbox.addEventListener(
+        "keydown", event => {
+            if (!portfolioLightbox.classList.contains('open')) return;
+            if (event.key === 'ArrowLeft') { event.preventDefault(); nextPortfolio(); }
+            else if (event.key === 'ArrowRight') { event.preventDefault(); previousPortfolio(); }
+            else if (event.key === 'Escape') { event.preventDefault(); closePortfolioLightbox(); }
+        }
+    );
 
     portfolioLightbox.addEventListener(
         "click",
@@ -6276,3 +6295,38 @@ testSupabase();
 
 </body>
 </html>
+
+<style id="loyal-v6-navigation-benefits">
+/* Premium lightbox navigation: clear iconography + reliable hit targets */
+#lightboxPrev, #lightboxNext {
+  position:absolute !important; z-index:1005 !important; pointer-events:auto !important;
+  display:grid !important; place-items:center !important; width:54px !important; height:54px !important;
+  padding:0 !important; border-radius:18px !important;
+  background:linear-gradient(145deg,rgba(28,28,32,.96),rgba(10,10,12,.94)) !important;
+  border:1px solid rgba(var(--accent-rgb),.38) !important;
+  box-shadow:0 8px 28px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.07),0 0 20px rgba(var(--accent-rgb),.08) !important;
+  color:var(--accent2) !important; cursor:pointer !important; touch-action:manipulation !important;
+  -webkit-tap-highlight-color:transparent; transition:transform .2s ease,background .2s ease,border-color .2s ease,box-shadow .2s ease !important;
+}
+#lightboxPrev {right:24px !important;left:auto !important}
+#lightboxNext {left:24px !important;right:auto !important}
+.lightbox-arrow-icon {width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+#lightboxPrev:hover,#lightboxNext:hover {background:linear-gradient(145deg,rgba(var(--accent-rgb),.24),rgba(18,18,21,.98)) !important;border-color:var(--accent) !important;box-shadow:0 10px 30px rgba(0,0,0,.48),0 0 24px rgba(var(--accent-rgb),.2) !important;transform:translateY(-50%) scale(1.06) !important}
+#lightboxPrev:active,#lightboxNext:active {transform:translateY(-50%) scale(.94) !important}
+#lightboxPrev:focus-visible,#lightboxNext:focus-visible {outline:3px solid var(--accent2);outline-offset:4px}
+@media(max-width:768px){#lightboxPrev{right:12px !important;left:auto !important}#lightboxNext{left:12px !important;right:auto !important}#lightboxPrev,#lightboxNext{width:48px !important;height:48px !important;border-radius:15px !important}}
+
+/* WHY LOYAL: refined benefit cards */
+#about .benefits {gap:15px;align-items:stretch}
+#about .benefit {position:relative;isolation:isolate;min-height:132px;gap:16px;align-items:flex-start;padding:21px 19px;overflow:hidden;border:1px solid rgba(255,255,255,.075);border-radius:17px;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.012) 58%,rgba(var(--accent-rgb),.035));box-shadow:inset 0 1px 0 rgba(255,255,255,.035);transition:transform .28s ease,border-color .28s ease,background .28s ease,box-shadow .28s ease}
+#about .benefit:before {content:"";position:absolute;inset:0 auto 0 0;width:2px;background:linear-gradient(180deg,transparent,var(--accent),transparent);opacity:.55;z-index:-1}
+#about .benefit:after {content:"";position:absolute;width:110px;height:110px;left:-55px;bottom:-65px;border-radius:50%;background:rgba(var(--accent-rgb),.10);filter:blur(28px);opacity:.45;z-index:-1;transition:opacity .28s ease}
+#about .benefit .icon {display:grid;place-items:center;flex:0 0 46px;width:46px;height:46px;margin:0;border:1px solid rgba(var(--accent-rgb),.28);border-radius:14px;background:linear-gradient(145deg,rgba(var(--accent-rgb),.17),rgba(255,255,255,.025));color:var(--accent2);font-size:21px;box-shadow:0 5px 18px rgba(var(--accent-rgb),.08)}
+#about .benefit h3 {margin:2px 0 8px;font-size:14px;transition:color .25s ease}
+#about .benefit p {margin:0;color:var(--muted);font-size:12px;line-height:1.95}
+#about .benefit:hover {transform:translateY(-5px);border-color:rgba(var(--accent-rgb),.38);background:linear-gradient(145deg,rgba(var(--accent-rgb),.09),rgba(255,255,255,.018) 65%);box-shadow:0 14px 32px rgba(0,0,0,.2),0 0 24px rgba(var(--accent-rgb),.055)}
+#about .benefit:hover .icon {border-color:rgba(var(--accent-rgb),.55);box-shadow:0 0 22px rgba(var(--accent-rgb),.16)}
+#about .benefit:hover h3 {color:var(--accent2)}
+@media(max-width:768px){#about .benefits{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}#about .benefit{min-height:145px;padding:15px 13px;gap:11px}#about .benefit .icon{flex-basis:39px;width:39px;height:39px;border-radius:12px;font-size:18px}#about .benefit h3{font-size:12px}#about .benefit p{font-size:11px}}
+@media(max-width:390px){#about .benefits{grid-template-columns:1fr}#about .benefit{min-height:0}}
+</style>
