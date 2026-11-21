@@ -1851,84 +1851,24 @@ footer{
 
 }
 
-/* ===== LOYAL CUSTOM CURSOR ===== */
-/* Native pointer is hidden only on desktop devices that use a precise mouse. */
+/* ===== LOYAL CUSTOM CURSOR — PREMIUM V2 ===== */
 @media (hover:hover) and (pointer:fine){
-  html, body, body *{cursor:none !important;}
-  .loyal-cursor-glow{
-    position:fixed;width:190px;height:190px;border-radius:50%;
-    background:radial-gradient(circle,rgba(255,106,0,.14) 0%,rgba(255,106,0,.045) 38%,transparent 72%);
-    pointer-events:none;z-index:9998;transform:translate(-50%,-50%);
-    opacity:0;transition:opacity .22s ease;filter:blur(2px);
-  }
-  .loyal-cursor-dot{
-    position:fixed;left:0;top:0;width:34px;height:42px;
-    pointer-events:none;z-index:10000;opacity:0;
-    transform:translate(-5px,-4px) rotate(-7deg);
-    transition:opacity .18s ease,filter .18s ease,transform .18s ease;
-    filter:drop-shadow(0 0 7px rgba(255,106,0,.7)) drop-shadow(0 0 18px rgba(255,106,0,.25));
-  }
-  /* A sharp, faceted pointer instead of the old plain dot. */
-  .loyal-cursor-dot::before{
-    content:"";position:absolute;inset:0;
-    background:linear-gradient(145deg,#fff1c5 0%,#ffb52e 34%,#ff6a00 72%,#a83200 100%);
-    clip-path:polygon(2% 0,96% 68%,57% 72%,76% 100%,61% 100%,43% 76%,22% 98%);
-    border:1px solid rgba(255,255,255,.9);
-  }
-  .loyal-cursor-dot::after{
-    content:"";position:absolute;left:7px;top:7px;width:8px;height:15px;
-    background:rgba(255,255,255,.82);clip-path:polygon(0 0,100% 68%,45% 100%);
-    opacity:.9;
-  }
-  .loyal-cursor-dot.is-hovering{
-    transform:translate(-5px,-4px) rotate(0) scale(1.16);
-    filter:drop-shadow(0 0 9px rgba(255,255,255,.6)) drop-shadow(0 0 22px rgba(255,106,0,.65));
-  }
-  .loyal-cursor-dot.is-pressed{transform:translate(-5px,-4px) scale(.82);}
-  .loyal-click-ripple{
-    position:fixed;width:18px;height:18px;border:1.5px solid rgba(255,106,0,.9);
-    border-radius:5px;pointer-events:none;z-index:9999;
-    transform:translate(-50%,-50%) rotate(45deg) scale(.7);
-    animation:loyalRipple .62s ease-out forwards;
-  }
-  @keyframes loyalRipple{
-    0%{opacity:1;transform:translate(-50%,-50%) rotate(45deg) scale(.7)}
-    100%{opacity:0;transform:translate(-50%,-50%) rotate(135deg) scale(3.8)}
-  }
+  html,html *,body,body *{cursor:none!important}
+  .loyal-cursor-glow{position:fixed;left:0;top:0;width:115px;height:115px;border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:0;background:radial-gradient(circle,rgba(var(--accent-rgb),.20) 0%,rgba(var(--accent-rgb),.08) 35%,transparent 72%);filter:blur(5px);transition:opacity .2s ease;will-change:left,top}
+  .loyal-cursor-dot{position:fixed;left:0;top:0;width:25px;height:34px;pointer-events:none;z-index:10000;opacity:0;transform:translate(-3px,-2px) rotate(-8deg);transition:opacity .16s ease,transform .2s cubic-bezier(.2,.8,.2,1),filter .2s ease;filter:drop-shadow(0 0 3px rgba(var(--accent-rgb),.95)) drop-shadow(0 0 9px rgba(var(--accent-rgb),.5));will-change:left,top,transform}
+  .loyal-cursor-dot::before{content:"";position:absolute;inset:0;background:linear-gradient(145deg,#fff 0%,var(--accent2) 25%,var(--accent) 68%,color-mix(in srgb,var(--accent) 55%,#111 45%) 100%);clip-path:polygon(0 0,100% 67%,60% 70%,78% 100%,63% 100%,43% 76%,20% 98%)}
+  .loyal-cursor-dot::after{content:"";position:absolute;left:4px;top:5px;width:7px;height:13px;background:linear-gradient(180deg,#fff,rgba(255,255,255,.25));clip-path:polygon(0 0,100% 68%,40% 100%);opacity:.95}
+  .loyal-cursor-dot.is-hovering{transform:translate(-3px,-2px) rotate(2deg) scale(1.18);filter:drop-shadow(0 0 5px #fff) drop-shadow(0 0 10px rgba(var(--accent-rgb),.9)) drop-shadow(0 0 20px rgba(var(--accent-rgb),.55))}
+  .loyal-cursor-dot.is-pressed{transform:translate(-3px,-2px) rotate(-14deg) scale(.78)}
+  .loyal-click-ripple{position:fixed;left:0;top:0;width:18px;height:18px;border:1.5px solid var(--accent2);border-radius:50%;background:rgba(var(--accent-rgb),.10);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);box-shadow:0 0 8px rgba(var(--accent-rgb),.8),0 0 22px rgba(var(--accent-rgb),.35);animation:loyalClickRing .65s cubic-bezier(.16,1,.3,1) forwards}
+  .loyal-click-ripple::before{content:"";position:absolute;inset:-5px;border:1px solid var(--accent);border-radius:5px;transform:rotate(45deg);animation:loyalClickDiamond .65s ease-out forwards}
+  .loyal-click-ripple::after{content:"✦";position:absolute;inset:-8px;display:grid;place-items:center;color:var(--accent2);font-size:13px;text-shadow:0 0 10px var(--accent);animation:loyalClickStar .55s ease-out forwards}
+  @keyframes loyalClickRing{0%{opacity:1;transform:translate(-50%,-50%) scale(.35)}100%{opacity:0;transform:translate(-50%,-50%) scale(3.8)}}
+  @keyframes loyalClickDiamond{0%{opacity:1;transform:rotate(45deg) scale(.5)}100%{opacity:0;transform:rotate(135deg) scale(2.5)}}
+  @keyframes loyalClickStar{0%{opacity:1;transform:scale(.4) rotate(0)}100%{opacity:0;transform:scale(2.4) rotate(100deg)}}
 }
-@media (hover:none), (pointer:coarse){
-  .loyal-cursor-glow,.loyal-cursor-dot{display:none;}
-}
-
-.loyal-click-ripple{
-    position:fixed;
-    width:14px;
-    height:14px;
-    border:2px solid rgba(255,106,0,.8);
-    border-radius:50%;
-    pointer-events:none;
-    z-index:9999;
-    transform:translate(-50%,-50%) scale(1);
-    animation:loyalRipple .65s ease-out forwards;
-}
-
-@keyframes loyalRipple{
-    0%{
-        opacity:1;
-        transform:translate(-50%,-50%) scale(1);
-    }
-    100%{
-        opacity:0;
-        transform:translate(-50%,-50%) scale(5);
-    }
-}
-
-@media (hover:none), (pointer:coarse){
-    .loyal-cursor-glow,
-    .loyal-cursor-dot{
-        display:none;
-    }
-}
+@media (hover:none),(pointer:coarse){.loyal-cursor-glow,.loyal-cursor-dot,.loyal-click-ripple{display:none!important}}
+@media(prefers-reduced-motion:reduce){.loyal-cursor-dot,.loyal-cursor-glow{transition:none!important}}
 
 /* =========================
    NEW LOYAL FEATURES
@@ -3025,9 +2965,6 @@ body[data-theme="purple"] #loyalToast,body[data-theme="blue"] #loyalToast{
 body[data-theme="purple"] .portfolio-lightbox,body[data-theme="blue"] .portfolio-lightbox{
   background:radial-gradient(circle at 50% 45%,rgba(var(--accent-rgb),.12),transparent 40%),rgba(3,3,3,.91);
 }
-body[data-theme="purple"] .loyal-cursor-glow,body[data-theme="blue"] .loyal-cursor-glow{background:radial-gradient(circle,rgba(var(--accent-rgb),.15) 0%,rgba(var(--accent-rgb),.05) 38%,transparent 70%)}
-body[data-theme="purple"] .loyal-cursor-dot,body[data-theme="blue"] .loyal-cursor-dot{background:var(--accent2);box-shadow:0 0 10px rgba(var(--accent-rgb),.8),0 0 24px rgba(var(--accent-rgb),.3)}
-body[data-theme="purple"] .loyal-click-ripple,body[data-theme="blue"] .loyal-click-ripple{border-color:rgba(var(--accent-rgb),.9)}
 .contacts a[data-copy]::after{content:"  ⧉";color:var(--accent2);font-size:12px;opacity:.75}
 
 
@@ -5409,21 +5346,24 @@ document.addEventListener(
   }, {passive:true});
   updateScrollProgress();
 
-  // Theme-aware custom arrow cursor, hover feedback and click ripple (desktop only).
+  // Premium theme-aware custom cursor and click effects (desktop only).
   const cursorGlow = document.querySelector('.loyal-cursor-glow');
   const cursorDot = document.querySelector('.loyal-cursor-dot');
-  if (!reduceMotion && cursorGlow && cursorDot && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+  const cursorMedia = window.matchMedia('(hover:hover) and (pointer:fine)');
+  if (cursorGlow && cursorDot && cursorMedia.matches) {
     let cursorFrame = 0;
-    const interactiveSelector = 'a,button,[role="button"],input,select,textarea,label,[data-copy],.filter,.theme-option';
+    const interactiveSelector = 'a,button,[role="button"],input,select,textarea,label,[data-copy],.filter,.theme-option,#themeLauncher,#themePanel';
     window.addEventListener('pointermove', event => {
       if (cursorFrame) cancelAnimationFrame(cursorFrame);
       cursorFrame = requestAnimationFrame(() => {
-        cursorGlow.style.left = `${event.clientX}px`;
-        cursorGlow.style.top = `${event.clientY}px`;
-        cursorDot.style.left = `${event.clientX}px`;
-        cursorDot.style.top = `${event.clientY}px`;
+        const x = event.clientX, y = event.clientY;
+        cursorGlow.style.left = `${x}px`;
+        cursorGlow.style.top = `${y}px`;
+        cursorDot.style.left = `${x}px`;
+        cursorDot.style.top = `${y}px`;
         cursorGlow.style.opacity = cursorDot.style.opacity = '1';
         cursorDot.classList.toggle('is-hovering', !!event.target.closest?.(interactiveSelector));
+        cursorFrame = 0;
       });
     }, {passive:true});
     document.addEventListener('pointerdown', event => {
@@ -5436,10 +5376,17 @@ document.addEventListener(
       document.body.appendChild(ripple);
       setTimeout(() => ripple.remove(), 700);
     }, {passive:true});
-    window.addEventListener('pointerup', () => cursorDot.classList.remove('is-pressed'), {passive:true});
-    document.addEventListener('pointerleave', () => {
-      cursorGlow.style.opacity = cursorDot.style.opacity = '0';
-      cursorDot.classList.remove('is-hovering','is-pressed');
+    const releaseCursor = () => cursorDot.classList.remove('is-pressed');
+    window.addEventListener('pointerup', releaseCursor, {passive:true});
+    window.addEventListener('pointercancel', releaseCursor, {passive:true});
+    document.addEventListener('pointerleave', event => {
+      if (event.relatedTarget === null) {
+        cursorGlow.style.opacity = cursorDot.style.opacity = '0';
+        cursorDot.classList.remove('is-hovering','is-pressed');
+      }
+    });
+    document.addEventListener('pointerenter', () => {
+      cursorGlow.style.opacity = cursorDot.style.opacity = '1';
     });
   }
 
