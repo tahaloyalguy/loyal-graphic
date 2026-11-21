@@ -2946,6 +2946,15 @@ body[data-theme="blue"]{
   --accent:#49a7ff;--accent2:#9cdbff;--accent-rgb:73,167,255;
   --theme-glow:rgba(35,125,255,.19);
 }
+/* Keep root-level UI (scrollbar, text selection and browser-level accents) in sync too. */
+html[data-theme="purple"]{
+  --accent:#a66bff;--accent2:#d2aaff;--accent-rgb:166,107,255;
+  --theme-glow:rgba(135,65,255,.20);
+}
+html[data-theme="blue"]{
+  --accent:#49a7ff;--accent2:#9cdbff;--accent-rgb:73,167,255;
+  --theme-glow:rgba(35,125,255,.19);
+}
 body[data-theme="purple"] .btn.primary,
 body[data-theme="blue"] .btn.primary,
 body[data-theme="purple"] .nav-cta,
@@ -5772,8 +5781,14 @@ document.addEventListener(
 
   function setTheme(theme, announce = true) {
     if (!validThemes.includes(theme)) theme = 'orange';
-    if (theme === 'orange') body.removeAttribute('data-theme');
-    else body.dataset.theme = theme;
+    const root = document.documentElement;
+    if (theme === 'orange') {
+      body.removeAttribute('data-theme');
+      root.removeAttribute('data-theme');
+    } else {
+      body.dataset.theme = theme;
+      root.dataset.theme = theme;
+    }
     try { localStorage.setItem('loyalGraphicTheme', theme); } catch (_) {}
     themeOptions.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.themeChoice === theme)));
     if (announce && typeof showLoyalToast === 'function') {
