@@ -4761,6 +4761,58 @@ function setOrderFormState(isOpen, message, stateClass = "") {
     }
 }
 
+// دریافت وضعیت واقعی پذیرش سفارش از Supabase؛ در صورت خطا، لودینگ بی‌نهایت نمی‌ماند.
+async function loadPublicOrderStatus() {
+    const statusText = document.getElementById("orderStatusText");
+    const statusDot = document.getElementById("orderStatusDot");
+
+    try {
+        const { data, error } = await supabaseClient
+            .from("order_status")
+            .select("is_open")
+            .limit(1)
+            .maybeSingle();
+
+        if (error) throw error;
+        if (!data) throw new Error("هیچ رکوردی در جدول order_status وجود ندارد.");
+
+        const isOpen = data.is_open === true;
+
+        if (statusText) {
+            statusText.textContent = isOpen
+                ? "در حال حاضر سفارش جدید پذیرفته می‌شود"
+                : "پذیرش سفارش جدید موقتاً بسته است";
+        }
+
+        if (statusDot) {
+            statusDot.style.background = isOpen ? "#39d353" : "#ff5b5b";
+            statusDot.style.boxShadow = isOpen
+                ? "0 0 10px rgba(57,211,83,.65)"
+                : "0 0 10px rgba(255,91,91,.55)";
+        }
+
+        setOrderFormState(
+            isOpen,
+            isOpen
+                ? "پذیرش سفارش فعاله؛ می‌تونی درخواست جدید ثبت کنی."
+                : "در حال حاضر پذیرش سفارش بسته است. لطفاً بعداً دوباره بررسی کن.",
+            isOpen ? "is-open" : "is-closed"
+        );
+    } catch (error) {
+        console.error("Order status load error:", error);
+        if (statusText) statusText.textContent = "وضعیت سفارش فعلاً در دسترس نیست";
+        if (statusDot) {
+            statusDot.style.background = "#ff9b4a";
+            statusDot.style.boxShadow = "0 0 10px rgba(255,155,74,.45)";
+        }
+        setOrderFormState(
+            null,
+            "ارتباط با سرور وضعیت سفارش برقرار نشد. لطفاً کمی بعد دوباره بررسی کن.",
+            "is-error"
+        );
+    }
+}
+
 if (orderForm) {
     setOrderFormState(null, "در حال بررسی وضعیت پذیرش سفارش...");
 
@@ -4833,6 +4885,21 @@ if (orderForm) {
     });
 }
 
+// دریافت اولیه وضعیت و همگام‌سازی زنده با تغییرات پنل مدیریت
+loadPublicOrderStatus();
+
+try {
+    supabaseClient
+        .channel("public-order-status")
+        .on(
+            "postgres_changes",
+            { event: "*", schema: "public", table: "order_status" },
+            loadPublicOrderStatus
+        )
+        .subscribe();
+} catch (error) {
+    console.warn("Realtime order status is unavailable:", error);
+}
 
 
 /* =========================
@@ -6008,7 +6075,7 @@ testSupabase();
     set('.hero-copy h2',value.heroSubtitle);set('.hero-copy > p',value.heroDescription);
     const heroButtons=document.querySelectorAll('.hero-copy .actions .btn');if(heroButtons[0]&&value.heroPrimary)heroButtons[0].textContent=value.heroPrimary;if(heroButtons[1]&&value.heroSecondary)heroButtons[1].textContent=value.heroSecondary;
     set('#services .section-head h2',value.servicesTitle);set('#services .section-head p',value.servicesIntro);
-    const servicesGrid=$('servicesGrid');if(servicesGrid&&Array.isArray(value.services)){servicesGrid.innerHTML='';value.services.forEach((service,index)=>{const card=document.createElement('article');card.className='card reveal';const number=document.createElement('div');number.className='icon';number.textContent=String(index+1).padStart(2,'0');const title=document.createElement('h3');title.textContent=service.title||'';const desc=document.createElement('p');desc.textContent=service.description||'';card.append(number,title,desc);servicesGrid.append(card);});}
+    const servicesGrid=$('servicesGrid');if(servicesGrid&&Array.isArray(value.services)){servicesGrid.innerHTML='';value.services.forEach((service,index)=>{const card=document.createElement('article');card.className='card visible';const number=document.createElement('div');number.className='icon';number.textContent=String(index+1).padStart(2,'0');const title=document.createElement('h3');title.textContent=service.title||'';const desc=document.createElement('p');desc.textContent=service.description||'';card.append(number,title,desc);servicesGrid.append(card);});}
     set('#about .section-head h2',value.aboutTitle);set('#about .section-head p',value.aboutIntro);
     set('#contact h2',value.ctaTitle);set('#contact p',value.ctaDescription);
     const logo=document.querySelector('.hero-logo img');if(logo&&value.logoUrl)logo.src=value.logoUrl;
@@ -6069,7 +6136,12 @@ testSupabase();
     $('adminStatTheme').textContent=({orange:'نارنجی',purple:'بنفش',blue:'آبی'})[settings.defaultTheme]||'نارنجی';
   }
   // Public read-only CMS data is optional until the one-time SQL setup is completed.
-  loadPublicSettings().then(loadPublicPortfolio);
+  // Settings load first so portfolio rendering receives the correct CMS feature flag.
+  loadPublicSettings()
+    .then(() => loadPublicPortfolio())
+    .catch(error => {
+      console.warn('Public site settings could not be loaded:', error);
+    });
 })();
 </script>
 
