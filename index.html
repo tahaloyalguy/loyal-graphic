@@ -452,6 +452,58 @@ section{
     font-size:12px;
 }
 
+/* ===== HERO SHOWCASE UPGRADE ===== */
+.hero-content{
+    max-width:var(--max);
+    display:grid;
+    grid-template-columns:1.02fr .98fr;
+    align-items:center;
+    gap:clamp(35px,6vw,82px);
+    text-align:right;
+}
+.hero-copy{position:relative;z-index:3;}
+.hero-brandline{display:flex;align-items:center;gap:14px;margin-bottom:22px;}
+.hero-brandline .hero-logo{flex:none;width:58px;height:58px;margin:0;border-radius:17px;}
+.hero-brandline .eyebrow{margin:0;}
+.hero-copy h1{font-size:clamp(42px,5.3vw,68px);margin-bottom:15px;}
+.hero-copy h2{margin:0 0 12px;max-width:650px;font-size:clamp(23px,2.8vw,35px);line-height:1.55;}
+.hero-copy p{max-width:620px;margin:0;font-size:15px;line-height:2.05;}
+.hero-copy .actions{justify-content:flex-start;}
+.hero-copy .hero-stats{justify-content:flex-start;margin-top:26px;}
+.hero-showcase{
+    min-height:475px;position:relative;isolation:isolate;display:grid;place-items:center;
+    direction:ltr;perspective:1000px;
+}
+.hero-showcase::before{
+    content:"";position:absolute;width:76%;aspect-ratio:1;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,106,0,.18),rgba(255,106,0,.035) 48%,transparent 72%);
+    filter:blur(14px);z-index:-2;
+}
+.showcase-orbit{position:absolute;border:1px solid rgba(255,106,0,.13);border-radius:50%;transform:rotate(-18deg);}
+.orbit-one{width:88%;height:70%;}
+.orbit-two{width:105%;height:86%;border-color:rgba(255,255,255,.055);transform:rotate(24deg);}
+.showcase-label{position:absolute;top:2%;left:5%;font:600 10px "Space Grotesk";letter-spacing:2px;color:#aaa;display:flex;align-items:center;gap:9px;}
+.showcase-label i{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px var(--accent);}
+.showcase-main{
+    position:relative;width:min(78%,420px);aspect-ratio:16/10;border:1px solid rgba(255,255,255,.17);
+    border-radius:19px;overflow:hidden;background:linear-gradient(145deg,#24201d,#0b0b0b);
+    box-shadow:0 30px 85px rgba(0,0,0,.58),0 0 45px rgba(255,106,0,.1);
+    transform:rotateY(-8deg) rotateZ(-4deg);z-index:2;
+}
+.showcase-main img,.showcase-small img{width:100%;height:100%;object-fit:cover;display:block;}
+.showcase-main::after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.7));pointer-events:none;}
+.showcase-index{position:absolute;bottom:13px;left:15px;z-index:1;font:600 10px "Space Grotesk";letter-spacing:1.5px;color:#fff;}
+.showcase-small{position:absolute;width:31%;aspect-ratio:4/3;border:1px solid rgba(255,255,255,.18);border-radius:13px;overflow:hidden;background:#171717;box-shadow:0 18px 45px rgba(0,0,0,.5);z-index:3;}
+.showcase-top{top:18%;right:0;transform:rotate(8deg);}
+.showcase-bottom{bottom:13%;left:1%;transform:rotate(-9deg);}
+.showcase-stamp{position:absolute;right:2%;bottom:7%;width:76px;height:76px;border-radius:50%;background:var(--accent);color:#090909;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;transform:rotate(12deg);z-index:4;box-shadow:0 10px 30px rgba(255,106,0,.25);}
+.showcase-stamp strong{font:800 25px "Space Grotesk";line-height:1;}
+.showcase-stamp span{font:700 7px/1.15 "Space Grotesk";text-align:center;letter-spacing:1px;}
+.showcase-caption{position:absolute;bottom:0;right:10%;display:flex;flex-direction:column;align-items:flex-end;gap:0;font:600 10px "Space Grotesk";letter-spacing:2px;color:#777;}
+.showcase-caption strong{font-size:15px;color:#eee;letter-spacing:2.5px;}
+.showcase-main.no-image,.showcase-small.no-image{background:radial-gradient(circle at 50% 35%,rgba(255,106,0,.2),transparent 48%),linear-gradient(135deg,#222,#090909);}
+.showcase-main.no-image::before,.showcase-small.no-image::before{content:"LOYAL GRAPHIC";position:absolute;inset:0;display:grid;place-items:center;color:#777;font:700 13px "Space Grotesk";letter-spacing:2px;}
+
 /* =========================
    CARDS
 ========================= */
@@ -822,6 +874,22 @@ section{
     background:var(--accent);
     color:#090909;
     border-color:var(--accent);
+}
+
+/* ===== PORTFOLIO PRESENTATION UPGRADE ===== */
+.portfolio{gap:20px;}
+.portfolio .work{height:auto;min-height:245px;aspect-ratio:16/10;border-radius:18px;}
+.work .overlay{left:13px;right:13px;bottom:13px;padding:14px 16px;}
+.work .overlay strong{font-size:15px;}
+.work .overlay small{font-size:10px;letter-spacing:.35px;color:var(--accent2)!important;}
+.work .overlay .work-description{display:block;margin-top:5px;color:#c2c2c2;font-size:11px;line-height:1.7;}
+.work:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
+.work-coming-soon{cursor:default;}
+.work-coming-soon .overlay{opacity:1;transform:none;}
+.work .placeholder{font-size:16px;letter-spacing:1px;color:#777;text-align:center;padding:20px;}
+@media (hover:none), (pointer:coarse){
+    .work .overlay{opacity:1;transform:none;}
+    .work::after{opacity:.9;}
 }
 
 /* =========================
@@ -1207,19 +1275,18 @@ footer{
     }
 }
 
-.hero-content > *{
+.hero-copy > *{
     opacity:0;
     transform:translateY(22px);
     animation:heroReveal .75s cubic-bezier(.2,.7,.2,1) forwards;
 }
-
-.hero-content .hero-logo{animation-delay:.08s}
-.hero-content .eyebrow{animation-delay:.16s}
-.hero-content h1{animation-delay:.24s}
-.hero-content h2{animation-delay:.32s}
-.hero-content p{animation-delay:.40s}
-.hero-content .actions{animation-delay:.48s}
-.hero-content .hero-stats{animation-delay:.56s}
+.hero-copy .hero-brandline{animation-delay:.08s}
+.hero-copy h1{animation-delay:.16s}
+.hero-copy h2{animation-delay:.24s}
+.hero-copy p{animation-delay:.32s}
+.hero-copy .actions{animation-delay:.40s}
+.hero-copy .hero-stats{animation-delay:.48s}
+.hero-showcase{opacity:0;animation:heroReveal .9s .22s cubic-bezier(.2,.7,.2,1) forwards;}
 
 /* =========================
    KEYFRAMES
@@ -1266,6 +1333,12 @@ footer{
 ========================= */
 
 @media(max-width:900px){
+
+    .hero-content{grid-template-columns:1fr;gap:25px;text-align:center;max-width:760px;}
+    .hero-copy .actions,.hero-copy .hero-stats{justify-content:center;}
+    .hero-copy p,.hero-copy h2{margin-left:auto;margin-right:auto;}
+    .hero-brandline{justify-content:center;}
+    .hero-showcase{width:min(100%,560px);min-height:390px;margin:0 auto;}
 
     .services{
         grid-template-columns:repeat(2,1fr);
@@ -1392,10 +1465,28 @@ footer{
     /* HERO */
 
     .hero{
-        min-height:720px;
-        padding-top:115px;
-        padding-bottom:70px;
+        min-height:0;
+        padding-top:112px;
+        padding-bottom:65px;
     }
+
+    .hero-content{gap:15px;}
+    .hero-brandline{gap:10px;margin-bottom:16px;}
+    .hero-brandline .hero-logo{width:48px;height:48px;border-radius:14px;}
+    .hero-copy h1{font-size:39px;}
+    .hero-copy h2{font-size:23px;line-height:1.6;margin-top:10px;}
+    .hero-copy p{font-size:13px;line-height:2;}
+    .hero-copy .actions{margin-top:20px;}
+    .hero-copy .hero-stats{margin-top:20px;}
+    .hero-showcase{min-height:285px;margin-top:4px;}
+    .showcase-main{width:76%;border-radius:14px;}
+    .showcase-small{border-radius:9px;}
+    .showcase-stamp{width:58px;height:58px;right:0;bottom:4%;}
+    .showcase-stamp strong{font-size:20px;}
+    .showcase-stamp span{font-size:6px;}
+    .showcase-caption{right:6%;bottom:-1%;font-size:8px;}
+    .showcase-caption strong{font-size:11px;}
+    .showcase-label{font-size:8px;top:0;}
 
     .hero-glow{
         width:300px;
@@ -2888,44 +2979,55 @@ footer{
 
 <div class="container hero-content">
 
-    <!-- لوگوی اصلی: images/logo.png -->
-    <div class="hero-logo">
-        <img src="images/logo.png" alt="Loyal Graphic">
+    <div class="hero-copy">
+        <div class="hero-brandline">
+            <div class="hero-logo">
+                <img src="images/logo.png" alt="Loyal Graphic">
+            </div>
+            <div class="eyebrow">
+                <i></i>
+                LOYAL GRAPHIC STUDIO
+            </div>
+        </div>
+
+        <h1>LOYAL <span>GRAPHIC</span></h1>
+
+        <h2>ایده‌ات را به یک تصویر ماندگار تبدیل کن.</h2>
+
+        <p>
+            طراحی گرافیک حرفه‌ای برای Minecraft، Gaming و تولیدکنندگان محتوا؛
+            با تمرکز روی جزئیات، هویت بصری و نتیجه‌ای که دیده شود.
+        </p>
+
+        <div class="actions">
+            <a class="btn primary" href="#portfolio">مشاهده نمونه‌کارها ↗</a>
+            <a class="btn secondary" href="#order">شروع پروژه</a>
+        </div>
+
+        <div class="hero-stats">
+            <span class="hero-stat">Minecraft</span>
+            <span class="hero-stat">Gaming</span>
+            <span class="hero-stat">Content Creators</span>
+            <span class="hero-stat">Creative Design</span>
+        </div>
     </div>
 
-    <div class="eyebrow">
-        <i></i>
-        LOYAL GRAPHIC STUDIO
-    </div>
-
-    <h1>
-        LOYAL <span>GRAPHIC</span>
-    </h1>
-
-    <h2>
-        ایده‌ات را به یک تصویر ماندگار تبدیل کن.
-    </h2>
-
-    <p>
-        طراحی گرافیک حرفه‌ای برای Minecraft، Gaming و تولیدکنندگان محتوا؛
-        با تمرکز روی جزئیات، هویت بصری و نتیجه‌ای که دیده شود.
-    </p>
-
-    <div class="actions">
-        <a class="btn primary" href="#portfolio">
-            مشاهده نمونه‌کارها ↗
-        </a>
-
-        <a class="btn secondary" href="#order">
-            شروع پروژه
-        </a>
-    </div>
-
-    <div class="hero-stats">
-        <span class="hero-stat">Minecraft</span>
-        <span class="hero-stat">Gaming</span>
-        <span class="hero-stat">Content Creators</span>
-        <span class="hero-stat">Creative Design</span>
+    <div class="hero-showcase" aria-label="پیش‌نمایش نمونه‌کارهای Loyal Graphic">
+        <div class="showcase-orbit orbit-one"></div>
+        <div class="showcase-orbit orbit-two"></div>
+        <div class="showcase-label"><i></i> SELECTED CREATIONS</div>
+        <div class="showcase-main">
+            <img src="images/portfolio-01.jpg" alt="نمونه طراحی تامنیل ماینکرفت" onerror="this.parentElement.classList.add('no-image')">
+            <span class="showcase-index">01 / THUMBNAIL</span>
+        </div>
+        <div class="showcase-small showcase-top">
+            <img src="images/portfolio-02.jpg" alt="نمونه دوم طراحی" loading="lazy" onerror="this.parentElement.classList.add('no-image')">
+        </div>
+        <div class="showcase-small showcase-bottom">
+            <img src="images/portfolio-07.jpg" alt="نمونه طراحی پروفایل ماینکرفت" loading="lazy" onerror="this.parentElement.classList.add('no-image')">
+        </div>
+        <div class="showcase-stamp"><strong>LG</strong><span>CREATIVE<br>STUDIO</span></div>
+        <div class="showcase-caption"><span>DESIGN THAT</span><strong>GETS NOTICED.</strong></div>
     </div>
 
 </div>
@@ -3632,7 +3734,7 @@ const portfolioItems = [
 
 {
     image:"",
-    title:"Channel Art",
+    title:"Channel Art — Coming Soon",
     category:"channel-art",
     description:"Professional channel art and banner design.",
     type:"Channel Art"
@@ -3653,53 +3755,62 @@ function renderPortfolio(filter="all"){
     filtered.forEach(item => {
 
         const el = document.createElement("article");
-
         el.className="card work portfolio-card";
+        el.tabIndex = 0;
+        el.setAttribute("role", "button");
+        el.setAttribute("aria-label", `نمایش ${item.title}`);
 
-        el.innerHTML=`
+        const img = document.createElement("img");
+        img.alt = item.title;
+        img.loading = "lazy";
+        if (item.image) img.src = item.image;
+        else img.style.display = "none";
+        img.addEventListener("error", () => {
+            img.style.display = "none";
+            placeholder.style.display = "grid";
+        }, { once: true });
 
-            <img
-                src="${item.image}"
-                alt="${item.title}"
-                loading="lazy"
-                onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"
-            >
+        const placeholder = document.createElement("div");
+        placeholder.className = "placeholder";
+        placeholder.style.display = item.image ? "none" : "grid";
+        placeholder.textContent = item.type || "LOYAL GRAPHIC";
 
-            <div
-                class="placeholder"
-                style="display:none"
-            >
-                ${item.type}
-            </div>
+        const overlay = document.createElement("div");
+        overlay.className = "overlay";
 
-            <div class="overlay">
+        const title = document.createElement("strong");
+        title.textContent = item.title;
 
-                <strong>${item.title}</strong>
+        const type = document.createElement("small");
+        type.textContent = item.type || item.category;
 
-                <br>
+        const description = document.createElement("span");
+        description.className = "work-description";
+        description.textContent = item.description || "طراحی اختصاصی در استودیوی Loyal Graphic";
 
-                <small style="color:#aaa">
-                    ${item.category}
-                </small>
+        overlay.append(title, type, description);
+        el.append(img, placeholder, overlay);
 
-            </div>
-        `;
+        if (item.image) {
+            const open = () => openPortfolioLightbox(portfolioItems.indexOf(item));
+            el.addEventListener("click", open);
+            el.addEventListener("keydown", event => {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    open();
+                }
+            });
+        } else {
+            el.classList.add("work-coming-soon");
+            el.removeAttribute("tabindex");
+            el.removeAttribute("role");
+            el.setAttribute("aria-disabled", "true");
+        }
 
-el.addEventListener("click", () => {
-
-    const index =
-        portfolioItems.indexOf(item);
-
-    openPortfolioLightbox(index);
-
-});
-
-grid.appendChild(el);
-
-});
+        grid.appendChild(el);
+    });
 
 }
-
 renderPortfolio();
 
 document.addEventListener("contextmenu", e => {
