@@ -1201,6 +1201,24 @@ footer{
     direction:ltr;
 }
 
+
+/* ===== PREMIUM FINAL CTA + FOOTER (v8) ===== */
+.final{position:relative;isolation:isolate;overflow:hidden;padding:clamp(68px,9vw,112px) 0;background:linear-gradient(180deg,transparent 0%,rgba(var(--accent-rgb),.045) 48%,transparent 100%)}
+.final::before{content:"";position:absolute;inset:12% 8%;border:1px solid rgba(var(--accent-rgb),.13);border-radius:30px;pointer-events:none;z-index:-1;mask-image:linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent)}
+.final-inner{position:relative;max-width:900px;padding:clamp(28px,5vw,58px) 22px;border:1px solid rgba(var(--accent-rgb),.2);border-radius:28px;background:linear-gradient(135deg,rgba(22,22,25,.92),rgba(9,9,11,.88));box-shadow:0 25px 90px rgba(0,0,0,.32),inset 0 1px rgba(255,255,255,.045);overflow:hidden}
+.final-inner::before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:linear-gradient(180deg,transparent,var(--accent),var(--accent2),transparent);opacity:.8}
+.final-topline{display:inline-flex;align-items:center;gap:9px;margin-bottom:24px;padding:8px 13px;border:1px solid rgba(var(--accent-rgb),.2);border-radius:999px;background:rgba(var(--accent-rgb),.07);color:var(--accent2);font:700 9px "Space Grotesk",sans-serif;letter-spacing:1.5px}
+.final-live-dot{width:7px;height:7px;border-radius:50%;background:var(--accent2);box-shadow:0 0 12px var(--accent);animation:finalPulse 1.8s ease-in-out infinite}
+@keyframes finalPulse{50%{opacity:.45;box-shadow:0 0 3px var(--accent)}}
+.final .eyebrow{justify-content:center}.final h2{max-width:760px;margin:12px auto 15px;font-size:clamp(29px,5vw,54px);line-height:1.5}.final p{max-width:610px;margin:0 auto;color:#aaa;line-height:2}.final-actions{justify-content:center;margin-top:27px;gap:12px}.final-actions .btn{min-width:174px}.final-footnote{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin-top:25px;color:#777;font-size:10px}.final-footnote span{color:var(--accent2)}
+.final-glow{position:absolute;width:260px;height:260px;border-radius:50%;filter:blur(90px);background:var(--accent);opacity:.09;pointer-events:none;z-index:-1}.final-glow-one{top:0;right:5%}.final-glow-two{bottom:0;left:8%;opacity:.055}
+.site-footer{position:relative;border-top:1px solid var(--line);padding:48px 0 18px;background:linear-gradient(180deg,rgba(255,255,255,.012),transparent);color:#888;font-size:12px}
+.footer-main{display:grid;grid-template-columns:minmax(220px,1.5fr) minmax(130px,.8fr) minmax(150px,.8fr);gap:38px;padding-bottom:34px}
+.footer-brand{display:inline-flex;align-items:center;gap:12px;color:#fff;text-decoration:none}.footer-brand-mark{display:grid;place-items:center;width:46px;height:46px;border:1px solid rgba(var(--accent-rgb),.45);border-radius:14px;background:rgba(var(--accent-rgb),.1);color:var(--accent2);font:800 15px "Space Grotesk",sans-serif;box-shadow:0 0 24px rgba(var(--accent-rgb),.1)}.footer-brand strong{display:block;color:#f4f4f4;font:800 14px "Space Grotesk",sans-serif;letter-spacing:1px}.footer-brand small{display:block;margin-top:4px;color:#777;font:700 8px "Space Grotesk",sans-serif;letter-spacing:1.7px}.footer-brand-block p{max-width:360px;margin:16px 0 0;color:#888;line-height:2;font-size:11px}.footer-heading{display:block;margin:5px 0 16px;color:#eee;font-size:12px}.footer-nav{display:grid;grid-template-columns:1fr 1fr;gap:12px 18px}.footer-nav a,.footer-contact-link{color:#999;text-decoration:none;transition:color .2s ease}.footer-nav a:hover,.footer-contact-link:hover{color:var(--accent2)}.footer-socials{display:flex;gap:8px;margin-bottom:15px}.footer-socials a{display:grid;place-items:center;width:36px;height:36px;border:1px solid #303036;border-radius:11px;background:#151519;color:var(--accent2);font:800 10px "Space Grotesk",sans-serif;text-decoration:none;transition:.2s ease}.footer-socials a:hover{transform:translateY(-3px);border-color:var(--accent);background:rgba(var(--accent-rgb),.1);box-shadow:0 8px 22px rgba(var(--accent-rgb),.12)}.footer-contact-link{display:inline-flex;align-items:center;gap:7px;font-size:11px}.footer-contact-link span{color:var(--accent2)}.footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:17px;border-top:1px solid rgba(255,255,255,.07);font-size:10px}.footer-bottom b{color:#ddd;font-family:"Space Grotesk",sans-serif}.footer-bottom>a{color:#aaa;text-decoration:none}.footer-bottom>a span{color:var(--accent2);margin-right:4px}.footer-credit{font:700 8px "Space Grotesk",sans-serif;letter-spacing:1px;color:#666}.footer-credit b{color:var(--accent2)}
+@media(max-width:700px){.final{padding:54px 0}.final-inner{border-radius:20px;padding:34px 18px}.final::before{inset:8% 3%;border-radius:20px}.final-topline{font-size:8px;margin-bottom:18px}.final-actions{flex-direction:column;align-items:stretch}.final-actions .btn{width:100%;min-width:0}.final-footnote{font-size:9px;line-height:1.9}.footer-main{grid-template-columns:1fr 1fr;gap:26px 18px}.footer-brand-block{grid-column:1/-1}.footer-bottom{justify-content:center;text-align:center;gap:10px}.footer-credit{width:100%}}
+@media(max-width:380px){.footer-main{grid-template-columns:1fr}.footer-brand-block{grid-column:auto}.footer-nav{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){.final-live-dot{animation:none}}
+
 /* =========================
    MODAL
 ========================= */
@@ -4135,41 +4153,19 @@ placeholder="ایده، سبک، تعداد خروجی و هر چیزی که ل�
 <!-- ================= FINAL CTA ================= -->
 
 <section class="final" id="contact">
-
-<div class="container reveal">
-
-<div class="eyebrow">
-<i></i>
-LET'S CREATE
-</div>
-
-<h2>
-پروژه بعدیت رو با Loyal Graphic شروع کن.
-</h2>
-
-<p>
-برای شروع، از طریق فرم یا شبکه‌های اجتماعی ارتباط بگیر.
-</p>
-
-<div class="actions">
-
-<a class="btn primary" href="#order">
-شروع پروژه ↗
-</a>
-
-<a
-class="btn secondary"
-href="https://t.me/taha_loyal_guy2"
-target="_blank"
-rel="noopener noreferrer"
->
-Telegram
-</a>
-
-</div>
-
-</div>
-
+  <div class="final-glow final-glow-one" aria-hidden="true"></div>
+  <div class="final-glow final-glow-two" aria-hidden="true"></div>
+  <div class="container reveal final-inner">
+    <div class="final-topline"><span class="final-live-dot"></span> LET'S CREATE SOMETHING GREAT</div>
+    <div class="eyebrow"><i></i> LET'S CREATE</div>
+    <h2>پروژه بعدیت رو با Loyal Graphic شروع کن.</h2>
+    <p>ایده‌ات رو بگو؛ با هم تبدیلش می‌کنیم به یک طراحی ماندگار.</p>
+    <div class="actions final-actions">
+      <a class="btn primary" href="#order">شروع پروژه <span aria-hidden="true">↗</span></a>
+      <a class="btn secondary" href="https://t.me/taha_loyal_guy2" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">✈</span> گفت‌وگو در تلگرام</a>
+    </div>
+    <div class="final-footnote"><span>✦</span> پاسخ‌گویی مستقیم · طراحی اختصاصی · همراهی تا تحویل</div>
+  </div>
 </section>
 
 </main>
@@ -4177,21 +4173,23 @@ Telegram
 
 <!-- ================= FOOTER ================= -->
 
-<footer>
-
-<div class="container footer">
-
-<div>
-<strong>LOYAL GRAPHIC</strong>
-— Taha Loyal
-</div>
-
-<div>
-© <span id="year"></span> Loyal Graphic. All rights reserved.
-</div>
-
-</div>
-
+<footer class="site-footer">
+  <div class="container footer-main">
+    <div class="footer-brand-block">
+      <a class="footer-brand" href="#home" aria-label="بازگشت به ابتدای سایت"><span class="footer-brand-mark">LG</span><span><strong>LOYAL GRAPHIC</strong><small>CREATIVE DESIGN STUDIO</small></span></a>
+      <p>طراحی گرافیک برای Minecraft، Gaming و تولیدکنندگان محتوا؛ با تمرکز روی جزئیات و هویت بصری.</p>
+    </div>
+    <div class="footer-links-block">
+      <strong class="footer-heading">دسترسی سریع</strong>
+      <nav class="footer-nav" aria-label="لینک‌های پایین صفحه"><a href="#home">خانه</a><a href="#services">خدمات</a><a href="#portfolio">نمونه‌کارها</a><a href="#order">ثبت سفارش</a></nav>
+    </div>
+    <div class="footer-social-block">
+      <strong class="footer-heading">ارتباط با من</strong>
+      <div class="footer-socials"><a href="https://t.me/taha_loyal_guy2" target="_blank" rel="noopener noreferrer" aria-label="تلگرام">TG</a><a href="https://rubika.ir/taha_loyal_guy3" target="_blank" rel="noopener noreferrer" aria-label="روبیکا">RB</a><a href="https://ble.ir/taha_loyal_guy" target="_blank" rel="noopener noreferrer" aria-label="بله">BL</a></div>
+      <a class="footer-contact-link" href="#contact">شروع یک همکاری <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+  <div class="container footer-bottom"><span>© <span id="year"></span> <b>LOYAL GRAPHIC</b> — All rights reserved.</span><a href="#home">بازگشت به بالا <span aria-hidden="true">↑</span></a><span class="footer-credit">DESIGNED WITH <b>✦</b> BY TAHA LOYAL</span></div>
 </footer>
 
 
