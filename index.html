@@ -3482,10 +3482,6 @@ h1,h2,h3,.section-head h2,.hero-copy h2,.tag,.eyebrow{font-family:"Estedad","Vaz
   .loyal-skip-link:focus {transform:translateY(0);outline:3px solid #fff;outline-offset:3px}
   .loyal-scroll-progress {position:fixed;inset:0 0 auto auto;width:100%;height:3px;z-index:100050;pointer-events:none;background:rgba(255,255,255,.045)}
   .loyal-scroll-progress span {display:block;width:0;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));box-shadow:0 0 12px rgba(var(--accent-rgb),.45);transform-origin:right center}
-  .loyal-back-top {position:fixed;left:22px;bottom:22px;z-index:100030;width:46px;height:46px;display:grid;place-items:center;border:1px solid rgba(var(--accent-rgb),.35);border-radius:15px;background:rgba(15,15,18,.9);backdrop-filter:blur(12px);color:var(--accent2);font-size:21px;box-shadow:0 8px 26px rgba(0,0,0,.35);opacity:0;visibility:hidden;transform:translateY(9px);transition:opacity .22s ease,transform .22s ease,visibility .22s ease,border-color .22s ease;cursor:pointer;touch-action:manipulation}
-  .loyal-back-top.is-visible {opacity:1;visibility:visible;transform:translateY(0)}
-  .loyal-back-top:hover {border-color:var(--accent);box-shadow:0 0 22px rgba(var(--accent-rgb),.17)}
-  .loyal-back-top:focus-visible {outline:3px solid var(--accent2);outline-offset:3px}
   #home .hero-copy h1 {text-wrap:balance}
   #home .hero-copy h2 {text-wrap:pretty}
   #home .hero-copy > p {max-width:58ch}
@@ -3493,8 +3489,8 @@ h1,h2,h3,.section-head h2,.hero-copy h2,.tag,.eyebrow{font-family:"Estedad","Vaz
   #services .card, #about .benefit, #portfolioGrid .portfolio-card {overflow:hidden}
   #order .order-form :focus-visible, #order .info-box a:focus-visible {outline:2px solid var(--accent2);outline-offset:3px}
   .site-footer a:focus-visible, .footer-nav a:focus-visible {outline:2px solid var(--accent2);outline-offset:4px;border-radius:5px}
-  @media(max-width:600px){.loyal-back-top{left:13px;bottom:calc(13px + env(safe-area-inset-bottom));width:42px;height:42px;border-radius:13px}.loyal-scroll-progress{height:2px}}
-  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.loyal-skip-link,.loyal-back-top{transition:none}.loyal-scroll-progress span{box-shadow:none}}
+  @media(max-width:600px){.loyal-scroll-progress{height:2px}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.loyal-skip-link{transition:none}.loyal-scroll-progress span{box-shadow:none}}
 </style>
 
 
@@ -3609,6 +3605,29 @@ main section[id] { scroll-margin-top: 94px; }
 }
 @media(prefers-reduced-motion:reduce) { .menu-icon i,.menu-btn,.nav-links.mobile a { transition:none !important; } }
 </style>
+
+<style id="loyal-v12-features">
+.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.portfolio-tools{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.portfolio-search{position:relative;flex:1 1 240px;max-width:390px}
+.portfolio-search input{width:100%;min-height:44px;padding:10px 42px 10px 14px;border-radius:12px;border:1px solid rgba(var(--accent-rgb),.2);background:rgba(255,255,255,.035);color:var(--text);font:inherit;outline:none;transition:border-color .2s,box-shadow .2s}
+.portfolio-search input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(var(--accent-rgb),.11)}
+.portfolio-search::before{content:"⌕";position:absolute;right:15px;top:50%;transform:translateY(-50%);font-size:21px;color:var(--muted);pointer-events:none}
+.portfolio-empty{grid-column:1/-1;padding:34px 18px;text-align:center;border:1px dashed rgba(var(--accent-rgb),.28);border-radius:16px;color:var(--muted);background:rgba(255,255,255,.02)}
+.portfolio-empty strong{display:block;color:var(--text);margin-bottom:7px}
+#faq{scroll-margin-top:90px}
+.faq-list{max-width:900px;margin:0 auto;display:grid;gap:10px}
+.faq-item{border:1px solid rgba(var(--accent-rgb),.18);border-radius:15px;background:rgba(255,255,255,.025);overflow:hidden;transition:border-color .2s,background .2s}
+.faq-item[open]{border-color:rgba(var(--accent-rgb),.45);background:rgba(var(--accent-rgb),.045)}
+.faq-item summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 20px;color:var(--text);font-weight:700}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";flex:0 0 27px;width:27px;height:27px;display:grid;place-items:center;border-radius:9px;background:rgba(var(--accent-rgb),.12);color:var(--accent2);font-size:20px;transition:transform .2s}
+.faq-item[open] summary::after{content:"−"}
+.faq-answer{padding:0 20px 18px;color:var(--muted);line-height:2;font-size:14px}
+.faq-answer p{margin:0}
+@media(max-width:600px){.portfolio-tools{align-items:stretch}.portfolio-search{max-width:none;flex-basis:100%}.portfolio-sort-label{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px}.faq-item summary{padding:15px;font-size:14px}.faq-answer{padding:0 15px 15px}}
+</style>
+
 </head>
 
 <body>
@@ -3848,7 +3867,11 @@ main section[id] { scroll-margin-top: 94px; }
     </button>
 
 </div>
-<div class="portfolio-tools"><span id="portfolioCount" aria-live="polite"></span><label class="portfolio-sort-label" for="portfolioSort">مرتب‌سازی <select id="portfolioSort"><option value="default">ترتیب پیش‌فرض</option><option value="az">عنوان: الف تا ی</option><option value="za">عنوان: ی تا الف</option></select></label></div>
+<div class="portfolio-tools">
+  <label class="portfolio-search"><span class="visually-hidden">جست‌وجو در نمونه‌کارها</span><input id="portfolioSearch" type="search" placeholder="جست‌وجو بین نمونه‌کارها..." autocomplete="off"></label>
+  <span id="portfolioCount" aria-live="polite"></span>
+  <label class="portfolio-sort-label" for="portfolioSort">مرتب‌سازی <select id="portfolioSort"><option value="default">ترتیب پیش‌فرض</option><option value="az">عنوان: الف تا ی</option><option value="za">عنوان: ی تا الف</option></select></label>
+</div>
 
 <div class="grid portfolio" id="portfolioGrid"></div>
 
@@ -4038,6 +4061,23 @@ main section[id] { scroll-margin-top: 94px; }
 </div>
 </section>
 
+
+<!-- ================= FAQ ================= -->
+<section id="faq">
+<div class="container">
+  <div class="section-head reveal">
+    <div><span class="tag">05 / FAQ</span><h2>سؤالات پرتکرار</h2></div>
+    <p>قبل از ثبت سفارش، جواب چند سؤال رایج رو اینجا پیدا می‌کنی.</p>
+  </div>
+  <div class="faq-list reveal">
+    <details class="faq-item"><summary>چطور می‌تونم سفارش ثبت کنم؟</summary><div class="faq-answer"><p>از بخش سفارش پروژه، اطلاعات تماس، نوع طراحی و توضیحات ایده‌ات رو وارد کن. بعد از ارسال، برای هماهنگی جزئیات باهات ارتباط می‌گیرم.</p></div></details>
+    <details class="faq-item"><summary>هزینه طراحی چطور مشخص می‌شه؟</summary><div class="faq-answer"><p>هزینه به نوع طراحی، میزان جزئیات و زمان موردنیاز بستگی داره. بودجه تقریبی رو در فرم بنویس تا درباره جزئیات و هزینه نهایی هماهنگ کنیم.</p></div></details>
+    <details class="faq-item"><summary>چقدر طول می‌کشه پروژه آماده بشه؟</summary><div class="faq-answer"><p>زمان تحویل به نوع سفارش و پیچیدگی پروژه بستگی داره. اگر زمان مشخصی مدنظرت هست، موقع ثبت سفارش در بخش تاریخ تحویل بنویس.</p></div></details>
+    <details class="faq-item"><summary>می‌تونم نمونه یا تصویر مرجع بفرستم؟</summary><div class="faq-answer"><p>بله؛ لینک نمونه یا رفرنس رو در فرم سفارش قرار بده و سبک، رنگ‌ها و جزئیاتی رو که برات مهمه در توضیحات بنویس.</p></div></details>
+    <details class="faq-item"><summary>برای پیگیری سفارش از چه راهی پیام بدم؟</summary><div class="faq-answer"><p>روش ارتباطی و آیدی یا شماره تماس دلخواهت رو در فرم وارد کن. همچنین راه‌های ارتباطی مستقیم در همین صفحه قرار دارند.</p></div></details>
+  </div>
+</div>
+</section>
 
 <!-- ================= RIG CTA ================= -->
 
@@ -4328,7 +4368,6 @@ placeholder="ایده، سبک، تعداد خروجی و هر چیزی که ل�
 </main>
 
 
-<button class="loyal-back-top" id="loyalBackTop" type="button" aria-label="بازگشت به بالای صفحه" title="بازگشت به بالا">↑</button>
 
 <!-- ================= FOOTER ================= -->
 
@@ -4497,8 +4536,10 @@ window.portfolioItems = portfolioItems;
 
 const grid = document.getElementById("portfolioGrid");
 let portfolioSort = "default";
+let portfolioSearchQuery = "";
 const portfolioCount = document.getElementById("portfolioCount");
 const portfolioSortSelect = document.getElementById("portfolioSort");
+const portfolioSearchInput = document.getElementById("portfolioSearch");
 const portfolioDetailModal = document.getElementById("portfolioDetailModal");
 const portfolioDetailImage = document.getElementById("portfolioDetailImage");
 const portfolioDetailTitle = document.getElementById("portfolioDetailTitle");
@@ -4536,11 +4577,24 @@ function renderPortfolio(filter="all"){
     grid.innerHTML="";
 
     let filtered = portfolioItems.filter(item =>
-        filter==="all" || item.category===filter
+        (filter === "all" || item.category === filter) &&
+        (!portfolioSearchQuery || `${item.title || ""} ${item.type || ""} ${item.description || ""}`.toLocaleLowerCase("fa").includes(portfolioSearchQuery))
     );
     if (portfolioSort === "az") filtered = [...filtered].sort((a,b) => a.title.localeCompare(b.title, "fa"));
     if (portfolioSort === "za") filtered = [...filtered].sort((a,b) => b.title.localeCompare(a.title, "fa"));
-    if (portfolioCount) portfolioCount.textContent = `${filtered.filter(item => item.image).length} نمونه‌کار`;
+    const visibleCount = filtered.filter(item => item.image).length;
+    if (portfolioCount) portfolioCount.textContent = `${visibleCount} نمونه‌کار`;
+    if (!filtered.length) {
+        const empty = document.createElement("div");
+        empty.className = "portfolio-empty";
+        const heading = document.createElement("strong");
+        heading.textContent = portfolioSearchQuery ? "نتیجه‌ای پیدا نشد" : "نمونه‌کاری در این دسته وجود ندارد";
+        const message = document.createElement("span");
+        message.textContent = portfolioSearchQuery ? "عبارت جست‌وجو رو تغییر بده یا فیلتر دیگری انتخاب کن." : "به‌زودی نمونه‌کارهای این بخش اضافه می‌شن.";
+        empty.append(heading, message);
+        grid.appendChild(empty);
+        return;
+    }
 
     filtered.forEach(item => {
 
@@ -4603,6 +4657,11 @@ function renderPortfolio(filter="all"){
 }
 renderPortfolio();
 portfolioSortSelect?.addEventListener("change", () => { portfolioSort = portfolioSortSelect.value; const activeFilter = document.querySelector(".filter.active")?.dataset.filter || "all"; renderPortfolio(activeFilter); });
+portfolioSearchInput?.addEventListener("input", () => {
+    portfolioSearchQuery = portfolioSearchInput.value.trim().toLocaleLowerCase("fa");
+    const activeFilter = document.querySelector(".filter.active")?.dataset.filter || "all";
+    renderPortfolio(activeFilter);
+});
 
 const featuredCard = document.getElementById("featuredWork");
 function renderFeaturedWork(){
@@ -6442,14 +6501,12 @@ testSupabase();
 (() => {
   'use strict';
   const progressFill = document.getElementById('loyalScrollProgressFill');
-  const backTop = document.getElementById('loyalBackTop');
   let scheduled = false;
   const updateScrollUI = () => {
     const doc = document.documentElement;
     const maxScroll = Math.max(1, doc.scrollHeight - window.innerHeight);
     const ratio = Math.min(1, Math.max(0, window.scrollY / maxScroll));
     if (progressFill) progressFill.style.width = `${ratio * 100}%`;
-    if (backTop) backTop.classList.toggle('is-visible', window.scrollY > Math.max(420, window.innerHeight * .65));
     scheduled = false;
   };
   const requestUpdate = () => {
@@ -6459,9 +6516,6 @@ testSupabase();
   };
   window.addEventListener('scroll', requestUpdate, {passive:true});
   window.addEventListener('resize', requestUpdate, {passive:true});
-  backTop?.addEventListener('click', () => {
-    window.scrollTo({top:0, behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
-  });
   updateScrollUI();
 
   // Make the main image viewer's controls available to keyboard users as well.
