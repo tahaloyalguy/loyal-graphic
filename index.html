@@ -4625,8 +4625,8 @@ if (portfolioLightbox){
     portfolioLightbox.addEventListener(
         "keydown", event => {
             if (!portfolioLightbox.classList.contains('open')) return;
-            if (event.key === 'ArrowLeft') { event.preventDefault(); nextPortfolio(); }
-            else if (event.key === 'ArrowRight') { event.preventDefault(); previousPortfolio(); }
+            if (event.key === 'ArrowRight') { event.preventDefault(); nextPortfolio(); }
+            else if (event.key === 'ArrowLeft') { event.preventDefault(); previousPortfolio(); }
             else if (event.key === 'Escape') { event.preventDefault(); closePortfolioLightbox(); }
         }
     );
@@ -6258,14 +6258,14 @@ testSupabase();
 
 
 <style id="loyal-final-polish-v5">
-/* RTL lightbox navigation: next on the left, previous on the right */
-#lightboxPrev{left:auto!important;right:24px!important}
-#lightboxNext{right:auto!important;left:24px!important}
+/* RTL lightbox navigation: next on the right, previous on the left */
+#lightboxNext{left:auto!important;right:24px!important}
+#lightboxPrev{right:auto!important;left:24px!important}
 #lightboxPrev:hover{transform:translateY(-50%) translateX(3px) scale(1.06)!important}
 #lightboxNext:hover{transform:translateY(-50%) translateX(-3px) scale(1.06)!important}
 @media(max-width:768px){
-  #lightboxPrev{right:10px!important;left:auto!important}
-  #lightboxNext{left:10px!important;right:auto!important}
+  #lightboxNext{right:10px!important;left:auto!important}
+  #lightboxPrev{left:10px!important;right:auto!important}
 }
 
 /* Premium process timeline */
@@ -6308,13 +6308,13 @@ testSupabase();
   color:var(--accent2) !important; cursor:pointer !important; touch-action:manipulation !important;
   -webkit-tap-highlight-color:transparent; transition:transform .2s ease,background .2s ease,border-color .2s ease,box-shadow .2s ease !important;
 }
-#lightboxPrev {right:24px !important;left:auto !important}
-#lightboxNext {left:24px !important;right:auto !important}
+#lightboxNext {right:24px !important;left:auto !important}
+#lightboxPrev {left:24px !important;right:auto !important}
 .lightbox-arrow-icon {width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
 #lightboxPrev:hover,#lightboxNext:hover {background:linear-gradient(145deg,rgba(var(--accent-rgb),.24),rgba(18,18,21,.98)) !important;border-color:var(--accent) !important;box-shadow:0 10px 30px rgba(0,0,0,.48),0 0 24px rgba(var(--accent-rgb),.2) !important;transform:translateY(-50%) scale(1.06) !important}
 #lightboxPrev:active,#lightboxNext:active {transform:translateY(-50%) scale(.94) !important}
 #lightboxPrev:focus-visible,#lightboxNext:focus-visible {outline:3px solid var(--accent2);outline-offset:4px}
-@media(max-width:768px){#lightboxPrev{right:12px !important;left:auto !important}#lightboxNext{left:12px !important;right:auto !important}#lightboxPrev,#lightboxNext{width:48px !important;height:48px !important;border-radius:15px !important}}
+@media(max-width:768px){#lightboxNext{right:12px !important;left:auto !important}#lightboxPrev{left:12px !important;right:auto !important}#lightboxPrev,#lightboxNext{width:48px !important;height:48px !important;border-radius:15px !important}}
 
 /* WHY LOYAL: refined benefit cards */
 #about .benefits {gap:15px;align-items:stretch}
