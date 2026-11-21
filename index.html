@@ -9,15 +9,23 @@
 <meta name="description" content="Loyal Graphic — استودیوی طراحی گرافیک Taha Loyal برای Minecraft، Gaming و تولیدکنندگان محتوا.">
 <meta name="theme-color" content="#080808">
 
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tahaloyalguy.github.io/loyal-graphic/">
 <meta property="og:title" content="Loyal Graphic — Taha Loyal">
 <meta property="og:description" content="استودیوی طراحی گرافیک مدرن برای Minecraft، Gaming و تولیدکنندگان محتوا.">
+<meta property="og:image" content="https://tahaloyalguy.github.io/loyal-graphic/images/logo.png">
+<meta property="og:image:alt" content="لوگوی Loyal Graphic">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Loyal Graphic — Taha Loyal">
+<meta name="twitter:description" content="استودیوی طراحی گرافیک مدرن برای Minecraft، Gaming و تولیدکنندگان محتوا.">
+<meta name="twitter:image" content="https://tahaloyalguy.github.io/loyal-graphic/images/logo.png">
 
 <title>Loyal Graphic — Taha Loyal</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Vazirmatn:wght@400;500;600;700;800&family=Estedad:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -3204,6 +3212,139 @@ section, .loyal-marquee, .portfolio-lightbox { min-width: 0; }
   .theme-option:hover, #themeLauncher:hover, #loyalSoundToggle:hover { transform: none; }
 }
 
+
+
+/* ===== LOYAL GRAPHIC BRAND SYSTEM + NEW FEATURES ===== */
+:root{--brand-line:rgba(var(--accent-rgb),.32);--brand-soft:rgba(var(--accent-rgb),.075)}
+body{font-feature-settings:"kern";text-rendering:optimizeLegibility}
+h1,h2,h3,.section-head h2,.hero-copy h2,.tag,.eyebrow{font-family:"Estedad","Vazirmatn",sans-serif}
+.section-head h2{letter-spacing:-.35px}
+.tag{display:inline-flex;align-items:center;gap:8px}
+.tag::before{content:"";width:18px;height:2px;border-radius:9px;background:var(--accent);box-shadow:0 0 12px rgba(var(--accent-rgb),.6)}
+.card,.work,.info-box,.order-form{border-color:color-mix(in srgb,var(--line) 76%,var(--accent) 24%)}
+
+/* Featured work */
+.loyal-featured-work{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(260px,.92fr);gap:clamp(18px,3vw,34px);align-items:center;margin:0 0 30px;padding:clamp(14px,2vw,22px);border:1px solid var(--brand-line);border-radius:24px;background:radial-gradient(circle at 12% 0%,var(--brand-soft),transparent 48%),linear-gradient(135deg,rgba(255,255,255,.035),rgba(255,255,255,.012));box-shadow:0 18px 55px rgba(0,0,0,.2);cursor:pointer;transition:border-color .25s ease,transform .25s ease,box-shadow .25s ease}
+.loyal-featured-work:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 22px 60px rgba(0,0,0,.32),0 0 28px var(--brand-soft)}
+.loyal-featured-media{position:relative;min-height:230px;aspect-ratio:16/9;overflow:hidden;border-radius:17px;background:#111}
+.loyal-featured-media img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;transition:transform .65s ease}
+.loyal-featured-work:hover .loyal-featured-media img{transform:scale(1.035)}
+.featured-corner{position:absolute;top:12px;left:12px;padding:6px 10px;border:1px solid rgba(255,255,255,.22);border-radius:9px;background:rgba(8,8,8,.68);backdrop-filter:blur(10px);font:700 9px "Space Grotesk",sans-serif;letter-spacing:1.5px;color:#fff}
+.featured-kicker{display:inline-flex;align-items:center;gap:8px;color:var(--accent2);font-size:12px;font-weight:800}
+.featured-kicker i{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.loyal-featured-copy h3{margin:12px 0 8px;font-size:clamp(21px,2.4vw,30px);line-height:1.45}
+.loyal-featured-copy p{max-width:470px;color:var(--muted);font-size:13px;line-height:2}
+.featured-open{display:inline-flex;align-items:center;gap:12px;margin-top:18px;padding:10px 15px;border:1px solid var(--brand-line);border-radius:12px;background:var(--brand-soft);color:#fff;font:700 12px "Vazirmatn",sans-serif;cursor:pointer}
+.featured-open span{color:var(--accent2);font-size:17px}
+.portfolio-tools{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:-4px 0 18px;color:var(--muted);font-size:11px}
+.portfolio-sort-label{display:flex;align-items:center;gap:8px;white-space:nowrap}
+.portfolio-sort-label select{min-height:36px;padding:5px 10px;border:1px solid var(--line);border-radius:10px;background:#111;color:#eee;font:inherit}
+
+/* Project details modal */
+.portfolio-detail-modal{position:fixed;inset:0;z-index:100020;display:grid;place-items:center;padding:22px;background:rgba(0,0,0,.82);backdrop-filter:blur(14px);opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease}
+.portfolio-detail-modal.open{opacity:1;visibility:visible}
+.portfolio-detail-box{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(270px,.85fr);gap:26px;width:min(980px,100%);max-height:min(84vh,760px);overflow:auto;padding:20px;border:1px solid var(--brand-line);border-radius:24px;background:linear-gradient(145deg,#171717,#0b0b0b);box-shadow:0 30px 100px rgba(0,0,0,.65);transform:translateY(12px) scale(.985);transition:transform .28s ease}
+.portfolio-detail-modal.open .portfolio-detail-box{transform:translateY(0) scale(1)}
+.portfolio-detail-close{position:absolute;top:12px;left:12px;z-index:3;width:38px;height:38px;border:1px solid rgba(255,255,255,.16);border-radius:11px;background:rgba(0,0,0,.72);color:#fff;font-size:24px;cursor:pointer}
+.portfolio-detail-image-wrap{min-height:280px;overflow:hidden;border-radius:16px;background:#111}
+.portfolio-detail-image-wrap img{width:100%;height:100%;min-height:280px;object-fit:contain;display:block}
+.portfolio-detail-copy{align-self:center;padding:14px 4px}
+.detail-kicker{color:var(--accent2);font:700 10px "Space Grotesk",sans-serif;letter-spacing:1.6px}
+.portfolio-detail-copy h3{margin:12px 0 7px;font-size:clamp(22px,3vw,32px)}
+.portfolio-detail-type{display:inline-block;padding:5px 10px;border:1px solid var(--brand-line);border-radius:9px;background:var(--brand-soft);color:var(--accent2);font-size:11px}
+.portfolio-detail-copy p{margin-top:16px;color:var(--muted);font-size:13px;line-height:2.1}
+.portfolio-detail-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+.portfolio-detail-actions .btn{min-height:42px;padding:9px 13px;font-size:11px}
+
+/* Multi-step order form */
+.order-step-progress{margin:18px 0 20px;padding:14px 14px 10px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.018)}
+.order-step-progress-line{height:4px;overflow:hidden;border-radius:10px;background:#292929}
+.order-step-progress-line span{display:block;width:33.333%;height:100%;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent2));box-shadow:0 0 12px rgba(var(--accent-rgb),.4);transition:width .3s ease}
+.order-step-labels{display:flex;justify-content:space-between;gap:8px;margin-top:10px;color:#777;font-size:10px}
+.order-step-labels span.active{color:var(--accent2);font-weight:800}
+.order-step-labels span.completed{color:#aaa}
+.order-draft-hint{margin-top:8px;color:#777;font-size:10px}
+.form-grid.is-wizard{display:block}
+.order-wizard-step{display:none;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.order-wizard-step.active{display:grid;animation:orderStepIn .25s ease both}
+@keyframes orderStepIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.order-wizard-step>label{min-width:0}
+.order-step-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:18px}
+.order-step-actions button{min-height:44px;padding:9px 18px}
+.order-step-back{border:1px solid var(--line);border-radius:12px;background:#151515;color:#ddd;font:700 12px "Vazirmatn",sans-serif;cursor:pointer}
+.order-step-back:disabled{opacity:.35;cursor:not-allowed}
+#orderStepNext[hidden],#submitBtn[hidden],.order-step-actions[hidden]{display:none!important}
+.order-success-panel{padding:30px 18px;text-align:center;border:1px solid var(--brand-line);border-radius:18px;background:radial-gradient(circle at 50% 0%,var(--brand-soft),transparent 65%),#101010}
+.order-success-icon{display:grid;place-items:center;width:58px;height:58px;margin:0 auto 14px;border:1px solid var(--brand-line);border-radius:50%;background:var(--brand-soft);color:var(--accent2);font-size:29px}
+.success-kicker{color:var(--accent2);font:700 10px "Space Grotesk",sans-serif;letter-spacing:2px}
+.order-success-panel h3{margin:10px 0;font-size:22px}
+.order-success-panel p{max-width:420px;margin:0 auto 18px;color:var(--muted);font-size:13px;line-height:2}
+.order-success-panel[hidden]{display:none!important}
+
+/* Compact floating contact launcher */
+.loyal-quick-contact{position:fixed;right:22px;bottom:84px;z-index:50010;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+#quickContactToggle{display:flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border:1px solid var(--brand-line);border-radius:14px;background:rgba(15,15,18,.9);color:#fff;box-shadow:0 8px 28px rgba(0,0,0,.3);backdrop-filter:blur(14px);font:700 11px "Vazirmatn",sans-serif;cursor:pointer}
+.quick-contact-symbol{color:var(--accent2);font-size:17px}
+.quick-contact-panel{display:grid;gap:6px;min-width:145px;padding:8px;border:1px solid var(--brand-line);border-radius:14px;background:rgba(13,13,16,.96);box-shadow:0 16px 44px rgba(0,0,0,.45);opacity:0;visibility:hidden;transform:translateY(8px) scale(.97);transform-origin:bottom right;transition:.2s ease}
+.quick-contact-panel.open{opacity:1;visibility:visible;transform:none}
+.quick-contact-panel a{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:9px;color:#ddd;font-size:12px}
+.quick-contact-panel a:hover{background:var(--brand-soft);color:#fff}
+.quick-contact-panel a span{width:20px;color:var(--accent2);text-align:center}
+
+/* Small brand details, not extra clutter */
+.hero-brandline .eyebrow{border:1px solid var(--brand-line);background:var(--brand-soft)}
+.section-head{position:relative}
+.section-head>div{position:relative}
+.section-head .tag{color:var(--accent2)}
+
+/* Mobile-only compact layout. Tablet and desktop keep their current geometry. */
+@media(max-width:600px){
+  section{padding:58px 0}
+  .container{width:calc(100% - 32px)}
+  .hero{padding-top:94px;padding-bottom:42px}
+  .hero-content{gap:17px}
+  .hero-copy h1{font-size:clamp(29px,8.2vw,35px)}
+  .hero-copy h2{font-size:clamp(18px,5vw,21px);line-height:1.55}
+  .section-head h2{font-size:clamp(23px,6.2vw,27px)}
+  .section-head p{font-size:12px}
+  .card{padding:17px;border-radius:16px}
+  .work{height:auto;aspect-ratio:16/10;min-height:0}
+  .actions .btn{min-height:43px;padding:9px 12px;font-size:12px}
+  .loyal-featured-work{grid-template-columns:1fr;gap:13px;margin-bottom:22px;padding:12px;border-radius:18px}
+  .loyal-featured-media{min-height:0;aspect-ratio:16/9;border-radius:13px}
+  .loyal-featured-copy h3{font-size:19px;margin:8px 0 5px}
+  .loyal-featured-copy p{font-size:11px;line-height:1.9}
+  .featured-open{margin-top:10px;padding:8px 12px}
+  .portfolio-tools{font-size:10px;margin-bottom:13px}
+  .portfolio-sort-label select{max-width:145px;min-height:34px;font-size:10px}
+  .portfolio-detail-modal{padding:10px}
+  .portfolio-detail-box{grid-template-columns:1fr;gap:13px;padding:12px;border-radius:18px;max-height:88vh}
+  .portfolio-detail-image-wrap,.portfolio-detail-image-wrap img{min-height:0;max-height:34vh}
+  .portfolio-detail-copy{padding:5px 3px 3px}
+  .portfolio-detail-copy h3{font-size:20px;margin:7px 0}
+  .portfolio-detail-copy p{font-size:11px;line-height:1.8;margin-top:9px}
+  .portfolio-detail-actions{margin-top:13px;gap:7px}
+  .portfolio-detail-actions .btn{flex:1;min-width:0;font-size:10px;padding:8px 9px}
+  .order-step-progress{padding:11px;margin:13px 0 16px}
+  .order-step-labels{font-size:9px}
+  .order-wizard-step.active{grid-template-columns:1fr;gap:11px}
+  .order-step-actions{margin-top:14px}
+  .order-step-actions button{min-height:42px;padding:8px 14px;font-size:11px}
+  .order-success-panel{padding:24px 14px}
+  .order-success-panel h3{font-size:19px}
+  .loyal-quick-contact{right:max(12px,env(safe-area-inset-right));bottom:76px}
+  #quickContactToggle{min-height:40px;padding:0 11px;font-size:10px}
+  .quick-contact-panel{min-width:132px}
+}
+@media(max-width:360px){
+  .order-step-labels{font-size:8px}
+  .portfolio-tools{align-items:flex-start;flex-direction:column}
+  .portfolio-detail-actions{flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){
+  .loyal-featured-work,.portfolio-detail-box,.order-wizard-step.active,.quick-contact-panel{transition:none!important;animation:none!important}
+}
+
 </style>
 </head>
 
@@ -3415,6 +3556,12 @@ section, .loyal-marquee, .portfolio-lightbox { min-width: 0; }
 </p>
 </div>
 
+<div class="loyal-featured-work reveal" id="featuredWork" role="group" tabindex="0" aria-label="مشاهده پروژه منتخب">
+  <div class="loyal-featured-media"><img id="featuredWorkImage" src="" alt="پروژه منتخب Loyal Graphic" loading="lazy"><span class="featured-corner">SELECTED WORK</span></div>
+
+  <div class="loyal-featured-copy"><span class="featured-kicker"><i></i> پروژه منتخب</span><h3 id="featuredWorkTitle">منتخب LOYAL GRAPHIC</h3><p id="featuredWorkDescription">یکی از طراحی‌های منتخب استودیو؛ برای مشاهده جزئیات باز کن.</p><button type="button" id="featuredWorkOpen" class="featured-open">مشاهده جزئیات <span aria-hidden="true">↗</span></button></div>
+</div>
+
 <div class="filters">
 
     <button class="filter active" data-filter="all">
@@ -3434,6 +3581,7 @@ section, .loyal-marquee, .portfolio-lightbox { min-width: 0; }
     </button>
 
 </div>
+<div class="portfolio-tools"><span id="portfolioCount" aria-live="polite"></span><label class="portfolio-sort-label" for="portfolioSort">مرتب‌سازی <select id="portfolioSort"><option value="default">ترتیب پیش‌فرض</option><option value="az">عنوان: الف تا ی</option><option value="za">عنوان: ی تا الف</option></select></label></div>
 
 <div class="grid portfolio" id="portfolioGrid"></div>
 
@@ -3492,6 +3640,14 @@ section, .loyal-marquee, .portfolio-lightbox { min-width: 0; }
         ›
     </button>
 
+</div>
+
+<div class="portfolio-detail-modal" id="portfolioDetailModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="portfolioDetailTitle">
+  <div class="portfolio-detail-box">
+    <button class="portfolio-detail-close" id="portfolioDetailClose" type="button" aria-label="بستن">×</button>
+    <div class="portfolio-detail-image-wrap"><img id="portfolioDetailImage" src="" alt=""></div>
+    <div class="portfolio-detail-copy"><span class="detail-kicker">LOYAL GRAPHIC / PROJECT</span><h3 id="portfolioDetailTitle"></h3><span class="portfolio-detail-type" id="portfolioDetailType"></span><p id="portfolioDetailDescription"></p><div class="portfolio-detail-actions"><button type="button" class="btn secondary" id="portfolioDetailZoom">نمایش تصویر بزرگ</button><a class="btn primary" href="#order" id="portfolioDetailOrder">سفارش طراحی مشابه ↗</a></div></div>
+  </div>
 </div>
 <!-- ================= PROCESS ================= -->
 
@@ -3739,6 +3895,11 @@ Telegram Channel — @Rig_Sky </a>
 <div id="orderFormNotice" class="order-form-notice" role="status" aria-live="polite">
     در حال بررسی وضعیت پذیرش سفارش...
 </div>
+<div class="order-step-progress" id="orderStepProgress" aria-label="مراحل ثبت سفارش">
+  <div class="order-step-progress-line"><span id="orderStepProgressFill"></span></div>
+  <div class="order-step-labels"><span class="active" data-step-label="0">۱. اطلاعات تماس</span><span data-step-label="1">۲. نوع سفارش</span><span data-step-label="2">۳. توضیحات</span></div>
+  <p id="orderDraftHint" class="order-draft-hint" aria-live="polite">اطلاعات فرم به‌صورت خودکار در همین مرورگر ذخیره می‌شود.</p>
+</div>
 
 <input
     type="hidden"
@@ -3853,7 +4014,14 @@ placeholder="ایده، سبک، تعداد خروجی و هر چیزی که ل�
 </label>
 </div>
 
+<div class="order-step-actions" id="orderStepActions">
+  <button type="button" id="orderStepBack" class="order-step-back" data-wizard="back" disabled>مرحله قبل</button>
+  <button type="button" id="orderStepNext" class="btn primary" data-wizard="next">مرحله بعد ↗</button>
+</div>
 <div id="formMsg" class="form-msg"></div>
+<div class="order-success-panel" id="orderSuccessPanel" hidden role="status" aria-live="polite">
+  <div class="order-success-icon">✓</div><span class="success-kicker">REQUEST SENT</span><h3>درخواستت با موفقیت ثبت شد!</h3><p>اطلاعات سفارش به دستم رسید. به‌زودی برای هماهنگی جزئیات باهات ارتباط می‌گیرم.</p><button type="button" id="orderNewRequest" class="btn secondary">ثبت درخواست جدید</button>
+</div>
 
 <button class="btn primary order-submit" id="submitBtn" type="submit">
 ثبت درخواست <span aria-hidden="true">↗</span>
@@ -4066,14 +4234,51 @@ const portfolioItems = [
 ];
 
 const grid = document.getElementById("portfolioGrid");
+let portfolioSort = "default";
+const portfolioCount = document.getElementById("portfolioCount");
+const portfolioSortSelect = document.getElementById("portfolioSort");
+const portfolioDetailModal = document.getElementById("portfolioDetailModal");
+const portfolioDetailImage = document.getElementById("portfolioDetailImage");
+const portfolioDetailTitle = document.getElementById("portfolioDetailTitle");
+const portfolioDetailType = document.getElementById("portfolioDetailType");
+const portfolioDetailDescription = document.getElementById("portfolioDetailDescription");
+let currentDetailIndex = 0;
+
+function openPortfolioDetails(index){
+    const item = portfolioItems[index];
+    if (!item || !item.image || !portfolioDetailModal) return;
+    currentDetailIndex = index;
+    portfolioDetailImage.src = item.image;
+    portfolioDetailImage.alt = item.title;
+    portfolioDetailTitle.textContent = item.title;
+    portfolioDetailType.textContent = item.type || item.category || "LOYAL GRAPHIC";
+    portfolioDetailDescription.textContent = item.description || "طراحی اختصاصی در استودیوی Loyal Graphic.";
+    portfolioDetailModal.classList.add("open");
+    portfolioDetailModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+}
+function closePortfolioDetails(){
+    if (!portfolioDetailModal) return;
+    portfolioDetailModal.classList.remove("open");
+    portfolioDetailModal.setAttribute("aria-hidden", "true");
+    if (!document.getElementById("portfolioLightbox")?.classList.contains("open")) document.body.style.overflow = "";
+}
+document.getElementById("portfolioDetailClose")?.addEventListener("click", closePortfolioDetails);
+portfolioDetailModal?.addEventListener("click", event => { if (event.target === portfolioDetailModal) closePortfolioDetails(); });
+document.getElementById("portfolioDetailZoom")?.addEventListener("click", () => { closePortfolioDetails(); openPortfolioLightbox(currentDetailIndex); });
+document.getElementById("portfolioDetailOrder")?.addEventListener("click", closePortfolioDetails);
+document.addEventListener("keydown", event => { if (event.key === "Escape") closePortfolioDetails(); });
 
 function renderPortfolio(filter="all"){
 
     grid.innerHTML="";
 
-    const filtered = portfolioItems.filter(item =>
+    let filtered = portfolioItems.filter(item =>
         filter==="all" || item.category===filter
     );
+    if (portfolioSort === "az") filtered = [...filtered].sort((a,b) => a.title.localeCompare(b.title, "fa"));
+    if (portfolioSort === "za") filtered = [...filtered].sort((a,b) => b.title.localeCompare(a.title, "fa"));
+    if (portfolioCount) portfolioCount.textContent = `${filtered.filter(item => item.image).length} نمونه‌کار`;
 
     filtered.forEach(item => {
 
@@ -4115,7 +4320,7 @@ function renderPortfolio(filter="all"){
         el.append(img, placeholder, overlay);
 
         if (item.image) {
-            const open = () => openPortfolioLightbox(portfolioItems.indexOf(item));
+            const open = () => openPortfolioDetails(portfolioItems.indexOf(item));
             el.addEventListener("click", open);
             el.addEventListener("keydown", event => {
                 if (event.key === "Enter" || event.key === " ") {
@@ -4135,6 +4340,20 @@ function renderPortfolio(filter="all"){
 
 }
 renderPortfolio();
+portfolioSortSelect?.addEventListener("change", () => { portfolioSort = portfolioSortSelect.value; const activeFilter = document.querySelector(".filter.active")?.dataset.filter || "all"; renderPortfolio(activeFilter); });
+
+const featuredItem = portfolioItems.find(item => item.image);
+const featuredCard = document.getElementById("featuredWork");
+if (featuredItem && featuredCard) {
+    const featuredImage = document.getElementById("featuredWorkImage");
+    if (featuredImage) { featuredImage.src = featuredItem.image; featuredImage.alt = featuredItem.title; }
+    document.getElementById("featuredWorkTitle").textContent = featuredItem.title;
+    document.getElementById("featuredWorkDescription").textContent = featuredItem.description || "یکی از طراحی‌های منتخب استودیوی LOYAL GRAPHIC.";
+    const openFeatured = () => openPortfolioDetails(portfolioItems.indexOf(featuredItem));
+    featuredCard.addEventListener("click", event => { if (!event.target.closest("button")) openFeatured(); });
+    featuredCard.addEventListener("keydown", event => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); openFeatured(); } });
+    document.getElementById("featuredWorkOpen")?.addEventListener("click", openFeatured);
+} else if (featuredCard) { featuredCard.hidden = true; }
 
 document.addEventListener("contextmenu", e => {
     if (e.target.tagName === "IMG") {
@@ -4481,7 +4700,7 @@ function setOrderFormState(isOpen, message, stateClass = "") {
 
     if (!orderForm) return;
 
-    orderForm.querySelectorAll("input:not([type=hidden]), select, textarea, button[type=submit]")
+    orderForm.querySelectorAll("input:not([type=hidden]), select, textarea, button[type=submit], button[data-wizard]")
         .forEach(control => {
             control.disabled = isOpen !== true;
         });
@@ -4546,9 +4765,11 @@ if (orderForm) {
 
             if (!response.ok) throw new Error("Form submission failed");
 
-            msg.textContent = "درخواستت با موفقیت ارسال شد! به‌زودی باهات تماس می‌گیرم.";
+            msg.textContent = "درخواستت با موفقیت ارسال شد!";
             msg.classList.add("show");
             form.reset();
+            try { localStorage.removeItem("loyalOrderDraft"); } catch (_) {}
+            window.showOrderSuccess?.();
             setOrderFormState(true, "پذیرش سفارش فعاله؛ می‌تونی درخواست جدید ثبت کنی.", "is-open");
         } catch (error) {
             console.error("Order form error:", error);
@@ -5446,6 +5667,87 @@ document.addEventListener(
 
 
 <script>
+/* ===== LOYAL ORDER WIZARD + LOCAL DRAFT ===== */
+(() => {
+  const form = document.getElementById('orderForm');
+  const grid = form?.querySelector('.form-grid');
+  if (!form || !grid) return;
+  const labels = [...grid.children].filter(node => node.tagName === 'LABEL');
+  const groups = [[0,1,2],[3,4,5],[6,7]];
+  const stepNames = ['اطلاعات تماس','نوع سفارش','توضیحات'];
+  const steps = groups.map((indexes, index) => {
+    const panel = document.createElement('div');
+    panel.className = 'order-wizard-step';
+    panel.dataset.step = String(index);
+    panel.setAttribute('aria-label', stepNames[index]);
+    indexes.forEach(i => { if (labels[i]) panel.appendChild(labels[i]); });
+    grid.appendChild(panel);
+    return panel;
+  });
+  grid.classList.add('is-wizard');
+  const back = document.getElementById('orderStepBack');
+  const next = document.getElementById('orderStepNext');
+  const submit = document.getElementById('submitBtn');
+  const fill = document.getElementById('orderStepProgressFill');
+  const progressLabels = [...document.querySelectorAll('[data-step-label]')];
+  const hint = document.getElementById('orderDraftHint');
+  let current = 0;
+  const showStep = index => {
+    current = Math.max(0, Math.min(2, index));
+    steps.forEach((panel, i) => { panel.classList.toggle('active', i === current); panel.setAttribute('aria-hidden', String(i !== current)); });
+    progressLabels.forEach((label, i) => { label.classList.toggle('active', i === current); label.classList.toggle('completed', i < current); });
+    if (fill) fill.style.width = `${(current + 1) / 3 * 100}%`;
+    if (back) back.disabled = current === 0;
+    if (next) next.hidden = current === 2;
+    if (submit) submit.hidden = current !== 2;
+    const panelTop = document.getElementById('orderStepProgress')?.getBoundingClientRect().top;
+    if (panelTop < 0) document.getElementById('orderStepProgress')?.scrollIntoView({behavior:'smooth',block:'nearest'});
+  };
+  const validateCurrent = () => {
+    const controls = [...steps[current].querySelectorAll('input,select,textarea')].filter(el => !el.disabled && el.required);
+    for (const control of controls) {
+      if (!control.checkValidity()) { control.reportValidity(); control.focus({preventScroll:false}); return false; }
+    }
+    return true;
+  };
+  next?.addEventListener('click', () => { if (validateCurrent()) showStep(current + 1); });
+  back?.addEventListener('click', () => showStep(current - 1));
+  showStep(0);
+
+  const draftKey = 'loyalOrderDraft';
+  const saveDraft = () => {
+    const data = {};
+    [...form.elements].forEach(el => { if (el.name && el.name !== 'subject' && el.type !== 'submit' && el.type !== 'button') data[el.name] = el.value; });
+    try { localStorage.setItem(draftKey, JSON.stringify(data)); if (hint) hint.textContent = 'پیش‌نویس سفارش در همین مرورگر ذخیره شد.'; } catch (_) {}
+  };
+  try {
+    const saved = JSON.parse(localStorage.getItem(draftKey) || 'null');
+    if (saved && typeof saved === 'object') {
+      Object.entries(saved).forEach(([name,value]) => { const field = [...form.elements].find(el => el.name === name); if (field && typeof value === 'string') field.value = value; });
+      if (hint) hint.textContent = 'پیش‌نویس قبلی بازیابی شد؛ می‌تونی ادامه‌اش بدی.';
+    }
+  } catch (_) {}
+  form.addEventListener('input', saveDraft);
+  form.addEventListener('change', saveDraft);
+
+  const successPanel = document.getElementById('orderSuccessPanel');
+  const hideable = [form.querySelector('.order-form-heading'), document.getElementById('orderFormNotice'), document.getElementById('orderStepProgress'), grid, document.getElementById('orderStepActions'), document.getElementById('formMsg'), submit, form.querySelector('.form-privacy')];
+  window.showOrderSuccess = () => {
+    hideable.forEach(el => { if (el) el.hidden = true; });
+    if (successPanel) successPanel.hidden = false;
+  };
+  document.getElementById('orderNewRequest')?.addEventListener('click', () => {
+    successPanel.hidden = true;
+    hideable.forEach(el => { if (el) el.hidden = false; });
+    document.getElementById('formMsg')?.classList.remove('show');
+    if (hint) hint.textContent = 'می‌تونی سفارش جدیدت رو وارد کنی.';
+    showStep(0);
+    document.getElementById('order')?.scrollIntoView({behavior:'smooth'});
+  });
+})();
+</script>
+
+<script>
 /* ===== LOYAL GRAPHIC PREMIUM ADD-ONS ===== */
 (() => {
   const body = document.body;
@@ -5725,6 +6027,30 @@ document.addEventListener(
     if (target.closest('#themePanel') && !target.matches('.theme-option')) return;
     playUiSound(target.matches('.theme-option') ? 'toggle' : 'tap');
   }, true);
+})();
+</script>
+
+
+<div class="loyal-quick-contact" id="loyalQuickContact">
+  <div class="quick-contact-panel" id="quickContactPanel" aria-hidden="true">
+    <a href="https://t.me/taha_loyal_guy2" target="_blank" rel="noopener noreferrer"><span>✈</span> تلگرام</a>
+    <a href="https://rubika.ir/taha_loyal_guy3" target="_blank" rel="noopener noreferrer"><span>◈</span> روبیکا</a>
+    <a href="https://ble.ir/taha_loyal_guy" target="_blank" rel="noopener noreferrer"><span>✦</span> بله</a>
+  </div>
+  <button type="button" id="quickContactToggle" aria-expanded="false" aria-controls="quickContactPanel"><span class="quick-contact-symbol">✉</span><span>ارتباط سریع</span></button>
+</div>
+
+
+<script>
+/* ===== QUICK CONTACT MENU ===== */
+(() => {
+  const toggle = document.getElementById('quickContactToggle');
+  const panel = document.getElementById('quickContactPanel');
+  if (!toggle || !panel) return;
+  const setOpen = open => { panel.classList.toggle('open', open); panel.setAttribute('aria-hidden', String(!open)); toggle.setAttribute('aria-expanded', String(open)); };
+  toggle.addEventListener('click', () => setOpen(!panel.classList.contains('open')));
+  document.addEventListener('click', event => { if (!event.target.closest('#loyalQuickContact')) setOpen(false); });
+  document.addEventListener('keydown', event => { if (event.key === 'Escape') setOpen(false); });
 })();
 </script>
 
