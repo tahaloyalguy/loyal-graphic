@@ -3018,6 +3018,74 @@ body[data-theme="purple"] .portfolio-lightbox,body[data-theme="blue"] .portfolio
 @media(max-width:600px){#themeLauncher{left:14px;bottom:16px;min-width:148px;height:48px;padding:0 14px}.loyal-live-stats{gap:7px}.loyal-stat{min-width:calc(50% - 5px);padding:10px}.loyal-stat strong{font-size:19px}}
 @media(prefers-reduced-motion:reduce){#loyalPreloader,.theme-option,.portfolio-card{transition:none!important;animation:none!important}}
 
+
+
+/* ===== LOYAL GRAPHIC — POLISHED INTERACTION PACK ===== */
+/* Cinematic hero: slow ambient light, restrained so it stays elegant */
+.hero{isolation:isolate}
+.hero::before{animation:loyalHeroGlow 13s ease-in-out infinite alternate;will-change:transform,opacity}
+.hero-showcase::before{animation:loyalShowcaseGlow 8s ease-in-out infinite alternate}
+.showcase-orbit.orbit-one{animation:loyalOrbit 34s linear infinite}
+.showcase-orbit.orbit-two{animation:loyalOrbitReverse 48s linear infinite}
+.showcase-main{animation:loyalShowcaseFloat 7s ease-in-out infinite}
+.showcase-small.showcase-top{animation:loyalCardFloat 6.5s ease-in-out infinite}
+.showcase-small.showcase-bottom{animation:loyalCardFloat 7.5s ease-in-out -2s infinite}
+@keyframes loyalHeroGlow{from{opacity:.65;transform:translateX(-50%) scale(.92)}to{opacity:1;transform:translateX(-50%) scale(1.12)}}
+@keyframes loyalShowcaseGlow{from{opacity:.65;transform:scale(.92)}to{opacity:1;transform:scale(1.08)}}
+@keyframes loyalOrbit{to{transform:rotate(342deg)}}
+@keyframes loyalOrbitReverse{to{transform:rotate(-336deg)}}
+@keyframes loyalShowcaseFloat{0%,100%{translate:0 0}50%{translate:0 -7px}}
+@keyframes loyalCardFloat{0%,100%{translate:0 0}50%{translate:0 -8px}}
+
+/* Moving studio identity strip */
+.loyal-marquee{position:relative;overflow:hidden;isolation:isolate;margin:0 auto 28px;padding:17px 0;border-top:1px solid rgba(var(--accent-rgb),.2);border-bottom:1px solid rgba(var(--accent-rgb),.2);background:linear-gradient(90deg,transparent,rgba(var(--accent-rgb),.055),transparent)}
+.loyal-marquee::before,.loyal-marquee::after{content:"";position:absolute;z-index:2;top:0;bottom:0;width:10%;pointer-events:none}
+.loyal-marquee::before{left:0;background:linear-gradient(90deg,var(--bg,#080808),transparent)}
+.loyal-marquee::after{right:0;background:linear-gradient(270deg,var(--bg,#080808),transparent)}
+.loyal-marquee-track{display:flex;width:max-content;animation:loyalMarquee 34s linear infinite}
+.loyal-marquee:hover .loyal-marquee-track{animation-play-state:paused}
+.loyal-marquee-group{display:flex;align-items:center;gap:30px;padding-right:30px;white-space:nowrap}
+.loyal-marquee-group span{font:700 11px/1 "Space Grotesk",sans-serif;letter-spacing:2.4px;color:rgba(255,255,255,.68)}
+.loyal-marquee-group i{font-style:normal;color:var(--accent);font-size:15px;text-shadow:0 0 14px rgba(var(--accent-rgb),.6)}
+@keyframes loyalMarquee{to{transform:translateX(50%)}}
+
+/* Portfolio cards already tilt in 3D; add a restrained light sweep */
+#portfolioGrid .portfolio-card{position:relative;overflow:hidden}
+#portfolioGrid .portfolio-card::after{content:"";position:absolute;inset:-60% auto -60% -75%;width:42%;pointer-events:none;z-index:3;transform:rotate(18deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.13),transparent);transition:left .7s cubic-bezier(.2,.7,.2,1)}
+#portfolioGrid .portfolio-card:hover::after{left:140%}
+
+/* Magnetic motion uses CSS translate so existing transforms/hover effects remain intact */
+.magnetic-item{translate:var(--mag-x,0px) var(--mag-y,0px);transition:translate .2s cubic-bezier(.2,.7,.2,1)}
+
+/* Section navigation transition: a quick soft accent sweep, never blocks interaction */
+#loyalPageWipe{position:fixed;inset:0;z-index:99990;pointer-events:none;opacity:0;background:linear-gradient(110deg,transparent 25%,rgba(var(--accent-rgb),.10) 50%,transparent 75%);transform:translateX(-110%)}
+#loyalPageWipe.play{opacity:1;animation:loyalPageSweep .48s ease-out forwards}
+@keyframes loyalPageSweep{0%{transform:translateX(-110%);opacity:0}20%{opacity:1}100%{transform:translateX(110%);opacity:0}}
+
+/* Optional UI sound — off by default */
+#loyalSoundToggle{position:fixed;right:22px;bottom:24px;z-index:50000;display:flex;align-items:center;gap:8px;min-height:46px;padding:0 14px;border:1px solid rgba(var(--accent-rgb),.35);border-radius:15px;background:rgba(15,15,18,.88);color:#ddd;backdrop-filter:blur(14px);box-shadow:0 8px 28px rgba(0,0,0,.28);font:700 12px inherit;cursor:pointer;transition:transform .22s ease,border-color .22s ease,color .22s ease}
+#loyalSoundToggle:hover{transform:translateY(-3px);border-color:var(--accent);color:#fff}
+#loyalSoundToggle .sound-icon{font-size:19px;color:var(--accent2);line-height:1}
+#loyalSoundToggle[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 22px rgba(var(--accent-rgb),.14)}
+#loyalSoundToggle[aria-pressed="true"] .sound-icon{ text-shadow:0 0 12px var(--accent); }
+#loyalToast{z-index:100010;max-width:min(92vw,440px);text-align:center}
+#loyalToast.show{box-shadow:0 12px 38px rgba(0,0,0,.42),0 0 24px rgba(var(--accent-rgb),.12)}
+
+@media(max-width:600px){
+ .loyal-marquee{margin-bottom:18px;padding:14px 0}
+ .loyal-marquee-group{gap:20px;padding-right:20px}
+ .loyal-marquee-group span{font-size:9px;letter-spacing:1.6px}
+ #loyalSoundToggle{right:14px;bottom:16px;min-height:44px;padding:0 12px}
+ #loyalSoundToggle .sound-label{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero::before,.hero-showcase::before,.showcase-orbit,.showcase-main,.showcase-small,.loyal-marquee-track{animation:none!important}
+ .loyal-marquee-track{transform:none}
+ #loyalPageWipe{display:none}
+ .magnetic-item{translate:none!important;transition:none!important}
+ #portfolioGrid .portfolio-card::after{display:none}
+}
+
 </style>
 </head>
 
@@ -3040,6 +3108,8 @@ body[data-theme="purple"] .portfolio-lightbox,body[data-theme="blue"] .portfolio
 </button>
 
 <div id="loyalToast" role="status" aria-live="polite"></div>
+<button id="loyalSoundToggle" type="button" aria-pressed="false" aria-label="فعال کردن صدای رابط کاربری" title="صدای رابط کاربری: خاموش"><span class="sound-icon" aria-hidden="true">♪</span><span class="sound-label">صدا خاموش</span></button>
+<div id="loyalPageWipe" aria-hidden="true"></div>
 
 <header>
 <div class="container nav">
@@ -3137,6 +3207,13 @@ body[data-theme="purple"] .portfolio-lightbox,body[data-theme="blue"] .portfolio
 </div>
 </section>
 
+<!-- LOYAL BRAND MOTION STRIP -->
+<div class="loyal-marquee" aria-label="LOYAL GRAPHIC creative studio">
+  <div class="loyal-marquee-track">
+    <div class="loyal-marquee-group"><span>MINECRAFT DESIGN</span><i>✦</i><span>CREATIVE THUMBNAILS</span><i>✦</i><span>GAMING VISUALS</span><i>✦</i><span>LOYAL GRAPHIC STUDIO</span><i>✦</i></div>
+    <div class="loyal-marquee-group" aria-hidden="true"><span>MINECRAFT DESIGN</span><i>✦</i><span>CREATIVE THUMBNAILS</span><i>✦</i><span>GAMING VISUALS</span><i>✦</i><span>LOYAL GRAPHIC STUDIO</span><i>✦</i></div>
+  </div>
+</div>
 
 <!-- ================= SERVICES ================= -->
 
@@ -5423,6 +5500,113 @@ document.addEventListener(
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') { toggleThemePanel(false); resetZoom(); }
   });
+})();
+</script>
+
+
+
+<script>
+/* ===== LOYAL GRAPHIC INTERACTIONS — SAFE ADD-ONS ===== */
+(() => {
+  'use strict';
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  const toast = message => {
+    if (typeof window.showLoyalToast === 'function') window.showLoyalToast(message);
+    else {
+      const el = document.getElementById('loyalToast');
+      if (!el) return;
+      el.textContent = message;
+      el.classList.add('show');
+      clearTimeout(el._loyalTimer);
+      el._loyalTimer = setTimeout(() => el.classList.remove('show'), 2200);
+    }
+  };
+
+  // Magnetic buttons: small movement only, disabled on touch/reduced motion.
+  if (finePointer && !reduceMotion) {
+    const magnetic = document.querySelectorAll('.btn, .nav-cta, #themeLauncher, #loyalSoundToggle, .filter');
+    magnetic.forEach(el => {
+      el.classList.add('magnetic-item');
+      el.addEventListener('pointermove', event => {
+        const r = el.getBoundingClientRect();
+        const dx = (event.clientX - r.left - r.width / 2) / Math.max(1, r.width / 2);
+        const dy = (event.clientY - r.top - r.height / 2) / Math.max(1, r.height / 2);
+        el.style.setProperty('--mag-x', `${(dx * 4).toFixed(1)}px`);
+        el.style.setProperty('--mag-y', `${(dy * 3).toFixed(1)}px`);
+      });
+      const reset = () => { el.style.setProperty('--mag-x','0px'); el.style.setProperty('--mag-y','0px'); };
+      el.addEventListener('pointerleave', reset);
+      el.addEventListener('blur', reset);
+    });
+  }
+
+  // Soft transition cue for same-page navigation; native anchor behavior remains intact.
+  const wipe = document.getElementById('loyalPageWipe');
+  if (wipe && !reduceMotion) {
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', event => {
+        const href = link.getAttribute('href');
+        if (!href || href === '#') return;
+        const target = document.getElementById(decodeURIComponent(href.slice(1)));
+        if (!target) return;
+        wipe.classList.remove('play');
+        void wipe.offsetWidth;
+        wipe.classList.add('play');
+      }, {passive:true});
+    });
+    wipe.addEventListener('animationend', () => wipe.classList.remove('play'));
+  }
+
+  // User-controlled sound: OFF by default, generated locally (no external audio files).
+  const soundButton = document.getElementById('loyalSoundToggle');
+  let soundEnabled = false;
+  try { soundEnabled = localStorage.getItem('loyalGraphicSound') === 'on'; } catch (_) {}
+  let audioContext = null;
+  const paintSoundButton = () => {
+    if (!soundButton) return;
+    soundButton.setAttribute('aria-pressed', String(soundEnabled));
+    soundButton.setAttribute('aria-label', soundEnabled ? 'خاموش کردن صدای رابط کاربری' : 'فعال کردن صدای رابط کاربری');
+    soundButton.title = soundEnabled ? 'صدای رابط کاربری: روشن' : 'صدای رابط کاربری: خاموش';
+    soundButton.querySelector('.sound-icon').textContent = soundEnabled ? '♫' : '♪';
+    soundButton.querySelector('.sound-label').textContent = soundEnabled ? 'صدا روشن' : 'صدا خاموش';
+  };
+  paintSoundButton();
+  function playUiSound(kind = 'tap') {
+    if (!soundEnabled) return;
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      audioContext ||= new AudioCtx();
+      if (audioContext.state === 'suspended') audioContext.resume();
+      const osc = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+      const now = audioContext.currentTime;
+      const freq = kind === 'toggle' ? 660 : 520;
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, now);
+      osc.frequency.exponentialRampToValueAtTime(freq * 1.28, now + .055);
+      gain.gain.setValueAtTime(.0001, now);
+      gain.gain.exponentialRampToValueAtTime(.035, now + .012);
+      gain.gain.exponentialRampToValueAtTime(.0001, now + .095);
+      osc.connect(gain); gain.connect(audioContext.destination);
+      osc.start(now); osc.stop(now + .1);
+    } catch (_) { /* Audio is optional; never interrupt site behavior. */ }
+  }
+  soundButton?.addEventListener('click', () => {
+    soundEnabled = !soundEnabled;
+    try { localStorage.setItem('loyalGraphicSound', soundEnabled ? 'on' : 'off'); } catch (_) {}
+    paintSoundButton();
+    if (soundEnabled) playUiSound('toggle');
+    toast(soundEnabled ? 'صدای ظریف رابط کاربری فعال شد' : 'صدای رابط کاربری خاموش شد');
+  });
+  document.addEventListener('click', event => {
+    if (!soundEnabled || event.defaultPrevented) return;
+    const target = event.target instanceof Element ? event.target.closest('a,button,[role="button"]') : null;
+    if (!target || target === soundButton || target.matches('input,select,textarea')) return;
+    if (target.closest('#themePanel') && !target.matches('.theme-option')) return;
+    playUiSound(target.matches('.theme-option') ? 'toggle' : 'tap');
+  }, true);
 })();
 </script>
 
