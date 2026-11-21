@@ -3368,6 +3368,20 @@ h1,h2,h3,.section-head h2,.hero-copy h2,.tag,.eyebrow{font-family:"Estedad","Vaz
 }
 
 </style>
+
+<style id="loyal-admin-studio-css">
+#adminPanel{position:fixed;inset:0;z-index:100200;display:none;align-items:center;justify-content:center;padding:clamp(8px,2vw,24px);background:rgba(0,0,0,.84);backdrop-filter:blur(18px)}
+#adminPanel.open{display:flex}
+.admin-shell{width:min(1480px,100%);height:min(920px,calc(100dvh - 24px));min-height:520px;overflow:hidden;border:1px solid rgba(var(--accent-rgb),.25);border-radius:26px;background:#09090b;color:#f5f5f5;box-shadow:0 35px 120px rgba(0,0,0,.72),0 0 65px rgba(var(--accent-rgb),.08);position:relative;font-family:inherit}
+.admin-login-view{width:min(460px,calc(100% - 36px));position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:clamp(24px,5vw,48px);border:1px solid rgba(var(--accent-rgb),.24);border-radius:24px;background:linear-gradient(145deg,#151515,#0b0b0d);box-shadow:0 24px 80px #0009}
+.admin-login-view[hidden]{display:none!important}.admin-login-mark{font:900 28px/1 'Space Grotesk',sans-serif;color:var(--accent2);display:flex;align-items:center;gap:12px;margin-bottom:28px}.admin-login-mark span{font:700 10px/1.3 'Space Grotesk',sans-serif;letter-spacing:2px;color:#777}.admin-kicker{font:700 10px/1.4 'Space Grotesk',sans-serif;letter-spacing:2px;color:var(--accent2)}.admin-login-view h2{font-size:27px;margin:10px 0}.admin-login-view p{color:#999;font-size:13px;line-height:1.9;margin:0 0 22px}.admin-login-view label,.admin-form-grid>label{display:flex;flex-direction:column;gap:8px;color:#c9c9c9;font-size:12px;font-weight:700}.admin-login-view input,.admin-form-grid input:not([type=checkbox]):not([type=file]),.admin-form-grid select,.admin-form-grid textarea,.admin-repeat-row input,.admin-repeat-row textarea{width:100%;min-width:0;box-sizing:border-box;border:1px solid #2b2b31;border-radius:11px;padding:12px 13px;background:#111115;color:#f5f5f5;font-family:inherit;font-size:13px;font-weight:500;outline:none}.admin-login-view input{margin-top:8px;margin-bottom:14px}.admin-login-view input:focus,.admin-form-grid input:focus,.admin-form-grid select:focus,.admin-form-grid textarea:focus,.admin-repeat-row input:focus,.admin-repeat-row textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(var(--accent-rgb),.1)}.admin-primary-btn,.admin-secondary-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:1px solid transparent;border-radius:11px;padding:12px 17px;font-family:inherit;font-size:12px;font-weight:800;cursor:pointer;transition:.2s ease}.admin-primary-btn{background:linear-gradient(120deg,var(--accent),var(--accent2));color:#111}.admin-secondary-btn{background:#17171c;color:#ddd;border-color:#303038}.admin-primary-btn:hover,.admin-secondary-btn:hover{transform:translateY(-2px);filter:brightness(1.08)}.admin-login-view .admin-primary-btn{width:100%;margin-top:4px}.admin-login-view small{display:block;color:#686870;font-size:10px;line-height:1.8;margin-top:18px}.admin-feedback{min-height:22px;color:#ff9b70;font-size:12px;margin-top:12px}.admin-close{position:absolute;right:14px;top:14px;width:38px;height:38px;border:1px solid #333;border-radius:12px;background:#19191d;color:#ddd;font-size:24px;cursor:pointer}
+.admin-workspace{display:grid;grid-template-columns:245px minmax(0,1fr);height:100%;min-height:0}.admin-workspace[hidden]{display:none!important}.admin-sidebar{display:flex;flex-direction:column;min-height:0;padding:25px 16px 18px;border-left:1px solid #25252b;background:#0d0d10}.admin-brand{display:flex;align-items:center;gap:11px;padding:3px 9px 25px;border-bottom:1px solid #24242a}.admin-brand>b{display:grid;place-items:center;width:43px;height:43px;border-radius:13px;background:linear-gradient(135deg,var(--accent),#242424);font:900 18px 'Space Grotesk';color:#fff}.admin-brand span{display:flex;flex-direction:column;gap:4px}.admin-brand strong{font:800 12px 'Space Grotesk';letter-spacing:1px}.admin-brand small{font:700 9px 'Space Grotesk';letter-spacing:1.7px;color:#777}.admin-nav{display:grid;gap:7px;padding-top:22px}.admin-nav button{display:flex;align-items:center;gap:12px;width:100%;border:1px solid transparent;border-radius:11px;padding:12px 13px;background:transparent;color:#92929b;text-align:right;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;transition:.2s}.admin-nav button i{width:20px;color:var(--accent2);font-style:normal;font-size:17px;text-align:center}.admin-nav button:hover,.admin-nav button.active{background:rgba(var(--accent-rgb),.11);border-color:rgba(var(--accent-rgb),.22);color:#fff}.admin-sidebar-bottom{margin-top:auto;display:grid;gap:10px;padding-top:20px}.admin-sidebar-bottom a,.admin-sidebar-bottom button{display:flex;justify-content:space-between;align-items:center;padding:11px 12px;border:1px solid #2a2a30;border-radius:10px;background:#151519;color:#aaa;text-decoration:none;font-family:inherit;font-size:11px;font-weight:700;cursor:pointer}.admin-sidebar-bottom button{color:#ff9a9a}.admin-main{min-width:0;min-height:0;overflow:auto;padding:clamp(18px,3vw,34px);background:radial-gradient(ellipse at 90% 0%,rgba(var(--accent-rgb),.075),transparent 34%),#09090b}.admin-topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-bottom:22px;border-bottom:1px solid #24242a}.admin-topbar h2{font-size:23px;margin:6px 0 0}.admin-top-actions{display:flex;align-items:center;gap:12px}.admin-live-dot{font-size:10px;color:#8fd7aa}.admin-live-dot:before{content:"";display:inline-block;width:7px;height:7px;margin-left:7px;border-radius:50%;background:#43c77a;box-shadow:0 0 12px #43c77a}.admin-close-inline{display:none;width:38px;height:38px;border:1px solid #333;border-radius:11px;background:#151519;color:#ddd;font-size:23px}.admin-global-message{position:sticky;top:0;z-index:4;min-height:0;font-size:12px;color:#9ee2b3}.admin-global-message:not(:empty){padding:10px 0}.admin-view{display:none;padding-top:23px}.admin-view.active{display:block}.admin-welcome{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:25px;border:1px solid rgba(var(--accent-rgb),.24);border-radius:18px;background:linear-gradient(115deg,rgba(var(--accent-rgb),.14),#141418 60%);overflow:hidden}.admin-welcome span{font:700 9px 'Space Grotesk';letter-spacing:1.6px;color:var(--accent2)}.admin-welcome h3{font-size:23px;margin:8px 0}.admin-welcome p{margin:0;color:#999;font-size:12px}.admin-welcome-icon{font-size:54px;color:var(--accent2);text-shadow:0 0 35px var(--accent);padding:0 15px}.admin-stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:17px 0}.admin-stat-card,.admin-card{border:1px solid #292930;border-radius:15px;background:#111115;padding:18px}.admin-stat-card span{display:block;color:#999;font-size:11px}.admin-stat-card strong{display:block;font:800 27px 'Space Grotesk';color:var(--accent2);margin:9px 0 4px}.admin-stat-card small,.admin-help{color:#777;font-size:10px;line-height:1.8}.admin-overview-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.admin-card-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}.admin-card-head h3,.admin-section-intro h3{font-size:16px;margin:5px 0}.admin-card p{color:#999;font-size:12px;line-height:1.9}.admin-status-pill,.admin-count{border-radius:20px;padding:6px 10px;background:#222;color:#bbb;font-size:10px}.admin-status-pill.open{background:#123522;color:#7fe0a1}.admin-status-pill.closed{background:#3b2020;color:#ff9b9b}.admin-card .admin-primary-btn{margin-top:8px}.admin-help{display:block;margin-top:10px}.admin-quick-actions{display:grid;gap:8px}.admin-quick-actions button{padding:11px 12px;text-align:right;border:1px solid #2b2b31;border-radius:10px;background:#17171c;color:#ccc;font-family:inherit;font-size:11px;font-weight:700;cursor:pointer}.admin-quick-actions button:hover{border-color:var(--accent);color:#fff}.admin-note-card{margin-top:14px}.admin-note-card strong{font-size:12px;color:var(--accent2)}.admin-note-card p{margin-bottom:0}.admin-section-intro{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:16px}.admin-section-intro p{color:#888;font-size:12px;margin:6px 0 0}.admin-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.admin-span-2{grid-column:1/-1}.admin-form-grid textarea{resize:vertical;line-height:1.8}.admin-form-grid input[type=file]{width:100%;font-family:inherit;font-size:11px;color:#aaa}.admin-check{display:flex!important;flex-direction:row!important;align-items:center;gap:10px!important;padding:10px 12px;border:1px solid #292930;border-radius:11px;background:#151519}.admin-check input{accent-color:var(--accent);width:17px;height:17px}.admin-form-actions{display:flex;flex-wrap:wrap;gap:9px;padding-top:5px}.admin-form-actions button{min-width:150px}.admin-portfolio-list{display:grid;gap:9px}.admin-portfolio-row{display:grid;grid-template-columns:64px minmax(0,1fr) auto;align-items:center;gap:12px;padding:10px;border:1px solid #28282e;border-radius:12px;background:#151519}.admin-portfolio-row img,.admin-portfolio-placeholder{width:64px;height:52px;border-radius:8px;object-fit:cover;background:#222;display:grid;place-items:center;color:var(--accent2);font-size:10px}.admin-portfolio-row strong{display:block;font-size:12px}.admin-portfolio-row small{display:block;color:#888;font-size:10px;margin-top:5px}.admin-row-actions{display:flex;gap:6px}.admin-row-actions button,.admin-repeat-row button{border:1px solid #34343b;border-radius:8px;background:#202026;color:#ddd;padding:8px 10px;font-family:inherit;font-size:10px;font-weight:700;cursor:pointer}.admin-row-actions .danger,.admin-repeat-row .danger{color:#ff9b9b}.admin-repeat-list{display:grid;gap:10px}.admin-repeat-row{display:grid;grid-template-columns:1fr 1fr auto;gap:9px;align-items:end;padding:12px;border:1px solid #292930;border-radius:12px;background:#151519}.admin-repeat-row.contact-row{grid-template-columns:.8fr 1.3fr 1fr auto}.admin-repeat-row label{display:flex;flex-direction:column;gap:6px;color:#888;font-size:10px}.admin-theme-preview{display:flex;gap:10px;flex-wrap:wrap}.admin-theme-preview span{padding:10px 16px;border:1px solid #333;border-radius:10px;font-size:11px}.admin-theme-preview [data-preview-theme=orange]{border-color:#ff6a00;color:#ff9b4a}.admin-theme-preview [data-preview-theme=purple]{border-color:#a66bff;color:#d2aaff}.admin-theme-preview [data-preview-theme=blue]{border-color:#49a7ff;color:#9cdbff}.admin-muted{color:#777;font-size:12px}
+@media(max-width:900px){.admin-workspace{grid-template-columns:190px minmax(0,1fr)}.admin-sidebar{padding:18px 11px}.admin-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-overview-grid{grid-template-columns:1fr}}
+@media(max-width:650px){#adminPanel{padding:0}.admin-shell{height:100dvh;min-height:0;border-radius:0;border:0}.admin-workspace{display:flex;flex-direction:column}.admin-sidebar{order:2;flex:0 0 auto;padding:8px 10px calc(8px + env(safe-area-inset-bottom));border-left:0;border-top:1px solid #28282e}.admin-brand{display:none}.admin-nav{display:flex;gap:5px;padding:0;overflow-x:auto;scrollbar-width:none}.admin-nav button{flex:0 0 auto;width:auto;display:grid;justify-items:center;gap:3px;padding:8px 10px;font-size:9px;white-space:nowrap}.admin-nav button i{font-size:16px}.admin-sidebar-bottom{display:none}.admin-main{order:1;flex:1;overflow:auto;padding:18px 14px}.admin-topbar{padding-bottom:14px}.admin-topbar h2{font-size:19px}.admin-close-inline{display:block}.admin-stat-grid{gap:8px}.admin-stat-card{padding:13px}.admin-stat-card strong{font-size:22px}.admin-welcome{padding:18px}.admin-welcome h3{font-size:19px}.admin-welcome-icon{font-size:36px}.admin-form-grid{grid-template-columns:1fr;gap:12px}.admin-span-2{grid-column:auto}.admin-section-intro{align-items:flex-start;flex-direction:column}.admin-section-intro>.admin-secondary-btn{width:100%}.admin-portfolio-row{grid-template-columns:52px minmax(0,1fr)}.admin-portfolio-row img,.admin-portfolio-placeholder{width:52px;height:46px}.admin-row-actions{grid-column:1/-1;justify-content:flex-end}.admin-repeat-row,.admin-repeat-row.contact-row{grid-template-columns:1fr}.admin-login-view{width:calc(100% - 28px);padding:25px 20px}.admin-login-view h2{font-size:23px}}
+@media(prefers-reduced-motion:reduce){.admin-primary-btn,.admin-secondary-btn,.admin-nav button{transition:none}}
+.loyal-motion-disabled *, .loyal-motion-disabled *::before, .loyal-motion-disabled *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+</style>
+
 </head>
 
 <body>
@@ -3513,7 +3527,7 @@ h1,h2,h3,.section-head h2,.hero-copy h2,.tag,.eyebrow{font-family:"Estedad","Vaz
 </p>
 </div>
 
-<div class="grid services">
+<div class="grid services" id="servicesGrid">
 
 <article class="card reveal">
 <div class="icon">01</div>
@@ -4187,7 +4201,7 @@ style="color:#999;font-size:13px"
    نوع پروژه
 ============================================================ */
 
-const portfolioItems = [
+let portfolioItems = [
 
     {
         image:"images/portfolio-01.jpg",
@@ -4254,6 +4268,7 @@ const portfolioItems = [
 }
 
 ];
+window.portfolioItems = portfolioItems;
 
 const grid = document.getElementById("portfolioGrid");
 let portfolioSort = "default";
@@ -4364,18 +4379,27 @@ function renderPortfolio(filter="all"){
 renderPortfolio();
 portfolioSortSelect?.addEventListener("change", () => { portfolioSort = portfolioSortSelect.value; const activeFilter = document.querySelector(".filter.active")?.dataset.filter || "all"; renderPortfolio(activeFilter); });
 
-const featuredItem = portfolioItems.find(item => item.image);
 const featuredCard = document.getElementById("featuredWork");
-if (featuredItem && featuredCard) {
+function renderFeaturedWork(){
+    const featuredItem = portfolioItems.find(item => item.is_featured && item.image) || portfolioItems.find(item => item.image);
+    if (!featuredCard) return;
+    if (!featuredItem) { featuredCard.hidden = true; return; }
+    featuredCard.hidden = false;
     const featuredImage = document.getElementById("featuredWorkImage");
     if (featuredImage) { featuredImage.src = featuredItem.image; featuredImage.alt = featuredItem.title; }
     document.getElementById("featuredWorkTitle").textContent = featuredItem.title;
     document.getElementById("featuredWorkDescription").textContent = featuredItem.description || "یکی از طراحی‌های منتخب استودیوی LOYAL GRAPHIC.";
-    const openFeatured = () => openPortfolioDetails(portfolioItems.indexOf(featuredItem));
-    featuredCard.addEventListener("click", event => { if (!event.target.closest("button")) openFeatured(); });
-    featuredCard.addEventListener("keydown", event => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); openFeatured(); } });
-    document.getElementById("featuredWorkOpen")?.addEventListener("click", openFeatured);
-} else if (featuredCard) { featuredCard.hidden = true; }
+}
+function openFeaturedWork(){
+    const featuredItem = portfolioItems.find(item => item.is_featured && item.image) || portfolioItems.find(item => item.image);
+    if (featuredItem) openPortfolioDetails(portfolioItems.indexOf(featuredItem));
+}
+if (featuredCard) {
+    featuredCard.addEventListener("click", event => { if (!event.target.closest("button")) openFeaturedWork(); });
+    featuredCard.addEventListener("keydown", event => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); openFeaturedWork(); } });
+    document.getElementById("featuredWorkOpen")?.addEventListener("click", openFeaturedWork);
+}
+renderFeaturedWork();
 
 document.addEventListener("contextmenu", e => {
     if (e.target.tagName === "IMG") {
@@ -5309,383 +5333,126 @@ testSupabase();
 
 </script>
 
-<!-- ================= ADMIN PANEL ================= -->
+<!-- ================= LOYAL GRAPHIC ADMIN STUDIO ================= -->
+<div id="adminPanel" class="admin-panel" aria-hidden="true">
+  <div class="admin-shell" role="dialog" aria-modal="true" aria-label="پنل مدیریت LOYAL GRAPHIC">
+    <section id="adminLogin" class="admin-login-view">
+      <button id="adminClose" class="admin-close" type="button" aria-label="بستن">×</button>
+      <div class="admin-login-mark">LG<span>ADMIN STUDIO</span></div>
+      <span class="admin-kicker">SECURE ACCESS</span>
+      <h2>خوش برگشتی 👋</h2>
+      <p>برای مدیریت کامل وب‌سایت وارد حساب مدیر شو.</p>
+      <label>ایمیل مدیر<input id="adminEmail" type="email" placeholder="ایمیل حساب Supabase" autocomplete="username"></label>
+      <label>رمز عبور<input id="adminPassword" type="password" placeholder="رمز عبور" autocomplete="current-password"></label>
+      <button id="adminLoginBtn" class="admin-primary-btn" type="button">ورود به پنل <span>↗</span></button>
+      <div id="adminLoginMessage" class="admin-feedback" role="status"></div>
+      <small>دسترسی فقط برای حساب‌هایی که در فهرست مدیران Supabase ثبت شده‌اند.</small>
+    </section>
 
-<div id="adminPanel" class="admin-panel">
-
-    <div class="admin-box">
-
-        <button id="adminClose" class="admin-close" type="button">
-            ×
-        </button>
-
-        <div id="adminLogin">
-
-            <span class="tag">ADMIN ACCESS</span>
-
-            <h2>مدیریت سفارش‌ها</h2>
-
-            <p>
-                برای مدیریت وضعیت پذیرش سفارش وارد شوید.
-            </p>
-
-            <input
-                id="adminEmail"
-                type="email"
-                placeholder="ایمیل"
-                autocomplete="email"
-            >
-
-            <input
-                id="adminPassword"
-                type="password"
-                placeholder="رمز عبور"
-                autocomplete="current-password"
-            >
-
-            <button id="adminLoginBtn" type="button">
-                ورود به پنل
-            </button>
-
-            <div id="adminLoginMessage"></div>
-
+    <section id="adminWorkspace" class="admin-workspace" hidden>
+      <aside class="admin-sidebar">
+        <div class="admin-brand"><b>LG</b><span><strong>LOYAL ADMIN</strong><small>CONTROL CENTER</small></span></div>
+        <nav class="admin-nav" aria-label="بخش‌های مدیریت">
+          <button class="active" data-admin-view="overview"><i>◫</i> نمای کلی</button>
+          <button data-admin-view="portfolio"><i>▧</i> نمونه‌کارها</button>
+          <button data-admin-view="content"><i>✎</i> محتوای سایت</button>
+          <button data-admin-view="contacts"><i>⌁</i> راه‌های ارتباطی</button>
+          <button data-admin-view="appearance"><i>◉</i> ظاهر و افکت‌ها</button>
+          <button data-admin-view="general"><i>⚙</i> تنظیمات عمومی</button>
+        </nav>
+        <div class="admin-sidebar-bottom">
+          <a href="#home" id="adminViewSite">مشاهده وب‌سایت ↗</a>
+          <button id="adminLogoutBtn" type="button">خروج از حساب <span>↪</span></button>
         </div>
+      </aside>
 
+      <main class="admin-main">
+        <header class="admin-topbar">
+          <div><span class="admin-kicker">LOYAL GRAPHIC / MANAGEMENT</span><h2 id="adminPageTitle">نمای کلی</h2></div>
+          <div class="admin-top-actions"><span class="admin-live-dot">سیستم مدیریت</span><button id="adminWorkspaceClose" class="admin-close-inline" type="button" aria-label="بستن پنل">×</button></div>
+        </header>
+        <div id="adminMessage" class="admin-global-message" role="status"></div>
 
-        <div id="adminDashboard" style="display:none;">
+        <section class="admin-view active" data-admin-section="overview">
+          <div class="admin-welcome"><div><span>CONTROL YOUR CREATIVE STUDIO</span><h3>همه‌چیز تحت کنترله.</h3><p>از همین‌جا محتوای سایت، نمونه‌کارها و تنظیمات رو مدیریت کن.</p></div><div class="admin-welcome-icon">✦</div></div>
+          <div class="admin-stat-grid">
+            <article class="admin-stat-card"><span>نمونه‌کارهای فعال</span><strong id="adminStatWorks">—</strong><small>پروژه‌های قابل نمایش</small></article>
+            <article class="admin-stat-card"><span>دسته‌بندی‌ها</span><strong id="adminStatCategories">—</strong><small>دسته‌های دارای نمونه‌کار</small></article>
+            <article class="admin-stat-card"><span>خدمات سایت</span><strong id="adminStatServices">—</strong><small>زمینه‌های قابل سفارش</small></article>
+            <article class="admin-stat-card"><span>تم پیش‌فرض</span><strong id="adminStatTheme">نارنجی</strong><small>ظاهر اولیه بازدیدکننده</small></article>
+          </div>
+          <div class="admin-overview-grid">
+            <article class="admin-card"><div class="admin-card-head"><div><span class="admin-kicker">ORDER AVAILABILITY</span><h3>وضعیت پذیرش سفارش</h3></div><span id="adminOrderBadge" class="admin-status-pill">در حال بررسی</span></div><p id="adminCurrentStatus">در حال دریافت وضعیت...</p><button id="adminToggleStatus" class="admin-primary-btn" type="button">تغییر وضعیت پذیرش</button><small class="admin-help">فرم مشتری همچنان از طریق Formspree به ایمیل تو ارسال می‌شود؛ این گزینه فقط فرم را باز یا بسته می‌کند.</small></article>
+            <article class="admin-card"><div class="admin-card-head"><div><span class="admin-kicker">QUICK ACTIONS</span><h3>دسترسی سریع</h3></div></div><div class="admin-quick-actions"><button data-admin-jump="portfolio">＋ افزودن نمونه‌کار</button><button data-admin-jump="content">✎ ویرایش متن‌های سایت</button><button data-admin-jump="appearance">◉ تغییر ظاهر سایت</button></div></article>
+          </div>
+          <div class="admin-card admin-note-card"><strong>نکته درباره سفارش‌ها</strong><p>برای دیدن متن سفارش‌های مشتری، ایمیل‌های Formspree را بررسی کن. پنل مدیریت به‌صورت جداگانه صندوق سفارش ایجاد نمی‌کند تا مسیر فعلی دریافت ایمیل دست‌نخورده بماند.</p></div>
+        </section>
 
-            <span class="tag">ORDER CONTROL</span>
+        <section class="admin-view" data-admin-section="portfolio">
+          <div class="admin-section-intro"><div><span class="admin-kicker">PORTFOLIO CMS</span><h3>مدیریت نمونه‌کارها</h3><p>نمونه‌کار اضافه کن، تصویرش رو آپلود کن یا پروژه‌های قبلی رو ویرایش کن.</p></div><button id="adminImportPortfolio" class="admin-secondary-btn" type="button">انتقال نمونه‌کارهای فعلی به پنل</button></div>
+          <div class="admin-card"><form id="adminPortfolioForm" class="admin-form-grid">
+            <input type="hidden" id="adminPortfolioId">
+            <label>عنوان پروژه<input id="adminPortfolioTitle" required maxlength="90" placeholder="مثلاً Minecraft Thumbnail #08"></label>
+            <label>نوع پروژه<input id="adminPortfolioType" required maxlength="60" placeholder="Minecraft Thumbnail"></label>
+            <label>دسته‌بندی<select id="adminPortfolioCategory"><option value="minecraft-thumbnail">Minecraft Thumbnail</option><option value="minecraft-profile">Minecraft Profile</option><option value="channel-art">Channel Art</option><option value="gaming">Gaming</option><option value="social">Social Media</option><option value="3d">3D / Render</option></select></label>
+            <label>ترتیب نمایش<input id="adminPortfolioOrder" type="number" value="0" min="0" step="1"></label>
+            <label class="admin-span-2">توضیحات<textarea id="adminPortfolioDescription" rows="3" maxlength="500" placeholder="توضیح کوتاه درباره این طراحی..."></textarea></label>
+            <label class="admin-span-2">تصویر نمونه‌کار<input id="adminPortfolioImage" type="file" accept="image/png,image/jpeg,image/webp,image/avif"><small class="admin-help">فرمت‌های PNG، JPG، WEBP و AVIF؛ حداکثر 8 مگابایت. در ویرایش، اگر تصویر جدید انتخاب نکنی تصویر قبلی حفظ می‌شود.</small></label>
+            <label class="admin-check admin-span-2"><input id="adminPortfolioFeatured" type="checkbox"> انتخاب به‌عنوان نمونه‌کار ویژه صفحه اصلی</label>
+            <div class="admin-form-actions admin-span-2"><button class="admin-primary-btn" id="adminPortfolioSave" type="submit">ذخیره نمونه‌کار</button><button class="admin-secondary-btn" id="adminPortfolioCancel" type="button">پاک کردن فرم</button></div>
+          </form></div>
+          <div class="admin-card"><div class="admin-card-head"><div><span class="admin-kicker">PUBLISHED WORKS</span><h3>فهرست نمونه‌کارها</h3></div><span id="adminPortfolioCount" class="admin-count">—</span></div><div id="adminPortfolioList" class="admin-portfolio-list"><p class="admin-muted">در حال بارگذاری...</p></div></div>
+        </section>
 
-            <h2>وضعیت سفارش‌ها</h2>
+        <section class="admin-view" data-admin-section="content">
+          <div class="admin-section-intro"><div><span class="admin-kicker">CONTENT MANAGEMENT</span><h3>محتوای سایت</h3><p>متن‌های اصلی صفحه رو بدون دست زدن به کد تغییر بده.</p></div></div>
+          <form id="adminContentForm" class="admin-card admin-form-grid">
+            <label class="admin-span-2">زیرعنوان اصلی صفحه<input id="contentHeroSubtitle" maxlength="120"></label>
+            <label class="admin-span-2">توضیحات صفحه اصلی<textarea id="contentHeroDescription" rows="3" maxlength="500"></textarea></label>
+            <label>متن دکمه اول<input id="contentHeroPrimary" maxlength="50"></label><label>متن دکمه دوم<input id="contentHeroSecondary" maxlength="50"></label>
+            <label>عنوان بخش خدمات<input id="contentServicesTitle" maxlength="100"></label><label>توضیح بخش خدمات<input id="contentServicesIntro" maxlength="300"></label>
+            <div class="admin-span-2"><div class="admin-card-head"><div><h3>کارت‌های خدمات</h3><small class="admin-help">عنوان و توضیح هر خدمت را تغییر بده یا خدمت جدید اضافه کن.</small></div><button id="adminAddService" class="admin-secondary-btn" type="button">＋ افزودن خدمت</button></div><div id="adminServicesRows" class="admin-repeat-list"></div></div>
+            <label>عنوان بخش درباره ما<input id="contentAboutTitle" maxlength="100"></label><label>توضیح بخش درباره ما<input id="contentAboutIntro" maxlength="300"></label>
+            <label class="admin-span-2">عنوان بخش پایانی<input id="contentCtaTitle" maxlength="140"></label>
+            <label class="admin-span-2">توضیح بخش پایانی<textarea id="contentCtaDescription" rows="2" maxlength="300"></textarea></label>
+            <label class="admin-span-2">عبارات نوار متحرک<textarea id="contentMarquee" rows="2" placeholder="عبارت اول | عبارت دوم | عبارت سوم"></textarea><small class="admin-help">عبارت‌ها را با علامت | از هم جدا کن.</small></label>
+            <div class="admin-form-actions admin-span-2"><button class="admin-primary-btn" type="submit">ذخیره محتوای سایت</button></div>
+          </form>
+        </section>
 
-            <p id="adminCurrentStatus">
-                در حال دریافت وضعیت...
-            </p>
+        <section class="admin-view" data-admin-section="contacts">
+          <div class="admin-section-intro"><div><span class="admin-kicker">CONTACT CHANNELS</span><h3>راه‌های ارتباطی</h3><p>لینک و آیدی شبکه‌های اجتماعی رو از اینجا تغییر بده.</p></div><button id="adminAddContact" class="admin-secondary-btn" type="button">＋ افزودن راه ارتباطی</button></div>
+          <form id="adminContactsForm" class="admin-card"><div id="adminContactRows" class="admin-repeat-list"></div><div class="admin-form-actions"><button class="admin-primary-btn" type="submit">ذخیره راه‌های ارتباطی</button></div></form>
+        </section>
 
-            <button
-                id="adminToggleStatus"
-                type="button"
-            >
-                تغییر وضعیت
-            </button>
+        <section class="admin-view" data-admin-section="appearance">
+          <div class="admin-section-intro"><div><span class="admin-kicker">VISUAL EXPERIENCE</span><h3>ظاهر و افکت‌ها</h3><p>تنظیمات اولیه ظاهر سایت و تصاویر اصلی رو کنترل کن.</p></div></div>
+          <form id="adminAppearanceForm" class="admin-card admin-form-grid">
+            <label>تم پیش‌فرض سایت<select id="appearanceTheme"><option value="orange">نارنجی کلاسیک</option><option value="purple">بنفش نئونی</option><option value="blue">آبی یخی</option></select></label>
+            <label>تصویر اصلی بخش هیرو<input id="appearanceHeroImage" placeholder="images/portfolio-01.jpg"></label>
+            <label class="admin-span-2">آدرس لوگو<input id="appearanceLogo" placeholder="images/logo.png"></label>
+            <label class="admin-check"><input id="appearanceSound" type="checkbox"> صدای رابط کاربری به‌صورت پیش‌فرض روشن باشد</label>
+            <label class="admin-check"><input id="appearanceMotion" type="checkbox" checked> انیمیشن‌ها فعال باشند</label>
+            <div class="admin-theme-preview admin-span-2"><span data-preview-theme="orange">نارنجی</span><span data-preview-theme="purple">بنفش</span><span data-preview-theme="blue">آبی</span></div>
+            <div class="admin-form-actions admin-span-2"><button class="admin-primary-btn" type="submit">ذخیره تنظیمات ظاهری</button></div>
+          </form>
+        </section>
 
-            <button
-                id="adminLogoutBtn"
-                type="button"
-            >
-                خروج
-            </button>
-
-            <div id="adminMessage"></div>
-
-        </div>
-
-    </div>
-
+        <section class="admin-view" data-admin-section="general">
+          <div class="admin-section-intro"><div><span class="admin-kicker">GENERAL SETTINGS</span><h3>تنظیمات عمومی</h3><p>عنوان و توضیحات پایه سایت. پیش‌نمایش تلگرام و شبکه‌های اجتماعی از متادیتای ثابت HTML خوانده می‌شود.</p></div></div>
+          <form id="adminGeneralForm" class="admin-card admin-form-grid">
+            <label class="admin-span-2">عنوان سایت<input id="generalSiteTitle" maxlength="100"></label>
+            <label class="admin-span-2">توضیحات سایت<textarea id="generalSiteDescription" rows="3" maxlength="300"></textarea></label>
+            <div class="admin-form-actions admin-span-2"><button class="admin-primary-btn" type="submit">ذخیره تنظیمات عمومی</button></div>
+          </form>
+          <div class="admin-card admin-note-card"><strong>امنیت پنل</strong><p>ورود با Supabase Auth انجام می‌شود. دسترسی نوشتن به اطلاعات سایت و فایل‌ها فقط برای شناسه‌هایی است که در جدول مدیران مجاز شده‌اند. کلید Service Role نباید داخل HTML قرار بگیرد.</p></div>
+        </section>
+      </main>
+    </section>
+  </div>
 </div>
 
-<script>
-/* ================= ADMIN PANEL LOGIC ================= */
 
-const adminPanel =
-    document.getElementById("adminPanel");
-
-const adminClose =
-    document.getElementById("adminClose");
-
-const adminLogin =
-    document.getElementById("adminLogin");
-
-const adminDashboard =
-    document.getElementById("adminDashboard");
-
-const adminEmail =
-    document.getElementById("adminEmail");
-
-const adminPassword =
-    document.getElementById("adminPassword");
-
-const adminLoginBtn =
-    document.getElementById("adminLoginBtn");
-
-const adminLogoutBtn =
-    document.getElementById("adminLogoutBtn");
-
-const adminToggleStatus =
-    document.getElementById("adminToggleStatus");
-
-const adminLoginMessage =
-    document.getElementById("adminLoginMessage");
-
-const adminMessage =
-    document.getElementById("adminMessage");
-
-const adminCurrentStatus =
-    document.getElementById("adminCurrentStatus");
-
-const orderStatusText =
-    document.getElementById("orderStatusText");
-
-const orderStatusDot =
-    document.getElementById("orderStatusDot");
-
-
-async function loadOrderStatus() {
-    const { data, error } = await supabaseClient
-        .from("order_status")
-        .select("is_open")
-        .limit(1)
-        .single();
-
-    if (error || !data) {
-        console.error("Status error:", error);
-        updatePublicStatus(null);
-        return;
-    }
-
-    updatePublicStatus(data.is_open === true);
-}
-
-function updatePublicStatus(isOpen) {
-    if (!orderStatusText || !orderStatusDot) return;
-
-    if (isOpen === true) {
-        orderStatusText.textContent = "پذیرش سفارش: آنلاین";
-        orderStatusDot.style.background = "#35d07f";
-        orderStatusDot.style.boxShadow = "0 0 12px rgba(53,208,127,.7)";
-        setOrderFormState(true, "پذیرش سفارش فعاله؛ می‌تونی درخواستت رو ثبت کنی.", "is-open");
-    } else if (isOpen === false) {
-        orderStatusText.textContent = "پذیرش سفارش: آفلاین";
-        orderStatusDot.style.background = "#ff4d4d";
-        orderStatusDot.style.boxShadow = "0 0 12px rgba(255,77,77,.7)";
-        setOrderFormState(false, "پذیرش سفارش در حال حاضر بسته است؛ فرم ثبت سفارش غیرفعال شده.", "is-closed");
-    } else {
-        orderStatusText.textContent = "وضعیت پذیرش سفارش: نامشخص";
-        orderStatusDot.style.background = "#ffb020";
-        orderStatusDot.style.boxShadow = "0 0 12px rgba(255,176,32,.55)";
-        setOrderFormState(null, "نتونستیم وضعیت پذیرش سفارش رو دریافت کنیم؛ تا زمان اتصال مجدد، فرم غیرفعاله.", "is-error");
-    }
-}
-
-
-function openAdminPanel() {
-    adminPanel.classList.add("open");
-}
-
-if (window.location.hash === "#admin") {
-    openAdminPanel();
-}
-
-if (adminClose) {
-
-    adminClose.addEventListener("click", function () {
-        adminPanel.classList.remove("open");
-    });
-
-}
-
-
-if (adminLoginBtn) {
-
-    adminLoginBtn.addEventListener("click", async function () {
-
-        const email =
-            adminEmail.value.trim();
-
-        const password =
-            adminPassword.value;
-
-        if (!email || !password) {
-
-            adminLoginMessage.textContent =
-                "ایمیل و رمز عبور را وارد کنید.";
-
-            return;
-        }
-
-        adminLoginMessage.textContent =
-            "در حال ورود...";
-
-        const { error } =
-            await supabaseClient.auth.signInWithPassword({
-                email: email,
-                password: password
-            });
-
-        if (error) {
-
-            console.error(error);
-
-            adminLoginMessage.textContent =
-                "ایمیل یا رمز عبور اشتباه است.";
-
-            return;
-        }
-
-        adminLogin.style.display =
-            "none";
-
-        adminDashboard.style.display =
-            "block";
-
-        adminLoginMessage.textContent =
-            "";
-
-        await loadAdminStatus();
-
-    });
-
-}
-
-
-async function loadAdminStatus() {
-
-    const { data, error } =
-        await supabaseClient
-            .from("order_status")
-            .select("id, is_open")
-            .limit(1)
-            .single();
-
-    if (error) {
-
-        adminCurrentStatus.textContent =
-            "خطا در دریافت وضعیت.";
-
-        console.error(error);
-
-        return;
-    }
-
-    const isOpen =
-        data.is_open;
-
-    adminCurrentStatus.textContent =
-        isOpen
-            ? "🟢 پذیرش سفارش‌ها فعال است"
-            : "🔴 پذیرش سفارش‌ها بسته است";
-
-    adminToggleStatus.textContent =
-        isOpen
-            ? "بستن پذیرش سفارش‌ها"
-            : "باز کردن پذیرش سفارش‌ها";
-}
-
-
-if (adminToggleStatus) {
-
-    adminToggleStatus.addEventListener(
-        "click",
-        async function () {
-
-            adminMessage.textContent =
-                "در حال ذخیره...";
-
-            const { data: current, error: readError } =
-                await supabaseClient
-                    .from("order_status")
-                    .select("id, is_open")
-                    .limit(1)
-                    .single();
-
-            if (readError) {
-
-                adminMessage.textContent =
-                    "خطا در دریافت وضعیت.";
-
-                console.error(readError);
-
-                return;
-            }
-
-            const newStatus =
-                !current.is_open;
-
-            const { error: updateError } =
-                await supabaseClient
-                    .from("order_status")
-                    .update({
-                        is_open: newStatus,
-                        updated_at: new Date().toISOString()
-                    })
-                    .eq("id", current.id);
-
-            if (updateError) {
-
-                adminMessage.textContent =
-                    "تغییر وضعیت انجام نشد.";
-
-                console.error(updateError);
-
-                return;
-            }
-
-            adminMessage.textContent =
-                "وضعیت با موفقیت ذخیره شد.";
-
-            updatePublicStatus(newStatus);
-
-            await loadAdminStatus();
-
-        }
-    );
-
-}
-
-
-if (adminLogoutBtn) {
-
-    adminLogoutBtn.addEventListener(
-        "click",
-        async function () {
-
-            await supabaseClient.auth.signOut();
-
-            adminDashboard.style.display =
-                "none";
-
-            adminLogin.style.display =
-                "block";
-
-            adminEmail.value =
-                "";
-
-            adminPassword.value =
-                "";
-
-            adminLoginMessage.textContent =
-                "";
-
-            adminMessage.textContent =
-                "";
-
-        }
-    );
-
-}
-
-
-loadOrderStatus();
-
-
-document.addEventListener(
-    "keydown",
-    function (event) {
-
-        if (
-            event.ctrlKey &&
-            event.shiftKey &&
-            event.key.toLowerCase() === "a"
-        ) {
-
-            openAdminPanel();
-
-        }
-
-    }
-);
-
-</script>
 
 
 <script>
@@ -5789,14 +5556,14 @@ document.addEventListener(
       body.dataset.theme = theme;
       root.dataset.theme = theme;
     }
-    try { localStorage.setItem('loyalGraphicTheme', theme); } catch (_) {}
+    if (announce) { try { localStorage.setItem('loyalGraphicTheme', theme); localStorage.setItem('loyalGraphicThemeUserSet','yes'); } catch (_) {} }
     themeOptions.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.themeChoice === theme)));
     if (announce && typeof showLoyalToast === 'function') {
       const labels = {orange:'نارنجی کلاسیک',purple:'بنفش نئونی',blue:'آبی یخی'};
       showLoyalToast(`تم ${labels[theme]} فعال شد`);
     }
   }
-  try { setTheme(localStorage.getItem('loyalGraphicTheme') || 'orange', false); } catch (_) { setTheme('orange', false); }
+  try { const hasChoice = localStorage.getItem('loyalGraphicThemeUserSet') === 'yes'; setTheme(hasChoice ? (localStorage.getItem('loyalGraphicTheme') || 'orange') : 'orange', false); } catch (_) { setTheme('orange', false); }
   function toggleThemePanel(force) {
     const open = typeof force === 'boolean' ? force : !themePanel.classList.contains('open');
     themePanel.classList.toggle('open', open);
@@ -6079,6 +5846,230 @@ document.addEventListener(
   toggle.addEventListener('click', () => setOpen(!panel.classList.contains('open')));
   document.addEventListener('click', event => { if (!event.target.closest('#loyalQuickContact')) setOpen(false); });
   document.addEventListener('keydown', event => { if (event.key === 'Escape') setOpen(false); });
+})();
+</script>
+
+
+<script>
+/* ===== LOYAL GRAPHIC ADMIN STUDIO + SUPABASE CMS ===== */
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const panel = $('adminPanel');
+  if (!panel || !window.supabase || !window.supabase.createClient) return;
+  const loginView = $('adminLogin');
+  const workspace = $('adminWorkspace');
+  const loginMessage = $('adminLoginMessage');
+  const globalMessage = $('adminMessage');
+  const defaultSettings = {
+    heroSubtitle: 'ایده‌ات را به یک تصویر ماندگار تبدیل کن.',
+    heroDescription: 'طراحی گرافیک حرفه‌ای برای Minecraft، Gaming و تولیدکنندگان محتوا؛ با تمرکز روی جزئیات، هویت بصری و نتیجه‌ای که دیده شود.',
+    heroPrimary: 'مشاهده نمونه‌کارها ↗', heroSecondary: 'شروع پروژه',
+    servicesTitle: 'چیزی که می‌تونم برات بسازم',
+    servicesIntro: 'از یک تامنیل ساده تا یک هویت بصری کامل؛ هر پروژه با توجه به سبک و هدف خودش طراحی می‌شود.',
+    services: [
+      {title:'Minecraft Thumbnail',description:'تامنیل‌های حرفه‌ای و چشم‌گیر برای ویدیوهای Minecraft.'},
+      {title:'Minecraft Profile',description:'پروفایل‌های اختصاصی با استایل Gaming و Minecraft.'},
+      {title:'Banner & Cover',description:'بنر و کاور حرفه‌ای برای صفحه‌ها و کانال‌های شما.'},
+      {title:'Channel Art',description:'طراحی Channel Art برای YouTube، Aparat و پلتفرم‌های دیگر.'},
+      {title:'Gaming Graphic',description:'گرافیک‌های مخصوص ماینکرفت، ویدیو و محتوای گیمینگ.'},
+      {title:'Social Media',description:'طراحی پست، استوری و محتوای ماینکرافتی برای شبکه‌های اجتماعی.'},
+      {title:'3D / Render',description:'رندرها و تصاویر سه‌بعدی برای پروژه‌های خلاقانه.'}
+    ],
+    aboutTitle:'چرا Loyal Graphic؟',aboutIntro:'هدف فقط ساخت یک تصویر نیست؛ هدف ساخت چیزی است که در نگاه اول توجه مخاطب را جلب کند.',
+    ctaTitle:'پروژه بعدیت رو با Loyal Graphic شروع کن.',
+    ctaDescription:'برای شروع، از طریق فرم یا شبکه‌های اجتماعی ارتباط بگیر.',
+    marquee:'MINECRAFT DESIGN|CREATIVE THUMBNAILS|GAMING VISUALS|LOYAL GRAPHIC STUDIO',
+    contacts:[
+      {label:'Rubika',url:'https://rubika.ir/taha_loyal_guy3',handle:'@taha_loyal_guy3'},
+      {label:'Telegram',url:'https://t.me/taha_loyal_guy2',handle:'@taha_loyal_guy2'},
+      {label:'Bale',url:'https://ble.ir/taha_loyal_guy',handle:'@taha_loyal_guy'},
+      {label:'Telegram Channel',url:'https://t.me/loyal_edits',handle:'@loyal_edits'},
+      {label:'Rubika Channel',url:'https://rubika.ir/loyal_artwork',handle:'@loyal_artwork'},
+      {label:'Rig Sky Channel',url:'https://t.me/Rig_Sky',handle:'@Rig_Sky'}
+    ],
+    defaultTheme:'orange',soundEnabled:false,motionEnabled:true,portfolioCmsEnabled:false,
+    logoUrl:'images/logo.png',heroImage:'images/portfolio-01.jpg',
+    siteTitle:'LOYAL GRAPHIC — طراحی گرافیک و ماینکرفت',
+    siteDescription:'طراحی تامنیل، پروفایل و گرافیک حرفه‌ای Minecraft و Gaming توسط LOYAL GRAPHIC.',
+    ogImage:''
+  };
+  let settings = JSON.parse(JSON.stringify(defaultSettings));
+  let adminUser = null;
+  let adminPortfolio = [];
+  let editingPortfolioId = null;
+  const categoryLabels = {'minecraft-thumbnail':'Minecraft Thumbnail','minecraft-profile':'Minecraft Profile','channel-art':'Channel Art','gaming':'Gaming','social':'Social Media','3d':'3D / Render'};
+  const say = (message, error=false) => { if (!globalMessage) return; globalMessage.textContent = message; globalMessage.style.color = error ? '#ff9b9b' : '#9ee2b3'; };
+  const setLoginMessage = (message, error=false) => { loginMessage.textContent = message; loginMessage.style.color = error ? '#ff9b9b' : '#aaa'; };
+  const safeText = (value) => String(value ?? '').trim();
+  const clone = (value) => JSON.parse(JSON.stringify(value));
+  const mergeSettings = (value) => ({...clone(defaultSettings), ...(value && typeof value === 'object' ? value : {})});
+  const openPanel = async () => { panel.classList.add('open'); panel.setAttribute('aria-hidden','false'); const {data:{session}} = await supabaseClient.auth.getSession(); if (session?.user) await showWorkspace(session.user); };
+  const closePanel = () => { panel.classList.remove('open'); panel.setAttribute('aria-hidden','true'); };
+  window.openLoyalAdmin = openPanel;
+  if (location.hash === '#admin') openPanel();
+  document.addEventListener('keydown', e => { if (e.ctrlKey && e.shiftKey && e.key.toLowerCase()==='a') openPanel(); if (e.key==='Escape' && panel.classList.contains('open')) closePanel(); });
+  $('adminClose')?.addEventListener('click', closePanel);
+  $('adminWorkspaceClose')?.addEventListener('click', closePanel);
+  $('adminViewSite')?.addEventListener('click', () => { closePanel(); });
+
+  async function verifyAdmin(user) {
+    const {data,error} = await supabaseClient.from('loyal_admins').select('user_id').eq('user_id',user.id).maybeSingle();
+    if (error) throw new Error('جدول مدیران آماده نیست یا دسترسی آن تنظیم نشده. فایل SQL راه‌اندازی پنل را در Supabase اجرا کن.');
+    if (!data) throw new Error('این حساب هنوز اجازه مدیریت ندارد. شناسه کاربر را به جدول loyal_admins اضافه کن.');
+    return true;
+  }
+  async function showWorkspace(user) {
+    try {
+      await verifyAdmin(user);
+      adminUser = user;
+      loginView.hidden = true; workspace.hidden = false;
+      await Promise.all([loadSettings(),loadAdminPortfolio(),loadAdminStatus()]);
+      populateAllForms(); updateAdminStats();
+    } catch (error) {
+      console.error(error); setLoginMessage(error.message || 'ورود انجام نشد.',true);
+      await supabaseClient.auth.signOut().catch(()=>{});
+      workspace.hidden = true; loginView.hidden = false;
+    }
+  }
+  $('adminLoginBtn')?.addEventListener('click', async () => {
+    const email = safeText($('adminEmail').value), password = $('adminPassword').value;
+    if (!email || !password) return setLoginMessage('ایمیل و رمز عبور را وارد کن.',true);
+    $('adminLoginBtn').disabled = true; setLoginMessage('در حال ورود...');
+    try {
+      const {data,error} = await supabaseClient.auth.signInWithPassword({email,password});
+      if (error) throw error;
+      await showWorkspace(data.user);
+    } catch (error) { setLoginMessage(error.message || 'ورود ناموفق بود.',true); }
+    finally { $('adminLoginBtn').disabled = false; }
+  });
+  $('adminPassword')?.addEventListener('keydown',e=>{if(e.key==='Enter')$('adminLoginBtn')?.click();});
+  $('adminLogoutBtn')?.addEventListener('click',async()=>{await supabaseClient.auth.signOut();adminUser=null;workspace.hidden=true;loginView.hidden=false;$('adminPassword').value='';setLoginMessage('از حساب خارج شدی.');});
+
+  document.querySelectorAll('[data-admin-view]').forEach(button=>button.addEventListener('click',()=>switchView(button.dataset.adminView)));
+  document.querySelectorAll('[data-admin-jump]').forEach(button=>button.addEventListener('click',()=>switchView(button.dataset.adminJump)));
+  function switchView(name){
+    document.querySelectorAll('[data-admin-view]').forEach(b=>b.classList.toggle('active',b.dataset.adminView===name));
+    document.querySelectorAll('[data-admin-section]').forEach(v=>v.classList.toggle('active',v.dataset.adminSection===name));
+    const labels={overview:'نمای کلی',portfolio:'مدیریت نمونه‌کارها',content:'محتوای سایت',contacts:'راه‌های ارتباطی',appearance:'ظاهر و افکت‌ها',general:'تنظیمات عمومی'};
+    $('adminPageTitle').textContent=labels[name]||'پنل مدیریت';
+    if(name==='portfolio') renderAdminPortfolio();
+  }
+
+  async function loadSettings(){
+    const {data,error}=await supabaseClient.from('loyal_site_settings').select('content').eq('id',true).maybeSingle();
+    if(error) throw new Error('جدول تنظیمات سایت پیدا نشد. ابتدا SQL راه‌اندازی پنل را اجرا کن.');
+    if(!data){settings=clone(defaultSettings);const {error:insertError}=await supabaseClient.from('loyal_site_settings').insert({id:true,content:settings});if(insertError)throw insertError;}
+    else settings=mergeSettings(data.content);
+  }
+  async function saveSettings(){
+    const {error}=await supabaseClient.from('loyal_site_settings').upsert({id:true,content:settings,updated_at:new Date().toISOString()},{onConflict:'id'});
+    if(error) throw error;
+    applyPublicSettings(settings); updateAdminStats(); say('تنظیمات با موفقیت ذخیره شد.');
+  }
+  function populateAllForms(){
+    $('contentHeroSubtitle').value=settings.heroSubtitle||''; $('contentHeroDescription').value=settings.heroDescription||'';
+    $('contentHeroPrimary').value=settings.heroPrimary||''; $('contentHeroSecondary').value=settings.heroSecondary||'';
+    $('contentServicesTitle').value=settings.servicesTitle||''; $('contentServicesIntro').value=settings.servicesIntro||'';
+    $('contentAboutTitle').value=settings.aboutTitle||'چرا Loyal Graphic؟'; $('contentAboutIntro').value=settings.aboutIntro||'هدف فقط ساخت یک تصویر نیست؛ هدف ساخت چیزی است که در نگاه اول توجه مخاطب را جلب کند.';
+    $('contentCtaTitle').value=settings.ctaTitle||''; $('contentCtaDescription').value=settings.ctaDescription||'';
+    $('contentMarquee').value=settings.marquee||'';
+    $('appearanceTheme').value=settings.defaultTheme||'orange'; $('appearanceHeroImage').value=settings.heroImage||''; $('appearanceLogo').value=settings.logoUrl||'';
+    $('appearanceSound').checked=!!settings.soundEnabled; $('appearanceMotion').checked=settings.motionEnabled!==false;
+    $('generalSiteTitle').value=settings.siteTitle||''; $('generalSiteDescription').value=settings.siteDescription||'';
+    renderServiceRows(settings.services||[]); renderContactRows(settings.contacts||[]);
+  }
+  function renderServiceRows(rows){
+    const host=$('adminServicesRows');host.innerHTML='';
+    rows.forEach((item,index)=>{const row=document.createElement('div');row.className='admin-repeat-row';
+      const title=document.createElement('label');title.textContent='عنوان خدمت';const ti=document.createElement('input');ti.value=item.title||'';ti.maxLength=80;ti.dataset.serviceTitle='';title.append(ti);
+      const desc=document.createElement('label');desc.textContent='توضیح خدمت';const di=document.createElement('input');di.value=item.description||'';di.maxLength=220;di.dataset.serviceDescription='';desc.append(di);
+      const remove=document.createElement('button');remove.type='button';remove.className='danger';remove.textContent='حذف';remove.addEventListener('click',()=>row.remove());row.append(title,desc,remove);host.append(row);});
+  }
+  $('adminAddService')?.addEventListener('click',()=>renderServiceRows([...readServiceRows(),{title:'خدمت جدید',description:'توضیح کوتاه خدمت'}]));
+  function readServiceRows(){return [...$('adminServicesRows').querySelectorAll('.admin-repeat-row')].map(row=>({title:safeText(row.querySelector('[data-service-title]').value),description:safeText(row.querySelector('[data-service-description]').value)})).filter(x=>x.title);}
+  function renderContactRows(rows){
+    const host=$('adminContactRows');host.innerHTML='';
+    rows.forEach(item=>{const row=document.createElement('div');row.className='admin-repeat-row contact-row';
+      [['نام نمایشی','label'],['لینک کامل','url'],['آیدی یا متن کپی','handle']].forEach(([caption,key])=>{const label=document.createElement('label');label.textContent=caption;const input=document.createElement('input');input.value=item[key]||'';input.dataset.contactKey=key;label.append(input);row.append(label);});
+      const remove=document.createElement('button');remove.type='button';remove.className='danger';remove.textContent='حذف';remove.addEventListener('click',()=>row.remove());row.append(remove);host.append(row);});
+  }
+  $('adminAddContact')?.addEventListener('click',()=>{const rows=readContactRows();rows.push({label:'شبکه اجتماعی',url:'https://',handle:'@username'});renderContactRows(rows);});
+  function readContactRows(){return [...$('adminContactRows').querySelectorAll('.contact-row')].map(row=>{const item={};row.querySelectorAll('[data-contact-key]').forEach(input=>item[input.dataset.contactKey]=safeText(input.value));return item;}).filter(x=>x.label&&x.url);}
+
+  $('adminContentForm')?.addEventListener('submit',async e=>{e.preventDefault();settings.heroSubtitle=safeText($('contentHeroSubtitle').value);settings.heroDescription=safeText($('contentHeroDescription').value);settings.heroPrimary=safeText($('contentHeroPrimary').value);settings.heroSecondary=safeText($('contentHeroSecondary').value);settings.servicesTitle=safeText($('contentServicesTitle').value);settings.servicesIntro=safeText($('contentServicesIntro').value);settings.services=readServiceRows();settings.aboutTitle=safeText($('contentAboutTitle').value);settings.aboutIntro=safeText($('contentAboutIntro').value);settings.ctaTitle=safeText($('contentCtaTitle').value);settings.ctaDescription=safeText($('contentCtaDescription').value);settings.marquee=safeText($('contentMarquee').value);await safeSave();});
+  $('adminContactsForm')?.addEventListener('submit',async e=>{e.preventDefault();settings.contacts=readContactRows();await safeSave();});
+  $('adminAppearanceForm')?.addEventListener('submit',async e=>{e.preventDefault();settings.defaultTheme=$('appearanceTheme').value;settings.heroImage=safeText($('appearanceHeroImage').value);settings.logoUrl=safeText($('appearanceLogo').value);settings.soundEnabled=$('appearanceSound').checked;settings.motionEnabled=$('appearanceMotion').checked;await safeSave();});
+  $('adminGeneralForm')?.addEventListener('submit',async e=>{e.preventDefault();settings.siteTitle=safeText($('generalSiteTitle').value);settings.siteDescription=safeText($('generalSiteDescription').value);await safeSave();});
+  async function safeSave(){try{say('در حال ذخیره...');await saveSettings();}catch(error){console.error(error);say('ذخیره انجام نشد: '+(error.message||'خطای ارتباط با Supabase'),true);}}
+
+  function applyPublicSettings(value){
+    if(!value)return;
+    const set=(selector,text)=>{const el=document.querySelector(selector);if(el&&text!==undefined)el.textContent=text;};
+    set('.hero-copy h2',value.heroSubtitle);set('.hero-copy > p',value.heroDescription);
+    const heroButtons=document.querySelectorAll('.hero-copy .actions .btn');if(heroButtons[0]&&value.heroPrimary)heroButtons[0].textContent=value.heroPrimary;if(heroButtons[1]&&value.heroSecondary)heroButtons[1].textContent=value.heroSecondary;
+    set('#services .section-head h2',value.servicesTitle);set('#services .section-head p',value.servicesIntro);
+    const servicesGrid=$('servicesGrid');if(servicesGrid&&Array.isArray(value.services)){servicesGrid.innerHTML='';value.services.forEach((service,index)=>{const card=document.createElement('article');card.className='card reveal';const number=document.createElement('div');number.className='icon';number.textContent=String(index+1).padStart(2,'0');const title=document.createElement('h3');title.textContent=service.title||'';const desc=document.createElement('p');desc.textContent=service.description||'';card.append(number,title,desc);servicesGrid.append(card);});}
+    set('#about .section-head h2',value.aboutTitle);set('#about .section-head p',value.aboutIntro);
+    set('#contact h2',value.ctaTitle);set('#contact p',value.ctaDescription);
+    const logo=document.querySelector('.hero-logo img');if(logo&&value.logoUrl)logo.src=value.logoUrl;
+    const heroImage=document.querySelector('.showcase-main img');if(heroImage&&value.heroImage)heroImage.src=value.heroImage;
+    const contactsHost=document.querySelector('.order-wrap .contacts');if(contactsHost&&Array.isArray(value.contacts)){contactsHost.innerHTML='';value.contacts.forEach(item=>{if(!item.url||!item.label)return;const a=document.createElement('a');a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=item.handle?`${item.label} — ${item.handle}`:item.label;if(item.handle){a.dataset.copy=item.handle;a.addEventListener('click',()=>{navigator.clipboard?.writeText(item.handle).then(()=>window.showLoyalToast?.(`${item.handle} کپی شد`)).catch(()=>{});});}contactsHost.append(a);});}
+    const quickHost=$('quickContactPanel');if(quickHost&&Array.isArray(value.contacts)){quickHost.innerHTML='';const wanted=[['telegram','تلگرام','✈'],['rubika','روبیکا','◈'],['bale','بله','✦']];const candidates=value.contacts;wanted.forEach(([key,label,icon])=>{const item=candidates.find(c=>(c.label||'').toLowerCase().includes(key))||candidates.find(c=>(c.label||'').includes(label));if(item?.url){const a=document.createElement('a');a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';const mark=document.createElement('span');mark.textContent=icon;a.append(mark,document.createTextNode(' '+label));quickHost.append(a);}});}
+    if(value.marquee){const words=value.marquee.split('|').map(x=>x.trim()).filter(Boolean);document.querySelectorAll('.loyal-marquee-group').forEach(group=>{group.innerHTML='';words.forEach((word,index)=>{const span=document.createElement('span');span.textContent=word;const icon=document.createElement('i');icon.textContent='✦';group.append(span,icon);});});}
+    if(value.siteTitle){document.title=value.siteTitle;}
+    let meta=document.querySelector('meta[name="description"]');if(!meta){meta=document.createElement('meta');meta.name='description';document.head.append(meta);}if(value.siteDescription)meta.content=value.siteDescription;
+    if(value.ogImage){let og=document.querySelector('meta[property="og:image"]');if(!og){og=document.createElement('meta');og.setAttribute('property','og:image');document.head.append(og);}og.content=value.ogImage;}
+    // Only apply the managed default if this visitor has not selected a personal theme.
+    try{if(localStorage.getItem('loyalGraphicThemeUserSet')!=='yes'&&value.defaultTheme){const theme=value.defaultTheme;document.body.dataset.theme=theme==='orange'?'':theme;document.documentElement.dataset.theme=theme==='orange'?'':theme;if(theme==='orange'){document.body.removeAttribute('data-theme');document.documentElement.removeAttribute('data-theme');}}}catch(_){ }
+    try{if(localStorage.getItem('loyalGraphicSound')===null&&value.soundEnabled){localStorage.setItem('loyalGraphicSound','on');const btn=$('loyalSoundToggle');if(btn&&btn.getAttribute('aria-pressed')!=='true')btn.click();}}catch(_){ }
+    document.documentElement.classList.toggle('loyal-motion-disabled',value.motionEnabled===false);
+  }
+
+  async function loadAdminStatus(){
+    const {data,error}=await supabaseClient.from('order_status').select('id,is_open').limit(1).single();
+    if(error){$('adminCurrentStatus').textContent='خطا در دریافت وضعیت سفارش';throw error;}
+    const open=data.is_open===true;$('adminCurrentStatus').textContent=open?'پذیرش سفارش‌ها در حال حاضر فعال است.':'پذیرش سفارش‌ها در حال حاضر بسته است.';
+    const badge=$('adminOrderBadge');badge.textContent=open?'پذیرش فعال':'پذیرش بسته';badge.className='admin-status-pill '+(open?'open':'closed');$('adminToggleStatus').textContent=open?'بستن پذیرش سفارش‌ها':'باز کردن پذیرش سفارش‌ها';
+  }
+  $('adminToggleStatus')?.addEventListener('click',async()=>{try{const {data,error}=await supabaseClient.from('order_status').select('id,is_open').limit(1).single();if(error)throw error;const {error:updateError}=await supabaseClient.from('order_status').update({is_open:!data.is_open,updated_at:new Date().toISOString()}).eq('id',data.id);if(updateError)throw updateError;await loadAdminStatus();say('وضعیت پذیرش سفارش به‌روزرسانی شد.');}catch(error){console.error(error);say('تغییر وضعیت ذخیره نشد: '+error.message,true);}});
+
+  async function loadAdminPortfolio(){
+    const {data,error}=await supabaseClient.from('loyal_portfolio').select('*').order('sort_order',{ascending:true}).order('created_at',{ascending:true});
+    if(error)throw new Error('جدول نمونه‌کارها آماده نیست. فایل SQL راه‌اندازی را اجرا کن.');
+    adminPortfolio=data||[];renderAdminPortfolio();
+  }
+  function renderAdminPortfolio(){
+    const host=$('adminPortfolioList');if(!host)return;host.innerHTML='';$('adminPortfolioCount').textContent=String(adminPortfolio.length);
+    if(!adminPortfolio.length){const p=document.createElement('p');p.className='admin-muted';p.textContent='هنوز نمونه‌کاری در پنل ثبت نشده. برای وارد کردن نمونه‌کارهای فعلی از دکمه بالای صفحه استفاده کن.';host.append(p);return;}
+    adminPortfolio.forEach(item=>{const row=document.createElement('div');row.className='admin-portfolio-row';if(item.image_url){const img=document.createElement('img');img.src=item.image_url;img.alt=item.title;row.append(img);}else{const ph=document.createElement('div');ph.className='admin-portfolio-placeholder';ph.textContent='NO IMAGE';row.append(ph);}const info=document.createElement('div');const title=document.createElement('strong');title.textContent=item.title+(item.is_featured?' ★':'');const meta=document.createElement('small');meta.textContent=(categoryLabels[item.category]||item.category)+' · '+(item.type||'');info.append(title,meta);row.append(info);const actions=document.createElement('div');actions.className='admin-row-actions';const edit=document.createElement('button');edit.type='button';edit.textContent='ویرایش';edit.addEventListener('click',()=>fillPortfolioForm(item));const del=document.createElement('button');del.type='button';del.className='danger';del.textContent='حذف';del.addEventListener('click',()=>deletePortfolio(item));actions.append(edit,del);row.append(actions);host.append(row);});
+  }
+  function fillPortfolioForm(item){editingPortfolioId=item.id;$('adminPortfolioId').value=item.id;$('adminPortfolioTitle').value=item.title||'';$('adminPortfolioType').value=item.type||'';$('adminPortfolioCategory').value=item.category||'minecraft-thumbnail';$('adminPortfolioOrder').value=item.sort_order??0;$('adminPortfolioDescription').value=item.description||'';$('adminPortfolioFeatured').checked=!!item.is_featured;$('adminPortfolioSave').textContent='ذخیره تغییرات';switchView('portfolio');$('adminPortfolioTitle').focus();}
+  function resetPortfolioForm(){editingPortfolioId=null;$('adminPortfolioForm').reset();$('adminPortfolioId').value='';$('adminPortfolioOrder').value='0';$('adminPortfolioSave').textContent='ذخیره نمونه‌کار';}
+  $('adminPortfolioCancel')?.addEventListener('click',resetPortfolioForm);
+  $('adminPortfolioForm')?.addEventListener('submit',async e=>{e.preventDefault();const btn=$('adminPortfolioSave');btn.disabled=true;try{
+    const title=safeText($('adminPortfolioTitle').value);if(!title)throw new Error('عنوان نمونه‌کار را وارد کن.');if(!editingPortfolioId&&settings.portfolioCmsEnabled!==true&&Array.isArray(window.portfolioItems)&&window.portfolioItems.length)throw new Error('اول روی «انتقال نمونه‌کارهای فعلی به پنل» بزن تا نمونه‌کارهای فعلی سایت حفظ شوند؛ بعد نمونه‌کار جدید اضافه کن.');
+    const file=$('adminPortfolioImage').files[0];let imageUrl=adminPortfolio.find(x=>x.id===editingPortfolioId)?.image_url||'';
+    if(file){if(file.size>8*1024*1024)throw new Error('حجم تصویر باید کمتر از ۸ مگابایت باشد.');if(!['image/png','image/jpeg','image/webp','image/avif'].includes(file.type))throw new Error('فرمت تصویر پشتیبانی نمی‌شود.');const ext=(file.name.split('.').pop()||'webp').toLowerCase();const path=`portfolio/${Date.now()}-${Math.random().toString(36).slice(2,8)}.${ext}`;const {error:uploadError}=await supabaseClient.storage.from('loyal-assets').upload(path,file,{upsert:false,contentType:file.type});if(uploadError)throw uploadError;imageUrl=supabaseClient.storage.from('loyal-assets').getPublicUrl(path).data.publicUrl;}
+    if(!imageUrl)throw new Error('برای نمونه‌کار تصویر انتخاب کن.');
+    const record={title, type:safeText($('adminPortfolioType').value),category:$('adminPortfolioCategory').value,description:safeText($('adminPortfolioDescription').value),image_url:imageUrl,is_featured:$('adminPortfolioFeatured').checked,sort_order:Number($('adminPortfolioOrder').value)||0,updated_at:new Date().toISOString()};
+    if(record.is_featured){const {error:clearError}=await supabaseClient.from('loyal_portfolio').update({is_featured:false}).neq('id',editingPortfolioId||'00000000-0000-0000-0000-000000000000');if(clearError)throw clearError;}
+    let result;if(editingPortfolioId)result=await supabaseClient.from('loyal_portfolio').update(record).eq('id',editingPortfolioId);else result=await supabaseClient.from('loyal_portfolio').insert(record);if(result.error)throw result.error;
+    await loadAdminPortfolio();await refreshPublicPortfolio();resetPortfolioForm();say('نمونه‌کار ذخیره شد.');
+  }catch(error){console.error(error);say('ذخیره نمونه‌کار انجام نشد: '+error.message,true);}finally{btn.disabled=false;}});
+  async function deletePortfolio(item){if(!confirm(`نمونه‌کار «${item.title}» حذف شود؟`))return;try{const {error}=await supabaseClient.from('loyal_portfolio').delete().eq('id',item.id);if(error)throw error;await loadAdminPortfolio();await refreshPublicPortfolio();say('نمونه‌کار حذف شد.');}catch(error){say('حذف انجام نشد: '+error.message,true);}}
+  $('adminImportPortfolio')?.addEventListener('click',async()=>{try{if(!Array.isArray(window.portfolioItems)||!window.portfolioItems.length)throw new Error('نمونه‌کارهای فعلی پیدا نشدند.');if(adminPortfolio.length)throw new Error('نمونه‌کارهای فعلی قبلاً به پنل منتقل شده‌اند؛ برای جلوگیری از تکرار، انتقال دوباره غیرفعال است.');const rows=window.portfolioItems.map((x,i)=>({title:x.title,type:x.type||'',category:x.category||'minecraft-thumbnail',description:x.description||'',image_url:x.image?new URL(x.image,location.href).href:null,is_featured:false,sort_order:i}));const {error}=await supabaseClient.from('loyal_portfolio').insert(rows);if(error)throw error;settings.portfolioCmsEnabled=true;await saveSettings();await loadAdminPortfolio();await refreshPublicPortfolio();say('نمونه‌کارهای فعلی وارد پنل شدند.');}catch(error){console.error(error);say('انتقال انجام نشد: '+error.message,true);}});
+  function syncPortfolioFilters(){const host=document.querySelector('.filters');if(!host)return;const active=document.querySelector('.filter.active')?.dataset.filter||'all';const categories=[...new Set(portfolioItems.map(x=>x.category).filter(Boolean))];const labels={all:'همه',...categoryLabels};host.innerHTML='';[['all',labels.all],...categories.map(cat=>[cat,labels[cat]||cat])].forEach(([key,label])=>{const btn=document.createElement('button');btn.type='button';btn.className='filter'+(key===active?' active':'');btn.dataset.filter=key;btn.textContent=label;btn.addEventListener('click',()=>{host.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderPortfolio(key);});host.append(btn);});if(!host.querySelector('.filter.active'))host.querySelector('[data-filter="all"]')?.classList.add('active');}
+  async function refreshPublicPortfolio(){const {data,error}=await supabaseClient.from('loyal_portfolio').select('*').order('sort_order',{ascending:true}).order('created_at',{ascending:true});if(error)return;portfolioItems=(data||[]).map(x=>({id:x.id,image:x.image_url,title:x.title,category:x.category,description:x.description,type:x.type,is_featured:x.is_featured}));window.portfolioItems=portfolioItems;syncPortfolioFilters();const activeFilter=document.querySelector('.filter.active')?.dataset.filter||'all';renderPortfolio(activeFilter);renderFeaturedWork();document.querySelectorAll('[data-stat="works"]').forEach(el=>el.textContent=String(portfolioItems.filter(x=>x.image).length).padStart(2,'0'));}
+  async function loadPublicPortfolio(){try{const {data,error}=await supabaseClient.from('loyal_portfolio').select('*').order('sort_order',{ascending:true}).order('created_at',{ascending:true});if(error)return;if(!data?.length&&settings.portfolioCmsEnabled!==true)return;portfolioItems=(data||[]).map(x=>({id:x.id,image:x.image_url,title:x.title,category:x.category,description:x.description,type:x.type,is_featured:x.is_featured}));window.portfolioItems=portfolioItems;syncPortfolioFilters();const activeFilter=document.querySelector('.filter.active')?.dataset.filter||'all';renderPortfolio(activeFilter);renderFeaturedWork();}catch(error){console.warn('Portfolio CMS not configured yet; using built-in items.',error);}}
+  async function loadPublicSettings(){try{const {data,error}=await supabaseClient.from('loyal_site_settings').select('content').eq('id',true).maybeSingle();if(!error&&data?.content)applyPublicSettings(mergeSettings(data.content));}catch(error){console.warn('Site settings CMS not configured yet.',error);}}
+  async function updateAdminStats(){
+    $('adminStatWorks').textContent=String(adminPortfolio.filter(x=>x.image_url).length).padStart(2,'0');
+    $('adminStatCategories').textContent=String(new Set(adminPortfolio.map(x=>x.category)).size).padStart(2,'0');
+    $('adminStatServices').textContent=String((settings.services||[]).length).padStart(2,'0');
+    $('adminStatTheme').textContent=({orange:'نارنجی',purple:'بنفش',blue:'آبی'})[settings.defaultTheme]||'نارنجی';
+  }
+  // Public read-only CMS data is optional until the one-time SQL setup is completed.
+  loadPublicSettings().then(loadPublicPortfolio);
 })();
 </script>
 
