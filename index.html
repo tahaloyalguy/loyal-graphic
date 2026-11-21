@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -2816,14 +2815,14 @@ footer{
 </style>
 </head>
 
+<body>
+
 <!-- NEW: LOYAL UI -->
 <button id="backToTop" type="button" aria-label="بازگشت به بالا">
     ↑
 </button>
 
 <div id="loyalToast" role="status" aria-live="polite"></div>
-
-<body>
 
 <header>
 <div class="container nav">
@@ -3009,6 +3008,9 @@ footer{
 </div>
 
 <div class="grid portfolio" id="portfolioGrid"></div>
+
+</div><!-- /.container -->
+</section><!-- /#portfolio -->
     
 <!-- ===== PORTFOLIO LIGHTBOX ===== -->
 
@@ -3938,33 +3940,35 @@ document
     .forEach(el=>observer.observe(el));
 
 
-
 /* =========================
-   ACTIVE NAV - FIXED
+   ACTIVE NAV
 ========================= */
 
-const sections = [
-    ...document.querySelectorAll("main section[id]")
-];
+const sections =
+    [...document.querySelectorAll("main section[id]")];
 
-const navAnchors = [
-    ...document.querySelectorAll(".nav-links a")
-];
+const navAnchors =
+    [...document.querySelectorAll(".nav-links a")];
+
+const siteHeader = document.querySelector("header");
 
 function setActiveNav(id) {
     navAnchors.forEach(anchor => {
         anchor.classList.toggle(
             "active",
-            anchor.getAttribute("href") === "#" + id
+            anchor.getAttribute("href") === `#${id}`
         );
     });
 }
 
 function updateActiveNav() {
-    let current = "home";
+    const activationLine =
+        (siteHeader?.offsetHeight || 0) + 80;
+
+    let current = sections[0]?.id || "home";
 
     sections.forEach(section => {
-        if (window.scrollY >= section.offsetTop - 100) {
+        if (section.getBoundingClientRect().top <= activationLine) {
             current = section.id;
         }
     });
@@ -3972,16 +3976,13 @@ function updateActiveNav() {
     setActiveNav(current);
 }
 
-window.addEventListener(
-    "scroll",
-    updateActiveNav,
-    { passive: true }
-);
+window.addEventListener("scroll", updateActiveNav, { passive: true });
+window.addEventListener("resize", updateActiveNav);
 
 navAnchors.forEach(anchor => {
     anchor.addEventListener("click", () => {
-        const id = anchor.getAttribute("href").slice(1);
-        setActiveNav(id);
+        const targetId = anchor.getAttribute("href")?.slice(1);
+        if (targetId) setActiveNav(targetId);
     });
 });
 
