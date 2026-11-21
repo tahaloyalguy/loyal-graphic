@@ -1080,6 +1080,35 @@ textarea{
 }
 
 /* =========================
+   ORDER FORM — POLISHED
+========================= */
+.order-wrap{align-items:stretch;gap:20px}
+.info-box{position:relative;overflow:hidden;isolation:isolate}
+.info-box::after{content:"";position:absolute;width:210px;height:210px;left:-95px;bottom:-105px;border-radius:50%;background:rgba(255,106,0,.10);filter:blur(55px);z-index:-1;pointer-events:none}
+.info-box h3{font-family:"Space Grotesk","Vazirmatn",sans-serif;letter-spacing:-.4px}
+.order-form{position:relative;gap:18px;padding:30px;background:linear-gradient(155deg,#121212,#0b0b0b);border-color:#303030;box-shadow:0 22px 65px rgba(0,0,0,.22)}
+.order-form-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding-bottom:17px;border-bottom:1px solid var(--line)}
+.order-form-heading h3{font-size:20px;color:#f5f5f5;margin:3px 0 2px}
+.order-form-heading p{font-size:12px;color:#858585}
+.form-kicker{font:700 10px "Space Grotesk",sans-serif;letter-spacing:1.7px;color:var(--accent2);direction:ltr;display:inline-block}
+.form-time{flex:none;display:inline-flex;align-items:center;gap:6px;padding:7px 10px;border:1px solid rgba(255,106,0,.2);border-radius:999px;color:#c9a080;background:rgba(255,106,0,.06);font-size:11px;white-space:nowrap}
+.form-time span{color:var(--accent)}
+.order-form .form-grid{gap:16px}
+.order-form label{color:#c4c4c4;font-size:12px;font-weight:600;gap:8px}
+.order-form input,.order-form select,.order-form textarea{border-color:#303030;background:#090909;border-radius:12px;padding:13px 14px;font-size:13px}
+.order-form input::placeholder,.order-form textarea::placeholder{color:#626262}
+.order-form input:hover,.order-form select:hover,.order-form textarea:hover{border-color:#494949}
+.order-form input:focus,.order-form select:focus,.order-form textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(255,106,0,.09)}
+.order-form textarea{min-height:145px;line-height:1.9}
+.optional-label{display:inline-block;margin-right:5px;color:#777;font-size:10px;font-weight:400}
+.order-submit{width:100%;min-height:49px;justify-content:center;gap:10px;font-size:14px;box-shadow:0 8px 25px rgba(255,106,0,.13)}
+.order-submit span{font-size:18px;transition:transform .2s}
+.order-submit:hover span{transform:translate(3px,-2px)}
+.form-privacy{margin-top:-9px;text-align:center;color:#696969;font-size:10px}
+.order-form .order-form-notice{line-height:1.8}
+.order-form .form-msg{line-height:1.8}
+
+/* =========================
    RIG CTA
 ========================= */
 
@@ -3423,9 +3452,18 @@ Telegram Channel — @Rig_Sky </a>
 
 
 <form id="orderForm"
-      class="reveal"
+      class="order-form reveal"
       action="https://formspree.io/f/xaenvjbk"
       method="POST">
+
+<div class="order-form-heading">
+    <div>
+        <span class="form-kicker">PROJECT BRIEF / 01</span>
+        <h3>جزئیات پروژه‌ات رو بنویس</h3>
+        <p>فیلدهای اصلی رو تکمیل کن؛ تاریخ تحویل و لینک رفرنس اختیاری‌اند.</p>
+    </div>
+    <span class="form-time"><span>✦</span> حدود ۲ دقیقه</span>
+</div>
 
 <div id="orderFormNotice" class="order-form-notice" role="status" aria-live="polite">
     در حال بررسی وضعیت پذیرش سفارش...
@@ -3434,14 +3472,14 @@ Telegram Channel — @Rig_Sky </a>
 <input
     type="hidden"
     name="subject"
-    value="🟠 New Order — Loyal Graphic | {{ type }}"
+    value="🟠 New Order — Loyal Graphic"
 >
 
 <div class="form-grid">
 
 <label>
 نام
-<input required name="name" placeholder="نام شما">
+<input required name="name" autocomplete="name" placeholder="نام و نام خانوادگی">
 </label>
 
 <label>
@@ -3468,6 +3506,7 @@ Telegram Channel — @Rig_Sky </a>
 <input
     required
     name="contact"
+    autocomplete="off"
     placeholder="@username یا شماره تماس"
 >
 
@@ -3506,7 +3545,7 @@ Telegram Channel — @Rig_Sky </a>
 </label>
 
 <label>
-Deadline
+تاریخ تحویل موردنظر <span class="optional-label">اختیاری</span>
 <input
     name="deadline"
     type="text"
@@ -3514,6 +3553,15 @@ Deadline
     placeholder="مثلاً ۱۴۰۵/۰۷/۱۵"
     inputmode="numeric"
     autocomplete="off">
+</label>
+<label class="full">
+لینک نمونه یا رفرنس <span class="optional-label">اختیاری</span>
+<input
+    type="url"
+    name="reference"
+    inputmode="url"
+    placeholder="https://... (اگر نمونه‌ای مدنظرت هست)"
+>
 </label>
 <label class="full">
 توضیحات پروژه
@@ -3534,9 +3582,11 @@ placeholder="ایده، سبک، تعداد خروجی و هر چیزی که ل�
 
 <div id="formMsg" class="form-msg"></div>
 
-<button class="btn primary" id="submitBtn" type="submit">
-ثبت درخواست
+<button class="btn primary order-submit" id="submitBtn" type="submit">
+ثبت درخواست <span aria-hidden="true">↗</span>
 </button>
+
+<p class="form-privacy">با ارسال فرم، اطلاعاتت فقط برای پیگیری همین سفارش استفاده می‌شه.</p>
 
 </form>
 
@@ -4533,6 +4583,15 @@ document.addEventListener(
     max-width:100%;
     padding:7px 0;
     font-size:13px;
+}
+
+@media(max-width:600px){
+    .order-form{padding:19px;gap:15px}
+    .order-form-heading{flex-direction:column;gap:9px}
+    .order-form-heading h3{font-size:18px}
+    .form-time{align-self:flex-start}
+    .order-form .form-grid{gap:13px}
+    .order-form textarea{min-height:125px}
 }
 </style>
 
