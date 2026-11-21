@@ -3701,7 +3701,7 @@ h1,h2,h3,.section-head h2,.hero-copy h2,.tag,.eyebrow{font-family:"Estedad","Vaz
         type="button"
         aria-label="قبلی"
     >
-        ‹
+        ›
     </button>
 
     <div class="lightbox-content">
@@ -3729,7 +3729,7 @@ h1,h2,h3,.section-head h2,.hero-copy h2,.tag,.eyebrow{font-family:"Estedad","Vaz
         type="button"
         aria-label="بعدی"
     >
-        ›
+        ‹
     </button>
 
 </div>
@@ -3757,28 +3757,32 @@ h1,h2,h3,.section-head h2,.hero-copy h2,.tag,.eyebrow{font-family:"Estedad","Vaz
 </p>
 </div>
 
-<div class="grid steps">
+<div class="grid steps process-timeline">
 
-<article class="step reveal">
-<div class="num">01</div>
+<article class="step process-step reveal">
+<div class="process-step-top"><span class="num">01</span><span class="process-step-state">START</span></div>
+<div class="process-node"><span></span></div>
 <h3>Project Brief</h3>
 <p>دریافت اطلاعات، نیازها، سبک و جزئیات پروژه.</p>
 </article>
 
-<article class="step reveal">
-<div class="num">02</div>
+<article class="step process-step reveal">
+<div class="process-step-top"><span class="num">02</span><span class="process-step-state">PLAN</span></div>
+<div class="process-node"><span></span></div>
 <h3>Discussion & Planning</h3>
 <p>بررسی ایده، انتخاب سبک و برنامه‌ریزی اجرای پروژه.</p>
 </article>
 
-<article class="step reveal">
-<div class="num">03</div>
+<article class="step process-step reveal">
+<div class="process-step-top"><span class="num">03</span><span class="process-step-state">CREATE</span></div>
+<div class="process-node"><span></span></div>
 <h3>Design & Revisions</h3>
 <p>طراحی اولیه، بررسی و اعمال اصلاحات موردنیاز.</p>
 </article>
 
-<article class="step reveal">
-<div class="num">04</div>
+<article class="step process-step reveal">
+<div class="process-step-top"><span class="num">04</span><span class="process-step-state">DELIVER</span></div>
+<div class="process-node"><span></span></div>
 <h3>Final Delivery</h3>
 <p>تحویل فایل نهایی آماده استفاده.</p>
 </article>
@@ -6232,6 +6236,43 @@ testSupabase();
     });
 })();
 </script>
+
+
+<style id="loyal-final-polish-v5">
+/* RTL lightbox navigation: next on the left, previous on the right */
+#lightboxPrev{left:auto!important;right:24px!important}
+#lightboxNext{right:auto!important;left:24px!important}
+#lightboxPrev:hover{transform:translateY(-50%) translateX(3px) scale(1.06)!important}
+#lightboxNext:hover{transform:translateY(-50%) translateX(-3px) scale(1.06)!important}
+@media(max-width:768px){
+  #lightboxPrev{right:10px!important;left:auto!important}
+  #lightboxNext{left:10px!important;right:auto!important}
+}
+
+/* Premium process timeline */
+.process-timeline{position:relative;gap:22px;direction:rtl}
+.process-step{min-width:0;padding:0 0 20px;position:relative}
+.process-step-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:18px}
+.process-step .num{font-size:clamp(30px,3vw,42px);font-weight:800;line-height:1;color:var(--accent);letter-spacing:-2px}
+.process-step-state{font:700 9px "Space Grotesk",sans-serif;letter-spacing:1.5px;color:var(--accent2);border:1px solid rgba(var(--accent-rgb),.28);background:rgba(var(--accent-rgb),.07);border-radius:999px;padding:6px 9px}
+.process-node{height:2px;width:100%;background:linear-gradient(90deg,rgba(var(--accent-rgb),.12),rgba(var(--accent-rgb),.65),rgba(var(--accent-rgb),.12));position:relative;margin:0 0 20px}
+.process-node span{position:absolute;right:0;top:50%;width:13px;height:13px;border-radius:50%;background:var(--accent);border:3px solid #101012;box-shadow:0 0 0 1px rgba(var(--accent-rgb),.55),0 0 18px rgba(var(--accent-rgb),.38);transform:translateY(-50%)}
+.process-step h3{font-size:16px;margin:0 0 9px;transition:color .25s ease}
+.process-step p{font-size:12px;line-height:2;color:var(--muted);margin:0;max-width:260px}
+.process-step:before{content:"";position:absolute;inset:-12px -12px 0;border-radius:16px;background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.008));border:1px solid rgba(255,255,255,.045);opacity:0;transition:opacity .25s ease;z-index:-1}
+.process-step:hover:before{opacity:1}
+.process-step:hover h3{color:var(--accent2)}
+.process-step:hover .process-node span{box-shadow:0 0 0 4px rgba(var(--accent-rgb),.10),0 0 24px rgba(var(--accent-rgb),.55)}
+@media(max-width:900px){.process-timeline{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}}
+@media(max-width:560px){
+  .process-timeline{grid-template-columns:1fr;gap:18px}
+  .process-step{padding:0 0 16px 0}
+  .process-step-top{margin-bottom:10px}
+  .process-node{width:100%;margin-bottom:12px}
+  .process-step p{max-width:none}
+}
+@media(prefers-reduced-motion:reduce){.process-step,.process-step h3,.process-step:before{transition:none!important}}
+</style>
 
 </body>
 </html>
