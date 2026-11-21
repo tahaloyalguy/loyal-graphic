@@ -2970,7 +2970,7 @@ body[data-theme="purple"] .portfolio-lightbox,body[data-theme="blue"] .portfolio
 
 
 /* Theme launcher + picker */
-#themeLauncher{position:fixed;left:22px;bottom:24px;z-index:50000;min-width:164px;height:52px;padding:0 18px;display:flex;align-items:center;justify-content:center;gap:9px;border-radius:16px;border:1px solid rgba(var(--accent-rgb),.5);background:rgba(15,15,18,.9);color:#fff;font:700 13px inherit;cursor:pointer;backdrop-filter:blur(14px);box-shadow:0 8px 28px rgba(0,0,0,.32),0 0 24px rgba(var(--accent-rgb),.12);transition:.25s ease}
+#themeLauncher{position:fixed;left:22px;bottom:24px;z-index:50000;min-width:164px;height:52px;padding:0 18px;display:flex;align-items:center;justify-content:center;gap:9px;border-radius:16px;border:1px solid rgba(var(--accent-rgb),.5);background:rgba(15,15,18,.9);color:#fff;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;backdrop-filter:blur(14px);box-shadow:0 8px 28px rgba(0,0,0,.32),0 0 24px rgba(var(--accent-rgb),.12);transition:.25s ease}
 #themeLauncher .theme-launcher-icon{display:inline-flex;align-items:center;justify-content:center;min-width:28px;min-height:28px;font-size:22px;line-height:1;color:var(--accent2);filter:drop-shadow(0 0 7px rgba(var(--accent-rgb),.55))}
 #themeLauncher .theme-launcher-label{white-space:nowrap;letter-spacing:-.2px}
 #themeLauncher:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 12px 34px rgba(var(--accent-rgb),.22)}
@@ -3063,7 +3063,7 @@ body[data-theme="purple"] .portfolio-lightbox,body[data-theme="blue"] .portfolio
 @keyframes loyalPageSweep{0%{transform:translateX(-110%);opacity:0}20%{opacity:1}100%{transform:translateX(110%);opacity:0}}
 
 /* Optional UI sound — off by default */
-#loyalSoundToggle{position:fixed;right:22px;bottom:24px;z-index:50000;display:flex;align-items:center;gap:8px;min-height:46px;padding:0 14px;border:1px solid rgba(var(--accent-rgb),.35);border-radius:15px;background:rgba(15,15,18,.88);color:#ddd;backdrop-filter:blur(14px);box-shadow:0 8px 28px rgba(0,0,0,.28);font:700 12px inherit;cursor:pointer;transition:transform .22s ease,border-color .22s ease,color .22s ease}
+#loyalSoundToggle{position:fixed;right:22px;bottom:24px;z-index:50000;display:flex;align-items:center;gap:8px;min-height:46px;padding:0 14px;border:1px solid rgba(var(--accent-rgb),.35);border-radius:15px;background:rgba(15,15,18,.88);color:#ddd;backdrop-filter:blur(14px);box-shadow:0 8px 28px rgba(0,0,0,.28);font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;transition:transform .22s ease,border-color .22s ease,color .22s ease}
 #loyalSoundToggle:hover{transform:translateY(-3px);border-color:var(--accent);color:#fff}
 #loyalSoundToggle .sound-icon{font-size:19px;color:var(--accent2);line-height:1}
 #loyalSoundToggle[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 22px rgba(var(--accent-rgb),.14)}
@@ -3084,6 +3084,124 @@ body[data-theme="purple"] .portfolio-lightbox,body[data-theme="blue"] .portfolio
  #loyalPageWipe{display:none}
  .magnetic-item{translate:none!important;transition:none!important}
  #portfolioGrid .portfolio-card::after{display:none}
+}
+
+
+/* =========================================================
+   RESPONSIVE REFINEMENT — MOBILE / TABLET / SMALL SCREENS
+   Keeps the desktop design intact while fixing tight layouts.
+========================================================= */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { min-width: 320px; }
+img, video, canvas, svg { max-width: 100%; }
+button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+
+/* Prevent decorative effects from creating accidental horizontal scroll. */
+.hero, .hero-content, .hero-copy, .hero-showcase,
+section, .loyal-marquee, .portfolio-lightbox { min-width: 0; }
+.hero-showcase { max-width: 100%; }
+
+@media (max-width: 900px) {
+  .hero-content { width: min(100% - 36px, 720px); }
+  .hero-showcase { min-height: clamp(280px, 48vw, 390px); }
+  .services, .portfolio, .steps, .benefits { min-width: 0; }
+  .nav-links.mobile { z-index: 1002; max-height: min(72vh, 560px); overflow-y: auto; overscroll-behavior: contain; }
+}
+
+@media (max-width: 600px) {
+  .container { width: calc(100% - 30px); }
+  section { scroll-margin-top: 76px; }
+  .hero { padding-top: 104px; padding-bottom: 48px; }
+  .hero-content { width: calc(100% - 30px); gap: 22px; }
+  .hero-copy { width: 100%; }
+  .hero-brandline { flex-wrap: wrap; }
+  .hero-copy h1 { font-size: clamp(31px, 9vw, 39px); overflow-wrap: anywhere; }
+  .hero-copy h2 { font-size: clamp(19px, 5.5vw, 23px); }
+  .hero-copy p { max-width: 100%; }
+  .hero-copy .actions { display: flex; flex-wrap: wrap; width: 100%; gap: 9px; }
+  .hero-copy .actions .btn { flex: 1 1 145px; min-width: 0; width: auto; }
+  .hero-copy .hero-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 7px; }
+  .hero-stat { max-width: 100%; font-size: 10px; }
+  .loyal-live-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
+  .loyal-stat { min-width: 0; text-align: center; }
+  .loyal-stat:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .hero-showcase { width: 100%; min-height: clamp(235px, 68vw, 310px); overflow: hidden; }
+  .showcase-main { max-width: 78%; }
+  .showcase-caption { max-width: 58%; }
+  .loyal-marquee { max-width: 100%; }
+  .loyal-marquee-group { gap: 16px; padding-inline: 10px; }
+  .loyal-marquee-group span { font-size: 9px; letter-spacing: 1px; }
+
+  /* Floating controls stay inside the safe screen area and never collide. */
+  #themeLauncher {
+    left: max(10px, env(safe-area-inset-left));
+    bottom: max(10px, env(safe-area-inset-bottom));
+    min-width: 0;
+    width: 142px;
+    height: 44px;
+    padding: 0 10px;
+    border-radius: 13px;
+    gap: 7px;
+    font-size: 12px;
+  }
+  #themeLauncher .theme-launcher-icon { min-width: 24px; min-height: 24px; font-size: 19px; }
+  #loyalSoundToggle {
+    right: max(10px, env(safe-area-inset-right));
+    bottom: max(10px, env(safe-area-inset-bottom));
+    min-height: 44px;
+    min-width: 44px;
+    justify-content: center;
+    padding: 0 11px;
+    border-radius: 13px;
+  }
+  #themePanel {
+    left: max(10px, env(safe-area-inset-left));
+    bottom: calc(max(10px, env(safe-area-inset-bottom)) + 56px);
+    width: min(290px, calc(100vw - 20px));
+    max-height: min(65vh, 430px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  #themePanel .theme-option { min-height: 54px; }
+  #backToTop { right: 14px; top: 82px; width: 42px; height: 42px; }
+  #loyalToast { bottom: calc(max(64px, env(safe-area-inset-bottom) + 58px)); width: max-content; max-width: calc(100vw - 28px); }
+
+  /* Touch screens should not retain desktop hover/tilt transforms. */
+  .portfolio-card, .portfolio-card.tilt-active { transform: none !important; }
+  .portfolio-card::after { display: none !important; }
+  .magnetic-item { translate: none !important; }
+  .lightbox-content { width: 100%; max-width: 100%; }
+  #lightboxImage { max-width: 100%; object-fit: contain; }
+  .lightbox-info { width: auto; max-width: calc(100vw - 28px); }
+  .lightbox-zoom-btn { top: 8px; right: 8px; width: 38px; height: 38px; }
+  .form-grid, .order-wrap { min-width: 0; }
+  input, select, textarea { max-width: 100%; }
+}
+
+@media (max-width: 380px) {
+  .container { width: calc(100% - 24px); }
+  .hero-content { width: calc(100% - 24px); }
+  .hero-copy h1 { font-size: 30px; letter-spacing: -.6px; }
+  .hero-brandline .eyebrow { font-size: 9px; }
+  .hero-brandline .hero-logo { width: 42px; height: 42px; }
+  .hero-showcase { min-height: 225px; }
+  .showcase-caption { font-size: 7px; }
+  .showcase-caption strong { font-size: 9px; }
+  #themeLauncher { width: 132px; }
+  #loyalSoundToggle { min-width: 42px; }
+  .section-head h2 { font-size: 27px; }
+  .admin-box { width: 100%; padding: 24px 16px; }
+}
+
+@media (max-width: 340px) {
+  #themeLauncher { width: 124px; height: 42px; font-size: 11px; }
+  #loyalSoundToggle { min-height: 42px; min-width: 42px; }
+  .hero-copy .actions .btn { flex-basis: 100%; }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .portfolio-card:hover::after { left: -75% !important; }
+  .theme-option:hover, #themeLauncher:hover, #loyalSoundToggle:hover { transform: none; }
 }
 
 </style>
