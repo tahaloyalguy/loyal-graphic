@@ -6,23 +6,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/persian-datepicker@1.2.0/dist/css/persian-datepicker.min.css">
 
-<meta name="description" content="Loyal Graphic — استودیوی طراحی گرافیک Taha Loyal برای Minecraft، Gaming و تولیدکنندگان محتوا.">
+<meta name="description" content="LOYAL GRAPHIC؛ طراحی تامنیل ماینکرفت، پروفایل گیمینگ و آرت یوتیوب و آپارات با طراحی اختصاصی و خلاقانه.">
 <meta name="theme-color" content="#080808">
 <link rel="icon" type="image/png" href="./images/favicon.png">
 <link rel="apple-touch-icon" href="./images/favicon.png">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tahaloyalguy.github.io/loyal-graphic/">
-<meta property="og:title" content="Loyal Graphic — Taha Loyal">
-<meta property="og:description" content="استودیوی طراحی گرافیک مدرن برای Minecraft، Gaming و تولیدکنندگان محتوا.">
+<meta property="og:title" content="LOYAL GRAPHIC | طراحی تامنیل ماینکرفت و گرافیک گیمینگ">
+<meta property="og:description" content="طراحی تامنیل ماینکرفت، پروفایل گیمینگ و آرت یوتیوب و آپارات با طراحی اختصاصی.">
 <meta property="og:image" content="https://tahaloyalguy.github.io/loyal-graphic/images/logo.png">
 <meta property="og:image:alt" content="لوگوی Loyal Graphic">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Loyal Graphic — Taha Loyal">
-<meta name="twitter:description" content="استودیوی طراحی گرافیک مدرن برای Minecraft، Gaming و تولیدکنندگان محتوا.">
+<meta name="twitter:title" content="LOYAL GRAPHIC | طراحی تامنیل ماینکرفت و گرافیک گیمینگ">
+<meta name="twitter:description" content="طراحی تامنیل ماینکرفت، پروفایل گیمینگ و آرت یوتیوب و آپارات با طراحی اختصاصی.">
 <meta name="twitter:image" content="https://tahaloyalguy.github.io/loyal-graphic/images/logo.png">
 
-<title>Loyal Graphic — Taha Loyal</title>
+<title>LOYAL GRAPHIC | طراحی تامنیل ماینکرفت و گرافیک گیمینگ</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -6538,5 +6538,118 @@ testSupabase();
   });
 })();
 </script>
+
+
+<!-- LOYAL GRAPHIC: dedicated touch + tablet experience -->
+<style id="loyal-device-experience-v14">
+  :root { --loyal-touch-size:48px; }
+  button,a,[role="button"],input,select,textarea { touch-action:manipulation; }
+  @media (hover:none), (pointer:coarse) {
+    .work .overlay { opacity:1 !important; transform:none !important; }
+    .work:hover,.card:hover,.btn:hover,.nav-cta:hover { transform:none; }
+    .filter,.theme-option,.contacts a { min-height:var(--loyal-touch-size); }
+    .work { -webkit-tap-highlight-color:transparent; }
+    .work:active,.filter:active,.btn:active { filter:brightness(1.12); }
+    .work .overlay { pointer-events:none; }
+    .portfolio-lightbox { touch-action:pan-y; }
+    .lightbox-nav { width:48px; height:56px; display:grid; place-items:center; }
+    .lightbox-close { width:46px; height:46px; display:grid; place-items:center; }
+    .lightbox-zoom-btn { width:46px; height:46px; }
+    .order-form input,.order-form select,.order-form textarea { font-size:16px; }
+    .nav-links.mobile a { min-height:48px; display:flex; align-items:center; }
+  }
+  /* Tablet: make productive use of landscape and portrait widths. */
+  @media (min-width:601px) and (max-width:1024px) {
+    .container { width:min(100% - 48px, 920px); }
+    section { padding:76px 0; }
+    .hero { min-height:0; padding-top:132px; padding-bottom:56px; }
+    .hero-content { width:min(100% - 48px, 920px); grid-template-columns:minmax(0,1fr) minmax(280px,.85fr); gap:24px; text-align:right; }
+    .hero-copy .actions,.hero-copy .hero-stats { justify-content:flex-start; }
+    .hero-brandline { justify-content:flex-start; }
+    .hero-copy h1 { font-size:clamp(38px,5vw,58px); }
+    .hero-copy h2 { font-size:clamp(20px,2.5vw,28px); }
+    .hero-showcase { min-height:330px; }
+    .services { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .portfolio { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .steps { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .benefits { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .order-wrap { grid-template-columns:.85fr 1.15fr; gap:14px; }
+    .info-box,.order-form { padding:22px; }
+    .nav-links { gap:14px; font-size:12px; }
+    .nav-cta { padding:9px 12px; font-size:12px; }
+  }
+  @media (min-width:601px) and (max-width:760px) {
+    .hero-content { grid-template-columns:1fr; text-align:center; }
+    .hero-brandline,.hero-copy .actions,.hero-copy .hero-stats { justify-content:center; }
+    .hero-copy p,.hero-copy h2 { margin-inline:auto; }
+    .hero-showcase { width:min(100%,560px); margin-inline:auto; }
+    .order-wrap { grid-template-columns:1fr; }
+    .nav-links { display:none; }
+    .nav-cta { display:none; }
+    .menu-btn { display:inline-flex; }
+  }
+  /* Phone: swipe-first portfolio viewer, safe-area-aware controls, no hover dependency. */
+  @media (max-width:600px) {
+    body { padding-bottom:env(safe-area-inset-bottom); }
+    .container { width:calc(100% - 30px); }
+    .section-head { gap:12px; }
+    .portfolio-tools { gap:9px; flex-wrap:wrap; }
+    .portfolio-search { flex:1 1 100%; }
+    .portfolio-sort-label { max-width:100%; }
+    .portfolio-detail-box { width:100%; }
+    .portfolio-detail-actions { display:grid; grid-template-columns:1fr; }
+    .portfolio-detail-actions .btn { width:100%; min-height:48px; }
+    .portfolio-lightbox { padding: max(14px,env(safe-area-inset-top)) 8px max(18px,env(safe-area-inset-bottom)); }
+    .lightbox-content { max-height:82dvh; }
+    #lightboxImage { max-height:68dvh; }
+    .lightbox-nav { position:fixed; top:50%; transform:translateY(-50%); z-index:5003; }
+    .lightbox-prev { left:8px; }
+    .lightbox-next { right:8px; }
+    .lightbox-info { margin-top:8px; }
+    .filters { scroll-snap-type:x proximity; }
+    .filter { scroll-snap-align:start; }
+    .order-form-heading { flex-wrap:wrap; }
+    .form-time { white-space:normal; }
+  }
+  @media (orientation:landscape) and (max-width:900px) and (pointer:coarse) {
+    .hero { padding-top:100px; }
+    .hero-content { grid-template-columns:1fr 1fr; text-align:right; }
+    .hero-brandline,.hero-copy .actions,.hero-copy .hero-stats { justify-content:flex-start; }
+    .hero-showcase { min-height:260px; }
+    .portfolio-lightbox { padding-top:8px; padding-bottom:8px; }
+    #lightboxImage { max-height:66dvh; }
+  }
+  @media(prefers-reduced-motion:reduce) {
+    .work,.filter,.lightbox-nav,.lightbox-close { transition:none!important; }
+  }
+</style>
+
+<script id="loyal-touch-portfolio-v14">
+(() => {
+  'use strict';
+  const viewer = document.getElementById('portfolioLightbox');
+  if (!viewer || viewer.dataset.touchSwipeReady === '1') return;
+  viewer.dataset.touchSwipeReady = '1';
+  let startX = 0, startY = 0, tracking = false;
+  const threshold = 48;
+  viewer.addEventListener('touchstart', (event) => {
+    if (!viewer.classList.contains('open') || event.touches.length !== 1) return;
+    const t = event.touches[0];
+    startX = t.clientX; startY = t.clientY; tracking = true;
+  }, {passive:true});
+  viewer.addEventListener('touchend', (event) => {
+    if (!tracking || !viewer.classList.contains('open') || !event.changedTouches.length) return;
+    tracking = false;
+    const t = event.changedTouches[0];
+    const dx = t.clientX - startX, dy = t.clientY - startY;
+    if (Math.abs(dx) < threshold || Math.abs(dx) < Math.abs(dy) * 1.25) return;
+    // RTL layout: physical swipe left advances; physical swipe right goes back.
+    if (dx < 0) document.getElementById('lightboxNext')?.click();
+    else document.getElementById('lightboxPrev')?.click();
+  }, {passive:true});
+  viewer.addEventListener('touchcancel', () => { tracking = false; }, {passive:true});
+})();
+</script>
+
 </body>
 </html>
