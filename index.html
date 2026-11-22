@@ -889,6 +889,9 @@ section{
 /* ===== PORTFOLIO PRESENTATION UPGRADE ===== */
 .portfolio{gap:20px;}
 .portfolio .work{height:auto;min-height:245px;aspect-ratio:16/10;border-radius:18px;}
+/* Reserve image space before lazy-loaded portfolio artwork arrives. */
+#portfolioGrid .portfolio-card{aspect-ratio:16/10;min-height:0;}
+#portfolioGrid .portfolio-card img{width:100%;height:100%;object-fit:cover;}
 .work .overlay{left:13px;right:13px;bottom:13px;padding:14px 16px;}
 .work .overlay strong{font-size:15px;}
 .work .overlay small{font-size:10px;letter-spacing:.35px;color:var(--accent2)!important;}
@@ -3660,7 +3663,7 @@ main section[id] { scroll-margin-top: 94px; }
 <a class="brand" href="#home" aria-label="Loyal Graphic">
     <!-- لوگو را اینجا قرار بده: images/logo.png -->
     <div class="logo">
-        <img src="images/logo.png" alt="Loyal Graphic Logo">
+        <img src="images/logo.png" alt="لوگوی استودیوی LOYAL GRAPHIC" decoding="async" width="160" height="160">
     </div>
     <span>LOYAL GRAPHIC</span>
 </a>
@@ -3696,7 +3699,7 @@ main section[id] { scroll-margin-top: 94px; }
     <div class="hero-copy">
         <div class="hero-brandline">
             <div class="hero-logo">
-                <img src="images/logo.png" alt="Loyal Graphic">
+                <img src="images/logo.png" alt="نشان استودیوی LOYAL GRAPHIC" decoding="async" width="160" height="160">
             </div>
             <div class="eyebrow">
                 <i></i>
@@ -3740,10 +3743,10 @@ main section[id] { scroll-margin-top: 94px; }
             <span class="showcase-index">01 / THUMBNAIL</span>
         </div>
         <div class="showcase-small showcase-top">
-            <img src="images/portfolio-02.jpg" alt="نمونه دوم طراحی" loading="lazy" onerror="this.parentElement.classList.add('no-image')">
+            <img src="images/portfolio-02.jpg" alt="نمونه طراحی تامنیل ماینکرفت شماره دو" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('no-image')">
         </div>
         <div class="showcase-small showcase-bottom">
-            <img src="images/portfolio-07.jpg" alt="نمونه طراحی پروفایل ماینکرفت" loading="lazy" onerror="this.parentElement.classList.add('no-image')">
+            <img src="images/portfolio-07.jpg" alt="نمونه طراحی پروفایل ماینکرفت" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('no-image')">
         </div>
         <div class="showcase-stamp"><strong>LG</strong><span>CREATIVE<br>STUDIO</span></div>
         <div class="showcase-caption"><span>DESIGN THAT</span><strong>GETS NOTICED.</strong></div>
@@ -3843,7 +3846,7 @@ main section[id] { scroll-margin-top: 94px; }
 </div>
 
 <div class="loyal-featured-work reveal" id="featuredWork" role="group" tabindex="0" aria-label="مشاهده پروژه منتخب">
-  <div class="loyal-featured-media"><img id="featuredWorkImage" src="" alt="پروژه منتخب Loyal Graphic" loading="lazy"><span class="featured-corner">SELECTED WORK</span></div>
+  <div class="loyal-featured-media"><img id="featuredWorkImage" src="" alt="پروژه منتخب استودیوی LOYAL GRAPHIC" loading="lazy" decoding="async"><span class="featured-corner">SELECTED WORK</span></div>
 
   <div class="loyal-featured-copy"><span class="featured-kicker"><i></i> پروژه منتخب</span><h3 id="featuredWorkTitle">منتخب LOYAL GRAPHIC</h3><p id="featuredWorkDescription">یکی از طراحی‌های منتخب استودیو؛ برای مشاهده جزئیات باز کن.</p><button type="button" id="featuredWorkOpen" class="featured-open">مشاهده جزئیات <span aria-hidden="true">↗</span></button></div>
 </div>
@@ -3909,6 +3912,7 @@ main section[id] { scroll-margin-top: 94px; }
             id="lightboxImage"
             src=""
             alt=""
+            decoding="async"
         >
 
         <div class="lightbox-info">
@@ -3935,7 +3939,7 @@ main section[id] { scroll-margin-top: 94px; }
 <div class="portfolio-detail-modal" id="portfolioDetailModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="portfolioDetailTitle">
   <div class="portfolio-detail-box">
     <button class="portfolio-detail-close" id="portfolioDetailClose" type="button" aria-label="بستن">×</button>
-    <div class="portfolio-detail-image-wrap"><img id="portfolioDetailImage" src="" alt=""></div>
+    <div class="portfolio-detail-image-wrap"><img id="portfolioDetailImage" src="" alt="" decoding="async"></div>
     <div class="portfolio-detail-copy"><span class="detail-kicker">LOYAL GRAPHIC / PROJECT</span><h3 id="portfolioDetailTitle"></h3><span class="portfolio-detail-type" id="portfolioDetailType"></span><p id="portfolioDetailDescription"></p><div class="portfolio-detail-actions"><button type="button" class="btn secondary" id="portfolioDetailZoom">نمایش تصویر بزرگ</button><a class="btn primary" href="#order" id="portfolioDetailOrder">سفارش طراحی مشابه ↗</a></div></div>
   </div>
 </div>
@@ -4551,8 +4555,10 @@ function openPortfolioDetails(index){
     const item = portfolioItems[index];
     if (!item || !item.image || !portfolioDetailModal) return;
     currentDetailIndex = index;
+    portfolioDetailImage.alt = item.alt || `تصویر نمونه‌کار ${item.title}، ${item.type || "طراحی گرافیک"} در استودیوی LOYAL GRAPHIC`;
+    portfolioDetailImage.decoding = "async";
+    portfolioDetailImage.loading = "eager";
     portfolioDetailImage.src = item.image;
-    portfolioDetailImage.alt = item.title;
     portfolioDetailTitle.textContent = item.title;
     portfolioDetailType.textContent = item.type || item.category || "LOYAL GRAPHIC";
     portfolioDetailDescription.textContent = item.description || "طراحی اختصاصی در استودیوی Loyal Graphic.";
@@ -4605,8 +4611,10 @@ function renderPortfolio(filter="all"){
         el.setAttribute("aria-label", `نمایش ${item.title}`);
 
         const img = document.createElement("img");
-        img.alt = item.title;
+        img.alt = item.alt || `تصویر نمونه‌کار ${item.title}، ${item.type || "طراحی گرافیک"} در استودیوی LOYAL GRAPHIC`;
         img.loading = "lazy";
+        img.decoding = "async";
+        img.fetchPriority = "low";
         if (item.image) img.src = item.image;
         else img.style.display = "none";
         img.addEventListener("error", () => {
@@ -4670,7 +4678,11 @@ function renderFeaturedWork(){
     if (!featuredItem) { featuredCard.hidden = true; return; }
     featuredCard.hidden = false;
     const featuredImage = document.getElementById("featuredWorkImage");
-    if (featuredImage) { featuredImage.src = featuredItem.image; featuredImage.alt = featuredItem.title; }
+    if (featuredImage) {
+        featuredImage.alt = featuredItem.alt || `پروژه منتخب ${featuredItem.title}، ${featuredItem.type || "طراحی گرافیک"} در استودیوی LOYAL GRAPHIC`;
+        featuredImage.decoding = "async";
+        featuredImage.src = featuredItem.image;
+    }
     document.getElementById("featuredWorkTitle").textContent = featuredItem.title;
     document.getElementById("featuredWorkDescription").textContent = featuredItem.description || "یکی از طراحی‌های منتخب استودیوی LOYAL GRAPHIC.";
 }
@@ -4734,11 +4746,13 @@ function openPortfolioLightbox(index){
     const item =
         portfolioItems[currentLightboxIndex];
 
+    lightboxImage.alt =
+        item.alt || `تصویر بزرگ ${item.title}، ${item.type || "طراحی گرافیک"} در استودیوی LOYAL GRAPHIC`;
+
+    lightboxImage.decoding = "async";
+    lightboxImage.loading = "eager";
     lightboxImage.src =
         item.image;
-
-    lightboxImage.alt =
-        item.title;
 
     lightboxTitle.textContent =
         item.title;
