@@ -23,6 +23,7 @@
 <meta name="twitter:image" content="https://tahaloyalguy.github.io/loyal-graphic/images/logo.png">
 
 <title>LOYAL GRAPHIC | طراحی تامنیل ماینکرفت و گرافیک گیمینگ</title>
+<!-- LOYAL GRAPHIC v17 -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -85,9 +86,10 @@ html{
 
 body{
     background:
-        radial-gradient(circle at 80% 0%,rgba(var(--accent-rgb),.09),transparent 27%),
-        radial-gradient(circle at 10% 55%,rgba(var(--accent-rgb),.035),transparent 25%),
-        var(--bg);
+        radial-gradient(ellipse 900px 560px at 86% -8%,rgba(var(--accent-rgb),.105),transparent 68%),
+        radial-gradient(ellipse 720px 520px at -12% 42%,rgba(var(--accent-rgb),.045),transparent 70%),
+        radial-gradient(ellipse 900px 700px at 52% 112%,rgba(255,255,255,.018),transparent 72%),
+        linear-gradient(180deg,#090909 0%,#070707 48%,#090909 100%);
     color:var(--text);
     font-family:"Vazirmatn",Arial,sans-serif;
     line-height:1.8;
@@ -2958,8 +2960,14 @@ footer{
 body{position:relative;}
 body::before{
   content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
-  background:radial-gradient(ellipse at 12% 12%,var(--theme-glow),transparent 42%);
-  opacity:.55;transition:background .55s ease,opacity .55s ease;
+  background:
+    radial-gradient(ellipse at 14% 10%,var(--theme-glow),transparent 43%),
+    linear-gradient(rgba(255,255,255,.014) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.014) 1px,transparent 1px);
+  background-size:auto,76px 76px,76px 76px;
+  opacity:.48;
+  mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.7) 48%,transparent 88%);
+  transition:background .55s ease,opacity .55s ease;
 }
 body[data-theme="purple"]{
   --accent:#a66bff;--accent2:#d2aaff;--accent-rgb:166,107,255;
@@ -3472,6 +3480,8 @@ h1,h2,h3,.section-head h2,.hero-copy h2,.tag,.eyebrow{font-family:"Estedad","Vaz
   "logo": "https://tahaloyalguy.github.io/loyal-graphic/images/logo.png",
   "description": "استودیوی طراحی گرافیک برای Minecraft، Gaming و تولیدکنندگان محتوا.",
   "sameAs": [
+    "https://t.me/loyal_edits",
+    "https://t.me/Rig_Sky",
     "https://rubika.ir/taha_loyal_guy3",
     "https://ble.ir/taha_loyal_guy"
   ]
@@ -4082,6 +4092,41 @@ main section[id] { scroll-margin-top: 94px; }
 </div>
 </section>
 
+<!-- ================= RIG CTA ================= -->
+
+<section>
+<div class="container">
+
+<div class="rig-cta reveal">
+
+<div>
+<span class="tag">MINECRAFT RIGS & MODELS</span>
+
+<h3>
+مدل و ریگ برای ساخت تامنیل
+</h3>
+
+<p>
+اگه خودت تامنیل می‌زنی و نمی‌دونی مدل و ریگ‌هات رو از کجا پیدا کنی،
+این چنل خوراک خودته.
+</p>
+</div>
+
+<a
+class="btn primary"
+href="https://t.me/Rig_Sky"
+target="_blank"
+rel="noopener noreferrer"
+>
+Rig Sky ↗
+</a>
+
+</div>
+
+</div>
+</section>
+
+
 <!-- ================= ORDER ================= -->
 
 <section id="order">
@@ -4115,25 +4160,11 @@ main section[id] { scroll-margin-top: 94px; }
 </div>
 
 <div class="contacts">
-
-<a href="https://rubika.ir/taha_loyal_guy3"
-target="_blank"
-rel="noopener noreferrer"
-data-copy="@taha_loyal_guy3">
-Rubika — @taha_loyal_guy3 </a>
-
-<a href="https://ble.ir/taha_loyal_guy"
-target="_blank"
-rel="noopener noreferrer"
-data-copy="@taha_loyal_guy">
-Bale — @taha_loyal_guy </a>
-
-<a href="https://rubika.ir/loyal_artwork"
-target="_blank"
-rel="noopener noreferrer"
-data-copy="@loyal_artwork">
-Rubika Channel — @loyal_artwork </a>
-
+<a href="https://ble.ir/taha_loyal_guy" target="_blank" rel="noopener noreferrer" data-copy="@taha_loyal_guy">بله — @taha_loyal_guy</a>
+<a href="https://rubika.ir/taha_loyal_guy3" target="_blank" rel="noopener noreferrer" data-copy="@taha_loyal_guy3">روبیکا — @taha_loyal_guy3</a>
+<a href="https://t.me/loyal_edits" target="_blank" rel="noopener noreferrer">Loyal Edits</a>
+<a href="https://t.me/Rig_Sky" target="_blank" rel="noopener noreferrer">Rig Sky</a>
+<a href="https://rubika.ir/loyal_artwork" target="_blank" rel="noopener noreferrer">Loyal Artwork</a>
 </div>
 
 </div>
@@ -4332,7 +4363,7 @@ placeholder="ایده، سبک، تعداد خروجی و هر چیزی که ل�
     </div>
     <div class="footer-social-block">
       <strong class="footer-heading">ارتباط با من</strong>
-      <div class="footer-socials"><a href="https://rubika.ir/taha_loyal_guy3" target="_blank" rel="noopener noreferrer" aria-label="روبیکا">RB</a><a href="https://ble.ir/taha_loyal_guy" target="_blank" rel="noopener noreferrer" aria-label="بله">BL</a></div>
+      <div class="footer-socials"><a href="https://ble.ir/taha_loyal_guy" target="_blank" rel="noopener noreferrer" aria-label="بله">بله</a><a href="https://rubika.ir/taha_loyal_guy3" target="_blank" rel="noopener noreferrer" aria-label="روبیکا">RB</a><a href="https://t.me/loyal_edits" target="_blank" rel="noopener noreferrer" aria-label="Loyal Edits">LE</a><a href="https://t.me/Rig_Sky" target="_blank" rel="noopener noreferrer" aria-label="Rig Sky">RS</a></div>
       <a class="footer-contact-link" href="#contact">شروع یک همکاری <span aria-hidden="true">↗</span></a>
     </div>
   </div>
@@ -5793,7 +5824,7 @@ testSupabase();
         </section>
 
         <section class="admin-view" data-admin-section="general">
-          <div class="admin-section-intro"><div><span class="admin-kicker">GENERAL SETTINGS</span><h3>تنظیمات عمومی</h3><p>عنوان و توضیحات پایه سایت. پیش‌نمایش تلگرام و شبکه‌های اجتماعی از متادیتای ثابت HTML خوانده می‌شود.</p></div></div>
+          <div class="admin-section-intro"><div><span class="admin-kicker">GENERAL SETTINGS</span><h3>تنظیمات عمومی</h3><p>عنوان و توضیحات پایه سایت. پیش‌نمایش لینک‌های شبکه‌های اجتماعی از متادیتای ثابت HTML خوانده می‌شود.</p></div></div>
           <form id="adminGeneralForm" class="admin-card admin-form-grid">
             <label class="admin-span-2">عنوان سایت<input id="generalSiteTitle" maxlength="100"></label>
             <label class="admin-span-2">توضیحات سایت<textarea id="generalSiteDescription" rows="3" maxlength="300"></textarea></label>
@@ -6182,8 +6213,10 @@ testSupabase();
 
 <div class="loyal-quick-contact" id="loyalQuickContact">
   <div class="quick-contact-panel" id="quickContactPanel" aria-hidden="true">
-    <a href="https://rubika.ir/taha_loyal_guy3" target="_blank" rel="noopener noreferrer"><span>◈</span> روبیکا</a>
     <a href="https://ble.ir/taha_loyal_guy" target="_blank" rel="noopener noreferrer"><span>✦</span> بله</a>
+    <a href="https://rubika.ir/taha_loyal_guy3" target="_blank" rel="noopener noreferrer"><span>◈</span> روبیکا</a>
+    <a href="https://t.me/loyal_edits" target="_blank" rel="noopener noreferrer"><span>✧</span> Loyal Edits</a>
+    <a href="https://t.me/Rig_Sky" target="_blank" rel="noopener noreferrer"><span>✦</span> Rig Sky</a>
   </div>
   <button type="button" id="quickContactToggle" aria-expanded="false" aria-controls="quickContactPanel"><span class="quick-contact-symbol">✉</span><span>ارتباط سریع</span></button>
 </div>
@@ -6233,9 +6266,11 @@ testSupabase();
     ctaDescription:'برای شروع، از طریق فرم یا شبکه‌های اجتماعی ارتباط بگیر.',
     marquee:'MINECRAFT DESIGN|CREATIVE THUMBNAILS|GAMING VISUALS|LOYAL GRAPHIC STUDIO',
     contacts:[
-      {label:'Rubika',url:'https://rubika.ir/taha_loyal_guy3',handle:'@taha_loyal_guy3'},
       {label:'Bale',url:'https://ble.ir/taha_loyal_guy',handle:'@taha_loyal_guy'},
-      {label:'Rubika Channel',url:'https://rubika.ir/loyal_artwork',handle:'@loyal_artwork'},
+      {label:'Rubika',url:'https://rubika.ir/taha_loyal_guy3',handle:'@taha_loyal_guy3'},
+      {label:'Loyal Edits',url:'https://t.me/loyal_edits',handle:''},
+      {label:'Rig Sky',url:'https://t.me/Rig_Sky',handle:''},
+      {label:'Loyal Artwork',url:'https://rubika.ir/loyal_artwork',handle:''}
     ],
     defaultTheme:'orange',soundEnabled:false,motionEnabled:true,portfolioCmsEnabled:false,
     logoUrl:'images/logo.png',heroImage:'images/portfolio-01.webp',
@@ -6376,8 +6411,16 @@ testSupabase();
     set('#contact h2',value.ctaTitle);set('#contact p',value.ctaDescription);
     const logo=document.querySelector('.hero-logo img');if(logo&&value.logoUrl)logo.src=value.logoUrl;
     const heroImage=document.querySelector('.showcase-main img');if(heroImage&&value.heroImage)heroImage.src=value.heroImage;
-    const contactsHost=document.querySelector('.order-wrap .contacts');if(contactsHost&&Array.isArray(value.contacts)){contactsHost.innerHTML='';value.contacts.forEach(item=>{if(!item.url||!item.label)return;const a=document.createElement('a');a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=item.handle?`${item.label} — ${item.handle}`:item.label;if(item.handle){a.dataset.copy=item.handle;a.addEventListener('click',()=>{navigator.clipboard?.writeText(item.handle).then(()=>window.showLoyalToast?.(`${item.handle} کپی شد`)).catch(()=>{});});}contactsHost.append(a);});}
-    const quickHost=$('quickContactPanel');if(quickHost&&Array.isArray(value.contacts)){quickHost.innerHTML='';const wanted=[['rubika','روبیکا','◈'],['bale','بله','✦']];const candidates=value.contacts;wanted.forEach(([key,label,icon])=>{const item=candidates.find(c=>(c.label||'').toLowerCase().includes(key))||candidates.find(c=>(c.label||'').includes(label));if(item?.url){const a=document.createElement('a');a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';const mark=document.createElement('span');mark.textContent=icon;a.append(mark,document.createTextNode(' '+label));quickHost.append(a);}});}
+    const publicContacts=(Array.isArray(value.contacts)?value.contacts:[]).map(item=>{
+      const url=String(item.url||'').toLowerCase(),handle=String(item.handle||'').replace(/^@/,'').toLowerCase(),label=String(item.label||'');
+      if(!item.url||!label||(url.includes('t.me/')&&!url.includes('t.me/loyal_edits')&&!url.includes('t.me/rig_sky')))return null;
+      if(url.includes('t.me/loyal_edits')||handle==='loyal_edits')return {...item,label:'Loyal Edits',handle:''};
+      if(url.includes('t.me/rig_sky')||handle==='rig_sky')return {...item,label:'Rig Sky',handle:''};
+      if(/telegram/i.test(label))return null;
+      return item;
+    }).filter(Boolean);
+    const contactsHost=document.querySelector('.order-wrap .contacts');if(contactsHost){contactsHost.innerHTML='';publicContacts.forEach(item=>{const a=document.createElement('a');a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=item.handle?`${item.label} — ${item.handle}`:item.label;if(item.handle){a.dataset.copy=item.handle;a.addEventListener('click',()=>{navigator.clipboard?.writeText(item.handle).then(()=>window.showLoyalToast?.(`${item.handle} کپی شد`)).catch(()=>{});});}contactsHost.append(a);});}
+    const quickHost=$('quickContactPanel');if(quickHost){quickHost.innerHTML='';const wanted=[['Bale','بله','✦'],['Rubika','روبیکا','◈'],['Loyal Edits','Loyal Edits','✧'],['Rig Sky','Rig Sky','✦']];wanted.forEach(([key,label,icon])=>{const item=publicContacts.find(c=>String(c.label||'').toLowerCase()===key.toLowerCase());if(item?.url){const a=document.createElement('a');a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';const mark=document.createElement('span');mark.textContent=icon;a.append(mark,document.createTextNode(' '+label));quickHost.append(a);}});}
     if(value.marquee){const words=value.marquee.split('|').map(x=>x.trim()).filter(Boolean);document.querySelectorAll('.loyal-marquee-group').forEach(group=>{group.innerHTML='';words.forEach((word,index)=>{const span=document.createElement('span');span.textContent=word;const icon=document.createElement('i');icon.textContent='✦';group.append(span,icon);});});}
     if(value.siteTitle){document.title=value.siteTitle;}
     let meta=document.querySelector('meta[name="description"]');if(!meta){meta=document.createElement('meta');meta.name='description';document.head.append(meta);}if(value.siteDescription)meta.content=value.siteDescription;
@@ -6606,5 +6649,22 @@ testSupabase();
 })();
 </script>
 
+
+
+<!-- LOYAL GRAPHIC v17: restrained ambient background -->
+<style id="loyal-v17-background">
+  @media (max-width:600px) {
+    body {
+      background:
+        radial-gradient(ellipse 520px 360px at 92% 0%,rgba(var(--accent-rgb),.075),transparent 70%),
+        linear-gradient(180deg,#090909 0%,#070707 55%,#090909 100%);
+      background-attachment:scroll;
+    }
+    body::before { background-size:auto,88px 88px,88px 88px; opacity:.3; }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    body::before,body::after { transition:none!important; }
+  }
+</style>
 </body>
 </html>
