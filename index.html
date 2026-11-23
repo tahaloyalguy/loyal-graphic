@@ -3640,6 +3640,7 @@ main section[id] { scroll-margin-top: 94px; }
 @media(max-width:600px){.portfolio-tools{align-items:stretch}.portfolio-search{max-width:none;flex-basis:100%}.portfolio-sort-label{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px}.faq-item summary{padding:15px;font-size:14px}.faq-answer{padding:0 15px 15px}}
 </style>
 
+<meta name="loyal-graphic-version" content="19">
 </head>
 
 <body>
@@ -3813,24 +3814,6 @@ main section[id] { scroll-margin-top: 94px; }
 <div class="icon">04</div>
 <h3>Channel Art</h3>
 <p>طراحی Channel Art برای YouTube، Aparat و پلتفرم‌های دیگر.</p>
-</article>
-
-<article class="card reveal">
-<div class="icon">05</div>
-<h3>Gaming Graphic</h3>
-<p>گرافیک‌های مخصوص ماینکرفت، ویدیو و محتوای گیمینگ.</p>
-</article>
-
-<article class="card reveal">
-<div class="icon">06</div>
-<h3>Social Media</h3>
-<p>طراحی پست، استوری و محتوای ماینکرافتی برای شبکه‌های اجتماعی.</p>
-</article>
-
-<article class="card reveal">
-<div class="icon">07</div>
-<h3>3D / Render</h3>
-<p>رندرها و تصاویر سه‌بعدی برای پروژه‌های خلاقانه.</p>
 </article>
 
 </div>
@@ -4262,9 +4245,6 @@ Channel - Rig Sky ↗
 <option>پروفایل ماینکرفتی</option>
 <option>Banner &amp; Cover</option>
 <option>Channel Art</option>
-<option>Gaming Graphic</option>
-<option>Social Media</option>
-<option>3D / Render</option>
 <option>سایر / سفارش ترکیبی</option>
 
 </select>
@@ -5801,7 +5781,7 @@ testSupabase();
             <input type="hidden" id="adminPortfolioId">
             <label>عنوان پروژه<input id="adminPortfolioTitle" required maxlength="90" placeholder="مثلاً Minecraft Thumbnail #08"></label>
             <label>نوع پروژه<input id="adminPortfolioType" required maxlength="60" placeholder="Minecraft Thumbnail"></label>
-            <label>دسته‌بندی<select id="adminPortfolioCategory"><option value="minecraft-thumbnail">Minecraft Thumbnail</option><option value="minecraft-profile">Minecraft Profile</option><option value="channel-art">Channel Art</option><option value="gaming">Gaming</option><option value="social">Social Media</option><option value="3d">3D / Render</option></select></label>
+            <label>دسته‌بندی<select id="adminPortfolioCategory"><option value="minecraft-thumbnail">Minecraft Thumbnail</option><option value="minecraft-profile">Minecraft Profile</option><option value="channel-art">Channel Art</option></select></label>
             <label>ترتیب نمایش<input id="adminPortfolioOrder" type="number" value="0" min="0" step="1"></label>
             <label class="admin-span-2">توضیحات<textarea id="adminPortfolioDescription" rows="3" maxlength="500" placeholder="توضیح کوتاه درباره این طراحی..."></textarea></label>
             <label class="admin-span-2">تصویر نمونه‌کار<input id="adminPortfolioImage" type="file" accept="image/png,image/jpeg,image/webp,image/avif"><small class="admin-help">فرمت‌های PNG، JPG، WEBP و AVIF؛ حداکثر 8 مگابایت. در ویرایش، اگر تصویر جدید انتخاب نکنی تصویر قبلی حفظ می‌شود.</small></label>
@@ -6278,10 +6258,7 @@ testSupabase();
       {title:'Minecraft Thumbnail',description:'تامنیل‌های حرفه‌ای و چشم‌گیر برای ویدیوهای Minecraft.'},
       {title:'Minecraft Profile',description:'پروفایل‌های اختصاصی با استایل Gaming و Minecraft.'},
       {title:'Banner & Cover',description:'بنر و کاور حرفه‌ای برای صفحه‌ها و کانال‌های شما.'},
-      {title:'Channel Art',description:'طراحی Channel Art برای YouTube، Aparat و پلتفرم‌های دیگر.'},
-      {title:'Gaming Graphic',description:'گرافیک‌های مخصوص ماینکرفت، ویدیو و محتوای گیمینگ.'},
-      {title:'Social Media',description:'طراحی پست، استوری و محتوای ماینکرافتی برای شبکه‌های اجتماعی.'},
-      {title:'3D / Render',description:'رندرها و تصاویر سه‌بعدی برای پروژه‌های خلاقانه.'}
+      {title:'Channel Art',description:'طراحی Channel Art برای YouTube، Aparat و پلتفرم‌های دیگر.'}
     ],
     aboutTitle:'چرا Loyal Graphic؟',aboutIntro:'هدف فقط ساخت یک تصویر نیست؛ هدف ساخت چیزی است که در نگاه اول توجه مخاطب را جلب کند.',
     ctaTitle:'پروژه بعدیت رو با Loyal Graphic شروع کن.',
@@ -6305,7 +6282,8 @@ testSupabase();
   let adminPortfolio = [];
   let adminActivities = [];
   let editingPortfolioId = null;
-  const categoryLabels = {'minecraft-thumbnail':'Minecraft Thumbnail','minecraft-profile':'Minecraft Profile','channel-art':'Channel Art','gaming':'Gaming','social':'Social Media','3d':'3D / Render'};
+  const categoryLabels = {'minecraft-thumbnail':'Minecraft Thumbnail','minecraft-profile':'Minecraft Profile','channel-art':'Channel Art','gaming':'سایر','social':'سایر','3d':'سایر'};
+  const isRemovedPortfolioCategory = (category) => ['gaming','social','3d'].includes(String(category||'').toLowerCase());
   const say = (message, error=false) => { if (!globalMessage) return; globalMessage.textContent = message; globalMessage.style.color = error ? '#ff9b9b' : '#9ee2b3'; };
   const setLoginMessage = (message, error=false) => { loginMessage.textContent = message; loginMessage.style.color = error ? '#ff9b9b' : '#aaa'; };
   const safeText = (value) => String(value ?? '').trim();
@@ -6320,7 +6298,12 @@ testSupabase();
     adminActivities.forEach(item=>{const row=document.createElement('div');row.className='admin-activity-item';const mark=document.createElement('span');mark.className='admin-activity-mark';mark.textContent=item.icon;const copy=document.createElement('div');copy.className='admin-activity-copy';const title=document.createElement('strong');title.textContent=item.title;const time=document.createElement('small');time.textContent=item.at.toLocaleTimeString('fa-IR',{hour:'2-digit',minute:'2-digit'});copy.append(title,time);row.append(mark,copy);host.append(row);});
   }
   const clone = (value) => JSON.parse(JSON.stringify(value));
-  const mergeSettings = (value) => ({...clone(defaultSettings), ...(value && typeof value === 'object' ? value : {})});
+  const isRemovedService = (title) => /^(gaming\s*graphic|social\s*media|3d\s*\/?\s*render)$/i.test(String(title||'').trim());
+  const mergeSettings = (value) => {
+    const merged = {...clone(defaultSettings), ...(value && typeof value === 'object' ? value : {})};
+    if (Array.isArray(merged.services)) merged.services = merged.services.filter(item => !isRemovedService(item?.title));
+    return merged;
+  };
   const openPanel = async () => { panel.classList.add('open'); panel.setAttribute('aria-hidden','false'); const {data:{session}} = await supabaseClient.auth.getSession(); if (session?.user) await showWorkspace(session.user); };
   const closePanel = () => { panel.classList.remove('open'); panel.setAttribute('aria-hidden','true'); };
   window.openLoyalAdmin = openPanel;
@@ -6406,7 +6389,7 @@ testSupabase();
       const remove=document.createElement('button');remove.type='button';remove.className='danger';remove.textContent='حذف';remove.addEventListener('click',()=>row.remove());row.append(title,desc,remove);host.append(row);});
   }
   $('adminAddService')?.addEventListener('click',()=>renderServiceRows([...readServiceRows(),{title:'خدمت جدید',description:'توضیح کوتاه خدمت'}]));
-  function readServiceRows(){return [...$('adminServicesRows').querySelectorAll('.admin-repeat-row')].map(row=>({title:safeText(row.querySelector('[data-service-title]').value),description:safeText(row.querySelector('[data-service-description]').value)})).filter(x=>x.title);}
+  function readServiceRows(){return [...$('adminServicesRows').querySelectorAll('.admin-repeat-row')].map(row=>({title:safeText(row.querySelector('[data-service-title]').value),description:safeText(row.querySelector('[data-service-description]').value)})).filter(x=>x.title&&!isRemovedService(x.title));}
   function renderContactRows(rows){
     const host=$('adminContactRows');host.innerHTML='';
     rows.forEach(item=>{const row=document.createElement('div');row.className='admin-repeat-row contact-row';
@@ -6471,7 +6454,7 @@ testSupabase();
     if(!adminPortfolio.length){const p=document.createElement('p');p.className='admin-muted';p.textContent='هنوز نمونه‌کاری در پنل ثبت نشده. برای وارد کردن نمونه‌کارهای فعلی از دکمه بالای صفحه استفاده کن.';host.append(p);return;}
     adminPortfolio.forEach(item=>{const row=document.createElement('div');row.className='admin-portfolio-row';if(item.image_url){const img=document.createElement('img');img.src=item.image_url;img.alt=item.title;row.append(img);}else{const ph=document.createElement('div');ph.className='admin-portfolio-placeholder';ph.textContent='NO IMAGE';row.append(ph);}const info=document.createElement('div');const title=document.createElement('strong');title.textContent=item.title+(item.is_featured?' ★':'');const meta=document.createElement('small');meta.textContent=(categoryLabels[item.category]||item.category)+' · '+(item.type||'');info.append(title,meta);row.append(info);const actions=document.createElement('div');actions.className='admin-row-actions';const edit=document.createElement('button');edit.type='button';edit.textContent='ویرایش';edit.addEventListener('click',()=>fillPortfolioForm(item));const del=document.createElement('button');del.type='button';del.className='danger';del.textContent='حذف';del.addEventListener('click',()=>deletePortfolio(item));actions.append(edit,del);row.append(actions);host.append(row);});
   }
-  function fillPortfolioForm(item){editingPortfolioId=item.id;$('adminPortfolioId').value=item.id;$('adminPortfolioTitle').value=item.title||'';$('adminPortfolioType').value=item.type||'';$('adminPortfolioCategory').value=item.category||'minecraft-thumbnail';$('adminPortfolioOrder').value=item.sort_order??0;$('adminPortfolioDescription').value=item.description||'';$('adminPortfolioFeatured').checked=!!item.is_featured;$('adminPortfolioSave').textContent='ذخیره تغییرات';switchView('portfolio');$('adminPortfolioTitle').focus();}
+  function fillPortfolioForm(item){editingPortfolioId=item.id;$('adminPortfolioId').value=item.id;$('adminPortfolioTitle').value=item.title||'';$('adminPortfolioType').value=item.type||'';const categorySelect=$('adminPortfolioCategory');if(isRemovedPortfolioCategory(item.category)&&!categorySelect.querySelector(`option[value=\"${item.category}\"]`)){const legacyOption=document.createElement('option');legacyOption.value=item.category;legacyOption.textContent='سایر (دسته‌بندی قبلی)';categorySelect.append(legacyOption);}categorySelect.value=item.category||'minecraft-thumbnail';$('adminPortfolioOrder').value=item.sort_order??0;$('adminPortfolioDescription').value=item.description||'';$('adminPortfolioFeatured').checked=!!item.is_featured;$('adminPortfolioSave').textContent='ذخیره تغییرات';switchView('portfolio');$('adminPortfolioTitle').focus();}
   function resetPortfolioForm(){editingPortfolioId=null;$('adminPortfolioForm').reset();$('adminPortfolioId').value='';$('adminPortfolioOrder').value='0';$('adminPortfolioSave').textContent='ذخیره نمونه‌کار';}
   $('adminPortfolioCancel')?.addEventListener('click',resetPortfolioForm);
   $('adminPortfolioForm')?.addEventListener('submit',async e=>{e.preventDefault();const btn=$('adminPortfolioSave');btn.disabled=true;try{
@@ -6486,7 +6469,7 @@ testSupabase();
   }catch(error){console.error(error);say('ذخیره نمونه‌کار انجام نشد: '+error.message,true);}finally{btn.disabled=false;}});
   async function deletePortfolio(item){if(!confirm(`نمونه‌کار «${item.title}» حذف شود؟`))return;try{const {error}=await supabaseClient.from('loyal_portfolio').delete().eq('id',item.id);if(error)throw error;await loadAdminPortfolio();await refreshPublicPortfolio();addAdminActivity('نمونه‌کار «'+item.title+'» حذف شد.','−');say('نمونه‌کار حذف شد.');}catch(error){say('حذف انجام نشد: '+error.message,true);}}
   $('adminImportPortfolio')?.addEventListener('click',async()=>{try{if(!Array.isArray(window.portfolioItems)||!window.portfolioItems.length)throw new Error('نمونه‌کارهای فعلی پیدا نشدند.');if(adminPortfolio.length)throw new Error('نمونه‌کارهای فعلی قبلاً به پنل منتقل شده‌اند؛ برای جلوگیری از تکرار، انتقال دوباره غیرفعال است.');const rows=window.portfolioItems.map((x,i)=>({title:x.title,type:x.type||'',category:x.category||'minecraft-thumbnail',description:x.description||'',image_url:x.image?new URL(x.image,location.href).href:null,is_featured:false,sort_order:i}));const {error}=await supabaseClient.from('loyal_portfolio').insert(rows);if(error)throw error;settings.portfolioCmsEnabled=true;await saveSettings();await loadAdminPortfolio();await refreshPublicPortfolio();say('نمونه‌کارهای فعلی وارد پنل شدند.');}catch(error){console.error(error);say('انتقال انجام نشد: '+error.message,true);}});
-  function syncPortfolioFilters(){const host=document.querySelector('.filters');if(!host)return;const active=document.querySelector('.filter.active')?.dataset.filter||'all';const categories=[...new Set(portfolioItems.map(x=>x.category).filter(Boolean))];const labels={all:'همه',...categoryLabels};host.innerHTML='';[['all',labels.all],...categories.map(cat=>[cat,labels[cat]||cat])].forEach(([key,label])=>{const btn=document.createElement('button');btn.type='button';btn.className='filter'+(key===active?' active':'');btn.dataset.filter=key;btn.textContent=label;btn.addEventListener('click',()=>{host.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderPortfolio(key);});host.append(btn);});if(!host.querySelector('.filter.active'))host.querySelector('[data-filter="all"]')?.classList.add('active');}
+  function syncPortfolioFilters(){const host=document.querySelector('.filters');if(!host)return;const active=document.querySelector('.filter.active')?.dataset.filter||'all';const categories=[...new Set(portfolioItems.map(x=>x.category).filter(Boolean).filter(cat=>!isRemovedPortfolioCategory(cat)))];const labels={all:'همه',...categoryLabels};host.innerHTML='';[['all',labels.all],...categories.map(cat=>[cat,labels[cat]||cat])].forEach(([key,label])=>{const btn=document.createElement('button');btn.type='button';btn.className='filter'+(key===active?' active':'');btn.dataset.filter=key;btn.textContent=label;btn.addEventListener('click',()=>{host.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderPortfolio(key);});host.append(btn);});if(!host.querySelector('.filter.active'))host.querySelector('[data-filter="all"]')?.classList.add('active');}
   async function refreshPublicPortfolio(){const {data,error}=await supabaseClient.from('loyal_portfolio').select('*').order('sort_order',{ascending:true}).order('created_at',{ascending:true});if(error)return;portfolioItems=(data||[]).map(x=>({id:x.id,image:x.image_url,title:x.title,category:x.category,description:x.description,type:x.type,is_featured:x.is_featured}));window.portfolioItems=portfolioItems;syncPortfolioFilters();const activeFilter=document.querySelector('.filter.active')?.dataset.filter||'all';renderPortfolio(activeFilter);renderFeaturedWork();document.querySelectorAll('[data-stat="works"]').forEach(el=>el.textContent=String(portfolioItems.filter(x=>x.image).length).padStart(2,'0'));}
   async function loadPublicPortfolio(){try{const {data,error}=await supabaseClient.from('loyal_portfolio').select('*').order('sort_order',{ascending:true}).order('created_at',{ascending:true});if(error)return;if(!data?.length&&settings.portfolioCmsEnabled!==true)return;portfolioItems=(data||[]).map(x=>({id:x.id,image:x.image_url,title:x.title,category:x.category,description:x.description,type:x.type,is_featured:x.is_featured}));window.portfolioItems=portfolioItems;syncPortfolioFilters();const activeFilter=document.querySelector('.filter.active')?.dataset.filter||'all';renderPortfolio(activeFilter);renderFeaturedWork();}catch(error){console.warn('Portfolio CMS not configured yet; using built-in items.',error);}}
   async function loadPublicSettings(){try{const {data,error}=await supabaseClient.from('loyal_site_settings').select('content').eq('id',true).maybeSingle();if(!error&&data?.content)applyPublicSettings(mergeSettings(data.content));}catch(error){console.warn('Site settings CMS not configured yet.',error);}}
